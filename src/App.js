@@ -2,6 +2,9 @@ import Layout from "./layout/index";
 import { Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/HomePage/HomePage";
 import Tour from './pages/Tour/index'
+import Routers from "./pages/Routes";
+import Popup from "./pages/pop";
+
 function App() {
   return (
     <Layout>
@@ -9,9 +12,13 @@ function App() {
 
       {/* <Route path='/' element={<HomePage />} /> */}
       <Route path='/' element={<Tour />} />
+      <Route path='/Routers' element={<Routers />} />
+      <Route path='/Popup' element={<Popup />} />
 
       </Routes>
     </Layout>
+
+
   );
 }
 
