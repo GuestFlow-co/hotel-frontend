@@ -1,0 +1,44 @@
+.checkout-main{
+    background-color: white;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+    justify-content: space-around;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,.3);
+            align-items: center;
+
+    .check-in{
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        flex-direction: column;   
+        gap: 5px;
+        
+    }
+    .check-input{
+            height: 50px;
+            border-radius: 20px;
+            padding-left: 20px ;
+            background-color: white;
+            border:1px solid gray;
+    }
+    .check-label{
+        font-size: 24px;
+        font-family: initial;
+        font-weight: 500;
+        
+        }
+        .CHECK-AVAILABILITY{
+            // margin-top: ;
+            height: 50px;
+            border-radius: 20px;
+            padding: 20px ;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border:1px solid gray;
+        }
+}
