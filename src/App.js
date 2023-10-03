@@ -7,17 +7,21 @@ import Popup from "./pages/pop";
 
 function App() {
   return (
-    <Layout>
-      <Routes>
+    // <Layout>
+    //   <Routes>
 
-      {/* <Route path='/' element={<HomePage />} /> */}
-      <Route path='/' element={<Tour />} />
-      <Route path='/Routers' element={<Routers />} />
-      <Route path='/Popup' element={<Popup />} />
+    //   {/* <Route path='/' element={<HomePage />} /> */}
+    //   <Route path='/tour' element={<Tour />} />
+    //   <Route path='/Routers' element={<Routers />} />
+    //   <Route path='/Popup' element={<Popup />} />
 
-      </Routes>
-    </Layout>
+    //   </Routes>
+    // </Layout>
+    <div>
 
+      <Routers />
+      <Popup />
+    </div>
 
   );
 }
