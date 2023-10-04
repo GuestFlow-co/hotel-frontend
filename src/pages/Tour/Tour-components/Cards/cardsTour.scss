@@ -1,0 +1,54 @@
+.main-card-tour {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 300;
+  color: #484848;
+  font-family: "Prompt", sans-serif;
+  font-size: 16px;
+  line-height: 29.6px;
+  i {
+    color: #63ab45;
+  }
+  .cards-tour-section {
+    width: 85%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+  }
+
+  .theTourCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width:31%;
+    margin: 8px;
+    .tour-card-image {
+      width: 340px;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .info-tour-card {
+      position: relative;
+      bottom: 65px;
+      border-radius: 25px;
+      gap: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 85%;
+      padding: 15px 25px;
+      box-shadow: 0 0 20px rgba(8, 8, 8, 0.15);
+      .lower-card-tour-section {
+        display: flex;
+        gap: 25%;
+        align-items: center;
+      }
+    }
+  }
+}
