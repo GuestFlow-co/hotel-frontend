@@ -38,7 +38,25 @@
             background-color: white;
             display: flex;
             align-items: center;
+            flex-direction: column;
             justify-content: center;
+            // border:1px solid gray;
+        }
+        .theBotton-Tour{
+            height: 50px;
+            border-radius: 20px;
+            padding: 20px ;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .theBotton-Tour p {
+            margin-bottom: 0rem !important;
+        }
+        .CHECK-AVAILABILITY{
             border:1px solid gray;
+
         }
 }

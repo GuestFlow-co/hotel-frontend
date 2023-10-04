@@ -1,5 +1,6 @@
 import React from "react";
 import "./styel.scss";
+import { Text } from "@chakra-ui/react";
 function Checkout() {
   return (
     <div
@@ -14,7 +15,11 @@ function Checkout() {
       <section className="checkout-main">
         <div className="check-in">
           <label className="check-label"> Check In</label>
-          <input className="check-input" placeholder="Check In" type="date"></input>
+          <input
+            className="check-input"
+            placeholder="Check In"
+            type="date"
+          ></input>
         </div>
         <div className="check-in">
           <label className="check-label"> Check Out</label>
@@ -27,17 +32,15 @@ function Checkout() {
         <div className="check-in">
           <label className="check-label"> Accommodations</label>
           <select className="check-input">
-            <option  value="Tent Camping">Tent Camping</option>
+            <option value="Tent Camping">Tent Camping</option>
             <option value="Mountain Biking">Mountain Biking</option>
             <option value="Birdwatching">Birdwatching</option>
           </select>
         </div>
 
-        <div className="CHECK-AVAILABILITY"> 
-        <label className="check-label"> </label>
-
-        <button > CHECK AVAILABILITY >></button>
-          
+        <div className="theBotton-Tour">
+          <Text> ...</Text><br />
+          <button className="CHECK-AVAILABILITY"> CHECK AVAILABILITY >></button>
         </div>
       </section>
     </div>
