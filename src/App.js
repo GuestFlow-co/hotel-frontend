@@ -20,7 +20,7 @@ function App() {
     <div>
 
       <Routers />
-      <Popup />
+      {/* <Popup /> */}
     </div>
 
   );
