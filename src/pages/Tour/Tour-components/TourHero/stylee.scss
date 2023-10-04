@@ -1,6 +1,44 @@
 .tourHero {
-  background-color: rgb(29, 35, 31);
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensure the image covers the entire container */
+  background-image: url(https://images.pexels.com/photos/1064129/pexels-photo-1064129.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-color: black;
   width: 100%;
-  margin-bottom: 150px;
+  height: 500px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff; /* Text color */
+  font-size: 24px;
+  margin-bottom: 100px;
+background-size: cover;
+}
+
+.tourHero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Add a semi-transparent overlay */
 
 }
+
+.hero-dev-tour{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero-dev-tour p {
+  font-size: 90px;
+  // font-family: Georgia, 'Times New Roman', Times, serif;
+  margin:0;
+  font-weight: 700;
+  width: max-content;
+  color: white;
+  z-index: 1;
+}
+
+/* Add additional styles for buttons or other elements within .tourHero */

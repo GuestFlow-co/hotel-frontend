@@ -19,6 +19,9 @@ function Tour() {
        <section className="card-section">
        <TourCards />
      </section>
+     <div>
+
+     </div>
     </div>
   )
 }
