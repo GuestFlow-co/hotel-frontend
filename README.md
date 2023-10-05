@@ -16,7 +16,7 @@
 
 ### System Diagram:
 
-![alt]([assets/Disgram.png](https://raw.githubusercontent.com/GuestFlow-co/hotel-backend/main/assets/Disgram.png))
+![alt](https://raw.githubusercontent.com/GuestFlow-co/hotel-backend/main/assets/Disgram.png)
 
 ---
 
@@ -24,4 +24,4 @@
 
 ---
 
-### Wireframe link: [Here]([https://www.figma.com/file/9fX7CIg1qKvZBfqUve6Sy2/Untitled?type=design&node-id=0%3A1&mode=design&t=OnlfW3LGziwGOVD1-1](https://www.figma.com/file/qb7jdpJKbTqxs2m04CuzNI/frontEndWierFram?type=design&node-id=0-1&mode=design&t=y62QF6O8eSfJvCoO-0)https://www.figma.com/file/qb7jdpJKbTqxs2m04CuzNI/frontEndWierFram?type=design&node-id=0-1&mode=design&t=y62QF6O8eSfJvCoO-0)
+### Wireframe link: [Here](https://www.figma.com/file/qb7jdpJKbTqxs2m04CuzNI/frontEndWierFram?type=design&node-id=0-1&mode=design&t=y62QF6O8eSfJvCoO-0)
