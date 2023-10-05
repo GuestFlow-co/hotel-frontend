@@ -173,7 +173,6 @@ function SignInUpForm() {
         </When>
       </div>
       <div className="overlay-container">
-        <div className="overlay-container">
           <div className="overlay">
             <div 
               className={`overlay-panel overlay-left ${
@@ -202,7 +201,6 @@ function SignInUpForm() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
