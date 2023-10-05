@@ -3,7 +3,7 @@ import { Input, Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../Context/Context_Login";
 import axios from "axios";
-import "./signup_in.css";
+import "./signup_in.scss";
 
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -38,16 +38,43 @@ function SignInUpForm() {
     });
   };
 
+  // const handleSignupSub = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post("http://localhost:3005/signup", formData);
+  //     console.log(res);
+  //     alert(`You have Signed up Successfully ${formData.username}`);
+  //   } catch (err) {
+  //     console.log("login ", err);
+  //   }
+
+  //   setFormData({
+  //     username: "",
+  //     password: "",
+  //     firstName: "",
+  //     lastName: "",
+  //     email: "",
+  //     phoneNumber: "",
+  //     role: "",
+  //   });
+  // };
+
   const handleSignupSub = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3005/signup", formData);
       console.log(res);
       alert(`You have Signed up Successfully ${formData.username}`);
+      const alertElement = document.createElement('div');
+      alertElement.textContent = `You have Signed up Successfully ${formData.username}`;
+      alertElement.className = 'alert-message';
+  
+      const formContainer = document.querySelector('.form-container');
+      formContainer.appendChild(alertElement);
     } catch (err) {
       console.log("login ", err);
     }
-
+  
     setFormData({
       username: "",
       password: "",
@@ -58,7 +85,7 @@ function SignInUpForm() {
       role: "",
     });
   };
-
+  
   function handleLogin(e) {
     e.preventDefault();
     login(username, password);
@@ -72,7 +99,8 @@ function SignInUpForm() {
   }
 
   return (
-    <div className={`container ${isSignUp ? "right-panel-active" : ""}`}>
+    <div className="signup-main-container">
+    <div className={`container-signup ${isSignUp ? "right-panel-active" : ""}`}>
       <When condition={loginData.logged}>
         <div>
           <Button color="cyan" onClick={logout} className="logout-button">
@@ -140,14 +168,14 @@ function SignInUpForm() {
               value={formData.phoneNumber}
               className="sign-up-input"
               />
-            <Input
+            {/* <Input
               onChange={handleInputChange}
               name="role"
               placeholder="Role (admin, writer, editor, user)"
               required
               value={formData.role}
               className="sign-up-input"
-              />
+              /> */}
               </div>
             <button className="sign-up-button" type="submit">Sign Up</button>
           </form>
@@ -207,6 +235,7 @@ function SignInUpForm() {
             </div>
           </div>
         </div>
+      </div>
       </div>
   );
 }

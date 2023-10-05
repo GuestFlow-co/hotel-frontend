@@ -6,7 +6,6 @@ import RoomDetail from './Rooms/RoomDetails/RoomDetails';
 import HomePage from './HomePage/HomePage';
 import Tour from './Tour';
 import LoginForm from './Auth/LoginForm';
-import SignupForm from './Auth/SignupForm';
 import LoginProvider from './Context/Context_Login';
 
 export default function Routers() {
