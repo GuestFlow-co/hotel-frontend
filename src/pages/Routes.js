@@ -23,7 +23,7 @@ export default function Routers() {
       <Route path='/tour' element={<Tour />} />
 
       <Route path="/login" element={<LoginForm />} /> 
-      <Route path="/signup" element={<SignupForm />} /> 
+      {/* <Route path="/signup" element={<SignupForm />} />  */}
     </Routes>
        </LoginProvider>
   );
