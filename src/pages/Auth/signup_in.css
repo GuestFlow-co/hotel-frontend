@@ -90,30 +90,39 @@ button.ghost {
 	text-align: center;
 }
 input{
+	/* padding-top:20px; */
 	background-color: #eee;
 	border: none;
-	padding: 12px 15px;
+	padding: 9px 11px;
 	margin: 8px 0;
 	width: 100%;
-	height: 50%;
 	display: flex;
-
+	/* height: 50%; */
+	/* gap: 10px; */
 }
-/* .sign-up-input{
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-}
-.login-input{
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-} */
 
+.name-inputs {
+	display: flex;
+	gap: 10px; 
+	padding: 9px 11px;
+	width: 179%; 
+	padding-left: 122px;
+	padding-bottom: 0px;
+  }
+  
+  .sign-up-input {
+	width: 35%; 
+  }
+  .other-inputs{
+	width: 190%;
+	/* gap: 10px; */
+	padding-left: 48%;
+	/* padding-top:-1 */
+  }
+  .other-inputs .sign-up-input{
+	width: 70%;
+	/* height: 110%; */
+  }
 .container {
     margin-top:100px;
 	background-color: #fff;
@@ -123,8 +132,9 @@ input{
 	position: relative;
 	overflow: hidden;
 	width: 768px;
+	/* height: fit-content; */
 	max-width: 100%;
-	min-height: 600px;
+	/* min-height: 600px; */
 }
 
 .signup-form-container {
@@ -179,7 +189,7 @@ input{
 	position: absolute;
 	top: 0;
 	left: 50%;
-	width: 60%;
+	width: 70%;
 	height: 100%;
 	overflow: hidden;
 	transition: transform 0.6s ease-in-out;

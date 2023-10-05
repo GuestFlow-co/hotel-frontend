@@ -85,6 +85,26 @@ function SignInUpForm() {
           <form className="signup-form" onSubmit={handleSignupSub}>
             <h1 className="create-Account-h1">Create Account</h1>
             <span className="signup-span">or use your email for registration</span>
+           
+            <div className="name-inputs">
+            <Input
+              onChange={handleInputChange}
+              name="firstName"
+              placeholder="First Name"
+              required
+              value={formData.firstName}
+              className="sign-up-input"
+            />
+            <Input
+              onChange={handleInputChange}
+              name="lastName"
+              placeholder="Last Name"
+              required
+              value={formData.lastName}
+              className="sign-up-input"
+            />
+            </div>
+            <div className="other-inputs">
             <Input
               onChange={handleInputChange}
               name="username"
@@ -104,29 +124,13 @@ function SignInUpForm() {
             />
             <Input
               onChange={handleInputChange}
-              name="firstName"
-              placeholder="First Name"
-              required
-              value={formData.firstName}
-              className="sign-up-input"
-            />
-            <Input
-              onChange={handleInputChange}
-              name="lastName"
-              placeholder="Last Name"
-              required
-              value={formData.lastName}
-              className="sign-up-input"
-            />
-            <Input
-              onChange={handleInputChange}
               name="email"
               placeholder="Email"
               required
               type="email"
               value={formData.email}
               className="sign-up-input"
-            />
+              />
             <Input
               onChange={handleInputChange}
               name="phoneNumber"
@@ -135,7 +139,7 @@ function SignInUpForm() {
               type="tel"
               value={formData.phoneNumber}
               className="sign-up-input"
-            />
+              />
             <Input
               onChange={handleInputChange}
               name="role"
@@ -143,7 +147,8 @@ function SignInUpForm() {
               required
               value={formData.role}
               className="sign-up-input"
-            />
+              />
+              </div>
             <button className="sign-up-button" type="submit">Sign Up</button>
           </form>
         </div>
@@ -181,7 +186,7 @@ function SignInUpForm() {
             >
               <h1>Welcome Back!</h1>
               <p className="signup-p">
-                To keep connected with us please login with your personal info
+              Login with your personal info to keep connected with us 
               </p>
               <button className="ghost" onClick={handleSignInClick}>
                 Sign In
@@ -193,7 +198,9 @@ function SignInUpForm() {
               }`}
             >
               <h1>Hello, Friend!</h1>
-              <p className="signup-p">Enter your personal details and start the journey with us</p>
+              <p className="signup-p">
+                Enter your personal info to start your journey with us
+                </p>
               <button className="ghost" onClick={handleSignUpClick}>
                 Sign Up
               </button>
