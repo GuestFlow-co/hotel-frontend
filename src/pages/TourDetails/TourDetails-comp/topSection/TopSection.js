@@ -1,15 +1,21 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 import "./TopSection.scss";
+import hart from "../../../../assets/Lottie/hart - 1696496716172.json"
+import stars from "../../../../assets/Lottie/rating- 1696500406013.json"
 
+import Lottie from "lottie-react";
 function calculateDuration(startDate, endDate) {
   const durationMs = new Date(endDate) - new Date(startDate);
   const durationDays = durationMs / (1000 * 60 * 60 * 24);
   return durationDays;
 }
 function TopSection({ tour }) {
+  
+ 
   return (
-    <div>
+    
+    <div style={{width:"85%"}}>
       <div className="main-tour-header">
         <div className="header-tour-detalis">
           <p className="tour-title"> {tour.Title} </p>
@@ -39,47 +45,48 @@ function TopSection({ tour }) {
         </div>
       </div>
       <div className="for-center">
-
-      <hr
-        style={{
-          marginLeft: "30px",
-          marginRight: "30px",
-          color: "black",
-          width: "85%",
-        }}
-      />
-      <section className="sec-tour-detalis-section">
-        <section style={{ display: "flex", alignItems: "center" }}>
-          <ReactStars
-            count={5}
-            size={25}
-            activeColor="rgb(247,146,30)"
-            value={tour.Rating}
-            edit={false}
-            isHalf={true}
-          />
-          {"  "}
-          <p style={{ fontSize: "20px", paddingTop: "15px" }}>
-            {" "}
-            ({tour.Rating})
-          </p>
-        </section>
-        <div className="tour-detalis-btn-section">
-
-        <button className="btn-tour-detalis"> REVIEWS  </button>
-        <button className="btn-tour-detalis"> WHISLIST </button>
-         
-        </div>
-      </section>
         <hr
           style={{
             marginLeft: "30px",
             marginRight: "30px",
             color: "black",
-            width: "85%",
+            width: "100%",
           }}
-          />
+        />
+        <section className="sec-tour-detalis-section">
+          <section style={{ display: "flex", alignItems: "center" }}>
+            <ReactStars
+              count={5}
+              size={25}
+              activeColor="rgb(247,146,30)"
+              value={tour?.Rating}
+              edit={false}
+              isHalf={true}
+            />
+            {"  "}
+            <p style={{ fontSize: "20px", paddingTop: "15px" }}>
+              {" "}
+              ({tour.Rating})
+            </p>
+          </section>
+
+          <div className="tour-detalis-btn-section">
+            <button className="btn-tour-detalis"> REVIEWS  <Lottie style={{ height: "30px" }} animationData={stars} /></button>
+            <button className="btn-tour-detalis">
+              
+              WHISLIST <Lottie style={{ height: "30px" }} animationData={hart} />
+            </button>
           </div>
+        </section>
+        <hr
+          style={{
+            marginLeft: "30px",
+            marginRight: "30px",
+            color: "black",
+            width: "100%",
+          }}
+        />
+      </div>
     </div>
   );
 }

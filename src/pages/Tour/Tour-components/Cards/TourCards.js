@@ -5,6 +5,9 @@ import "./cardsTour.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import fire from "../../../../assets/Lottie/fire- 1696441846158.json"
+import camp from "../../../../assets/Lottie/camp- 1696445853337.json"
+import rabbit from "../../../../assets/Lottie/rabbit- 1696493249475.json"
+
 import Lottie from "lottie-react";
 function TourCards() {
   const [res, setData] = useState([]);
@@ -21,7 +24,7 @@ function TourCards() {
     // const baseURL = process.env.REACT_APP_BASE_URL;
 
     axios
-      .get("http://localhost:3000/tour")
+      .get(`${process.env.REACT_APP_BASE_URL}/tour`)
       .then((res) => {
         setData(res.data);
         console.log(res.data);
@@ -77,7 +80,14 @@ function TourCards() {
                 {item.Seat_price}
               </p>
               <div>
+                <div style={{display:"flex", justifyContent:"space-evenly"}}>
+
           <Lottie  style={{ width: '50px' }} animationData={fire} />
+             <Lottie  style={{ width: '60px' }} animationData={camp} />
+             <Lottie  style={{ width: '60px' }} animationData={rabbit} />
+                </div>
+
+
           </div> 
               <hr style={{ marginLeft: "30px", marginRight: "30px" }}></hr>
               <div className="lower-card-tour-section">

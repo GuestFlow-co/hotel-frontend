@@ -10,7 +10,9 @@
   padding: 10px;
   width: 95%;
 }
-
+.slider-item:hover{
+  cursor: grab;
+}
 .slider-image {
   height: 550px;
   width: 100%; 
