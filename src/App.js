@@ -1,25 +1,26 @@
 import Layout from "./layout/index";
 import { Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/HomePage/HomePage";
+import Tour from './pages/Tour/index'
 import Routers from "./pages/Routes";
 import Popup from "./pages/pop";
 
 function App() {
   return (
-    <>
-      {/* <Popup />
-      <Routers /> */}
+    // <Layout>
+    //   <Routes>
 
+    //   {/* <Route path='/' element={<HomePage />} /> */}
+    //   <Route path='/tour' element={<Tour />} />
+    //   <Route path='/Routers' element={<Routers />} />
+    //   <Route path='/Popup' element={<Popup />} />
 
-      <Layout>
-      <Routes>
+    //   </Routes>
+    // </Layout>
+    <div>
+      <Routers />
+    </div>
 
-        <Route path="/" element={<HomePage />} />
-  
-
-      </Routes>
-    </Layout>
-    </>
   );
 }
 

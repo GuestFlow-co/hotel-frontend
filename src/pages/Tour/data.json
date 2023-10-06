@@ -1,0 +1,23 @@
+{
+    "people_in_tour": [],
+    "tour_customer": [],
+    "Rating":5,
+    "location":"Jordan,irbad",
+    "Title":"Sitting on Boat Spreading Her Arms",
+    "Tour_id": 4,
+    "description": "Desert Adventure: 6 Days of Exploration Explore the desert's wonders from October 10th to 15th. Hike, discover, and embrace natures beauty. Join us for $10.",
+    "start_date": "2023-10-09T00:00:00.000Z",
+    "end_date": "2023-10-11T00:00:00.000Z",
+    "Seat_price": 10,
+    "max_capacity": 25,
+    "photoUrl": [
+        "https://res.cloudinary.com/deq3yungr/image/upload/v1696184817/vnr8bhhs3ly1gystuyqt.jpg",
+        "https://res.cloudinary.com/deq3yungr/image/upload/v1696184817/v11vi9lu1cqnyytbiet9.jpg",
+        "https://res.cloudinary.com/deq3yungr/image/upload/v1696184817/wtnqmljfybjao67rxk0y.jpg"
+    ],
+    "coverPhoto": "https://res.cloudinary.com/deq3yungr/image/upload/v1696184817/vnr8bhhs3ly1gystuyqt.jpg",
+    "updatedAt": "2023-10-01T18:26:57.659Z",
+    "createdAt": "2023-10-01T18:26:57.659Z",
+    "guideId": null,
+    "availableSeat": null
+}

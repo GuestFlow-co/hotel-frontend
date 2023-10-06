@@ -1,0 +1,96 @@
+.main-card-tour {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 300;
+  color: #484848;
+  font-family: "Prompt", sans-serif;
+  font-size: 16px;
+  line-height: 29.6px;
+  i {
+    color: #63ab45;
+  }
+  .cards-tour-section {
+    width: 95%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+
+  .theTourCard {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width:33%;
+    margin: 8px;
+    .tour-card-image {
+      width: 360px;
+      height: 250px;
+      border-radius: 15px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .info-tour-card {
+      position: relative;
+      bottom: 65px;
+      border-radius: 15px;
+      // gap: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      width: 85%;
+      padding: 15px 25px;
+      box-shadow: 0 0 20px rgba(8, 8, 8, 0.15);
+      .lower-card-tour-section {
+        display: flex;
+        gap: 15%;
+        align-items: end;
+        justify-content: center;
+      }
+    }
+  }
+  .theTourCard:hover{
+    color: #63ab45;
+  }
+}
+/*--==== Pagination Css ====--*/
+.gowilds-pagination li {
+  display: inline-block;
+  
+}
+// .gowilds-pagination li .active{
+//   background-color: #63ab45;
+
+// }
+.pageintbotton {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid #63ab45 !important;
+  font: 500 16px "Prompt", sans-serif;
+  // margin-bottom: 10px;
+  margin: 3px;
+}
+
+
+.pageintbotton:hover{
+  background-color: #63ab45;
+  color: #fff;
+  text-decoration: none;
+  i{
+    color: white;
+  }
+}
+.pageintbotton::after{
+  background-color: #63ab45;
+
+}
+
+
+
+
