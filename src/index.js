@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from "./store/index"
+import './animate.min.css'
 
 const root = createRoot(document.getElementById('root')); // Replace 'root' with your root element's ID
 

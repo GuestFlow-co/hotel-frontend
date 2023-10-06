@@ -7,9 +7,19 @@ import Popup from "./pages/pop";
 function App() {
   return (
     <>
-   <Popup/>
-  <Routers/>
-  </>
+      {/* <Popup />
+      <Routers /> */}
+
+
+      <Layout>
+      <Routes>
+
+        <Route path="/" element={<HomePage />} />
+  
+
+      </Routes>
+    </Layout>
+    </>
   );
 }
 
