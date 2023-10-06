@@ -12,7 +12,7 @@ function CustomSlider({ photos }) {
     slidesToScroll: 1,
     arrows: true,
     autoplay: true, 
-    autoplaySpeed: 1500, 
+    autoplaySpeed: 2500, 
     dots: true, 
     responsive: [
       {

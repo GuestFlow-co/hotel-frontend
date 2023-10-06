@@ -39,7 +39,7 @@ function Checkout() {
         </div>
 
         <div className="theBotton-Tour">
-          <Text> ...</Text><br />
+          <Text style={{color:"white"}}> ...</Text><br />
           <button className="CHECK-AVAILABILITY"> CHECK AVAILABILITY >></button>
         </div>
       </section>
