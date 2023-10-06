@@ -46,9 +46,7 @@ const RoomList = () => {
         <Col>
           <InputGroup>
             <FormControl
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              placeholder=""
             />
           </InputGroup>
         </Col>
