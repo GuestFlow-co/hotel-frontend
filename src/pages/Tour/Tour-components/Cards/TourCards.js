@@ -45,7 +45,7 @@ function TourCards() {
   const currentItems = res.slice(startIndex, endIndex);
 
   return (
-    <div className="main-card-tour">
+    <div className="main-card-tour" >
       
             <section className="cards-tour-section">
         {currentItems.map((item) => (
