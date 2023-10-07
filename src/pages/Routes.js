@@ -7,6 +7,8 @@ import HomePage from './HomePage/HomePage';
 import Tour from './Tour';
 import LoginForm from './Auth/LoginForm';
 import LoginProvider from './Context/Context_Login';
+import ForgotPassword from './Auth/ForgotPassword';
+import ResetPassword from './Auth/ResetPassword';
 
 export default function Routers() {
   const rooms = useSelector(state => state.rooms.rooms);  
@@ -23,6 +25,9 @@ export default function Routers() {
 
       <Route path="/login" element={<LoginForm />} /> 
       {/* <Route path="/signup" element={<SignupForm />} />  */}
+      <Route path="/forgotPassword" element={<ForgotPassword/>} />
+        <Route path="/resetPassword/:token" element={<ResetPassword/>} />
+
     </Routes>
        </LoginProvider>
   );

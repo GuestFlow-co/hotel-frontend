@@ -18,7 +18,7 @@ function SignInUpForm() {
     lastName: "",
     email: "",
     phoneNumber: "",
-    role: "",
+    // role: "",
   };
   const [formData, setFormData] = useState(initialFormData);
 
@@ -62,6 +62,7 @@ function SignInUpForm() {
   const handleSignupSub = async (e) => {
     e.preventDefault();
     try {
+      //deployed link:            https://guestflow.onrender.com/  
       const res = await axios.post("http://localhost:3005/signup", formData);
       console.log(res);
       alert(`You have Signed up Successfully ${formData.username}`);
@@ -71,6 +72,7 @@ function SignInUpForm() {
   
       const formContainer = document.querySelector('.form-container');
       formContainer.appendChild(alertElement);
+
     } catch (err) {
       console.log("login ", err);
     }
@@ -82,7 +84,7 @@ function SignInUpForm() {
       lastName: "",
       email: "",
       phoneNumber: "",
-      role: "",
+      // role: "",
     });
   };
   
@@ -190,6 +192,7 @@ function SignInUpForm() {
             <Input 
               onChange={handleUsernameChange}
               placeholder="Username"
+              type="text"
               required
               className="login-input"
             />
@@ -200,7 +203,7 @@ function SignInUpForm() {
               type="password"
               className="login-input"
             />
-            <a className="signup-a" href="#">Forgot your password?</a>
+            <a className="signup-a" href="/forgotPassword">Forgot your password?</a>
             <button className="sign-up-button" type="submit">Sign In</button>
           </form>
         </When>
@@ -241,7 +244,4 @@ function SignInUpForm() {
 }
 
 export default SignInUpForm;
-
-
-
 
