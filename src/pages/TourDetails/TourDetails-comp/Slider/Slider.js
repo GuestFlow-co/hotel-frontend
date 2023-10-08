@@ -26,7 +26,7 @@ function CustomSlider({ photos }) {
   return (
     <Slider  {...settings}>
       {photos.map((item, index) => (
-        <div key={index} className="slider-item">
+        <div key={index} className="slider-item ">
           <img
             src={item}
             alt={`Slide ${index + 1}`}
@@ -42,7 +42,7 @@ function CustomSlider({ photos }) {
 function SliderContainer({photo}) {
 
   return (
-    <div className="slider-container">
+    <div className="slider-container ">
       <CustomSlider photos={photo} />
     </div>
   );
