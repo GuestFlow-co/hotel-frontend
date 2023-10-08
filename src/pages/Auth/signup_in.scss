@@ -20,6 +20,8 @@
 .create-Account-h1 {
 	font-weight: bold;
 	margin: 0;
+	// color: #DDDDDD;
+	font-size: 32px;
 }
 
 
@@ -44,8 +46,8 @@
 
 button {
 	border-radius: 20px;
-	border: 1px solid #007bff ;
-	background-color: #007bff !important;
+	border: 1px solid var(--primary-color) ;
+	background-color: var(--primary-color) !important;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -127,8 +129,8 @@ input{
     margin-top:100px;
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-	  0 10px 10px rgba(0,0,0,0.22);
+  	box-shadow: 0 14px 28px rgba(171, 96, 52, 0.5), 
+	  0 10px 10px rgba(171, 96, 52, 0.5);
 	  position: relative;
 	overflow: hidden;
 	width: 768px;
@@ -201,9 +203,9 @@ input{
 }
 
 .overlay {
-	background: #007bff;
-	background: -webkit-linear-gradient(to right, #007bff, #007bff);
-	background: linear-gradient(to right, #007bff, #007bff);
+	background: var(--primary-color);
+	background: -webkit-linear-gradient(to right, var(--primary-color), var(--primary-color));
+	background: linear-gradient(to right, var(--primary-color), var(--primary-color));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -254,7 +256,7 @@ input{
 	
 }
 .alert-message {
-	background-color: #007bff;
+	background-color: var(--primary-color);
 	color: #fff;
 	padding: 10px 20px;
 	border-radius: 5px;
