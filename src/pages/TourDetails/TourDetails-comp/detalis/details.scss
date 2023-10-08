@@ -1,4 +1,25 @@
 .tour-description{
     width: 65.66%;
-    background-color: antiquewhite;
+    // background-color: antiquewhite;
+    .ButtonGroup-tourPlan{
+        padding: 15px;
+        background-color: rgb(249,249,247);
+        border-radius: 7px;
+        width: 100%;
+        // justify-content: space-between;
+        margin:35px 5px;
+        .ButtonGroup-button{
+            font: 600 18px "Prompt", sans-serif;
+            border: none;
+            background-color: transparent;
+            padding: 5px 15px;
+            cursor: pointer;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+        }
+    }
+    .thedetlais-headers{
+        font: 500 38px "Prompt", sans-serif;
+        margin-bottom: 15px;
+
+    }
 }

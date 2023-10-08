@@ -16,7 +16,7 @@ export default function Routers() {
   return (
     <div>
 
-    <Header />
+    {/* <Header /> */}
 
     <Routes>
       <Route path="/rooms/:room_number"  element={<RoomDetail  />} />
@@ -26,7 +26,7 @@ export default function Routers() {
       <Route path ="TourDetalis/:id" element={<TourDetalis />} />
 
     </Routes>
-    <Footer />
+    {/* <Footer /> */}
 
     </div>
   );
