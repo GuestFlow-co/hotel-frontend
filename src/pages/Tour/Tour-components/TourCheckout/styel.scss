@@ -5,7 +5,7 @@
     flex-direction: row;
     height: 160px;
     justify-content: space-around;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0,.3);
             align-items: center;
 
@@ -19,7 +19,7 @@
     }
     .check-input{
             height: 50px;
-            border-radius: 20px;
+            border-radius: 15px;
             padding-left: 20px ;
             background-color: white;
             border:1px solid gray;
@@ -28,17 +28,36 @@
         font-size: 24px;
         font-family: initial;
         font-weight: 500;
+        margin-left: 8px;
         
         }
         .CHECK-AVAILABILITY{
             // margin-top: ;
             height: 50px;
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 20px ;
             background-color: white;
             display: flex;
             align-items: center;
+            flex-direction: column;
             justify-content: center;
+            // border:1px solid gray;
+        }
+        .theBotton-Tour{
+            height: 50px;
+            border-radius: 15px;
+            padding: 20px ;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .theBotton-Tour p {
+            margin-bottom: 0rem !important;
+        }
+        .CHECK-AVAILABILITY{
             border:1px solid gray;
+
         }
 }

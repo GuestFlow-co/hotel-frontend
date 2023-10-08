@@ -18,9 +18,7 @@ function App() {
     //   </Routes>
     // </Layout>
     <div>
-
       <Routers />
-      {/* <Popup /> */}
     </div>
 
   );

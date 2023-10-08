@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ChakraBaseProvider } from "@chakra-ui/react";
 import store from "./store/index"
+import './animate.min.css'
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { MantineProvider } from '@mantine/core';
