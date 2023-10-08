@@ -26,9 +26,16 @@ export default function TourHero() {
 
         <Text as={"p"}>Explore Tour Place</Text>
 
-        <p style={{fontSize:"28px"}}>Home >> Explore Tour Place</p>
+        <p style={{fontSize:"28px"}}>Explore Tour Place</p>
         </div>
       </Stack>
+      <div className="bg-lines">
+        <span className="z-40"></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
     </Container>
   );
 }
