@@ -39,10 +39,12 @@
         padding: 0;
         margin: 0px 10px;
         width: 100%;
+      
+        .tour-title{
+           
+            font: 600 38px "Prompt", sans-serif;
+            margin-bottom: 15px;
 
-        .tour-title {
-            font-size: 36px;
-            font-weight: 800;
         }
     }
 
@@ -81,5 +83,6 @@
             color: white;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
+
     }
 }

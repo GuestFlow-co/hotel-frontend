@@ -9,6 +9,7 @@ import store from "./store/index"
 import './animate.min.css'
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
+import { MantineProvider } from '@mantine/core';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -16,10 +17,11 @@ root.render(
 
     <ChakraBaseProvider>
       <Provider store={store}>
-
+      <MantineProvider withGlobalStyles withNormalizeCSS>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+    </MantineProvider>
     </Provider>
 
     </ChakraBaseProvider>  

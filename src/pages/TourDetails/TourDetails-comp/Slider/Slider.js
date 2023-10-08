@@ -23,7 +23,6 @@ function CustomSlider({ photos }) {
       },
     ],
   };
-console.log(photos,"0000000000");
   return (
     <Slider  {...settings}>
       {photos.map((item, index) => (
@@ -41,7 +40,6 @@ console.log(photos,"0000000000");
 }
 
 function SliderContainer({photo}) {
- console.log(photo,"1111111111");
 
   return (
     <div className="slider-container ">
