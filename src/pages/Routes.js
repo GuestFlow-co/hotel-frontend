@@ -24,7 +24,7 @@ export default function Routers() {
 
     <div>
 
-    <Header />
+    {/* <Header /> */}
 
 
     <Routes>
@@ -42,9 +42,12 @@ export default function Routers() {
 
     </Routes>
 
+
+
        </LoginProvider>
 
     <Footer />
+
 
     </div>
 
