@@ -17,6 +17,8 @@ import {
   Button,
 } from '@chakra-ui/react'
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux';
+
 function RightDetails({ tour }) {
   const containerStyle = {
     width: "100%",
@@ -102,25 +104,46 @@ function RightDetails({ tour }) {
   }, [ammanMarkerPosition, irbidMarkerPosition, isLoaded]);
   const startDate = new Date(tour.start_date);
   const endDate = new Date(tour.end_date);
-
+const [numberofSets,setSets]=useState("")
+  function setschange (e){
+    setSets(e.target.value)
+    
+  }
+    const bookings = useSelector((state) => state.bookings.bookings);
+    console.log(bookings,"bookings");
   const getSet = (e) => {
     e.preventDefault();
-    const user = cookie.load('user');
+    const user = cookie.load('auth');
+    console.log(user,"000");
      if(user){
-      
+      console.log(user.user_id,"user.user_id");
+      try{
+      const bookingss =  axios.get(`${process.env.REACT_APP_BASE_URL}/booking`).then(item =>{
+      const theuserBooking=  item.data.filter(item => item.customer_id === user.user_id)
+      console.log(bookingss,"theuserBooking");
+      })
+      }catch(e){
+        console.log(e);
+      }
    }
+   console.log(typeof parseInt(numberofSets),"targee");
     const obj={
 
-      number_of_seats_inTour: e.target.sets
+      number_of_seats_inTour: parseInt(numberofSets)
     }
     console.log(obj,"objjjj");
 
     try{
-      axios.put(`${process.env.REACT_APP_BASE_URL}/booking/${bookingID}`)
+      axios.put(`${process.env.REACT_APP_BASE_URL}/booking`)
     }catch(e){
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    const user = cookie.load('user');
+    console.log(user,"00");
+  }, []);
   return (
     <div className="RightDetalis-container">
       {isLoaded ? (
@@ -156,7 +179,7 @@ function RightDetails({ tour }) {
             color:"black"
           }}
         />     
-           <form>
+           <form onSubmit={getSet}>
           <div className="label-input-div">
             <label> starting Date</label>
             <p>{startDate.toLocaleString()} </p>
@@ -190,14 +213,15 @@ function RightDetails({ tour }) {
         />   
           <div className="label-input-div">
             <label> Ticket price {tour.Seat_price}</label>
-            <NumberInput style={{height:"5px"}} defaultValue={1} name="sets">
+            {/* <NumberInput style={{height:"5px"}} defaultValue={1} >
               <NumberInputField  className="chakra-input-tour" />
               <NumberInputStepper >
                 
                 <NumberIncrementStepper style={{height:"10px"}}/>
                 <NumberDecrementStepper />
               </NumberInputStepper>
-            </NumberInput>
+            </NumberInput> */}
+            <input name="sets" onChange={setschange}/> 
           </div>
           <hr
           style={{
@@ -208,7 +232,7 @@ function RightDetails({ tour }) {
         />    
 
 
-        <Button className="btn-Booking-Now">Booking Now <div>
+        <Button className="btn-Booking-Now" onClick={getSet}>Booking Now <div>
         <i class="far fa-paper-plane"></i>
           </div></Button>
     
