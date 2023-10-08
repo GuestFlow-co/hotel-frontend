@@ -2,8 +2,10 @@ import React from 'react'
 import TourHero from './Tour-components/TourHero/TourHero'
 import Checkout from './Tour-components/TourCheckout/checkout'
 import TourCards from './Tour-components/Cards/TourCards'
+import cookie from 'react-cookies';
 
 function Tour() {
+
   return (
     <div>
         <div style={{ position: 'relative' }}>

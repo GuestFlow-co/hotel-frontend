@@ -16,7 +16,7 @@ function LoginProvider(props) {
     async function login(username, password) {
         console.log('...RUNNING')
         let { logged, token, user } = loginData;
-        let response = await axios.post('http://localhost:3005/signin', {}, {
+        let response = await axios.post('http://localhost:3000/signin', {}, {
             headers: { Authorization: `Basic ${btoa(`${username}:${password}`)}` }
         })
         console.log("user: ",response.data.user)
@@ -56,7 +56,7 @@ function LoginProvider(props) {
 
     function setLoginState(logged, token, user, err) {
         cookie.save('auth', token);
-
+        cookie.save('user', user);
         dispatch({ type: 'CHANGE_STATUS_OF_LOGIN', payload: logged })
         dispatch({ type: 'CHANGE_THE_TOKEN', payload: token })
         dispatch({ type: 'CHANGE_THE_USER', payload: user })
