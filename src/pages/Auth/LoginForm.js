@@ -114,8 +114,7 @@ function SignInUpForm() {
         <div className="form-container sign-up-container">
           <form className="signup-form" onSubmit={handleSignupSub}>
             <h1 className="create-Account-h1">Create Account</h1>
-            <span className="signup-span">or use your email for registration</span>
-           
+            {/* <span className="signup-span">or use your email for registration</span> */}
             <div className="name-inputs">
             <Input
               onChange={handleInputChange}
@@ -217,7 +216,7 @@ function SignInUpForm() {
             >
               <h1>Welcome Back!</h1>
               <p className="signup-p">
-              Login with your personal info to keep connected with us 
+              {/* Login with your personal info to keep connected with us  */}
               </p>
               <button className="ghost" onClick={handleSignInClick}>
                 Sign In
@@ -230,7 +229,7 @@ function SignInUpForm() {
             >
               <h1>Hello, Friend!</h1>
               <p className="signup-p">
-                Enter your personal info to start your journey with us
+                {/* Enter your personal info to start your journey with us */}
                 </p>
               <button className="ghost" onClick={handleSignUpClick}>
                 Sign Up
