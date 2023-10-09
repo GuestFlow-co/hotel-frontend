@@ -109,41 +109,48 @@ const [numberofSets,setSets]=useState("")
     setSets(e.target.value)
     
   }
-    const bookings = useSelector((state) => state.bookings.bookings);
-    console.log(bookings,"bookings");
+    // const bookings = useSelector((state) => state.bookings.bookings);
+
   const getSet = (e) => {
     e.preventDefault();
-    const user = cookie.load('auth');
+    const user = cookie.load('user');
     console.log(user,"000");
      if(user){
       console.log(user.user_id,"user.user_id");
-      try{
-      const bookingss =  axios.get(`${process.env.REACT_APP_BASE_URL}/booking`).then(item =>{
-      const theuserBooking=  item.data.filter(item => item.customer_id === user.user_id)
-      console.log(bookingss,"theuserBooking");
-      })
-      }catch(e){
-        console.log(e);
-      }
+    
+      getBooking(user)
+      
    }
-   console.log(typeof parseInt(numberofSets),"targee");
     const obj={
 
       number_of_seats_inTour: parseInt(numberofSets)
     }
     console.log(obj,"objjjj");
 
-    try{
-      axios.put(`${process.env.REACT_APP_BASE_URL}/booking`)
-    }catch(e){
-      console.log(e);
-    }
+    // try{
+    //   axios.put(`${process.env.REACT_APP_BASE_URL}/booking`)
+    // }catch(e){
+    //   console.log(e);
+    // }
   };
+  function getBooking (user){
+  
+    axios.get(`${process.env.REACT_APP_BASE_URL}/booking`)
+  .then((response) => {
+    const bookingss = response.data;
+    console.log(bookingss, "theuserBooking");
+    // const theuserBooking = bookingss.filter(item => item.customer_id === user.user_id);
+    // console.log(theuserBooking, "Filtered Bookings");
+  })
+  .catch((error) => {
+    console.error("Error fetching bookings:", error);
+  });
+  }
 
-  useEffect(() => {
-    const user = cookie.load('user');
-    console.log(user,"00");
-  }, []);
+  // useEffect(() => {
+  //   const user = cookie.load('user');
+  //   console.log(user,"00");
+  // }, []);
   return (
     <div className="RightDetalis-container">
       {isLoaded ? (
