@@ -1,28 +1,26 @@
-import React from 'react';
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import RoomList from './Rooms/List/RoomList';
-import { useSelector } from 'react-redux/es';
-import RoomDetail from './Rooms/RoomDetails/RoomDetails';
-import HomePage from './HomePage/HomePage';
-import Tour from './Tour';
+import RoomList from "./Rooms/List/RoomList";
+import { useSelector } from "react-redux/es";
+import RoomDetail from "./Rooms/RoomDetails/RoomDetails";
+import HomePage from "./HomePage/HomePage";
+import Tour from "./Tour";
 
-import LoginForm from './Auth/LoginForm';
-import LoginProvider from './Context/Context_Login';
-import ForgotPassword from './Auth/ForgotPassword';
-import ResetPassword from './Auth/ResetPassword';
-import TourDetalis from './TourDetails';
-import Header from '../layout/Header/Header'
-import Footer from '../layout/Footer/Footer'
-
+import LoginForm from "./Auth/LoginForm";
+import LoginProvider from "./Context/Context_Login";
+import ForgotPassword from "./Auth/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword";
+import TourDetalis from "./TourDetails";
+import Header from "../layout/Header/Header";
+import Footer from "../layout/Footer/Footer";
 
 export default function Routers() {
-  const rooms = useSelector(state => state.rooms.rooms);  
-
+  const rooms = useSelector((state) => state.rooms.rooms);
 
   return (
-    
     <div>
       <LoginProvider>
+
 
     {/* <Header /> */}
 
@@ -49,7 +47,7 @@ export default function Routers() {
     {/* <Footer /> */}
 
 
-    </div>
 
+    </div>
   );
 }

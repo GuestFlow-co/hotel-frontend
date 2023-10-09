@@ -3,14 +3,14 @@ import { Input, Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../Context/Context_Login";
 import axios from "axios";
-import "./signup_in.scss";
+import "./LoginForm.scss";
 
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
   const { login, logout, loginData } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const initialFormData = {
     username: "",
     password: "",
@@ -101,6 +101,7 @@ function SignInUpForm() {
   }
 
   return (
+    
     <div className="signup-main-container">
     <div className={`container-signup ${isSignUp ? "right-panel-active" : ""}`}>
       <When condition={loginData.logged}>
@@ -178,7 +179,10 @@ function SignInUpForm() {
               className="sign-up-input"
               /> */}
               </div>
+            <div className="devv">
+
             <button className="sign-up-button" type="submit">Sign Up</button>
+            </div>
           </form>
         </div>
       </When>
@@ -186,7 +190,7 @@ function SignInUpForm() {
       <div className="signup-form-container">
         <When condition={!loginData.logged}>
           <form className='login-form'action="#" onSubmit={handleLogin}>
-            <h1>Sign in</h1>
+            <h1 className="create-Account-h1">Sign in</h1>
             <span className="signup-span">or use your account</span>
             <Input 
               onChange={handleUsernameChange}
@@ -214,26 +218,32 @@ function SignInUpForm() {
                 isSignUp ? "overlay-left-active" : ""
               }`}
             >
-              <h1>Welcome Back!</h1>
+              <h1 className="create-Account-h3">Welcome Back!</h1>
               <p className="signup-p">
               {/* Login with your personal info to keep connected with us  */}
               </p>
-              <button className="ghost" onClick={handleSignInClick}>
+              <div className="gg1">
+              <button className="ghost1" onClick={handleSignInClick}>
                 Sign In
               </button>
+              </div>
             </div>
             <div
               className={`overlay-panel overlay-right ${
                 isSignUp ? "overlay-right-active" : ""
               }`}
             >
-              <h1>Hello, Friend!</h1>
+             
+              <h1 className="create-Account-h2">Hello Friend!</h1>
               <p className="signup-p">
                 {/* Enter your personal info to start your journey with us */}
                 </p>
-              <button className="ghost" onClick={handleSignUpClick}>
+                <div className="gg2">
+              <button className="ghost2" onClick={handleSignUpClick}>
                 Sign Up
               </button>
+                </div>
+                
             </div>
           </div>
         </div>
