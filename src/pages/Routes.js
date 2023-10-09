@@ -46,7 +46,7 @@ export default function Routers() {
 
        </LoginProvider>
 
-    <Footer />
+    {/* <Footer /> */}
 
 
     </div>

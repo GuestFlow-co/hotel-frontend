@@ -63,7 +63,7 @@ function SignInUpForm() {
     e.preventDefault();
     try {
       //deployed link:            https://guestflow.onrender.com/  
-      const res = await axios.post("http://localhost:3000/signup", formData);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, formData);
       console.log(res);
       alert(`You have Signed up Successfully ${formData.username}`);
       const alertElement = document.createElement('div');
