@@ -1,4 +1,4 @@
-# Hotel-backend
+# Hotel-Frontend
 
 ### Users story:
 

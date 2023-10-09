@@ -38,9 +38,9 @@ const NavBar = () => {
           <div className="header-inner rel d-flex align-items-center">
             <div className="logo-outer">
               <div className="logo">
-                <a href="index.html">
+                <Link to="./">
                   <img src={Logo} alt="Logo" title="Logo" />
-                </a>
+                </Link>
               </div>
             </div>
 
