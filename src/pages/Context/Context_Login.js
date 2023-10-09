@@ -16,7 +16,7 @@ function LoginProvider(props) {
     async function login(username, password) {
         console.log('...RUNNING')
         let { logged, token, user } = loginData;
-        let response = await axios.post('http://localhost:3000/signin', {}, {
+        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, {}, {
             headers: { Authorization: `Basic ${btoa(`${username}:${password}`)}` }
         })
         console.log("user: ",response.data.user)
