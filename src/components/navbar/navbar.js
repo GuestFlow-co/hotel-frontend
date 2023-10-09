@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 // import Toplogo from "../../assets/images/logoSVG.svg";
 import "./navbar.scss";
 import { useEffect, useState } from "react";
+import Logo from "../../assets/images/logos/logoW.png";
+
+
 
 const NavBar = () => {
 
@@ -36,22 +39,20 @@ const NavBar = () => {
             <div className="logo-outer">
               <div className="logo">
                 <a href="index.html">
-                  <img src="assets/images/logos/logo.png" alt="Logo" title="Logo" />
+                  <img src={Logo} alt="Logo" title="Logo" />
                 </a>
               </div>
             </div>
 
             <div className="nav-outer clearfix me-auto">
-              {/* Main Menu */}
               <nav className="main-menu navbar-expand-lg">
                 <div className="navbar-header">
                   <div className="mobile-logo my-15">
-                    <a href="index.html">
-                      <img src="assets/images/logos/logo.png" alt="Logo" title="Logo" />
-                    </a>
+                    <Link to="/" className="link">
+                      <img src={Logo} alt="Logo" title="Logo" />
+                    </Link>
                   </div>
 
-                  {/* Toggle Button */}
                   <button
                     type="button"
                     className="navbar-toggle"
@@ -67,44 +68,30 @@ const NavBar = () => {
                 <div className="navbar-collapse collapse clearfix">
                   <ul className="navigation clearfix">
                     <li className="dropdown">
-                      <a href="#">Home</a>
+                      <Link to="/" className="link">
+                        Home
+                      </Link>
                       <ul>
                         <li>
                           <a href="index.html">Home One</a>
                         </li>
-                        <li>
-                          <a href="index2.html">Home Two</a>
-                        </li>
-                        <li>
-                          <a href="index3.html">Home Three</a>
-                        </li>
                       </ul>
                     </li>
                     <li className="dropdown">
-                      <a href="#">Room</a>
-                      <ul>
-                        <li>
-                          <a href="room-grid.html">Room Grid</a>
-                        </li>
-                        <li>
-                          <a href="room-2columns.html">Room 2 Column</a>
-                        </li>
-                        <li>
-                          <a href="room-list.html">Room List</a>
-                        </li>
-                        <li>
-                          <a href="room-details.html">Room Details</a>
-                        </li>
-                      </ul>
+                      <Link to="/rooms" className="link">
+                        Rooms
+                      </Link>
                     </li>
                     <li className="dropdown">
-                      <a href="#">Pages</a>
+                      <Link to="/tour" className="link">
+                        Tours
+                      </Link>
                       <ul>
                         <li>
                           <a href="about.html">About us</a>
                         </li>
                         <li>
-                          <a href="services.html">Services</a>
+                          <a href="">Tours</a>
                         </li>
                         <li>
                           <a href="gallery.html">Gallery</a>
@@ -135,9 +122,9 @@ const NavBar = () => {
             </div>
 
             <div className="menu-btns">
-              <a href="contact.html" className="theme-btn">
-                Book Now <i className="fa-solid fa-angle-right"></i>
-              </a>
+              <Link to="/login" className="theme-btn">
+                Start Now <i className="fa-solid fa-angle-right"></i>
+              </Link>
             </div>
           </div>
         </div>

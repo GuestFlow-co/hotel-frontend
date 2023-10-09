@@ -1,4 +1,71 @@
-.RightDetalis-container{
-    background-color: aquamarine;
-    width: 32.33%;
+.RightDetalis-container {
+  width: 32.33%;
+  .form-section-tour {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 50px 25px;
+    background-color: rgb(249, 249, 247);
+    box-shadow: 0px 7px 60px rgba(0, 0, 0, 0.07);
+    border-radius: 7px;
+    margin: 25px 5px;
+    .label-input-div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      // padding: 0px 25px;
+      label {
+        font: 600 14px "Prompt", sans-serif;
+      }
+      .chakra-input-tour {
+        height: 33px;
+        width: 100px;
+        border: 1px solid gray;
+        border-radius: 7px;
+        padding-left: 3px;
+        line-height: 20px;
+        font-size: 18px;
+        font-weight: 5 00;
+        margin-bottom: 7px;
+      }
+    }
+    .BookingTour {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.37;
+      margin: 0px;
+      font-family: "Prompt", sans-serif;
+    }
+  }
+  .btn-Booking-Now {
+    display: flex;
+    background-color: #63ab45;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 3px 3px 40px;
+    font: 600 16px "Prompt", sans-serif;
+    text-transform: capitalize;
+    border-radius: 28px;
+    line-height: 20px;
+    border: none;
+    color: white;
+    transition: all 0.3s ease-out 0s;
+   div  {
+    display: flex;
+    justify-content: center;
+        align-items: center;
+        background-color: white;
+        color: black;
+      margin-left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+    .btn-Booking-Now:hover{
+    background-color: orange;
+    }
+  }
 }

@@ -15,7 +15,7 @@ function TopSection({ tour }) {
  
   return (
     
-    <div style={{width:"85%"}}>
+    <div style={{width:"85%", marginBottom:"35px"}}>
       <div className="main-tour-header">
         <div className="header-tour-detalis">
           <p className="tour-title"> {tour.Title} </p>
@@ -50,6 +50,7 @@ function TopSection({ tour }) {
             marginLeft: "30px",
             marginRight: "30px",
             color: "black",
+            borderWidth: "3px",
             width: "100%",
           }}
         />
@@ -84,6 +85,8 @@ function TopSection({ tour }) {
             marginRight: "30px",
             color: "black",
             width: "100%",
+            borderWidth: "3px",
+
           }}
         />
       </div>
