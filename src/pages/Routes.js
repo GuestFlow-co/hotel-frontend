@@ -19,7 +19,7 @@ export default function Routers() {
     <Header />
 
     <Routes>
-      <Route path="/rooms/:room_number"  element={<RoomDetail  />} />
+      <Route path="/rooms/:room_number"  element={<RoomDetail/>} />
       <Route path="/rooms"  element={<RoomList  rooms={rooms}  />} />
       <Route path='/' element={<HomePage />} />
       <Route path='/tour' element={<Tour />} />

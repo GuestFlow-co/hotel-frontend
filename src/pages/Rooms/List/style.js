@@ -5,6 +5,7 @@ export const RoomListWrapper = styled.div`
 `;
 
 export const ListWrapper = styled.div`
+
   margin-top: 20px;
 `;
 
