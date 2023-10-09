@@ -54,7 +54,6 @@ export const TextWrapper = styled.div`
 
 export const CardDiv = styled.div`
   position: relative;
-  display: block;
   width: 26vw;
   color: white; /* Set text color to white */
 `;

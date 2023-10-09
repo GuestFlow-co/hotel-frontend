@@ -20,33 +20,22 @@ export default function Routers() {
   return (
     <div>
       <LoginProvider>
+        <Header />
+        <Routes>
+          
+          <Route path="/rooms/:room_number" element={<RoomDetail />} />
+          <Route path="/rooms" element={<RoomList rooms={rooms} />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/tour" element={<Tour />} />
+          <Route path="TourDetalis/:id" element={<TourDetalis />} />
+          <Route path="/login" element={<LoginForm />} />
+          {/* <Route path="/signup" element={<SignupForm />} />  */}
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/resetPassword/:token" element={<ResetPassword />} />
+        </Routes>
+      </LoginProvider>
 
-
-    {/* <Header /> */}
-
-
-    <Routes>
-
-      <Route path="/rooms/:room_number"  element={<RoomDetail  />} />
-      <Route path="/rooms"  element={<RoomList  rooms={rooms}  />} />
-      <Route path='/' element={<HomePage />} />
-      <Route path='/tour' element={<Tour />} />
-      <Route path ="TourDetalis/:id" element={<TourDetalis />} />
-
-      <Route path="/login" element={<LoginForm />} /> 
-      {/* <Route path="/signup" element={<SignupForm />} />  */}
-      <Route path="/forgotPassword" element={<ForgotPassword/>} />
-        <Route path="/resetPassword/:token" element={<ResetPassword/>} />
-
-    </Routes>
-
-
-
-       </LoginProvider>
-
-    {/* <Footer /> */}
-
-
+      <Footer />
 
     </div>
   );

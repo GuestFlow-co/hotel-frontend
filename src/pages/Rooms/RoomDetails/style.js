@@ -24,7 +24,6 @@ export const RoomPrice = styled.p`
 `;
 
 export const DetailWrapper = styled.div`
-  margin: 20px 0;
 `;
 
 export const BackButton = styled.button`

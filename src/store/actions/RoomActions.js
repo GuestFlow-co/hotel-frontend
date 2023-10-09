@@ -48,7 +48,26 @@ export const addRoom = (rooms) => {
     };
   };
     
+  export const updateRoom = (updatedRoom, Room_id) => {
+    return async (dispatch) => {
+      try {
+        // Make the PUT request to update the room data
+        const res = await axios.put(`http://localhost:8000/rooms/${Room_id}`, updatedRoom);
+  console.log(res)
+        // Dispatch the action to update the room
+        dispatch({
+          type: types.UPDATE_ROOM,
+          payload: {
+            updatedRoom: res.data,
+          },
+        });
   
+      } catch (error) {
+        // Handle any errors that occur during the request
+        console.error('Error updating room:', error.message);
+      }
+    };
+  }; 
   
   
 //   // Delete Room
@@ -66,22 +85,3 @@ export const addRoom = (rooms) => {
 //   }
 // }
 //   };
-
-//   //Update
-//   export const updateRoom= (updatedRoom)=>{
-//     return async (dispatch) => {
-//           try{
-//             const formData = new FormData();
-//             for(const key in updatedRoom) formData.append(key, updatedRoom[key]);
-//       const res = await instance.put(`/bookings/${updatedRoom.bookingId}/rooms/${updatedRoom.id}` ,
-//       formData)
- 
-// dispatch({
-//     type: types.UPDATE_ROOM,
-//     payload: {updatedRoom:res.data},
-// })}
-// catch(error){
-//   console.log(error.message)
-//   }
-// }
-//   }
