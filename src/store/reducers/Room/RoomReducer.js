@@ -24,14 +24,15 @@ const RoomReducer = (state = initialState, action) => {
         ...state,
         rooms: state.rooms.filter((room) => room.id !== action.payload.roomId),
       };
-    case types.UPDATE_ROOM:
-      const updatedRoom = action.payload.updatedRoom;
-      return {
-        ...state,
-        rooms: state.rooms.map((room) =>
-          room.id === updatedRoom.id ? updatedRoom : room
-        ),
-      };
+      case types.UPDATE_ROOM:
+        const updatedRoom = action.payload.updatedRoom;
+  
+        return {
+          ...state,
+          rooms: state.rooms.map((room) =>
+            room.Room_id === updatedRoom.Room_id ? updatedRoom : room
+          ),
+        };
     default:
       return state;
   }
