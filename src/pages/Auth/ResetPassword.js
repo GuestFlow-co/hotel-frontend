@@ -26,7 +26,7 @@ function ResetPassword() {
 
     try {
       const response = await axios.post(
-        `http://localhost:3005/resetPassword/${token}`,
+        `${process.env.REACT_APP_BASE_URL}/resetPassword/${token}`,
         obj
       );
 
