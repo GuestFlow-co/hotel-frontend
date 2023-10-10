@@ -12,7 +12,7 @@ import {
   RoomTypeContainer,
   RoomPriceContainer,
 } from "./style";
-import person from "../../../assets/person.png"
+import person from "../../../assets/Rooms/person.png"
 
 const colors = {
   orange: "#FFBA5A",
@@ -39,7 +39,7 @@ const RoomItem = ({ room }) => {
     >
       <Link to={`/rooms/${room.room_number}`} className="text-decoration-none text-dark">
         <CardDiv>
-          <ImgItem src={room.coverPhoto} className="card-img" alt="Room Image" />
+          <ImgItem src={room.coverPhoto} className="card-img bg-cover" alt="Room Image" />
           <InfoDiv className="position-absolute bottom-0 start-0 end-0 bg-transparent">
             <FlexContainer className="d-flex justify-content-between align-items-center p-2 ">
               <RoomTypeContainer>
@@ -68,7 +68,7 @@ const RoomItem = ({ room }) => {
 
         {isHovered && (
           <HoveredItems className="position-absolute bottom-0 start-0 end-100 bg-transparent-white">
-            <TextWrapper className="p-8">
+            <TextWrapper className="p-80">
             <FlexContainer className="d-flex justify-content-between align-items-center p-2 ">
               <RoomTypeContainer>
                 <p>

@@ -26,6 +26,7 @@ export default function TourHero() {
 
         <Text as={"p"}>Explore Tour Place</Text>
 
+
         <p style={{fontSize:"28px"}}>Explore Tour Place</p>
         </div>
       </Stack>

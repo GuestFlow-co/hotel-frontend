@@ -28,7 +28,6 @@ export default function Routers() {
           <Route path="/" element={<HomePage />} />
           <Route path="/tour" element={<Tour />} />
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
-
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
@@ -37,7 +36,6 @@ export default function Routers() {
       </LoginProvider>
 
       <Footer />
-
 
     </div>
   );
