@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer} from 'react';
 import cookie from 'react-cookies';
 import jwt_decode from 'jwt-decode';
 import { initialState, ReducerLogin } from '../../store/reducers/ReducerLogin';
@@ -16,7 +16,7 @@ function LoginProvider(props) {
     async function login(username, password) {
         console.log('...RUNNING')
         let { logged, token, user } = loginData;
-        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, {}, {
+        let response = await axios.post(`${process.env.REACT_APP_BASE_URL}/signin`, {}, {// for login
             headers: { Authorization: `Basic ${btoa(`${username}:${password}`)}` }
         })
         console.log("user: ",response.data.user)

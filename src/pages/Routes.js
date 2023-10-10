@@ -6,10 +6,10 @@ import RoomDetail from "./Rooms/RoomDetails/RoomDetails";
 import HomePage from "./HomePage/HomePage";
 import Tour from "./Tour";
 
-import LoginForm from "./Auth/LoginForm";
+import LoginForm from "./Auth/LoginForm/LoginForm";
 import LoginProvider from "./Context/Context_Login";
-import ForgotPassword from "./Auth/ForgotPassword";
-import ResetPassword from "./Auth/ResetPassword";
+import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import TourDetalis from "./TourDetails";
 import Header from "../layout/Header/Header";
 import Footer from "../layout/Footer/Footer";
