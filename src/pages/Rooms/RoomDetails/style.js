@@ -39,3 +39,17 @@ export const BackButton = styled.button`
     background-color: #0056b3;
   }
 `;
+export const Amenities = styled.div`
+
+  overflow: hidden;
+  padding: 16px;
+  max-width: 300px;
+  transition: transform 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: #007bff; /* You can change this color to your desired hover color */
+  }
+`;
+
+
