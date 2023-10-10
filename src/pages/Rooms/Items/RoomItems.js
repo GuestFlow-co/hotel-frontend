@@ -38,9 +38,9 @@ const RoomItem = ({ room }) => {
       style={{ maxWidth: "18rem" }}
     >
       <Link to={`/rooms/${room.room_number}`} className="text-decoration-none text-dark">
-        <CardDiv>
-          <ImgItem src={room.coverPhoto} className="card-img bg-cover" alt="Room Image" />
-          <InfoDiv className="position-absolute bottom-0 start-0 end-0 bg-transparent">
+        <CardDiv className="w-full">
+          <ImgItem src={room.coverPhoto} className="card-img bg-cover " alt="Room Image" />
+          <InfoDiv className="position-absolute align-items-center bottom-0 start-0 end-0 bg-transparent">
             <FlexContainer className="d-flex justify-content-between align-items-center p-2 ">
               <RoomTypeContainer>
                 <p>
