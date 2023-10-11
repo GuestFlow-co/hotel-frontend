@@ -6,18 +6,19 @@ import {
   ChakraProvider,
   extendTheme,
 } from "@chakra-ui/react";
+import "./Dashboard.scss"
 import Content from "./dashboradComp/sideBar/content";
+import MainDashboard from "./dashboradComp/home/mainDashboard";
 
 
-function Dashborad() {
+function Dashborad({children}) {
   return (
     <div className="the-father-of-allDashborad">
-    <Content />
-    <Spacer />
-   < Box p="4">
-      {/* Dashboard content */}
-      Dashboard Content
-    </Box>
+      <Content />
+    <div>
+          {children}
+    </div>
+    
     </div>
   )
 }
