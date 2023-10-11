@@ -11,7 +11,7 @@ import Content from "./dashboradComp/sideBar/content";
 
 function Dashborad() {
   return (
-    <div>
+    <div className="the-father-of-allDashborad">
     <Content />
     <Spacer />
    < Box p="4">
