@@ -4,24 +4,29 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBooking } from "../../store/actions/Bookings/BookingActions";
 import { useParams } from "react-router-dom";
+import cookie from "react-cookies";
 
 const BookingForm = () => {
   const { room_number } = useParams();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
   const bookings = useSelector((state) => state.bookings.bookings);
-  const users = useSelector((state) => state.users);
-  console.log("----------------------------",users)
+  const user = cookie.load("user"); // Corrected the cookie key
+  console.log("User Data:", user);
+  const user_id = user ? user.user_id : "";
+  console.log("user_id", user_id);
+
   const room = rooms.find((room) => room.room_number === room_number);
 
   const roomId = room ? room.Room_id : "";
-  const bookingCost = bookings.bookingCost;
+  // Use correct property to get booking cost
+  const bookingCost = bookings.length > 0 ? bookings[0].bookingCost : 0;
 
   const [bookingData, setBookingData] = useState({
     theRoomID: roomId,
     check_in_date: "",
     check_out_date: "",
-    customer_id: "", // You need to provide a customer_id here
+    user_id: user ? user.user_id : "",
   });
 
   const handleChange = (e) => {
@@ -37,7 +42,7 @@ const BookingForm = () => {
       theRoomID: roomId,
       check_in_date: "",
       check_out_date: "",
-      customer_id: "", // Reset the customer_id as well
+      user_id: user ? user.user_id : "",
     });
   };
 
@@ -67,7 +72,7 @@ const BookingForm = () => {
           <label>Booking Cost:</label>
           <input
             type="text"
-            name="bookingCost" // Change this to "bookingCost"
+            name="bookingCost"
             value={bookingCost}
             onChange={handleChange}
           />
