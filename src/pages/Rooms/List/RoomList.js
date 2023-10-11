@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import RoomItem from "../Items/RoomItems";
-import hero from "../../../assets/Rooms/5655441.jpg"
+import hero from "../../../assets/Rooms/5655441.jpg";
 import RoomFilter from "../Filter";
 import {
   Container,
   Box,
   Input,
   Spinner,
-  SimpleGrid, 
-  Flex,
+  SimpleGrid,
   Card,
+  Flex,
   Grid,
-} from "@chakra-ui/react"; 
+} from "@chakra-ui/react";
 
 const RoomList = () => {
   const loading = useSelector((state) => state.rooms.loading);
@@ -31,20 +31,21 @@ const RoomList = () => {
   const handleSearch = (e) => {
     const searchText = e.target.value.toLowerCase();
     setQuery(searchText);
-    const filteredData = rooms.filter((room) =>
-      (
-        (room.roomType && room.roomType.toLowerCase().includes(searchText)) ||
-        (room.room_capacity && room.room_capacity.toLowerCase().includes(searchText)) ||
+    const filteredData = rooms.filter(
+      (room) =>
+        (room.roomType &&
+          room.roomType.toLowerCase().includes(searchText)) ||
+        (room.room_capacity &&
+          room.room_capacity.toLowerCase().includes(searchText)) ||
         (room.roomStatus && room.roomStatus.toLowerCase().includes(searchText))
-      )
     );
     setFilteredRooms(filteredData);
   };
 
   const RoomItems = filteredRooms.map((room) => (
-    <Box key={room.Room_id} p={3} lg={4} md={6} sm={12}>
+    <Box key={room.Room_id} p={7} lg={4} md={6} sm={12}>
       <Card>
-        <Box > 
+        <Box>
           <RoomItem room={room} />
         </Box>
       </Card>
@@ -52,7 +53,12 @@ const RoomList = () => {
   ));
 
   return (
-    <Container pt={0}>
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="100vh"
+    >
       <img
         src={hero}
         alt={`Room Image`}
@@ -62,13 +68,13 @@ const RoomList = () => {
         placeholder="Search for a room"
         onChange={handleSearch}
         value={query}
-        size="md" 
-        borderColor="BROWN" 
-        backgroundColor="white" 
-        _placeholder={{ color: 'gray.500' }}
-        borderRadius="5%"  
-        width="25%" 
-        height={1}   
+        size="md"
+        borderColor="BROWN"
+        backgroundColor="white"
+        _placeholder={{ color: "gray.500" }}
+        borderRadius="5%"
+        width="25%"
+        height={1}
         paddingLeft={3}
         position="absolute"
         top="8%"
@@ -76,11 +82,11 @@ const RoomList = () => {
         transform="translateX(-50%)"
       />
       <Grid mb={3}>
-        <Flex> 
+        <Flex>
           <RoomFilter rooms={rooms} onFilter={handleFilter} />
         </Flex>
       </Grid>
-      <SimpleGrid columns={3} spacing={3}> 
+      <SimpleGrid columns={3} spacing={3}>
         {RoomItems}
       </SimpleGrid>
       {loading && (
@@ -88,7 +94,7 @@ const RoomList = () => {
           <Spinner size="md" color="teal.500" emptyColor="gray.200" />
         </Flex>
       )}
-    </Container>
+    </Flex>
   );
 };
 

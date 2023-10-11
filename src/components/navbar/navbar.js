@@ -102,10 +102,10 @@ const NavBar = () => {
                       </ul>
                     </li>
                     <li className="dropdown">
-                      <a href="#">Shop</a>
+                    <Link to="./FAQ">FAQs</Link>
                       <ul>
                         <li>
-                          <a href="shop.html">Shop Grid</a>
+                          <Link to="./FAQ">FAQs</Link>
                         </li>
                         <li>
                           <a href="product-details.html">Product Details</a>
@@ -113,7 +113,9 @@ const NavBar = () => {
                       </ul>
                     </li>
                     <li>
-                      <a href="contact.html">Contact</a>
+                      <Link to="/contact" className="link">
+                        Contact
+                      </Link>
                     </li>
                   </ul>
                 </div>
