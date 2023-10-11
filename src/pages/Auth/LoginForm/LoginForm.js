@@ -2,14 +2,17 @@ import React, { useContext, useState } from "react";
 import { Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../../Context/Context_Login";
+import { useNavigate } from 'react-router-dom'; 
 import axios from "axios";
 import "./LoginForm.scss";
-
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
   const { login, logout, loginData } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();   
+  ///////////    
+
   const initialFormData = {
     username: "",
     password: "",
@@ -75,6 +78,7 @@ function SignInUpForm() {
       formContainer.appendChild(alertElement);
     } catch (err) {
       console.log("login ", err);
+
     }
     
     setFormData({
@@ -88,11 +92,12 @@ function SignInUpForm() {
     });
   };
   
+  
   function handleLogin(e) {
     e.preventDefault();
-    login(username, password);
-    // window.location.href = '/'; 
-    
+    login(username, password)
+    loginData.logge?navigate('/'): navigate('/rooms')
+    // if (loginData.logged) window.location.href = '/'; 
   }
 
   function handleUsernameChange(e) {
@@ -114,13 +119,14 @@ function SignInUpForm() {
             </Button>
           </div>
         </When>
+       
         <When condition={!loginData.logged}>
           <div className="form-container sign-up-container">
             <form className="signup-form" onSubmit={handleSignupSub}>
               <h1 className="create-Account-h1">Create Account</h1>
               {/* <span className="signup-span">or use your email for registration</span> */}
               <div className="name-inputs">
-                <div class="names-form-group">
+                <div className="names-form-group">
                   <input
                     onChange={handleInputChange}
                     name="firstName"
@@ -129,9 +135,9 @@ function SignInUpForm() {
                     value={formData.firstName}
                     // className="sign-up-input"
                   />
-                  <label for="Lirst Name">First Name</label>
+                  <label htmlFor="Lirst Name">First Name</label>
                 </div>
-                <div class="names-form-group">
+                <div className="names-form-group">
                   <input
                     onChange={handleInputChange}
                     name="lastName"
@@ -140,12 +146,12 @@ function SignInUpForm() {
                     value={formData.lastName}
                     // className="sign-up-input"
                   />
-                  <label for="Last Name">Last Name</label>
+                  <label htmlFor="Last Name">Last Name</label>
                 </div>
               </div>
 
               <div className="other-inputs-form">
-                <div class="other-form-group">
+                <div className="other-form-group">
                   <input
                     onChange={handleInputChange}
                     name="username"
@@ -154,10 +160,10 @@ function SignInUpForm() {
                     value={formData.username}
                     // className="sign-up-input"
                   />
-                  <label for="User Name">User Name</label>
+                  <label htmlFor="User Name">User Name</label>
                 </div>
 
-                <div class="other-form-group">
+                <div className="other-form-group">
                   <input
                     onChange={handleInputChange}
                     name="password"
@@ -167,9 +173,9 @@ function SignInUpForm() {
                     value={formData.password}
                     // className="sign-up-input"
                   />
-                  <label for="Password">Password</label>
+                  <label htmlFor="Password">Password</label>
                 </div>
-                <div class="other-form-group">
+                <div className="other-form-group">
                   <input
                     onChange={handleInputChange}
                     name="email"
@@ -179,10 +185,10 @@ function SignInUpForm() {
                     value={formData.email}
                     // className="sign-up-input"
                   />
-                  <label for="Email">Email</label>
+                  <label htmlFor="Email">Email</label>
                 </div>
 
-                <div class="other-form-group">
+                <div className="other-form-group">
                   <input
                     onChange={handleInputChange}
                     name="phoneNumber"
@@ -192,7 +198,7 @@ function SignInUpForm() {
                     value={formData.phoneNumber}
                     // className="sign-up-input"
                   />
-                  <label for="Phone Number">Phone Number</label>
+                  <label htmlFor="Phone Number">Phone Number</label>
                 </div>
               </div>
               <div className="devv">
@@ -210,7 +216,7 @@ function SignInUpForm() {
               <h1 className="create-Account-h1">Sign in</h1>
               <span className="signin-span">or use your account</span>
 
-              <div class="login-form-group">
+              <div className="login-form-group">
                 <input
                   onChange={handleUsernameChange}
                   placeholder=""
@@ -218,10 +224,10 @@ function SignInUpForm() {
                   required
                   className="login-input"
                 />
-                <label for="User Name">User Name</label>
+                <label htmlFor="User Name">User Name</label>
               </div>
 
-              <div class="login-form-group">
+              <div className="login-form-group">
                 <input
                   onChange={handlePasswordChange}
                   placeholder=""
@@ -229,7 +235,7 @@ function SignInUpForm() {
                   type="password"
                   className="login-input"
                 />
-                <label for="Password">Password</label>
+                <label htmlFor="Password">Password</label>
               </div>
               <a className="signup-a" href="/forgotPassword">
                 Forgot your password?
@@ -237,8 +243,10 @@ function SignInUpForm() {
               <button className="sign-up-button" type="submit">
                 Sign In
               </button>
+               
             </form>
           </When>
+          
         </div>
         <div className="overlay-container">
           <div className="overlay">
