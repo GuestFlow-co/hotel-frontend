@@ -32,14 +32,14 @@ export default function Routers() {
     <div>
       <LoginProvider>
 
-      <Dashborad>
+      {/* <Dashborad>
           <Routes>
       <Route path="/dashboard/allbooking" element={<MainDashboard />} />
       <Route path="/dashboard/d" element={<BookingDash />} />
 
           </Routes>
 
-      </Dashborad>
+      </Dashborad> */}
         {/* <Header /> */}
 
 

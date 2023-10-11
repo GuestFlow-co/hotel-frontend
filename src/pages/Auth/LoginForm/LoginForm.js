@@ -5,13 +5,15 @@ import { LoginContext } from "../../Context/Context_Login";
 import { useNavigate } from 'react-router-dom'; 
 import axios from "axios";
 import "./LoginForm.scss";
+import cookie from 'react-cookies';
+
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
-  const { login, logout, loginData } = useContext(LoginContext);
+  const { login, logout, loginData,errorMessage } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();   
-  ///////////    
+  const [loginn, setlogin] = useState(false);
 
   const initialFormData = {
     username: "",
@@ -96,7 +98,17 @@ function SignInUpForm() {
   function handleLogin(e) {
     e.preventDefault();
     login(username, password)
-    loginData.logge?navigate('/'): navigate('/rooms')
+    console.log(loginData,"loginDataloginData");
+    // setlogin(true)
+    // const user = cookie.load("user")
+    // setTimeout(()=>{
+    //   if(user){
+    //     navigate('/')
+    //   }else{
+
+    //     navigate('/rooms')
+    //   }
+    // },2000)
     // if (loginData.logged) window.location.href = '/'; 
   }
 
@@ -217,6 +229,8 @@ function SignInUpForm() {
               <span className="signin-span">or use your account</span>
 
               <div className="login-form-group">
+             
+
                 <input
                   onChange={handleUsernameChange}
                   placeholder=""
@@ -244,6 +258,7 @@ function SignInUpForm() {
                 Sign In
               </button>
                
+            {errorMessage && <p  className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
             </form>
           </When>
           
