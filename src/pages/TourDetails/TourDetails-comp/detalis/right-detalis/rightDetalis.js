@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
 function RightDetails({ tour }) {
   const { id } = useParams();
   const containerStyle = {
@@ -29,27 +30,10 @@ function RightDetails({ tour }) {
   const [newRate, setNewRate] = useState();
   const [allcomment, setAllcomment] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
-  const toast = useToast()
+ const [ bookingisUpdated, setbookingisUpdated] = useState(false);
 
-  const Addcomment = (e) => {
-    console.log("onsubmit");
-    e.preventDefault();
-    setIsUpdated(false);
-    const obj = {
-      commentName: e.target.Name.value,
-      Email: e.target.Email.value,
-      comment: e.target.comment.value,
-      Rating: newRate,
-      theTour_id: id,
-    };
-    console.log(obj, "from review");
-    axios
-      .post(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`, obj)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
+  const [bookingMessage, setBookingMessage] = useState(""); // State for booking status message
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
     setNewRate(newRating);
@@ -62,7 +46,7 @@ function RightDetails({ tour }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDeqmOQPJjA_Pg3u-cnJuyCljSqh1EvIs4",
-    libraries: ["directions"], // Include the Directions library
+    libraries: ["directions"],
   });
 
   const [map, setMap] = useState(null);
@@ -76,7 +60,6 @@ function RightDetails({ tour }) {
     setMap(map);
   }, []);
 
-  // Function to geocode a city name and set the center and marker position
   const geocodeCity = (cityName, setPosition) => {
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({ address: cityName }, (results, status) => {
@@ -94,16 +77,13 @@ function RightDetails({ tour }) {
     });
   };
 
-  // Call the geocodeCity function to set the center and marker positions
   useEffect(() => {
     if (isLoaded) {
-      // Replace 'Amman' and 'Irbid' with the city names you want to center the map on
       geocodeCity("Amman", setAmmanMarkerPosition);
       geocodeCity("Irbid", setIrbidMarkerPosition);
     }
   }, [isLoaded]);
 
-  // Calculate and display directions between Amman and Irbid
   useEffect(() => {
     if (ammanMarkerPosition && irbidMarkerPosition && isLoaded) {
       const directionsService = new window.google.maps.DirectionsService();
@@ -120,7 +100,7 @@ function RightDetails({ tour }) {
         {
           origin,
           destination,
-          travelMode: "DRIVING", // You can use other travel modes like 'WALKING', 'BICYCLING', etc.
+          travelMode: "DRIVING",
         },
         (result, status) => {
           if (status === "OK") {
@@ -132,6 +112,7 @@ function RightDetails({ tour }) {
       );
     }
   }, [ammanMarkerPosition, irbidMarkerPosition, isLoaded]);
+
   const startDate = new Date(tour.start_date);
   const endDate = new Date(tour.end_date);
 
@@ -144,7 +125,6 @@ function RightDetails({ tour }) {
     };
 
     if (user) {
-      console.log(user);
       axios
         .get(`${process.env.REACT_APP_BASE_URL}/bookings`)
         .then((response) => {
@@ -153,21 +133,37 @@ function RightDetails({ tour }) {
             (item) => item.customer_id === user.user_id
           );
           const firstBooking = theuserBooking[0];
-          console.log( typeof firstBooking.booking_id,firstBooking.booking_id);
-          axios
-            .put(
-              `${process.env.REACT_APP_BASE_URL}/bookings/${firstBooking.booking_id}`,
-              obj
-            )
-            .then((updateResponse) => {
-              console.log("Booking updated successfully:", updateResponse.data);
-            })
-            .catch((updateError) => {
-              console.error("Error updating booking:", updateError);
-            });
+
+          if (firstBooking) {
+            axios
+              .put(
+                `${process.env.REACT_APP_BASE_URL}/bookings/${firstBooking.booking_id}`,
+                obj
+              )
+              .then((updateResponse) => {
+                setbookingisUpdated(true)
+                setBookingMessage(
+                  "Booking Successful: You have successfully booked a seat."
+                );
+              })
+              .catch((updateError) => {
+                console.error("Error updating booking:", updateError);
+                setbookingisUpdated(true)
+                setBookingMessage(
+                  "Booking Failed: An error occurred while updating the booking."
+                );
+              });
+          } else {
+            setBookingMessage(
+              "Booking Failed: You need to make a booking first."
+            );
+          }
         })
         .catch((error) => {
           console.error("Error fetching bookings:", error);
+          setBookingMessage(
+            "Booking Failed: An error occurred while fetching bookings."
+          );
         });
     }
   };
@@ -181,7 +177,55 @@ function RightDetails({ tour }) {
   const handleDecrement = () => {
     setValue(parseInt(value) - 1);
   };
-
+  const [postReview, setposReview] = useState(""); // State for booking status message
+  const [getallbooking, setgetallbooking] = useState(""); // State for booking status message
+  useEffect(() => {
+    const user = cookie.load("user");
+    console.log(user, "00000000000");
+    if (user) {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/bookings`)
+        .then((response) => {
+          const bookingss = response.data;
+          console.log(bookingss);
+          const theuserBooking = bookingss.filter((item) => item.customer_id === user.user_id);
+          // console.log(typeof user.user_id, "user.user_id",);
+          // console.log(theuserBooking, "theuserBooking");
+          setgetallbooking(theuserBooking);
+          
+        });
+    }
+  }, [isUpdated]);
+  
+  const Addcomment = (e) => {
+    e.preventDefault();
+    console.log(getallbooking,id ,typeof id);
+    const there = getallbooking.filter((item) => item.tourId === parseInt(id));
+    if (there[0]) {
+      const obj = {
+        commentName: e.target.Name.value,
+        Email: e.target.Email.value,
+        comment: e.target.comment.value,
+        Rating: newRate,
+        theTour_id: id,
+      };
+      console.log(obj, "from review");
+      axios
+        .post(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`, obj)
+        .then((res) => {
+          console.log(res.data);
+          setIsUpdated(true);
+          setTimeout(() => {
+            setIsUpdated(false);
+          }, 2000);
+          setposReview("thank You For You Review");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setIsUpdated(true)
+      setposReview("you must have a booking first");
+    }
+  };
   return (
     <div className="RightDetalis-container">
       {isLoaded ? (
@@ -245,8 +289,10 @@ function RightDetails({ tour }) {
               color: "black",
             }}
           />
-          <div className="label-input-div">
+          <div style={{display:"flex", justifyContent:"space-between",alignItems:"center",}} className="label-input-div">
             <label> Ticket price {tour.Seat_price}$</label>
+            <div style={{display:"flex", justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
+            <p>Number of sets</p>
             <NumberInput value={value} defaultValue={1}>
               <NumberInputField
                 className="customNumberInputField"
@@ -263,12 +309,13 @@ function RightDetails({ tour }) {
                 borderRadius="md"
                 transition="border-color 0.2s, box-shadow 0.2s"
                 maxWidth="100px"
-              />{" "}
+                />{" "}
               <NumberInputStepper style={{ height: "15px" }}>
                 <NumberIncrementStepper onClick={handleIncrement} />
                 <NumberDecrementStepper onClick={handleDecrement} />
               </NumberInputStepper>
             </NumberInput>
+                </div>
           </div>
           <hr
             style={{
@@ -277,18 +324,19 @@ function RightDetails({ tour }) {
               color: "black",
             }}
           />
-          <Button type="submit" className="btn-Booking-Now" onClick={() =>
-          toast({
-            title: `solid toast`,
-            variant: "solid",
-            isClosable: true,
-          })
-      }>
+          <Button type="submit" className="btn-Booking-Now">
             Booking Now{" "}
             <div>
-              <i class="far fa-paper-plane"></i>
+              <i className="far fa-paper-plane"></i>
             </div>
           </Button>
+          {bookingisUpdated ? 
+          <div className="theToast ">
+
+          {bookingMessage && <p>{bookingMessage}</p>}
+          </div> :<></>
+        }
+          
         </form>
       </section>
       <section className="Form-section-detalis">
@@ -315,9 +363,16 @@ function RightDetails({ tour }) {
           <Button type="submit" className="btn-Booking-Now">
             Submit{" "}
             <div>
-              <i class="fa-regular fa-star"></i>
+              <i className="fa-regular fa-star"></i>
             </div>
           </Button>
+          {
+            isUpdated ? 
+          <div className="theToast ">
+
+          {postReview && <p>{postReview}</p>}
+          </div> : <></>
+          }
         </form>
       </section>
     </div>
