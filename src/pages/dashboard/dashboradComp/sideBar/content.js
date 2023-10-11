@@ -11,7 +11,7 @@ function Content() {
   const secondMenuDisclosure = useDisclosure();
 
   return (
-    <Box w="250px" bg="blue.500" h="100vh" style={{ backgroundColor: "rgb(16,19,28)" }} boxShadow="md">
+    <Box w="22%" bg="blue.500" h="100vh" style={{ backgroundColor: "rgb(16,19,28)" }} boxShadow="md">
       <section className="main-section-sidebar">
         <div style={{ width: "90%" }}>
           <Menu>
@@ -31,7 +31,7 @@ function Content() {
                 </MenuButton>
                 {firstMenuDisclosure.isOpen && (
                   <div>
-                    <Link to="/all-booking">
+                    <Link to="/dashboard/allbooking">
                       <button className="sidebar-btn">All Booking</button>
                     </Link>
                     <Link to="/add-booking">

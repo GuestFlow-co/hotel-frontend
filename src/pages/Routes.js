@@ -20,6 +20,8 @@ import FAQ from "./FAQ/FAQ";
 import ContactUs from "./ContactUs/ContactUs";
 
 import Dashboard from "./dashboard/Dashboard";
+import BookingDash from "./dashboard/pages/BookingDash";
+import MainDashboard from "./dashboard/dashboradComp/home/mainDashboard";
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -46,6 +48,7 @@ export default function Routers() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/allbooking" element={<MainDashboard />} />
 
         </Routes>
 
