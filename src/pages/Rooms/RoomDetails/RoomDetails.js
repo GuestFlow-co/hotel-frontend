@@ -82,7 +82,7 @@ const RoomDetail = () => {
         alt={`Room Image`}
         style={{ width: "100%", height: "300px", objectFit: "cover" }}
       />
-      <DetailWrapper style={{ backgroundColor: 'rgba(223, 215, 191, 0.26)', width: "68%", padding: "5px" }}>
+      <DetailWrapper style={{ width: "68%", padding: "5px" }}>
         <Box position="relative" w="100%" pt={5}>
           <Image
             src={images[currentIndex]}
@@ -111,7 +111,7 @@ const RoomDetail = () => {
           </Flex>
         </Box>
         <Container style={{ paddingTop: "2%" }}>
-          <Flex>
+          <Flex ml={30}>
         {Array(5).fill( parseInt(room.theRoomRate) ).map((_, index) => (
                   <FaStar
                     key={index}
@@ -124,9 +124,9 @@ const RoomDetail = () => {
                     }}
                   />
                 ))}
-                {rate.length} reviews
+                {/* {rate.length} reviews */}
               </Flex>
-          <Flex justifyContent={"space-between"}>
+          <Flex justifyContent={"space-between"} ml={55} mr={50}>
             <h3>{roomType}</h3>
             <h3 className="m-0 room-price"> From {roomPrice} JD/Night</h3>
             
@@ -189,7 +189,7 @@ const RoomDetail = () => {
                   boxShadow="md"
                   maxW="300px"
                 >
-                   <Flex mt={4} justify="space-between">
+                   <Flex mt={4} justify="space-between" > 
                     <Stack spacing={2} direction="row">
                       {amenity.features.map((feature) => (
                         <Flex align="center" key={feature}>
@@ -211,13 +211,13 @@ const RoomDetail = () => {
 
         <br/>
       </DetailWrapper>
-      <Container className="position-absolute top-0 start-1 end-0 bg-rgba(223, 215, 191, 0.26) " alignItems={'center'}  mt={'24.5%'} w={'30%'} bg={'rgba(223, 215, 191, 0.26)'} > 
+      <Container className="position-absolute top-0 start-1 end-0  " alignItems={'center'}  mt={'24.5%'} w={'30%'}  > 
        <Container w={'100%'} pl={'10%'} pr={'10%'} pb={'7%'} pt={'7%'}>
         <HotelBookingForm/>
 </Container>
       </Container>
 
-      <Container className="position-absolute top-0 start-1 end-0 bg-rgba(223, 215, 191, 0.26) " alignItems={'center'}   mt={'65%'} w={'30%'} bg={'rgba(223, 215, 191, 0.26)'} > 
+      <Container className="position-absolute top-0 start-1 end-0  " alignItems={'center'}   mt={'65%'} w={'30%'}  > 
       <Text pt={7} pl={7} fontWeight={'bold'}>More Rooms</Text>
   <Container > {RoomItems} </Container>
       </Container>

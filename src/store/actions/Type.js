@@ -5,3 +5,5 @@ export const UPDATE_ROOM = "UPDATE_ROOM";
 
 export const FETCH_BOOKINGS = "FETCH_BOOKINGS";
 export const ADD_BOOKING = "ADD_BOOKING"
+
+export const SET_USERS = "SET_USERS" 

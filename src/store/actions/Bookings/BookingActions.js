@@ -20,6 +20,7 @@ export const fetchBookings = () => {
 };
 
 export const addBooking = (bookingData) => {
+  console.log(bookingData)
   return async (dispatch) => {
     try {
       const res = await axios.post("http://localhost:8000/bookings", bookingData);
