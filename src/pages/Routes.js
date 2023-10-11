@@ -19,7 +19,7 @@ import FAQ from "./FAQ/FAQ";
 
 import ContactUs from "./ContactUs/ContactUs";
 
-import Dashborad from "./dashborad/Dashborad";
+import Dashboard from "./dashboard/Dashboard";
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -45,6 +45,7 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
 
         </Routes>
 
