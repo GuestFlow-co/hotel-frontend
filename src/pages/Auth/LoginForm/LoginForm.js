@@ -10,7 +10,8 @@ function SignInUpForm() {
   const { login, logout, loginData } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();    
+  const navigate = useNavigate();   
+  ///////////    
 
   const initialFormData = {
     username: "",
