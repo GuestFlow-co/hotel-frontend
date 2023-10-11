@@ -23,7 +23,7 @@ export default function Routers() {
       <LoginProvider>
 
 
-        <Header />
+        {/* <Header /> */}
 
 
         <Routes>

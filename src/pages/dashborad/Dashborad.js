@@ -6,22 +6,13 @@ import {
   ChakraProvider,
   extendTheme,
 } from "@chakra-ui/react";
+import Content from "./dashboradComp/sideBar/content";
 
 
 function Dashborad() {
   return (
     <div>
-     <Box
-      w="250px"
-      bg="blue.500"
-      h="100vh"
-      color="white"
-      p="4"
-      boxShadow="md"
-    >
-      {/* Sidebar content */}
-      Sidebar Content
-    </Box>
+    <Content />
     <Spacer />
    < Box p="4">
       {/* Dashboard content */}
