@@ -904,7 +904,7 @@ a.theme-btn.style-three {
   width: 1px;
   height: 100%;
   position: absolute;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(199, 199, 199, 0.082);
   -webkit-animation: leftRightOne 18s infinite;
   animation: leftRightOne 18s infinite;
 }

@@ -13,7 +13,12 @@ import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import TourDetalis from "./TourDetails";
 import Header from "../layout/Header/Header";
 import Footer from "../layout/Footer/Footer";
+
+
+import FAQ from "./FAQ/FAQ";
+
 import ContactUs from "./ContactUs/ContactUs";
+
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -39,6 +44,7 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route path='/FAQ' element={<FAQ />} />
 
         </Routes>
 

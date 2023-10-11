@@ -83,13 +83,13 @@ const Hero = () => {
           </div>
         </Slider>
       </div>
-      <div className="container">
+      {/* <div className="container">
         <div className="row justify-content-center">
           <div className="col-xl-10">
             <div className="main-slider-dots"></div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="slider-shapes">
         <img className="shape circle-half" src={circleHalfImage} alt="Shape" />
         <img className="shape circle" src={circleImage} alt="Shape" />

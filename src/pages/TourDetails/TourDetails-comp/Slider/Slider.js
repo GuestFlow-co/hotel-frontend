@@ -42,7 +42,7 @@ function CustomSlider({ photos }) {
 function SliderContainer({photo}) {
 
   return (
-    <div className="slider-container ">
+    <div className="slider-container overflow-hidden">
       <CustomSlider photos={photo} />
     </div>
   );
