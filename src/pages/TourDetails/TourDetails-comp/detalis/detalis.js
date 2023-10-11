@@ -11,14 +11,39 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import ReactStars from "react-rating-stars-component";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Detalis({ tour }) {
+  const { id } = useParams();
+
   const [selected, setSelected] = useState("");
+  const [newRate, setNewRate] = useState()
+  const [allcomment, setAllcomment] = useState([])
+  // const [updated, setupdated] = useState(false)
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setNewRate(newRating)
+
+  };
 
   useEffect(() => {
-    setSelected(tour.TourPlan.days[0].day);
+
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`)
+      .then((res) => {
+      //  const thetourcomment= 
+        setAllcomment(res.data.filter(comment => comment.theTour_id === parseInt(id) ));
+       
+
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
-  console.log(selected);
+
   return (
     <div className="tour-description">
       <p className="thedetlais-headers">Explore Tours</p>
@@ -59,6 +84,40 @@ function Detalis({ tour }) {
           </Stack>
         </div>
       </section>
+      <section className="review-section">
+                <div className="main-div-review">
+                  <h3>Rivews</h3>
+                  <div className="under-header">
+                    <div className="review-cards">
+                      {allcomment.map((review) => {
+                        console.log(review);
+                        return (
+
+                          <div class="card-body py-4 mt-2"
+                            className="inside-card">
+                          <p class="font-weight-bold my-3">{review.Email}</p>
+
+                            <p class="font-weight-bold">{review.commentName}</p>
+                            <ReactStars
+                              count={5}
+                              onChange={ratingChanged}
+                              size={25}
+                              activeColor="#ffd700"
+                              value={review.Rating}
+                              edit={false}
+
+                            />
+
+                            <p class="mb-2">
+                              <i class="fas fa-quote-left pe-2"></i>{review.comment}
+                            </p>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </section>
     </div>
   );
 }

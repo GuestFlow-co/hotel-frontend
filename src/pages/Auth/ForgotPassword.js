@@ -10,7 +10,7 @@ function ForgotPassword() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://guestflow.onrender.com/forgotPassword", {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/forgotPassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -73,10 +73,7 @@ function TopSection({ tour }) {
 
           <div className="tour-detalis-btn-section">
             <button className="btn-tour-detalis"> REVIEWS  <Lottie style={{ height: "30px" }} animationData={stars} /></button>
-            <button className="btn-tour-detalis">
-              
-              WHISLIST <Lottie style={{ height: "30px" }} animationData={hart} />
-            </button>
+            
           </div>
         </section>
         <hr

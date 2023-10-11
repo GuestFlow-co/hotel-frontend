@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .signup-main-container {
-//   background: #f6f5f7;
+  //   background: #f6f5f7;
   background: #000;
   display: flex;
   justify-content: center;
@@ -20,6 +20,7 @@
     margin: 0;
     font-size: 32px;
     padding-left: 20px;
+    // margin-top: -1.5em;
     // color: #DDDDDD;
   }
   .create-Account-h2 {
@@ -27,8 +28,8 @@
     margin: 0;
     font-size: 32px;
     padding-left: 40px;
-	font-family: 'Arial', sans-serif;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: "Arial", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     // color: #DDDDDD;
   }
   .create-Account-h3 {
@@ -36,8 +37,8 @@
     margin: 0;
     font-size: 32px;
     padding-right: 40px;
-	font-family: 'Arial', sans-serif;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: "Arial", sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     // color: #DDDDDD;
   }
 
@@ -49,6 +50,10 @@
     margin: 20px 0 30px;
   }
 
+  .signin-span {
+    font-size: 12px;
+    margin-bottom: 1.5em;
+  }
   .signup-span {
     font-size: 12px;
   }
@@ -62,8 +67,6 @@
 
   button {
     border-radius: 20px;
-    // border: 1px solid var(--primary-color);
-    // background-color: var(--primary-color) !important;
     border: 1px solid black;
     background-color: #000 !important;
     color: #ffffff;
@@ -73,6 +76,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+    // border: 1px solid var(--primary-color);
+    // background-color: var(--primary-color) !important;
   }
   .devv .sign-up-button {
     margin-bottom: 20px !important;
@@ -92,32 +97,32 @@
     padding-left: 20px !important;
   }
   button.ghost1 {
+    background-color: #000 !important;
+    color: #fff;
+    padding-left: 24px !important;
+    padding-right: 20px !important;
     // background-color: transparent !important;
     // border-color: #ffff;
-    background-color: #000 !important;
-	color:#fff;
-    padding-left: 24px !important;
-    padding-right: 20px !important;
   }
   button.ghost2 {
-    // background-color: transparent !important;
-    // border-color: #ffffff;
-	background-color: #000 !important;
-	color:#fff;
+    background-color: #000 !important;
+    color: #fff;
     padding-left: 24px !important;
     padding-right: 20px !important;
+    // border-color: #ffffff;
+    // background-color: transparent !important;
   }
 
   .signup-form {
-    background-color: #ffffff;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 50px;
-    height: 100%;
+    padding: 40px 10px;
     text-align: center;
-    margin-top: 1.5em;
+    margin-top: -1.5em;
+    // background-color: #ffffff;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
+    // height: 100%;
   }
   .login-form {
     background-color: #ffffff;
@@ -130,21 +135,28 @@
     text-align: center;
     margin-top: 1.5em;
   }
-  .login-input{
-    width:121%
+  .login-input {
+    width: 121%;
   }
 
-  
+  // input {
+  //   position: relative;
+  //   width: 100%;
+  //   font-size: 1em;
+  //   background-color: #eee;
+  //   padding: 9px 11px;
+  //   margin: 8px 0;
+  //   width: 100%;
+  //   display: flex;
+  //   height: 40px;
+  //   /* padding-top:20px; */
+  //   /* height: 50%; */
+  //   /* gap: 10px; */
+  // }
   input {
-    position: relative;
-    width: 100%;
-    font-size: 1em;
-    background-color: #eee;
-    padding: 9px 11px;
-    margin: 8px 0;
     width: 100%;
     display: flex;
-    height: 40px;
+    // height: 40px;
     /* padding-top:20px; */
     /* height: 50%; */
     /* gap: 10px; */
@@ -154,9 +166,8 @@
     display: flex;
     gap: 10px;
     padding: 9px 11px;
-    width: 179%;
-
-    padding-left: 122px;
+    width: 94%;
+    padding-left: 12px;
     padding-bottom: 0px;
   }
 
@@ -166,7 +177,7 @@
   .other-inputs {
     width: 190%;
     height: 240px;
-    padding-left: 48%;
+    padding-left: 51%;
     /* gap: 10px; */
     /* padding-top:-1 */
   }
@@ -175,18 +186,17 @@
     /* height: 110%; */
   }
   .container-signup {
-	
     margin-top: 100px;
     background-color: #fff;
     border-radius: 10px;
-    // box-shadow: 0 14px 28px rgba(171, 96, 52, 0.5),
-    //   0 10px 10px rgba(171, 96, 52, 0.5);
     box-shadow: 0 14px 28px rgba(171, 96, 52, 0.5),
       0 0px 10px rgba(171, 96, 52, 0.5);
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
+    // box-shadow: 0 14px 28px rgba(171, 96, 52, 0.5),
+    //   0 10px 10px rgba(171, 96, 52, 0.5);
     /* height: fit-content; */
     /* min-height: 600px; */
   }
@@ -194,7 +204,6 @@
   .signup-form-container {
     position: absolute;
     top: 0;
-
     height: 100%;
     transition: all 0.6s ease-in-out;
     /* width: 60%; */
@@ -218,7 +227,6 @@
   }
 
   .container-signup.right-panel-active .sign-up-container {
-	
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -240,7 +248,6 @@
   }
 
   .overlay-container {
-	
     position: absolute;
     top: 0;
     left: 50%;
@@ -284,9 +291,10 @@
   }
 
   .overlay-panel {
-	background: url(https://i.pinimg.com/736x/ae/27/34/ae27344a3a6f274c60dbda108b826217--luxury-hotel-rooms-luxury-hotels.jpg) no-repeat;
-	opacity: 0.5; 
-	// filter: blur(5px);
+    background: url(https://i.pinimg.com/736x/ae/27/34/ae27344a3a6f274c60dbda108b826217--luxury-hotel-rooms-luxury-hotels.jpg)
+      no-repeat;
+    opacity: 0.5;
+    // filter: blur(5px);
     position: absolute;
     display: flex;
     align-items: center;
@@ -340,4 +348,182 @@
     height: 40px;
     width: 40px;
   }
+}
+
+////////
+.signup-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.names-form-group {
+  position: relative;
+}
+
+.signup-form .names-form-group label {
+  font-size: 14px;
+  color: rgb(99, 102, 102);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.signup-form .names-form-group input,
+.signup-form .names-form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  outline: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.signup-form .names-form-group input:placeholder-shown + label,
+.signup-form .names-form-group textarea:placeholder-shown + label {
+  top: 10px;
+  background-color: transparent;
+}
+
+.signup-form .names-form-group input:focus,
+.signup-form .names-form-group textarea:focus {
+  border-color: black;
+}
+
+.signup-form .names-form-group input:focus + label,
+.signup-form .names-form-group textarea:focus + label {
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.signup-form .names-form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+////
+.signup-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.other-form-group {
+  position: relative;
+  width: 91% !important;
+  padding-left: 13px;
+}
+
+.signup-form .other-form-group label {
+  font-size: 14px;
+  color: rgb(99, 102, 102);
+  position: absolute;
+  top: -10px;
+  left: 27px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.signup-form .other-form-group input,
+.signup-form .other-form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  outline: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.signup-form .other-form-group input:placeholder-shown + label,
+.signup-form .other-form-group textarea:placeholder-shown + label {
+  top: 10px;
+  background-color: transparent;
+}
+
+.signup-form .other-form-group input:focus,
+.signup-form .other-form-group textarea:focus {
+  border-color: black;
+}
+
+.signup-form .other-form-group input:focus + label,
+.signup-form .other-form-group textarea:focus + label {
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.signup-form .other-form-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+///
+///
+
+.login-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-group {
+  position: relative;
+}
+
+.login-form .login-form-group label {
+  font-size: 14px;
+  color: rgb(99, 102, 102);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.login-form .login-form-group input,
+.login-form .login-form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  outline: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.login-form .login-form-group input:placeholder-shown + label,
+.login-form .login-form-group textarea:placeholder-shown + label {
+  top: 10px;
+  background-color: transparent;
+}
+
+.login-form .login-form-group input:focus,
+.login-form .login-form-group textarea:focus {
+  border-color: black;
+}
+
+.login-form .login-form-group input:focus + label,
+.login-form .login-form-group textarea:focus + label {
+  top: -10px;
+  left: 10px;
+  background-color: #fff;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.login-form .login-form-group textarea {
+  resize: none;
+  height: 100px;
 }

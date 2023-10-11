@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./rightDetalis.scss";
-import cookie from 'react-cookies';
+import cookie from "react-cookies";
+import ReactStars from "react-rating-stars-component";
 
 import {
   GoogleMap,
@@ -15,14 +16,27 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   Button,
-} from '@chakra-ui/react'
+  useToast,
+} from "@chakra-ui/react";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
 
 function RightDetails({ tour }) {
+  const { id } = useParams();
   const containerStyle = {
     width: "100%",
     height: "300px",
+  };
+  const [newRate, setNewRate] = useState();
+  const [allcomment, setAllcomment] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
+ const [ bookingisUpdated, setbookingisUpdated] = useState(false);
+
+  const [bookingMessage, setBookingMessage] = useState(""); // State for booking status message
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setNewRate(newRating);
   };
 
   const [center, setCenter] = useState({ lat: 0, lng: 0 });
@@ -32,7 +46,7 @@ function RightDetails({ tour }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDeqmOQPJjA_Pg3u-cnJuyCljSqh1EvIs4",
-    libraries: ["directions"], // Include the Directions library
+    libraries: ["directions"],
   });
 
   const [map, setMap] = useState(null);
@@ -46,7 +60,6 @@ function RightDetails({ tour }) {
     setMap(map);
   }, []);
 
-  // Function to geocode a city name and set the center and marker position
   const geocodeCity = (cityName, setPosition) => {
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({ address: cityName }, (results, status) => {
@@ -64,16 +77,13 @@ function RightDetails({ tour }) {
     });
   };
 
-  // Call the geocodeCity function to set the center and marker positions
   useEffect(() => {
     if (isLoaded) {
-      // Replace 'Amman' and 'Irbid' with the city names you want to center the map on
       geocodeCity("Amman", setAmmanMarkerPosition);
       geocodeCity("Irbid", setIrbidMarkerPosition);
     }
   }, [isLoaded]);
 
-  // Calculate and display directions between Amman and Irbid
   useEffect(() => {
     if (ammanMarkerPosition && irbidMarkerPosition && isLoaded) {
       const directionsService = new window.google.maps.DirectionsService();
@@ -90,7 +100,7 @@ function RightDetails({ tour }) {
         {
           origin,
           destination,
-          travelMode: "DRIVING", // You can use other travel modes like 'WALKING', 'BICYCLING', etc.
+          travelMode: "DRIVING",
         },
         (result, status) => {
           if (status === "OK") {
@@ -102,55 +112,120 @@ function RightDetails({ tour }) {
       );
     }
   }, [ammanMarkerPosition, irbidMarkerPosition, isLoaded]);
+
   const startDate = new Date(tour.start_date);
   const endDate = new Date(tour.end_date);
-const [numberofSets,setSets]=useState("")
-  function setschange (e){
-    setSets(e.target.value)
-    
-  }
-    // const bookings = useSelector((state) => state.bookings.bookings);
 
   const getSet = (e) => {
     e.preventDefault();
-    const user = cookie.load('user');
-    console.log(user,"000");
-     if(user){
-      console.log(user.user_id,"user.user_id");
-    
-      getBooking(user)
-      
-   }
-    const obj={
+    const user = cookie.load("user");
+    const obj = {
+      tourId: parseInt(id),
+      number_of_seats_inTour: parseInt(value),
+    };
 
-      number_of_seats_inTour: parseInt(numberofSets)
+    if (user) {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/bookings`)
+        .then((response) => {
+          const bookingss = response.data;
+          const theuserBooking = bookingss.filter(
+            (item) => item.customer_id === user.user_id
+          );
+          const firstBooking = theuserBooking[0];
+
+          if (firstBooking) {
+            axios
+              .put(
+                `${process.env.REACT_APP_BASE_URL}/bookings/${firstBooking.booking_id}`,
+                obj
+              )
+              .then((updateResponse) => {
+                setbookingisUpdated(true)
+                setBookingMessage(
+                  "Booking Successful: You have successfully booked a seat."
+                );
+              })
+              .catch((updateError) => {
+                console.error("Error updating booking:", updateError);
+                setbookingisUpdated(true)
+                setBookingMessage(
+                  "Booking Failed: An error occurred while updating the booking."
+                );
+              });
+          } else {
+            setBookingMessage(
+              "Booking Failed: You need to make a booking first."
+            );
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching bookings:", error);
+          setBookingMessage(
+            "Booking Failed: An error occurred while fetching bookings."
+          );
+        });
     }
-    console.log(obj,"objjjj");
-
-    // try{
-    //   axios.put(`${process.env.REACT_APP_BASE_URL}/booking`)
-    // }catch(e){
-    //   console.log(e);
-    // }
   };
-  function getBooking (user){
-  
-    axios.get(`${process.env.REACT_APP_BASE_URL}/booking`)
-  .then((response) => {
-    const bookingss = response.data;
-    console.log(bookingss, "theuserBooking");
-    // const theuserBooking = bookingss.filter(item => item.customer_id === user.user_id);
-    // console.log(theuserBooking, "Filtered Bookings");
-  })
-  .catch((error) => {
-    console.error("Error fetching bookings:", error);
-  });
-  }
 
-  // useEffect(() => {
-  //   const user = cookie.load('user');
-  //   console.log(user,"00");
-  // }, []);
+  const [value, setValue] = useState(0);
+
+  const handleIncrement = () => {
+    setValue(parseInt(value) + 1);
+  };
+
+  const handleDecrement = () => {
+    setValue(parseInt(value) - 1);
+  };
+  const [postReview, setposReview] = useState(""); // State for booking status message
+  const [getallbooking, setgetallbooking] = useState(""); // State for booking status message
+  useEffect(() => {
+    const user = cookie.load("user");
+    console.log(user, "00000000000");
+    if (user) {
+      axios
+        .get(`${process.env.REACT_APP_BASE_URL}/bookings`)
+        .then((response) => {
+          const bookingss = response.data;
+          console.log(bookingss);
+          const theuserBooking = bookingss.filter((item) => item.customer_id === user.user_id);
+          // console.log(typeof user.user_id, "user.user_id",);
+          // console.log(theuserBooking, "theuserBooking");
+          setgetallbooking(theuserBooking);
+          
+        });
+    }
+  }, [isUpdated]);
+  
+  const Addcomment = (e) => {
+    e.preventDefault();
+    console.log(getallbooking,id ,typeof id);
+    const there = getallbooking.filter((item) => item.tourId === parseInt(id));
+    if (there[0]) {
+      const obj = {
+        commentName: e.target.Name.value,
+        Email: e.target.Email.value,
+        comment: e.target.comment.value,
+        Rating: newRate,
+        theTour_id: id,
+      };
+      console.log(obj, "from review");
+      axios
+        .post(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`, obj)
+        .then((res) => {
+          console.log(res.data);
+          setIsUpdated(true);
+          setTimeout(() => {
+            setIsUpdated(false);
+          }, 2000);
+          setposReview("thank You For You Review");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setIsUpdated(true)
+      setposReview("you must have a booking first");
+    }
+  };
   return (
     <div className="RightDetalis-container">
       {isLoaded ? (
@@ -162,15 +237,12 @@ const [numberofSets,setSets]=useState("")
             onLoad={onLoad}
             onUnmount={onUnmount}
           >
-            {/* Add markers for Amman and Irbid */}
             {ammanMarkerPosition && (
               <Marker position={ammanMarkerPosition} title="Amman" />
             )}
             {irbidMarkerPosition && (
               <Marker position={irbidMarkerPosition} title="Irbid" />
             )}
-
-            {/* Display directions on the map */}
             {directions && <DirectionsRenderer directions={directions} />}
           </GoogleMap>
         </div>
@@ -183,66 +255,124 @@ const [numberofSets,setSets]=useState("")
           style={{
             width: "100%",
             borderWidth: "2px",
-            color:"black"
+            color: "black",
           }}
-        />     
-           <form onSubmit={getSet}>
+        />
+        <form onSubmit={getSet}>
           <div className="label-input-div">
-            <label> starting Date</label>
+            <label> Starting Date</label>
             <p>{startDate.toLocaleString()} </p>
-            
           </div>
           <hr
-          style={{
-            width: "100%",
-            borderWidth: "2px",
-            color:"black"
-          }}
-        />    
+            style={{
+              width: "100%",
+              borderWidth: "2px",
+              color: "black",
+            }}
+          />
           <div className="label-input-div">
             <label> End Date</label>
             <p>{endDate.toLocaleString()} </p>
           </div>
           <hr
-          style={{
-            width: "100%",
-            borderWidth: "2px",
-            color:"black"
-          }}
-        />    
+            style={{
+              width: "100%",
+              borderWidth: "2px",
+              color: "black",
+            }}
+          />
           <p className="BookingTour">Tickets</p>
           <hr
-          style={{
-            width: "100%",
-            borderWidth: "2px",
-            color:"black"
-          }}
-        />   
-          <div className="label-input-div">
-            <label> Ticket price {tour.Seat_price}</label>
-            {/* <NumberInput style={{height:"5px"}} defaultValue={1} >
-              <NumberInputField  className="chakra-input-tour" />
-              <NumberInputStepper >
-                
-                <NumberIncrementStepper style={{height:"10px"}}/>
-                <NumberDecrementStepper />
+            style={{
+              width: "100%",
+              borderWidth: "2px",
+              color: "black",
+            }}
+          />
+          <div style={{display:"flex", justifyContent:"space-between",alignItems:"center",}} className="label-input-div">
+            <label> Ticket price {tour.Seat_price}$</label>
+            <div style={{display:"flex", justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
+            <p>Number of sets</p>
+            <NumberInput value={value} defaultValue={1}>
+              <NumberInputField
+                className="customNumberInputField"
+                _hover={{ borderColor: "blue.400" }}
+                _focus={{ borderColor: "blue.600", boxShadow: "outline" }}
+                paddingX={2}
+                paddingY={1}
+                fontSize="md"
+                fontWeight="semibold"
+                color="gray.700"
+                bg="white"
+                border="1px solid"
+                borderColor="gray.300"
+                borderRadius="md"
+                transition="border-color 0.2s, box-shadow 0.2s"
+                maxWidth="100px"
+                />{" "}
+              <NumberInputStepper style={{ height: "15px" }}>
+                <NumberIncrementStepper onClick={handleIncrement} />
+                <NumberDecrementStepper onClick={handleDecrement} />
               </NumberInputStepper>
-            </NumberInput> */}
-            <input name="sets" onChange={setschange}/> 
+            </NumberInput>
+                </div>
           </div>
           <hr
-          style={{
-            width: "100%",
-            borderWidth: "2px",
-            color:"black"
-          }}
-        />    
+            style={{
+              width: "100%",
+              borderWidth: "2px",
+              color: "black",
+            }}
+          />
+          <Button type="submit" className="btn-Booking-Now">
+            Booking Now{" "}
+            <div>
+              <i className="far fa-paper-plane"></i>
+            </div>
+          </Button>
+          {bookingisUpdated ? 
+          <div className="theToast ">
 
+          {bookingMessage && <p>{bookingMessage}</p>}
+          </div> :<></>
+        }
+          
+        </form>
+      </section>
+      <section className="Form-section-detalis">
+        <form onSubmit={Addcomment} className="rating-form-detalis">
+          <p id="review">Add Review</p>
+          <label> Your Name</label>
+          <input id="Name" type="text"></input>
+          <label> Email</label>
+          <input id="Email" type="email"></input>
+          <label> Your Comment</label>
+          <textarea
+            style={{ paddingLeft: "15px", border: "1px solid gray" }}
+            id="comment"
+          ></textarea>
+          <p> How was your experience? </p>
+          <div className="stars">
+            <ReactStars
+              count={5}
+              onChange={ratingChanged}
+              size={42}
+              activeColor="#ffd700"
+            />
+          </div>
+          <Button type="submit" className="btn-Booking-Now">
+            Submit{" "}
+            <div>
+              <i className="fa-regular fa-star"></i>
+            </div>
+          </Button>
+          {
+            isUpdated ? 
+          <div className="theToast ">
 
-        <Button className="btn-Booking-Now" onClick={getSet}>Booking Now <div>
-        <i class="far fa-paper-plane"></i>
-          </div></Button>
-    
+          {postReview && <p>{postReview}</p>}
+          </div> : <></>
+          }
         </form>
       </section>
     </div>
