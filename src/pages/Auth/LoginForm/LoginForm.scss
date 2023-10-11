@@ -14,7 +14,17 @@
   * {
     box-sizing: border-box;
   }
-
+  .top-error-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFB266; /* Customize the background color */
+    color: white; /* Customize the text color */
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+  }
   .create-Account-h1 {
     font-weight: bold;
     margin: 0;
