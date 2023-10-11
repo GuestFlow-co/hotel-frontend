@@ -11,7 +11,7 @@ function SignInUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();    
-  
+
   const initialFormData = {
     username: "",
     password: "",
@@ -94,9 +94,9 @@ function SignInUpForm() {
   
   function handleLogin(e) {
     e.preventDefault();
-    login(username, password);
-    navigate('/');   
-    
+    login(username, password)
+    loginData.logge?navigate('/'): navigate('/rooms')
+    // if (loginData.logged) window.location.href = '/'; 
   }
 
   function handleUsernameChange(e) {
