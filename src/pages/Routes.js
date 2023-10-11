@@ -19,6 +19,7 @@ import FAQ from "./FAQ/FAQ";
 
 import ContactUs from "./ContactUs/ContactUs";
 
+import Dashborad from "./dashborad/Dashborad";
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -28,7 +29,7 @@ export default function Routers() {
       <LoginProvider>
 
 
-        <Header />
+        {/* <Header /> */}
 
 
         <Routes>
@@ -44,7 +45,6 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
-          <Route path='/FAQ' element={<FAQ />} />
 
         </Routes>
 
@@ -52,7 +52,7 @@ export default function Routers() {
 
       </LoginProvider>
 
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   );

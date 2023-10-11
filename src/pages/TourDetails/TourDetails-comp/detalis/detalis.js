@@ -90,15 +90,14 @@ function Detalis({ tour }) {
                   <div className="under-header">
                     <div className="review-cards">
                       {allcomment.map((review) => {
+                        console.log(review);
                         return (
 
                           <div class="card-body py-4 mt-2"
                             className="inside-card">
-                            <div class="d-flex justify-content-center mb-4">
-                              <img src="https://png.pngtree.com/png-clipart/20230510/original/pngtree-personal-flat-icon-png-image_9156073.png"
-                                class="rounded-circle shadow-1-strong" width="100" height="100" />
-                            </div>
-                            <h5 class="font-weight-bold">{review.commentname}</h5>
+                          <p class="font-weight-bold my-3">{review.Email}</p>
+
+                            <p class="font-weight-bold">{review.commentName}</p>
                             <ReactStars
                               count={5}
                               onChange={ratingChanged}
@@ -108,7 +107,6 @@ function Detalis({ tour }) {
                               edit={false}
 
                             />
-                            <h6 class="font-weight-bold my-3">{review.email}</h6>
 
                             <p class="mb-2">
                               <i class="fas fa-quote-left pe-2"></i>{review.comment}
