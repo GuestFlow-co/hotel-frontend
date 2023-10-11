@@ -11,11 +11,14 @@ import Content from "./dashboradComp/sideBar/content";
 import MainDashboard from "./dashboradComp/home/mainDashboard";
 
 
-function Dashborad() {
+function Dashborad({children}) {
   return (
     <div className="the-father-of-allDashborad">
-    <Spacer />
-    <MainDashboard />
+      <Content />
+    <div>
+          {children}
+    </div>
+    
     </div>
   )
 }

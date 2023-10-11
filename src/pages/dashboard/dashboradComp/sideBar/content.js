@@ -5,7 +5,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import "./content.scss";
 import { Link } from "react-router-dom";
 
-function Content() {
+function Content({children}) {
   // Initialize disclosure objects for each menu
   const firstMenuDisclosure = useDisclosure();
   const secondMenuDisclosure = useDisclosure();
