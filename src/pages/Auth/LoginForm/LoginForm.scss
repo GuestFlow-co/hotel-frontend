@@ -2,30 +2,33 @@
 
 .signup-main-container {
   //   background: #f6f5f7;
-  background: #000;
+  // background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: -20px 0 50px;
+  // margin: -20px 0 50px;
 
   * {
     box-sizing: border-box;
   }
   .top-error-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #FFB266; /* Customize the background color */
-    color: white; /* Customize the text color */
+    position:static;
+    width: 200%;
+    padding-left: 4%;
+    border-radius: 4px;
+    background-color: #e24b31; 
+    color: white;
     text-align: center;
-    padding: 10px;
-    z-index: 1;
+    padding-top: -10%;
+    // padding: 10px;
+    // top: 0;
+    // left: 0;
+    // z-index: 1;
   }
-  .create-Account-h1 {
+  .create-Account-h1{
     font-weight: bold;
     margin: 0;
     font-size: 32px;
@@ -540,7 +543,6 @@
 }
 
 .error-403 {
-  color: red; /* Set text color to red for emphasis */
-  font-weight: bold; /* Make the text bold */
-  /* Add any other styles to make the error message stand out */
+  color: red; 
+  font-weight: bold; 
 }

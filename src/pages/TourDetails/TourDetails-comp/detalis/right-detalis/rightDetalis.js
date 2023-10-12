@@ -30,7 +30,7 @@ function RightDetails({ tour }) {
   const [newRate, setNewRate] = useState();
   const [allcomment, setAllcomment] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
- const [ bookingisUpdated, setbookingisUpdated] = useState(false);
+  const [bookingisUpdated, setbookingisUpdated] = useState(false);
 
   const [bookingMessage, setBookingMessage] = useState(""); // State for booking status message
 
@@ -142,22 +142,25 @@ function RightDetails({ tour }) {
                 obj
               )
               .then((updateResponse) => {
-                setbookingisUpdated(true)
+                setbookingisUpdated(true);
                 setBookingMessage(
                   "Booking Successful: You have successfully booked a seat."
                 );
+                setTimeout(() => setBookingMessage(""), 2000);
               })
               .catch((updateError) => {
                 console.error("Error updating booking:", updateError);
-                setbookingisUpdated(true)
+                setbookingisUpdated(true);
                 setBookingMessage(
                   "Booking Failed: An error occurred while updating the booking."
                 );
+                setTimeout(() => setBookingMessage(""), 2000);
               });
           } else {
             setBookingMessage(
               "Booking Failed: You need to make a booking first."
             );
+            setTimeout(() => setBookingMessage(""), 2000);
           }
         })
         .catch((error) => {
@@ -165,6 +168,7 @@ function RightDetails({ tour }) {
           setBookingMessage(
             "Booking Failed: An error occurred while fetching bookings."
           );
+          setTimeout(() => setBookingMessage(""), 2000);
         });
     }
   };
@@ -189,18 +193,19 @@ function RightDetails({ tour }) {
         .then((response) => {
           const bookingss = response.data;
           console.log(bookingss);
-          const theuserBooking = bookingss.filter((item) => item.customer_id === user.user_id);
+          const theuserBooking = bookingss.filter(
+            (item) => item.customer_id === user.user_id
+          );
           // console.log(typeof user.user_id, "user.user_id",);
           // console.log(theuserBooking, "theuserBooking");
           setgetallbooking(theuserBooking);
-          
         });
     }
   }, [isUpdated]);
-  
+
   const Addcomment = (e) => {
     e.preventDefault();
-    console.log(getallbooking,id ,typeof id);
+    console.log(getallbooking, id, typeof id);
     const there = getallbooking.filter((item) => item.tourId === parseInt(id));
     if (there[0]) {
       const obj = {
@@ -220,11 +225,13 @@ function RightDetails({ tour }) {
             setIsUpdated(false);
           }, 2000);
           setposReview("thank You For You Review");
+          setTimeout(() => setposReview(""), 2000);
         })
         .catch((err) => console.log(err));
     } else {
-      setIsUpdated(true)
+      setIsUpdated(true);
       setposReview("you must have a booking first");
+      setTimeout(() => setposReview(""), 2000);
     }
   };
   return (
@@ -259,7 +266,7 @@ function RightDetails({ tour }) {
             color: "black",
           }}
         />
-        <form onSubmit={getSet}>
+        <form onSubmit={getSet} className="booking-tour-form">
           <div className="label-input-div">
             <label> Starting Date</label>
             <p>{startDate.toLocaleString()} </p>
@@ -290,33 +297,47 @@ function RightDetails({ tour }) {
               color: "black",
             }}
           />
-          <div style={{display:"flex", justifyContent:"space-between",alignItems:"center",}} className="label-input-div">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+            className="label-input-div"
+          >
             <label> Ticket price {tour.Seat_price}$</label>
-            <div style={{display:"flex", justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-            <p>Number of sets</p>
-            <NumberInput value={value} defaultValue={1}>
-              <NumberInputField
-                className="customNumberInputField"
-                _hover={{ borderColor: "blue.400" }}
-                _focus={{ borderColor: "blue.600", boxShadow: "outline" }}
-                paddingX={2}
-                paddingY={1}
-                fontSize="md"
-                fontWeight="semibold"
-                color="gray.700"
-                bg="white"
-                border="1px solid"
-                borderColor="gray.300"
-                borderRadius="md"
-                transition="border-color 0.2s, box-shadow 0.2s"
-                maxWidth="100px"
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <p>Number of sets</p>
+              <NumberInput value={value} defaultValue={1}>
+                <NumberInputField
+                  className="customNumberInputField"
+                  _hover={{ borderColor: "blue.400" }}
+                  _focus={{ borderColor: "blue.600", boxShadow: "outline" }}
+                  paddingX={2}
+                  paddingY={1}
+                  fontSize="md"
+                  fontWeight="semibold"
+                  color="gray.700"
+                  bg="white"
+                  border="1px solid"
+                  borderColor="gray.300"
+                  borderRadius="md"
+                  transition="border-color 0.2s, box-shadow 0.2s"
+                  maxWidth="100px"
                 />{" "}
-              <NumberInputStepper style={{ height: "15px" }}>
-                <NumberIncrementStepper onClick={handleIncrement} />
-                <NumberDecrementStepper onClick={handleDecrement} />
-              </NumberInputStepper>
-            </NumberInput>
-                </div>
+                <NumberInputStepper style={{ height: "15px" }}>
+                  <NumberIncrementStepper onClick={handleIncrement} />
+                  <NumberDecrementStepper onClick={handleDecrement} />
+                </NumberInputStepper>
+              </NumberInput>
+            </div>
           </div>
           <hr
             style={{
@@ -331,26 +352,29 @@ function RightDetails({ tour }) {
               <i className="far fa-paper-plane"></i>
             </div>
           </Button>
-          {bookingisUpdated ? 
-          <div className="theToast ">
-
-          {bookingMessage && <p>{bookingMessage}</p>}
-          </div> :<></>
-        }
-          
+          {bookingisUpdated ? (
+            <div className="theToast ">
+              {bookingMessage && (
+                <p className="top-error-bar">{bookingMessage}</p>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
         </form>
       </section>
       <section className="Form-section-detalis">
         <form onSubmit={Addcomment} className="rating-form-detalis">
           <p id="review">Add Review</p>
           <label> Your Name</label>
-          <input id="Name" type="text"></input>
-          <label> Email</label>
-          <input id="Email" type="email"></input>
+          <input required id="Name" type="text"></input>
+          <label> Email</label> 
+          <input required id="Email" type="email"></input>
           <label> Your Comment</label>
           <textarea
             style={{ paddingLeft: "15px", border: "1px solid gray" }}
             id="comment"
+            required
           ></textarea>
           <p> How was your experience? </p>
           <div className="stars">
@@ -367,13 +391,13 @@ function RightDetails({ tour }) {
               <i className="fa-regular fa-star"></i>
             </div>
           </Button>
-          {
-            isUpdated ? 
-          <div className="theToast ">
-
-          {postReview && <p>{postReview}</p>}
-          </div> : <></>
-          }
+          {isUpdated ? (
+            <div className="theToast ">
+              {postReview && <p className="top-error-bar">{postReview}</p>}
+            </div>
+          ) : (
+            <></>
+          )}
         </form>
       </section>
     </div>
