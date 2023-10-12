@@ -34,7 +34,7 @@ function MainDashboard() {
 //           });
   return (
     <div className="main-dev-dashbordHome">
-        <div  style={{width:"100%"}}>
+        <div className="header-cards-dash" style={{width:"100%"}}>
             <div className="dash-card-home">
                         asd
             </div>

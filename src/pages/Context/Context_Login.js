@@ -1,4 +1,5 @@
-import React, { useEffect, useReducer ,useState} from "react";
+import React, { useEffect, useReducer, useState } from "react";
+
 import cookie from "react-cookies";
 import jwt_decode from "jwt-decode";
 import { initialState, ReducerLogin } from "../../store/reducers/ReducerLogin";
@@ -11,6 +12,7 @@ export const LoginContext = React.createContext();
 function LoginProvider(props) {
   const [loginData, dispatch] = useReducer(ReducerLogin, initialState);
   const navigate = useNavigate();
+
   const toast = useToast();
   const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
 
@@ -21,6 +23,7 @@ function LoginProvider(props) {
   async function login(username, password) {
     console.log("...RUNNING");
     let { logged, token, user } = loginData;
+
     try {
       let response = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/signin`,
@@ -35,6 +38,9 @@ function LoginProvider(props) {
       let auth = response.data;
       if (auth) {
         try {
+          cookie.save("auth", auth.token);
+          cookie.save("user", auth.user);
+
           validateToken(auth.token);
           navigate("/");
         } catch (err) {
@@ -47,10 +53,9 @@ function LoginProvider(props) {
         setErrorMessage("wrong password or username  ");
         setTimeout(() => setErrorMessage(""), 2000);
       }
-     
     }
   }
- 
+
   function logout() {
     setLoginState(false, null, {});
     cookie.remove("user");
@@ -70,8 +75,9 @@ function LoginProvider(props) {
   }
 
   function setLoginState(logged, token, user, err) {
-    cookie.save("auth", token);
-    cookie.save("user", user);
+    // cookie.save('auth', token);
+    // cookie.save('user', user);
+
     dispatch({ type: "CHANGE_STATUS_OF_LOGIN", payload: logged });
     dispatch({ type: "CHANGE_THE_TOKEN", payload: token });
     dispatch({ type: "CHANGE_THE_USER", payload: user });
@@ -89,6 +95,7 @@ function LoginProvider(props) {
   }, []);
 
   return (
+
     <LoginContext.Provider value={{errorMessage, able, login, logout, loginData, dispatch }}>
       {props.children}
     </LoginContext.Provider>

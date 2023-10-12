@@ -1,4 +1,11 @@
 .the-father-of-allDashborad{
+    .content-dev-dashboard{
+        width: 22%;
+    }
     display: flex;
     flex-direction: row;
+    .all-content-dev{
+        margin-left: 15px;
+        width: 71%;
+    }
 }
