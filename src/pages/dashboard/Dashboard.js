@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Flex,
@@ -9,15 +9,22 @@ import {
 import "./Dashboard.scss"
 import Content from "./dashboradComp/sideBar/content";
 import MainDashboard from "./dashboradComp/home/mainDashboard";
+import { Routes ,Route} from 'react-router-dom'
+import BookingDash from "./pages/BookingDash";
 
-
-function Dashborad({children}) {
+function Dashborad() {
+  useEffect(()=>{
+    
+  })
   return (
     <div className="the-father-of-allDashborad">
       <Content />
     <div>
-          {children}
-    </div>
+    <Routes>
+        <Route path="/allbooking" element={<MainDashboard />} />
+        <Route path="/d" element={<BookingDash />} />
+
+          </Routes>    </div>
     
     </div>
   )

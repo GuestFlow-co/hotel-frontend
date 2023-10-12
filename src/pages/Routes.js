@@ -24,6 +24,7 @@ import BookingDash from "./dashboard/pages/BookingDash";
 import MainDashboard from "./dashboard/dashboradComp/home/mainDashboard";
 import Content from "./dashboard/dashboradComp/sideBar/content";
 import Dashborad from "./dashboard/Dashboard";
+import MM from "./dashboard/MM";
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -32,15 +33,20 @@ export default function Routers() {
     <div>
       <LoginProvider>
 
-      {/* <Dashborad>
+     
+        {/* <Header /> */}
+        {/* <Dashborad>
           <Routes>
-      <Route path="/dashboard/allbooking" element={<MainDashboard />} />
-      <Route path="/dashboard/d" element={<BookingDash />} />
+        <Route path="/dashboard/allbooking" element={<MainDashboard />} />
+        <Route path="/dashboard/d" element={<BookingDash />} />
 
           </Routes>
 
       </Dashborad> */}
+
+
         <Header />
+
 
 
         <Routes>
@@ -56,7 +62,7 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
 
         </Routes>
 
