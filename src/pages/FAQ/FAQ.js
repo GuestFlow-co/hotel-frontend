@@ -7,7 +7,7 @@ export default function FAQ() {
   return (
     <>
     {/* Page header */}
-    <section className="page-header bg--cover" style={{ backgroundImage: "url(https://labartisan.net/demo/tavern/assets/images/header/bg.jpg)" }}>
+    <section className="page-header bg--cover" style={{ backgroundImage: "url(	https://labartisan.net/demo/tavern/assets/images/header/bg.jpg)" }}>
       <div className="container">
         <div className="page-header__content text-center">
           <h2>FAQ</h2>

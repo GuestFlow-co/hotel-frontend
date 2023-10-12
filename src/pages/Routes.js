@@ -24,7 +24,6 @@ import BookingDash from "./dashboard/pages/BookingDash";
 import MainDashboard from "./dashboard/dashboradComp/home/mainDashboard";
 import Content from "./dashboard/dashboradComp/sideBar/content";
 import Dashborad from "./dashboard/Dashboard";
-import MM from "./dashboard/MM";
 
 export default function Routers() {
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -32,18 +31,6 @@ export default function Routers() {
   return (
     <div>
       <LoginProvider>
-
-     
-        {/* <Header /> */}
-        {/* <Dashborad>
-          <Routes>
-        <Route path="/dashboard/allbooking" element={<MainDashboard />} />
-        <Route path="/dashboard/d" element={<BookingDash />} />
-
-          </Routes>
-
-      </Dashborad> */}
-        {/* <Header /> */}
 
 
         <Routes>
@@ -53,13 +40,14 @@ export default function Routers() {
           <Route path='/' element={<HomePage />} />
           <Route path='/tour' element={<Tour />} />
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
-          
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
 
         </Routes>
 
