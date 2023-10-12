@@ -32,16 +32,6 @@ export default function Routers() {
     <div>
       <LoginProvider>
 
-      {/* <Dashborad>
-          <Routes>
-      <Route path="/dashboard/allbooking" element={<MainDashboard />} />
-      <Route path="/dashboard/d" element={<BookingDash />} />
-
-          </Routes>
-
-      </Dashborad> */}
-        <Header />
-
 
         <Routes>
 
@@ -50,7 +40,8 @@ export default function Routers() {
           <Route path='/' element={<HomePage />} />
           <Route path='/tour' element={<Tour />} />
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
-          
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}
