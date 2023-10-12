@@ -14,7 +14,17 @@
   * {
     box-sizing: border-box;
   }
-
+  .top-error-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFB266; /* Customize the background color */
+    color: white; /* Customize the text color */
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+  }
   .create-Account-h1 {
     font-weight: bold;
     margin: 0;
@@ -44,7 +54,7 @@
 
   .signup-p {
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 100px;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
@@ -137,6 +147,7 @@
   }
   .login-input {
     width: 121%;
+    font-weight: 100;
   }
 
   // input {
@@ -399,7 +410,7 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
@@ -459,7 +470,7 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
@@ -519,11 +530,17 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
 .login-form .login-form-group textarea {
   resize: none;
   height: 100px;
+}
+
+.error-403 {
+  color: red; /* Set text color to red for emphasis */
+  font-weight: bold; /* Make the text bold */
+  /* Add any other styles to make the error message stand out */
 }

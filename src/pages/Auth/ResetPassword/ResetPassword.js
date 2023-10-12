@@ -56,7 +56,7 @@ function ResetPassword() {
         )}
         <form className="reset-form" onSubmit={handleSubmit}>
           {/* <div className="reset-form-group"> */}
-          <div class="reset-form-group">
+          <div className="reset-form-group">
             <input
               type="email"
               placeholder=""
@@ -64,10 +64,10 @@ function ResetPassword() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label for="email">email</label>
+            <label htmlFor="email">email</label>
           </div>
 
-          <div class="reset-form-group">
+          <div className="reset-form-group">
             <input
               type="password"
               placeholder=""
@@ -75,10 +75,10 @@ function ResetPassword() {
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
-            <label for="password">password</label>
+            <label htmlFor="password">password</label>
           </div>
 
-          <div class="reset-form-group">
+          <div className="reset-form-group">
             <input
               type="password"
               placeholder=""
@@ -86,7 +86,7 @@ function ResetPassword() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <label for="new password">new password</label>
+            <label htmlFor="new password">new password</label>
           </div>
 
           {/* </div> */}

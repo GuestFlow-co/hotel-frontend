@@ -52,7 +52,7 @@ function ForgotPassword() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <label for="email" className="forget-label" htmlFor="email">
+              <label className="forget-label" htmlFor="email">
                 Enter your email
               </label>
             </div>
