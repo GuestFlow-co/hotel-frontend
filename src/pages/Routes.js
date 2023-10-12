@@ -40,7 +40,7 @@ export default function Routers() {
           </Routes>
 
       </Dashborad> */}
-        {/* <Header /> */}
+        <Header />
 
 
         <Routes>
@@ -64,7 +64,7 @@ export default function Routers() {
 
       </LoginProvider>
 
-      {/* <Footer /> */}
+      <Footer />
 
     </div>
   );
