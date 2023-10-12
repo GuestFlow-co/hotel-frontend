@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './room.scss'
 import { useState, useEffect } from 'react';
-
+import RoomImg from '../../../../assets/images/1.png'
 
 export default function RoomCard() {
   const [rooms, setRooms] = useState([]);
@@ -98,7 +98,7 @@ export default function RoomCard() {
                 <div className="room__item room__item--style1">
                   <div className="room__item-inner">
                     <div className="room__item-thumb">
-                      <img src="	https://labartisan.net/demo/tavern/assets/images/room/home1/1.png" alt="room image" />
+                      <img src={RoomImg} alt="room image" />
                     </div>
                     <div className="room__item-content">
                       <div className="room__item-header">
