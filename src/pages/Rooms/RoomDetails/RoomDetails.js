@@ -207,9 +207,6 @@ const RoomDetail = () => {
           {/* </Container> */}
         </Container>
         {/* <Rating room={room} /> */}
-        <br/>
-
-        <br/>
       </DetailWrapper>
       <Container className="position-absolute top-0 start-1 end-0  " alignItems={'center'}  mt={'24.5%'} w={'30%'}  > 
        <Container w={'100%'} pl={'10%'} pr={'10%'} pb={'7%'} pt={'7%'}>
@@ -217,7 +214,7 @@ const RoomDetail = () => {
 </Container>
       </Container>
 
-      <Container className="position-absolute top-0 start-1 end-0  " alignItems={'center'}   mt={'65%'} w={'30%'}  > 
+      <Container className="position-absolute top-0 start-1 end-0  " alignItems={'center'}   mt={'50%'} w={'30%'}  > 
       <Text pt={7} pl={7} fontWeight={'bold'}>More Rooms</Text>
   <Container > {RoomItems} </Container>
       </Container>

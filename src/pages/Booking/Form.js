@@ -1,33 +1,31 @@
-// BookingForm.js
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBooking } from "../../store/actions/Bookings/BookingActions";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import cookie from "react-cookies";
+import { Button } from "bootstrap";
 
 const BookingForm = () => {
   const { room_number } = useParams();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
   const bookings = useSelector((state) => state.bookings.bookings);
-  const user = cookie.load("user"); // Corrected the cookie key
-  console.log("User Data:", user);
+  const user = cookie.load("user");
+  console.log(user)
+  const auth = cookie.load("auth");
+  console.log(typeof auth)
   const user_id = user ? user.user_id : "";
-  console.log("user_id", user_id);
-
   const room = rooms.find((room) => room.room_number === room_number);
-
   const roomId = room ? room.Room_id : "";
-  // Use correct property to get booking cost
-  const bookingCost = bookings.length > 0 ? bookings[0].bookingCost : 0;
 
   const [bookingData, setBookingData] = useState({
-    theRoomID: roomId,
     check_in_date: "",
     check_out_date: "",
-    user_id: user ? user.user_id : "",
+    theRoomID: roomId,
+    customer_id: user_id,
   });
+
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false); // State for the welcome popup
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,13 +34,22 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!bookingData.check_in_date || !bookingData.check_out_date) {
+      alert("Please fill in both check-in and check-out dates.");
+      return;
+    }
+
     dispatch(addBooking(bookingData));
-    // Reset the form fields
+
+    // Show the welcome popup
+    setShowWelcomePopup(true);
+
     setBookingData({
-      theRoomID: roomId,
       check_in_date: "",
       check_out_date: "",
-      user_id: user ? user.user_id : "",
+      theRoomID: roomId,
+      customer_id: user_id,
     });
   };
 
@@ -68,18 +75,20 @@ const BookingForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Booking Cost:</label>
-          <input
-            type="text"
-            name="bookingCost"
-            value={bookingCost}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Add more input fields for other booking data */}
-        <button type="submit">Add Booking</button>
+        {!user.user_id ? (
+          <Link to="/login">
+            <button className="bg-brown">Add Booking</button>
+          </Link>
+        ) : (
+          <button className="bg-brown" type="submit">Add Booking</button>
+        )}
       </form>
+
+      {showWelcomePopup && (
+        <div className="welcome-popup">
+          <p>Welcome to our hotel! Your booking has been added.</p>
+        </div>
+      )}
     </div>
   );
 };
