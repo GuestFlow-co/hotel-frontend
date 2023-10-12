@@ -119,6 +119,7 @@ function RightDetails({ tour }) {
   const getSet = (e) => {
     e.preventDefault();
     const user = cookie.load("user");
+    console.log(user)
     const obj = {
       tourId: parseInt(id),
       number_of_seats_inTour: parseInt(value),

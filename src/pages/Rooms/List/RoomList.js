@@ -56,8 +56,9 @@ const RoomList = () => {
     <Flex
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
+      justifyContent="space-between"
       minHeight="100vh"
+      pl={"-1%"}
     >
       <img
         src={hero}
