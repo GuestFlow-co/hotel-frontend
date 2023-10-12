@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,useLocation } from "react-router-dom";
 import RoomList from "./Rooms/List/RoomList";
 import { useSelector } from "react-redux/es";
 import RoomDetail from "./Rooms/RoomDetails/RoomDetails";
@@ -20,13 +20,12 @@ import FAQ from "./FAQ/FAQ";
 import ContactUs from "./ContactUs/ContactUs";
 
 import Dashboard from "./dashboard/Dashboard";
-import BookingDash from "./dashboard/pages/BookingDash";
-import MainDashboard from "./dashboard/dashboradComp/home/mainDashboard";
-import Content from "./dashboard/dashboradComp/sideBar/content";
-import Dashborad from "./dashboard/Dashboard";
-import MM from "./dashboard/MM";
+
 
 export default function Routers() {
+  const location =useLocation().pathname;
+  const isDashboardPage = location.startsWith("/dashboard");
+  const isSignInPage = location === "/login";
   const rooms = useSelector((state) => state.rooms.rooms);
 
   return (
@@ -34,18 +33,10 @@ export default function Routers() {
       <LoginProvider>
 
      
-        {/* <Header /> */}
-        {/* <Dashborad>
-          <Routes>
-        <Route path="/dashboard/allbooking" element={<MainDashboard />} />
-        <Route path="/dashboard/d" element={<BookingDash />} />
-
-          </Routes>
-
-      </Dashborad> */}
+        
 
 
-        <Header />
+      {!isDashboardPage && !isSignInPage && <Header />}
 
 
 
@@ -70,7 +61,7 @@ export default function Routers() {
 
       </LoginProvider>
 
-      <Footer />
+     { !isDashboardPage && !isSignInPage && <Footer />}
 
     </div>
   );

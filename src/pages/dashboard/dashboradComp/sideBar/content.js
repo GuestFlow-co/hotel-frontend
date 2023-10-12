@@ -11,7 +11,7 @@ function Content({children}) {
   const secondMenuDisclosure = useDisclosure();
 
   return (
-    <Box w="22%" bg="blue.500" h="100vh" style={{ backgroundColor: "rgb(16,19,28)" }} boxShadow="md">
+    <Box w="100%"  minH={"100vh"} bg="blue.500" style={{ backgroundColor: "rgb(16,19,28)" }} boxShadow="md">
       <section className="main-section-sidebar">
         <div style={{ width: "90%" }}>
           <Menu>
