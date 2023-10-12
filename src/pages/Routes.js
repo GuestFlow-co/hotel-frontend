@@ -44,6 +44,11 @@ export default function Routers() {
 
       </Dashborad> */}
 
+
+        <Header />
+
+
+
         <Routes>
 
           <Route path="/rooms/:room_number" element={<RoomDetail />} />
@@ -65,7 +70,7 @@ export default function Routers() {
 
       </LoginProvider>
 
-      {/* <Footer /> */}
+      <Footer />
 
     </div>
   );
