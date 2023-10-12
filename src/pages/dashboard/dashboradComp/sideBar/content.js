@@ -58,18 +58,18 @@ function Content({children}) {
                     backgroundColor: secondMenuDisclosure.isOpen ? "blue" : "initial",
                   }}
                 >
-                  <i className="fa-solid fa-house"></i> Rooms
+                  <i className="fa-solid fa-house"></i> Booking
                 </MenuButton>
                 {secondMenuDisclosure.isOpen && (
                   <div>
                     <Link to="/all-booking">
-                      <button className="sidebar-btn">All Rooms</button>
+                      <button className="sidebar-btn">All Booking</button>
                     </Link>
                     <Link to="/add-booking">
-                      <button className="sidebar-btn">Add Rooms</button>
+                      <button className="sidebar-btn">Add Booking</button>
                     </Link>
                     <Link to="/edit-booking">
-                      <button className="sidebar-btn">Edit Rooms</button>
+                      <button className="sidebar-btn">Edit Booking</button>
                     </Link>
                   </div>
                 )}

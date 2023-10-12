@@ -15,11 +15,11 @@ const bookingReducer = (state = initialState, action) => {
         bookings: action.payload.bookings,
         loading: false,
       };
-    case types.ADD_BOOKING:
-      return {
-        ...state,
-        bookings: [...state.bookings, action.payload.booking],
-      };
+      case types.ADD_BOOKING:
+        return {
+          ...state,
+          bookings: [...state.bookings, action.payload.booking],
+        };
     default:
       return state;
   }

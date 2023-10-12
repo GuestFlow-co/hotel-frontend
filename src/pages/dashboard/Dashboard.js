@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Box,
   Flex,
@@ -42,6 +42,7 @@ function Dashborad() {
           <Route path="/d" element={<BookingDash />} />
         </Routes>{" "}
       </div>
+
     </div>
   );
 }

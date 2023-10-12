@@ -2,14 +2,18 @@ import React, { useContext, useState } from "react";
 import { Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../../Context/Context_Login";
+import { useNavigate } from 'react-router-dom'; 
 import axios from "axios";
 import "./LoginForm.scss";
+import cookie from 'react-cookies';
 
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
   const { login, logout, loginData,errorMessage } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();   
+  const [loginn, setlogin] = useState(false);
 
   const initialFormData = {
     username: "",
@@ -19,7 +23,7 @@ function SignInUpForm() {
     email: "",
     phoneNumber: "",
     // role: "",
-  }
+  };
   const [formData, setFormData] = useState(initialFormData);
   
   const handleSignUpClick = () => {
@@ -93,8 +97,19 @@ function SignInUpForm() {
   
   function handleLogin(e) {
     e.preventDefault();
-    login(username, password) 
-    console.log(loginData,"loginDataloginData"); 
+    login(username, password)
+    console.log(loginData,"loginDataloginData");
+    // setlogin(true)
+    // const user = cookie.load("user")
+    // setTimeout(()=>{
+    //   if(user){
+    //     navigate('/')
+    //   }else{
+
+    //     navigate('/rooms')
+    //   }
+    // },2000)
+    // if (loginData.logged) window.location.href = '/'; 
   }
 
   function handleUsernameChange(e) {
@@ -130,8 +145,9 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.firstName}
+                    // className="sign-up-input"
                   />
-                  <label htmlFor="First Name">First Name</label>
+                  <label htmlFor="Lirst Name">First Name</label>
                 </div>
                 <div className="names-form-group">
                   <input
@@ -140,6 +156,7 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.lastName}
+                    // className="sign-up-input"
                   />
                   <label htmlFor="Last Name">Last Name</label>
                 </div>
@@ -153,6 +170,7 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.username}
+                    // className="sign-up-input"
                   />
                   <label htmlFor="User Name">User Name</label>
                 </div>
@@ -165,6 +183,7 @@ function SignInUpForm() {
                     required
                     type="password"
                     value={formData.password}
+                    // className="sign-up-input"
                   />
                   <label htmlFor="Password">Password</label>
                 </div>
@@ -176,6 +195,7 @@ function SignInUpForm() {
                     required
                     type="email"
                     value={formData.email}
+                    // className="sign-up-input"
                   />
                   <label htmlFor="Email">Email</label>
                 </div>
@@ -188,6 +208,7 @@ function SignInUpForm() {
                     required
                     type="tel"
                     value={formData.phoneNumber}
+                    // className="sign-up-input"
                   />
                   <label htmlFor="Phone Number">Phone Number</label>
                 </div>
@@ -236,9 +257,8 @@ function SignInUpForm() {
               <button className="sign-up-button" type="submit">
                 Sign In
               </button>
-              
-            {errorMessage && <p className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
                
+            {errorMessage && <p  className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
             </form>
           </When>
           

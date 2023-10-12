@@ -40,20 +40,21 @@ export default function Routers() {
 
 
 
-        <Routes>
 
+        <Routes>
           <Route path="/rooms/:room_number" element={<RoomDetail />} />
           <Route path="/rooms" element={<RoomList rooms={rooms} />} />
           <Route path='/' element={<HomePage />} />
           <Route path='/tour' element={<Tour />} />
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
-          
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
 
         </Routes>
 

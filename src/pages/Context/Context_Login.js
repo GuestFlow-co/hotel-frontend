@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
+
 import cookie from "react-cookies";
 import jwt_decode from "jwt-decode";
 import { initialState, ReducerLogin } from "../../store/reducers/ReducerLogin";
@@ -39,6 +40,7 @@ function LoginProvider(props) {
         try {
           cookie.save("auth", auth.token);
           cookie.save("user", auth.user);
+
           validateToken(auth.token);
           navigate("/");
         } catch (err) {
@@ -75,6 +77,7 @@ function LoginProvider(props) {
   function setLoginState(logged, token, user, err) {
     // cookie.save('auth', token);
     // cookie.save('user', user);
+
     dispatch({ type: "CHANGE_STATUS_OF_LOGIN", payload: logged });
     dispatch({ type: "CHANGE_THE_TOKEN", payload: token });
     dispatch({ type: "CHANGE_THE_USER", payload: user });
@@ -92,9 +95,8 @@ function LoginProvider(props) {
   }, []);
 
   return (
-    <LoginContext.Provider
-      value={{ errorMessage, able, login, logout, loginData, dispatch }}
-    >
+
+    <LoginContext.Provider value={{errorMessage, able, login, logout, loginData, dispatch }}>
       {props.children}
     </LoginContext.Provider>
   );
