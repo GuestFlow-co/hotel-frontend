@@ -24,14 +24,14 @@
   }
   .review-section {
     width: 100%;
-
+  
     .main-div-review {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
-
+  
       h3 {
         font-size: 24px;
         font-weight: 700;
@@ -39,7 +39,7 @@
         padding: 10px 0;
         width: 100%;
       }
-
+  
       .under-header {
         display: flex;
         flex-wrap: wrap;
@@ -47,54 +47,58 @@
         justify-content: center;
       }
     }
-
-    /* Define your CSS classes for the card body */
-    /* Define your CSS classes for the card body */
+  
+    // Styles for the review cards
     .inside-card {
-      width: 300px; /* Set the card width to 30% */
-      padding: 1rem; /* Padding for the card body */
-      margin-top: 2rem; /* Top margin for spacing */
-      background-color: #fff; /* Card background color */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for the card */
-      border: 1px solid #ddd; /* Card border */
-      border-radius: 4px; /* Card border radius */
+      width: 100%; // Set the card width to 100% to stack them in a column
+      padding: 1rem; // Padding for the card body
+      margin-top: 2rem; // Top margin for spacing
+      background-color: #fff; // Card background color
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Box shadow for the card
+      border: 1px solid #ddd; // Card border
+      border-radius: 4px; // Card border radius
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-
-    /* Style for the email */
+  
+    // Styles for the email
     .inside-card .font-weight-bold.my-3 {
-      font-size: 1.2rem; /* Adjust font size as needed */
-      color: #007bff; /* Text color */
+      font-size: 1.2rem; // Adjust font size as needed
+      color: rgba(184, 104, 30, 0.829); // Icon color
     }
-
-    /* Style for the comment name */
+  
+    // Styles for the comment name
     .inside-card .font-weight-bold {
-      font-size: 1.4rem; /* Adjust font size as needed */
-      color: #333; /* Text color */
+      font-size: 1.4rem; // Adjust font size as needed
+      color: #333; // Text color
     }
-
-    /* Style for the star rating component */
+  
+    // Styles for the star rating component
     .inside-card .rating-stars {
-      margin-top: 1rem; /* Top margin for spacing */
+      margin-top: 1rem; // Top margin for spacing
     }
-
-    /* Style for the comment text */
+  
+    // Styles for the comment text
     .inside-card .mb-2 {
-      font-size: 1rem; /* Adjust font size as needed */
-      color: #555; /* Text color */
+      font-size: 1rem; // Adjust font size as needed
+      color: #555; // Text color
     }
-
-    /* Style for the quote icon */
+  
+    // Styles for the quote icon
     .inside-card .fas.fa-quote-left {
-      font-size: 1.5rem; /* Adjust font size as needed */
-      color: #007bff; /* Icon color */
-      padding-right: 0.5rem; /* Right padding for spacing */
+      font-size: 1.5rem; // Adjust font size as needed
+      color: rgba(184, 104, 30, 0.829); // Icon color
+      padding-right: 0.5rem; // Right padding for spacing
     }
-
+  
     .review-cards {
       width: 100%;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column; // Change to column layout
       gap: 20px;
     }
   }
+  
 }
