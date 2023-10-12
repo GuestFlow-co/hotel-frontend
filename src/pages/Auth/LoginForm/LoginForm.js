@@ -20,15 +20,15 @@ function SignInUpForm() {
     // role: "",
   };
   const [formData, setFormData] = useState(initialFormData);
-  
+
   const handleSignUpClick = () => {
     setIsSignUp(true);
   };
-  
+
   const handleSignInClick = () => {
     setIsSignUp(false);
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -40,27 +40,27 @@ function SignInUpForm() {
   // const handleSignupSub = async (e) => {
   //   e.preventDefault();
   //   try {
-    //     const res = await axios.post("http://localhost:3005/signup", formData);
+  //     const res = await axios.post("http://localhost:3005/signup", formData);
   //     console.log(res);
   //     alert(`You have Signed up Successfully ${formData.username}`);
   //   } catch (err) {
-    //     console.log("login ", err);
-    //   }
-    //   setFormData({
-      //     username: "",
-      //     password: "",
-      //     firstName: "",
-      //     lastName: "",
-      //     email: "",
-      //     phoneNumber: "",
-      //     role: "",
-      //   });
-      // };
-      
-      const handleSignupSub = async (e) => {
-        e.preventDefault();
-        try {
-          //deployed link:            https://guestflow.onrender.com/
+  //     console.log("login ", err);
+  //   }
+  //   setFormData({
+  //     username: "",
+  //     password: "",
+  //     firstName: "",
+  //     lastName: "",
+  //     email: "",
+  //     phoneNumber: "",
+  //     role: "",
+  //   });
+  // };
+
+  const handleSignupSub = async (e) => {
+    e.preventDefault();
+    try {
+      //deployed link:            https://guestflow.onrender.com/
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/signup`,
         formData
@@ -76,7 +76,7 @@ function SignInUpForm() {
     } catch (err) {
       console.log("login ", err);
     }
-    
+
     setFormData({
       username: "",
       password: "",
@@ -87,12 +87,12 @@ function SignInUpForm() {
       // role: "",
     });
   };
-  
+
   function handleLogin(e) {
     e.preventDefault();
     login(username, password);
     // window.location.href = '/'; 
-    
+
   }
 
   function handleUsernameChange(e) {
@@ -103,7 +103,7 @@ function SignInUpForm() {
   }
 
   return (
-    <div className="signup-main-container">
+    <div className="signup-main-container bgc-black-with-lighting">
       <div
         className={`container-signup ${isSignUp ? "right-panel-active" : ""}`}
       >
@@ -116,7 +116,7 @@ function SignInUpForm() {
         </When>
         <When condition={!loginData.logged}>
           <div className="form-container sign-up-container">
-            <form className="signup-form" onSubmit={handleSignupSub}>
+            <form className="signup-form items-stretch" onSubmit={handleSignupSub}>
               <h1 className="create-Account-h1">Create Account</h1>
               {/* <span className="signup-span">or use your email for registration</span> */}
               <div className="name-inputs">
@@ -127,7 +127,7 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.firstName}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="Lirst Name">First Name</label>
                 </div>
@@ -138,7 +138,7 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.lastName}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="Last Name">Last Name</label>
                 </div>
@@ -152,7 +152,7 @@ function SignInUpForm() {
                     placeholder=""
                     required
                     value={formData.username}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="User Name">User Name</label>
                 </div>
@@ -165,7 +165,7 @@ function SignInUpForm() {
                     required
                     type="password"
                     value={formData.password}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="Password">Password</label>
                 </div>
@@ -177,7 +177,7 @@ function SignInUpForm() {
                     required
                     type="email"
                     value={formData.email}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="Email">Email</label>
                 </div>
@@ -190,7 +190,7 @@ function SignInUpForm() {
                     required
                     type="tel"
                     value={formData.phoneNumber}
-                    // className="sign-up-input"
+                  // className="sign-up-input"
                   />
                   <label for="Phone Number">Phone Number</label>
                 </div>
@@ -243,11 +243,10 @@ function SignInUpForm() {
         <div className="overlay-container">
           <div className="overlay">
             <div
-              className={`overlay-panel overlay-left ${
-                isSignUp ? "overlay-left-active" : ""
-              }`}
+              className={`overlay-panel overlay-left ${isSignUp ? "overlay-left-active" : ""
+                }`}
             >
-              <h1 className="create-Account-h3">Welcome Back!</h1>
+              <h1 className="create-Account-h3 text-white">Welcome Back!</h1>
               <p className="signup-p">
                 {/* Login with your personal info to keep connected with us  */}
               </p>
@@ -258,9 +257,8 @@ function SignInUpForm() {
               </div>
             </div>
             <div
-              className={`overlay-panel overlay-right ${
-                isSignUp ? "overlay-right-active" : ""
-              }`}
+              className={`overlay-panel overlay-right ${isSignUp ? "overlay-right-active" : ""
+                }`}
             >
               <h1 className="create-Account-h2">Hello Friend!</h1>
               <p className="signup-p">
@@ -274,6 +272,13 @@ function SignInUpForm() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="bg-lines ">
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
       </div>
     </div>
   );
