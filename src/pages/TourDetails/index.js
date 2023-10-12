@@ -21,7 +21,7 @@ function TourDetalis() {
           setDetails(response.data.photoUrl );
           setTour(response.data)
           setloader(true)
-           console.log(response.data.TourPlan);
+          //  console.log(response.data.TourPlan);
         })
 
       } catch (error) {

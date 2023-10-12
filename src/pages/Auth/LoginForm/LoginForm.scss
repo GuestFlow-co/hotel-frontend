@@ -14,8 +14,21 @@
   * {
     box-sizing: border-box;
   }
-
-  .create-Account-h1 {
+  .top-error-bar {
+    position:static;
+    width: 200%;
+    padding-left: 4%;
+    border-radius: 4px;
+    background-color: #e24b31; 
+    color: white;
+    text-align: center;
+    padding-top: -10%;
+    // padding: 10px;
+    // top: 0;
+    // left: 0;
+    // z-index: 1;
+  }
+  .create-Account-h1{
     font-weight: bold;
     margin: 0;
     font-size: 32px;
@@ -44,7 +57,7 @@
 
   .signup-p {
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 100px;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
@@ -137,6 +150,7 @@
   }
   .login-input {
     width: 121%;
+    font-weight: 100;
   }
 
   // input {
@@ -399,7 +413,7 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
@@ -459,7 +473,7 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
@@ -519,11 +533,16 @@
   left: 10px;
   background-color: #fff;
   color: black;
-  font-weight: 600;
+  font-weight: 100;
   font-size: 14px;
 }
 
 .login-form .login-form-group textarea {
   resize: none;
   height: 100px;
+}
+
+.error-403 {
+  color: red; 
+  font-weight: bold; 
 }

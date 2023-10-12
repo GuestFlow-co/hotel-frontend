@@ -9,7 +9,18 @@
     box-shadow: 0px 7px 60px rgba(0, 0, 0, 0.07);
     filter: drop-shadow(0 0 2px rgba(5, 0, 0, 0.3));
     border-radius: 7px;
-    margin: 25px 5px;
+    margin: 25px 0px;
+    .top-error-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #b85504; /* Customize the background color */
+      color: white; /* Customize the text color */
+      text-align: center;
+      padding: 10px;
+      z-index: 1;
+    }
     .label-input-div {
       display: flex;
       flex-direction: row;
@@ -159,7 +170,23 @@
                     justify-content: center;
                     align-items: center;
                 }
+                .top-error-bar {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  background-color: #b85504; /* Customize the background color */
+                  color: white; /* Customize the text color */
+                  text-align: center;
+                  padding: 10px;
+                  z-index: 1;
+                }
             }
+            .booking-tour-form{
+            
+            }
+            
         }
 
-    
+        
+        

@@ -1,107 +1,104 @@
-.tour-description{
-    width: 65.66%;
-    // background-color: antiquewhite;
-    .ButtonGroup-tourPlan{
-        padding: 15px;
-        background-color: rgb(249,249,247);
-        border-radius: 7px;
-        width: 100%;
-        // justify-content: space-between;
-        margin:35px 5px;
-        .ButtonGroup-button{
-            font: 600 18px "Prompt", sans-serif;
-            border: none;
-            background-color: transparent;
-            padding: 5px 15px;
-            cursor: pointer;
-            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-        }
+.tour-description {
+  width: 65.66%;
+  // background-color: antiquewhite;
+  .ButtonGroup-tourPlan {
+    padding: 15px;
+    background-color: rgb(249, 249, 247);
+    border-radius: 7px;
+    width: 100%;
+    // justify-content: space-between;
+    margin: 35px 5px;
+    .ButtonGroup-button {
+      font: 600 18px "Prompt", sans-serif;
+      border: none;
+      background-color: transparent;
+      padding: 5px 15px;
+      cursor: pointer;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out;
     }
-    .thedetlais-headers{
-        font: 500 38px "Prompt", sans-serif;
-        margin-bottom: 15px;
-
-    }
-    .review-section {
+  }
+  .thedetlais-headers {
+    font: 500 38px "Prompt", sans-serif;
+    margin-bottom: 15px;
+  }
+  .review-section {
+    width: 100%;
+  
+    .main-div-review {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.842);
+        padding: 10px 0;
         width: 100%;
-      
-        .main-div-review {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-      
-          h3 {
-            font-size: 24px;
-            font-weight: 700;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.842);
-            padding: 10px 0;
-            width: 100%;
-          }
-      
-          .under-header {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-          }
-        }
-      
-        .inside-card {
-          background-color: white;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          border-radius: 15px;
-          padding: 15px;
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-          width: calc(33.33% - 20px);
-          margin-bottom: 20px;
-      
-          img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: fill;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-          }
-      
-          h5 {
-            font-weight: 700;
-            font-size: 18px;
-            margin: 10px 0;
-          }
-      
-          .stars {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 10px;
-      
-            i {
-              color: #ffd700;
-            }
-          }
-      
-          h6 {
-            font-weight: 600;
-            margin: 10px 0;
-          }
-      
-          p {
-            font-size: 16px;
-            margin-bottom: 10px;
-            text-align: center;
-          }
-        }
-      
-        .review-cards {
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-        }
       }
-      
+  
+      .under-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+    }
+  
+    // Styles for the review cards
+    .inside-card {
+      width: 100%; // Set the card width to 100% to stack them in a column
+      padding: 1rem; // Padding for the card body
+      margin-top: 2rem; // Top margin for spacing
+      background-color: #fff; // Card background color
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Box shadow for the card
+      border: 1px solid #ddd; // Card border
+      border-radius: 4px; // Card border radius
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    // Styles for the email
+    .inside-card .font-weight-bold.my-3 {
+      font-size: 1.2rem; // Adjust font size as needed
+      color: rgba(184, 104, 30, 0.829); // Icon color
+    }
+  
+    // Styles for the comment name
+    .inside-card .font-weight-bold {
+      font-size: 1.4rem; // Adjust font size as needed
+      color: #333; // Text color
+    }
+  
+    // Styles for the star rating component
+    .inside-card .rating-stars {
+      margin-top: 1rem; // Top margin for spacing
+    }
+  
+    // Styles for the comment text
+    .inside-card .mb-2 {
+      font-size: 1rem; // Adjust font size as needed
+      color: #555; // Text color
+    }
+  
+    // Styles for the quote icon
+    .inside-card .fas.fa-quote-left {
+      font-size: 1.5rem; // Adjust font size as needed
+      color: rgba(184, 104, 30, 0.829); // Icon color
+      padding-right: 0.5rem; // Right padding for spacing
+    }
+  
+    .review-cards {
+      width: 100%;
+      display: flex;
+      flex-direction: column; // Change to column layout
+      gap: 20px;
+    }
+  }
+  
 }

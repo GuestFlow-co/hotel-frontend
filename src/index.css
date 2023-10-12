@@ -12,9 +12,7 @@
 @import url("https://fonts.googleapis.com/css?family=Merienda");
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Roboto:wght@400;500&display=swap");
-/*******************************************************/
 /******************* ## Default Style *****************/
-/*******************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -904,7 +902,7 @@ a.theme-btn.style-three {
   width: 1px;
   height: 100%;
   position: absolute;
-  background: rgba(199, 199, 199, 0.082);
+  background: rgba(255, 255, 255, 0.05);
   -webkit-animation: leftRightOne 18s infinite;
   animation: leftRightOne 18s infinite;
 }

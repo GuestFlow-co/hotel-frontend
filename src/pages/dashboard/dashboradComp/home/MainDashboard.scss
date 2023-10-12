@@ -1,0 +1,9 @@
+.main-dev-dashbordHome{
+    display: flex;
+    flex-direction: row;
+    .dash-card-home{
+        background-color: aquamarine;
+        width: 20%;
+        height: 200px;
+    }
+}
