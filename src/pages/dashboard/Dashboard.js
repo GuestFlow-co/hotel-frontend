@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {
   Box,
   Flex,
@@ -15,35 +15,44 @@ import { fetchBookings } from "../../store/actions/Bookings/BookingActions";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRooms } from "../../store/actions/RoomActions";
 import { fetchTours } from "../../store/actions/Tours/Touraction";
+import { fetchUsers } from "../../store/actions/Auth/AuthActions";
 
 function Dashborad() {
   const bookings = useSelector((state) => state.bookings.bookings);
   const rooms = useSelector((state) => state.rooms.rooms);
   const tours = useSelector((state) => state.tours.tours);
+  const users = useSelector((state) => state.users.users);
 
   const dispatch = useDispatch();
-  console.log(bookings, "bookings");
-  console.log(rooms, "rooms");
-  console.log(tours[0], "tours");
+  const [loader, setloader] = useState(false);
+
 
   useEffect(() => {
     dispatch(fetchBookings());
     dispatch(fetchRooms());
     dispatch(fetchTours());
+    dispatch(fetchUsers());
+
+    setloader(true)
   }, [dispatch]);
   return (
-    <div className="the-father-of-allDashborad">
-      <div className="content-dev-dashboard">
-        <Content />
+    <div className="A" style={{width:"100%"}}>
+    {loader ? (
+      <div className="the-father-of-allDashboard" style={{display:"flex",backgroundColor:"#eaeef6",width:"100%"}}>
+        <div className="content-dev-dashboard">
+          <Content />
+        </div>
+        <div className="all-content-dev">
+          <Routes>
+            <Route path="/home" element={<MainDashboard users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
+            <Route path="/allbooking" element={<BookingDash bookings={bookings} users={users} />} />
+          </Routes>
+        </div>
       </div>
-      <div className="all-content-dev">
-        <Routes>
-          <Route path="/allbooking" element={<MainDashboard />} />
-          <Route path="/d" element={<BookingDash />} />
-        </Routes>{" "}
-      </div>
-
-    </div>
+    ) : (
+      <div className='preloader'></div>
+    )}
+  </div>
   );
 }
 

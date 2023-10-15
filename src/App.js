@@ -1,9 +1,6 @@
-import Layout from "./layout/index";
-import { Route, Routes } from 'react-router-dom';
-import HomePage from "./pages/HomePage/HomePage";
-import Tour from './pages/Tour/index'
+
 import Routers from "./pages/Routes";
-import Popup from "./pages/pop";
+
 
 function App() {
   return (
@@ -18,7 +15,9 @@ function App() {
     //   </Routes>
     // </Layout>
     <div>
+
       <Routers />
+
     </div>
 
   );

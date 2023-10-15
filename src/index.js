@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { ChakraBaseProvider } from "@chakra-ui/react";
+import { ChakraProvider } from '@chakra-ui/react'
 import store from "./store/index"
 import './animate.min.css'
 import { Provider } from 'react-redux';
@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
 
-    <ChakraBaseProvider>
+    <ChakraProvider>
       <Provider store={store}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
       <BrowserRouter>
@@ -24,7 +24,7 @@ root.render(
     </MantineProvider>
     </Provider>
 
-    </ChakraBaseProvider>  
+    </ChakraProvider>  
 
   </React.StrictMode>
 );

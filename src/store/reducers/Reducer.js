@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   rooms: RoomReducer,
   bookings: bookingReducer, 
   tours: tourReducer, 
-
   users: authReducer,
 
 
