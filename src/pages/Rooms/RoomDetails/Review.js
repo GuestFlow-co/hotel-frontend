@@ -20,10 +20,45 @@ const colors = {
   grey: "#a9a9a9",
 };
 
+const styles = {
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+    backgroundColor: "#f2e0d9", // Light brown background
+    padding: "20px",
+    borderRadius: "10px",
+    border: "1px solid #c7a791", // Light brown border
+  },
+  form: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "10px",
+  },
+  comments: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "10px",
+  },
+  starIcon: {
+    fontSize: "20px",
+    marginRight: "5px",
+    color: "#8B4513", // Brown color
+  },
+  button: {
+    backgroundColor: "#8B4513", // Brown color
+    color: "white",
+    _hover: {
+      backgroundColor: "#d1935b", // Darker brown on hover
+    },
+  },
+};
+
 function Review() {
   const { room_number } = useParams();
   const user = cookie.load("user");
-  const userId = user.user_id;
+  let userId = user ? user.user_id : "";
 
   const dispatch = useDispatch();
 
@@ -37,8 +72,8 @@ function Review() {
 
   const [formData, setFormData] = useState({
     theRoom_id: roomId,
-    commentName: "",
-    Email: "",
+    commentName: user ? user.commentName : "",
+    Email: user ? user.email : "",
     Rating: "",
     comment: "",
   });
@@ -103,7 +138,7 @@ function Review() {
                               cursor: "pointer",
                             }}
                           />
-                        ))}
+                      )  )}
                     </Flex>
                     <p className="font-weight-bold">{comment.commentName}</p>
                     <p className="mb-2">
@@ -177,9 +212,13 @@ function Review() {
             {/* <Rate room={room} /> */}
           </div>
           {!user ? (
+            <>
+            <FaStar style={styles.starIcon} />
+
             <Link to="/login">
               <Button w={7} style={{ background: '#ab6034' }}>Submit</Button>
             </Link>
+            </>
           ) : (
             <div>
               <Rating room={room} />
