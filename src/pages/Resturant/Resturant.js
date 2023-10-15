@@ -9,7 +9,7 @@ export default function Resturant() {
 
   return (
     <div>
-      <ResturantCreate/>
+      {/* <ResturantCreate/> */}
       <ResturantList/>
     </div>
   )
