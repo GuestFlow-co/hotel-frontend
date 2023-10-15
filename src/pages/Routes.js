@@ -11,7 +11,7 @@ import LoginProvider from "./Context/Context_Login";
 import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import TourDetalis from "./TourDetails";
-import Header from "../layout/Header/Header";
+// import Header from "../layout/Header/Header";
 import Footer from "../layout/Footer/Footer";
 
 
@@ -21,6 +21,7 @@ import ContactUs from "./ContactUs/ContactUs";
 
 import Dashboard from "./dashboard/Dashboard";
 import Resturant from "./Resturant/Resturant";
+import Profile from "./Profile/Profile";
 
 
 export default function Routers() {
@@ -37,7 +38,7 @@ export default function Routers() {
         
 
 
-      {!isDashboardPage && !isSignInPage && <Header />}
+      {/* {!isDashboardPage && !isSignInPage && <Header />} */}
 
 
 
@@ -51,6 +52,7 @@ export default function Routers() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/Resturants" element={<Resturant />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}

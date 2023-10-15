@@ -1,0 +1,31 @@
+.user-booking-info {
+    padding: 20px;
+  
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      thead {
+        background-color: #6e460d;
+        color: #fff;
+  
+        th {
+          padding: 12px 15px;
+          text-align: left;
+        }
+      }
+  
+      tbody {
+        tr {
+          &:nth-of-type(even) {
+            background-color: #86602a;
+          }
+  
+          td {
+            padding: 12px 15px;
+          }
+        }
+      }
+    }
+  }
+  
