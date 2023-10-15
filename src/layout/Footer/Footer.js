@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.scss'
 import Logo from '../../assets/images/logos/logoW.png'
-
+import { Link } from 'react-router-dom';
 
 
 function Footer() {
@@ -12,10 +12,10 @@ function Footer() {
           <div className="col-xl-3 col-lg-5 col-sm-6">
             <div className="footer-widget widget_about wow fadeInUp delay-0-2s">
               <div className="footer-logo mb-25">
-                <a href="index.html"><img src={Logo} alt="Logo" /></a>
+                <Link to="./"><img src={Logo} alt="Logo" /></Link>
               </div>
               <p>Nam libero tempore lol soluta nobis eseligendi optio cumque nihile impedit quo minus maxime placeat facere</p>
-              <div className="social-style-one pt-10">
+              <div className="social-style-one pt-25">
                 <a href="#"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-linkedin-in"></i></a>
@@ -58,12 +58,12 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer-bottom bgd-dark mt-40 pt-20 pb-5 rpt-25">
+      <div className="footer-bottom bgd-dark  pt-20 pb-5 rpt-25">
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
               <div className="copyright-text">
-                <p>© 2023 <a href="index.html">GestFlow.</a> All Rights Reserved.</p>
+                <p>© 2023 <Link to='./'>GestFlow.</Link> All Rights Reserved.</p>
               </div>
             </div>
             <div className="col-lg-6 text-lg-end">

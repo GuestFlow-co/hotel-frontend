@@ -11,11 +11,11 @@ function calculateDuration(startDate, endDate) {
   return durationDays;
 }
 function TopSection({ tour }) {
-  
- 
+
+
   return (
-    
-    <div style={{width:"85%", marginBottom:"35px"}}>
+
+    <div style={{ width: "85%", marginBottom: "35px" }} className="tour-header-sec">
       <div className="main-tour-header">
         <div className="header-tour-detalis">
           <p className="tour-title"> {tour.Title} </p>
@@ -44,7 +44,7 @@ function TopSection({ tour }) {
           </section>
         </div>
       </div>
-      <div className="for-center">
+      <div className="for-center ">
         <hr
           style={{
             marginLeft: "30px",
@@ -54,8 +54,8 @@ function TopSection({ tour }) {
             width: "100%",
           }}
         />
-        <section className="sec-tour-detalis-section">
-          <section style={{ display: "flex", alignItems: "center" }}>
+        <section className="sec-tour-detalis-section   ">
+          <section className="rev-sec" style={{ display: "flex", alignItems: "center" }}>
             <ReactStars
               count={5}
               size={25}
@@ -65,16 +65,16 @@ function TopSection({ tour }) {
               isHalf={true}
             />
             {"  "}
-            <p style={{ fontSize: "20px", paddingTop: "15px" }}>
+            <p style={{ fontSize: "20px", padding: "3px" }}>
               {" "}
               ({tour.Rating})
             </p>
           </section>
+            <div className="tour-detalis-btn-section p-10">
+              <button className="btn-tour-detalis"> REVIEWS  <Lottie style={{ height: "40px" }} animationData={stars} /></button>
 
-          <div className="tour-detalis-btn-section">
-            <button className="btn-tour-detalis"> REVIEWS  <Lottie style={{ height: "30px" }} animationData={stars} /></button>
-            
-          </div>
+            </div>
+
         </section>
         <hr
           style={{

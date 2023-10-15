@@ -1,0 +1,90 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import { Grid, Box, Flex, Stack, Text } from "@chakra-ui/react";
+import {
+  FaWifi,
+  FaUtensils,
+  FaTv,
+  FaBath,
+  FaCoffee,
+} from "react-icons/fa";
+import { FaKitchenSet } from "react-icons/fa6";
+import { MdBalcony, MdRoomService } from "react-icons/md";
+import { GiSlippers } from "react-icons/gi";
+import { SiSmartthings } from "react-icons/si";
+import { useParams } from "react-router-dom";
+
+const amenitiess = [
+  {
+    image: <FaWifi />,
+    feature: "Wi-Fi",
+  },
+  {
+    image: <SiSmartthings />,
+    feature: "Smart Controls",
+  },
+  {
+    image: <FaKitchenSet />,
+    feature: "Mini Kitchenette",
+  },
+  {
+    image: <FaTv />,
+    feature: "TV",
+  },
+  {
+    image: <MdBalcony />,
+    feature: "Balcony or Terrace",
+  },
+  {
+    image: <FaBath />,
+    feature: "Spa Bathrooms",
+  },
+  {
+    image: <FaCoffee />,
+    feature: "Nespresso Machine",
+  },
+  {
+    image: <GiSlippers />,
+    feature: "Robes and Slippers",
+  },
+  {
+    image: <MdRoomService />,
+    feature: "Room Service Options",
+  },
+];
+
+const Amenities = () => {
+  const { room_number } = useParams();
+  const rooms = useSelector((state) => state.rooms.rooms);
+  const room = rooms.find((x) => x.room_number === room_number);
+  const roomFeatures = room.features || [];
+
+  return (
+    <div>
+    <br/>
+      <h6>Room Amenities</h6>
+      <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+        {amenitiess
+          .filter((amenity) =>
+            roomFeatures.some((roomFeature) => roomFeature.feature_name === amenity.feature)
+          )
+          .map((amenity, index) => (
+            <Box key={index} overflow="hidden" p={4} boxShadow="md" maxW="300px">
+              <Flex mt={4} justify="space-between">
+                <Stack spacing={2} direction="row">
+                  <Flex align="center">
+                    {amenity.image}
+                    <Text>{amenity.feature}</Text>
+                  </Flex>
+                </Stack>
+              </Flex>
+            </Box>
+          ))}
+      </Grid>
+      <br/>
+      <br/>
+    </div>
+  );
+};
+
+export default Amenities;

@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route,useLocation } from "react-router-dom";
 import RoomList from "./Rooms/List/RoomList";
 import { useSelector } from "react-redux/es";
-import RoomDetail from "./Rooms/RoomDetails/RoomDetails";
+import RoomDetail from "./Rooms/RoomDetails";
 import HomePage from "./HomePage/HomePage";
 import Tour from "./Tour";
 import { ChakraProvider } from '@chakra-ui/react'

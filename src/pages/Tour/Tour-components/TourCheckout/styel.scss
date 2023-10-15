@@ -1,63 +1,91 @@
-.checkout-main{
+.checkout-main {
     background-color: white;
-    width: 90%;
+    width: 95%;
     display: flex;
-    flex-direction: row;
+    // flex-direction: row;
     height: 160px;
     justify-content: space-around;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0,.3);
-            align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    align-items: center;
+    font-family: "Roboto", sans-serif;
 
-    .check-in{
+    i{
+        color: var(--primary-color);
+    }
+
+    .check-in {
         display: flex;
         justify-content: center;
         width: fit-content;
-        flex-direction: column;   
+        flex-direction: column;
         gap: 5px;
-        
+        color: var(--heading-color);
+
+
     }
-    .check-input{
-            height: 50px;
-            border-radius: 15px;
-            padding-left: 20px ;
-            background-color: white;
-            border:1px solid gray;
+
+    .check-input {
+        height: 50px;
+        border-radius: 30px;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid rgba(128, 128, 128, 0.508);
+        color: rgb(0, 0, 0);
+        font-size: large;
+            
     }
-    .check-label{
+
+    .check-label {
         font-size: 24px;
-        font-family: initial;
         font-weight: 500;
         margin-left: 8px;
-        
-        }
-        .CHECK-AVAILABILITY{
-            // margin-top: ;
-            height: 50px;
-            border-radius: 15px;
-            padding: 20px ;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            // border:1px solid gray;
-        }
-        .theBotton-Tour{
-            height: 50px;
-            border-radius: 15px;
-            padding: 20px ;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .theBotton-Tour p {
-            margin-bottom: 0rem !important;
-        }
-        .CHECK-AVAILABILITY{
-            border:1px solid gray;
+        color: var(--heading-color);
 
+    }
+
+    .CHECK-AVAILABILITY {
+        // margin-top: ;
+        height: 50px;
+        border-radius: 30px;
+        padding: 20px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        // flex-direction: column;
+        justify-content: center;
+        border: 1px solid rgba(128, 128, 128, 0.508);
+        transition: transform 0.3s; 
+    }
+
+    .theBotton-Tour {
+        height: 50px;
+        border-radius: 30px;
+        padding: 20px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        i{
+            color: var(--heading-color);
         }
+
+        :hover {
+            background: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--primary-color);
+            transform: scale(1.1); /* Add scale transformation on hover */
+            transition: transform 0.3s, background-color 0.3s, color 0.3s; /* Add transitions for scale and color */
+            
+            i {
+                color: #fff;
+            }
+        }
+    }
+
+    .theBotton-Tour p {
+        margin-bottom: 0rem !important;
+    }
+
 }

@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addBooking } from "../../store/actions/Bookings/BookingActions";
 import { Link, useParams } from "react-router-dom";
 import cookie from "react-cookies";
-import { Button } from "bootstrap";
+import {
+  Container,
+  Form,
+  Label,
+  Input,
+  Button,
+  WelcomePopup,
+} from "./style";
 
 const BookingForm = () => {
   const { room_number } = useParams();
@@ -11,9 +18,8 @@ const BookingForm = () => {
   const rooms = useSelector((state) => state.rooms.rooms);
   const bookings = useSelector((state) => state.bookings.bookings);
   const user = cookie.load("user");
-  console.log(user)
   const auth = cookie.load("auth");
-  console.log(typeof auth)
+  console.log(auth);
   const user_id = user ? user.user_id : "";
   const room = rooms.find((room) => room.room_number === room_number);
   const roomId = room ? room.Room_id : "";
@@ -25,7 +31,7 @@ const BookingForm = () => {
     customer_id: user_id,
   });
 
-  const [showWelcomePopup, setShowWelcomePopup] = useState(false); // State for the welcome popup
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,44 +59,64 @@ const BookingForm = () => {
     });
   };
 
+  const isDateBooked = (date) => {
+    return bookings.some((booking) => {
+      const bookingStartDate = new Date(booking.check_in_date);
+      const bookingEndDate = new Date(booking.check_out_date);
+      const currentDate = new Date(date);
+
+      return currentDate >= bookingStartDate && currentDate <= bookingEndDate;
+    });
+  };
+console.log(isDateBooked)
+  const isCheckInDateBooked = isDateBooked(bookingData.check_in_date);
+  const isCheckOutDateBooked = isDateBooked(bookingData.check_out_date);
+  console.log(isCheckInDateBooked)
+  console.log(isCheckOutDateBooked)
+
   return (
-    <div>
+    <Container w={'100'}>
       <h2>Add Booking</h2>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <div>
-          <label>Check-in Date:</label>
-          <input
+          <Label>Check-in Date:</Label>
+          <Input
             type="date"
             name="check_in_date"
             value={bookingData.check_in_date}
             onChange={handleChange}
+            className={isCheckInDateBooked ? "disabled-input" : ""}
+            disabled={isCheckInDateBooked}
           />
         </div>
         <div>
-          <label>Check-out Date:</label>
-          <input
+          <Label>Check-out Date:</Label>
+          <Input
             type="date"
             name="check_out_date"
             value={bookingData.check_out_date}
             onChange={handleChange}
+            className={isCheckOutDateBooked ? "disabled-input" : ""}
+            disabled={isCheckOutDateBooked}
           />
         </div>
-        {!user.user_id ? (
+        {!user ? (
           <Link to="/login">
-            <button className="bg-brown">Add Booking</button>
+            <Button style={{ background: '#ab6034' }}>Add Booking</Button>
           </Link>
         ) : (
-          <button className="bg-brown" type="submit">Add Booking</button>
+          <Button style={{ background: '#ab6034' }} type="submit">Add Booking</Button>
         )}
-      </form>
+      </Form>
 
       {showWelcomePopup && (
-        <div className="welcome-popup">
+        <WelcomePopup className="welcome-popup">
           <p>Welcome to our hotel! Your booking has been added.</p>
-        </div>
+        </WelcomePopup>
       )}
-    </div>
+    </Container>
   );
 };
 
 export default BookingForm;
+

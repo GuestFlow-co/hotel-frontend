@@ -1,7 +1,7 @@
-import * as types from "../../actions/Type";
-
+import * as types from "../../actions/Type"
 const initialState = {
   rooms: [],
+  comments: [],
   counter: 0,
   loading: true,
 };
@@ -33,6 +33,30 @@ const RoomReducer = (state = initialState, action) => {
             room.Room_id === updatedRoom.Room_id ? updatedRoom : room
           ),
         };
+    case types.FETCH_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload.comments,
+        loading: false,
+      };
+    case types.ADD_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments, action.payload.comments],
+      };
+    case types.DELETE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.filter((comment) => comment.id !== action.payload.commentId),
+      };
+    case types.UPDATE_COMMENT:
+      const updatedComment = action.payload.updatedComment;
+      return {
+        ...state,
+        comments: state.comments.map((comment) =>
+          comment.id === updatedComment.id ? updatedComment : comment
+        ),
+      };
     default:
       return state;
   }

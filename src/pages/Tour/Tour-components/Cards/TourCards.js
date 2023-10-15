@@ -45,18 +45,18 @@ function TourCards() {
   const currentItems = res.slice(startIndex, endIndex);
 
   return (
-    <div className="main-card-tour" >
-      
-            <section className="cards-tour-section">
+    <div className="main-card-tour " >
+
+      <section className="cards-tour-section overflow-hidden">
         {currentItems.map((item) => (
-                        <Link className="theTourCard" to={`/TourDetalis/${item.Tour_id}`}>
+          <Link className="theTourCard" to={`/TourDetalis/${item.Tour_id}`}>
 
             <div>
               <img className="tour-card-image" src={item.coverPhoto} />
             </div>
 
             <div className="info-tour-card">
-              <section style={{ display: "flex", alignItems: "center",}}>
+              <section style={{ display: "flex", alignItems: "center", }}>
                 <ReactStars
                   count={5}
                   size={25}
@@ -65,7 +65,7 @@ function TourCards() {
                   edit={false}
                   isHalf={true}
                 />{"  "}
-                <p style={{fontSize:"20px", paddingTop:"15px"}}> ({item.Rating})</p>
+                <p style={{ fontSize: "20px", padding: "10px" }}> ({item.Rating})</p>
               </section>
 
               <p style={{ fontSize: "18px", fontWeight: "700" }}>
@@ -80,15 +80,15 @@ function TourCards() {
                 {item.Seat_price}
               </p>
               <div>
-                <div style={{display:"flex", justifyContent:"space-evenly"}}>
+                <div style={{ display: "flex", justifyContent: "space-evenly" }}>
 
-          <Lottie  style={{ width: '50px' }} animationData={fire} />
-             <Lottie  style={{ width: '60px' }} animationData={camp} />
-             <Lottie  style={{ width: '60px' }} animationData={rabbit} />
+                  <Lottie style={{ width: '50px' }} animationData={fire} />
+                  <Lottie style={{ width: '60px' }} animationData={camp} />
+                  <Lottie style={{ width: '60px' }} animationData={rabbit} />
                 </div>
 
 
-          </div> 
+              </div>
               <hr style={{ marginLeft: "30px", marginRight: "30px" }}></hr>
               <div className="lower-card-tour-section">
                 <p>
@@ -106,51 +106,50 @@ function TourCards() {
           </Link>
 
         ))}
-          <div class="col-lg-12">
-            <ul className="gowilds-pagination wow fadeInUp text-center">
-              <li>
+        <div class="col-lg-12 pb-3">
+          <ul className="gowilds-pagination wow fadeInUp text-center">
+            <li>
+              <button
+                onClick={() =>
+                  setCurrentPage((prevPage) =>
+                    prevPage > 1 ? prevPage - 1 : prevPage
+                  )
+
+                }
+                className="pageintbotton"
+
+              >
+                <i className="fa-solid fa-arrow-left"></i>
+              </button>
+            </li>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <li key={index}>
                 <button
-                  onClick={() =>
-                    setCurrentPage((prevPage) =>
-                      prevPage > 1 ? prevPage - 1 : prevPage
-                    )
-                    
-                  }
+                  onClick={() => setCurrentPage(index + 1)}
                   className="pageintbotton"
 
                 >
-                  <i className="fa-solid fa-arrow-left"></i>
+                  {index + 1}
                 </button>
               </li>
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => setCurrentPage(index + 1)}
-                    className="pageintbotton"
-                    
-                  >
-                    {index + 1}
-                  </button>
-                </li>
-              ))}
-              <li>
-                <button
-                  onClick={() =>
-                    setCurrentPage((prevPage) =>
-                      prevPage < totalPages ? prevPage + 1 : prevPage
-                    )
-                  }
-                  className="pageintbotton"
+            ))}
+            <li>
+              <button
+                onClick={() =>
+                  setCurrentPage((prevPage) =>
+                    prevPage < totalPages ? prevPage + 1 : prevPage
+                  )
+                }
+                className="pageintbotton"
 
-                >
-                  <i className="fa-solid fa-arrow-right"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
-          
+              >
+                <i className="fa-solid fa-arrow-right"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
       </section>
-      
+
     </div>
   );
 }

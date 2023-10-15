@@ -30,6 +30,7 @@
     "react-awesome-reveal": "^4.2.5",
     "react-bootstrap": "^2.9.0",
     "react-cookies": "^0.1.1",
+    "react-datepicker": "^4.20.0",
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-icons": "^4.11.0",
