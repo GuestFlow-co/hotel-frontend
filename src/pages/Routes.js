@@ -20,6 +20,7 @@ import FAQ from "./FAQ/FAQ";
 import ContactUs from "./ContactUs/ContactUs";
 
 import Dashboard from "./dashboard/Dashboard";
+import Resturant from "./Resturant/Resturant";
 
 
 export default function Routers() {
@@ -49,6 +50,7 @@ export default function Routers() {
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/FAQ" element={<FAQ />} />
+          <Route path="/Resturants" element={<Resturant />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />
           {/* <Route path="/signup" element={<SignupForm />} />  */}
