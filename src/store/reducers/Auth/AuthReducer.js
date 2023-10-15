@@ -1,6 +1,6 @@
 // authReducer.js
 
-import * as types from "../Type";
+import * as types from "../../actions/Type";
 
 const initialState = {
   user: null,

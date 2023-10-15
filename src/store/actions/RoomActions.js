@@ -8,7 +8,6 @@ export const fetchRooms = () => {
   return async (dispatch) => {
       try {
           const res = await instance.get("/rooms");
-          console.log(res.data)
           dispatch({
               type: types.FETCH_ROOMS, 
               payload:{rooms:res.data}
@@ -23,7 +22,6 @@ export const fetchRooms = () => {
 
 // Add Room
 export const addRoom = (rooms) => {
-    console.log(rooms)
     return async (dispatch) => {
         
       try {
@@ -38,7 +36,6 @@ export const addRoom = (rooms) => {
             type: types.ADD_ROOM,
             payload: { rooms: res.data },
           });
-          console.log("Room created successfully");
         } else {
           console.error("Server returned an error status:", res.status);
         }
