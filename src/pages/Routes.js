@@ -11,7 +11,7 @@ import LoginProvider from "./Context/Context_Login";
 import ForgotPassword from "./Auth/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Auth/ResetPassword/ResetPassword";
 import TourDetalis from "./TourDetails";
-// import Header from "../layout/Header/Header";
+import Header from "../layout/Header/Header";
 import Footer from "../layout/Footer/Footer";
 
 
@@ -38,7 +38,7 @@ export default function Routers() {
         
 
 
-      {/* {!isDashboardPage && !isSignInPage && <Header />} */}
+      {!isDashboardPage && !isSignInPage && <Header />}
 
 
 
