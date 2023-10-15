@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import './UserBookingInfo.scss'
+
 import {
   MDBCol,
   MDBContainer,
@@ -53,7 +54,7 @@ function UserBookingInfo() {
   }, []);
 
   return (
-    <section style={{ backgroundColor: "#eee", paddingTop:"10%",}}>
+    <section className = "profile-main-container"style={{ paddingTop:"10%",paddingBottom:"10%",}}>
       <MDBContainer className="py-5">
        {/* <UserNavInfo/> */}
 
