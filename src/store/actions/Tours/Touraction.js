@@ -8,7 +8,6 @@ export const fetchTours = () => {
   return async (dispatch) => {
     try {
       const res = await instance.get("/tour");
-      console.log("Tours", res.data)
       dispatch({
         type: types.FETCH_Tour,
         payload: { tours: res.data },
@@ -28,7 +27,6 @@ export const addTour = (tourData) => {
           type: types.ADD_Tours,
           payload: { tour: res.data },
         });
-        console.log("Tour created successfully");
       } else {
         console.error("Server returned an error status:", res.status);
       }

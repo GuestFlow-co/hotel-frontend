@@ -34,9 +34,9 @@ function Detalis({ tour }) {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`)
       .then((res) => {
-      //  const thetourcomment= 
-        setAllcomment(res.data.filter(comment => comment.theTour_id === parseInt(id) ));
-       
+        //  const thetourcomment= 
+        setAllcomment(res.data.filter(comment => comment.theTour_id === parseInt(id)));
+
 
       })
       .catch((error) => {
@@ -49,14 +49,14 @@ function Detalis({ tour }) {
       <p className="thedetlais-headers">Explore Tours</p>
       <p>{tour.description}</p>
       <section>
-        <p className="thedetlais-headers"> Tour Plan</p>
+        <p className="thedetlais-headers py-20"> Tour Plan</p>
         <p> {tour.TourPlan.description}</p>
         <div>
           <ButtonGroup variant={"outline"} className="ButtonGroup-tourPlan">
             {tour.TourPlan.days.map((option) => (
               <Button
-              className="ButtonGroup-button"
-                color={selected === option.day ? "#63ab45" : "gray"}
+                className="ButtonGroup-button"
+                color={selected === option.day ? "#ab6034" : "gray"}
                 // backgroundColor={selected === option.day ? "red" : "gray"}
                 onClick={() => setSelected(option.day)}
               >
@@ -85,39 +85,38 @@ function Detalis({ tour }) {
         </div>
       </section>
       <section className="review-section">
-                <div className="main-div-review">
-                  <h3>Rivews</h3>
-                  <div className="under-header">
-                    <div className="review-cards">
-                      {allcomment.map((review) => {
-                        console.log(review);
-                        return (
+        <div className="main-div-review">
+          <h3 className="">Rivews</h3>
+          <div className="under-header">
+            <div className="review-cards">
+              {allcomment.map((review) => {
+                console.log(review);
+                return (
 
-                          <div class="card-body py-4 mt-2"
-                            className="inside-card">
-                          <p class="font-weight-bold my-3">{review.Email}</p>
+                  <div class="card-body py-4 mt-2"
+                    className="inside-card">
+                    <ReactStars
+                      count={5}
+                      onChange={ratingChanged}
+                      size={25}
+                      activeColor="#ffd700"
+                      value={review.Rating}
+                      edit={false}
+                    />
+                    <p class="font-weight-bold">{review.commentName}</p>
+                    <p class="font-weight-bold ">{review.Email}</p>
 
-                            <p class="font-weight-bold">{review.commentName}</p>
-                            <ReactStars
-                              count={5}
-                              onChange={ratingChanged}
-                              size={25}
-                              activeColor="#ffd700"
-                              value={review.Rating}
-                              edit={false}
 
-                            />
-
-                            <p class="mb-2">
-                              <i class="fas fa-quote-left pe-2"></i>{review.comment}
-                            </p>
-                          </div>
-                        )
-                      })}
-                    </div>
+                    <p class="mb-2">
+                      <i class="fas fa-quote-left pe-2"></i>{review.comment}
+                    </p>
                   </div>
-                </div>
-              </section>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

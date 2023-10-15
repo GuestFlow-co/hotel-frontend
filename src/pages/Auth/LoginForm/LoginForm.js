@@ -7,6 +7,7 @@ import axios from "axios";
 import "./LoginForm.scss";
 import cookie from 'react-cookies';
 
+
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
   const { login, logout, loginData,errorMessage } = useContext(LoginContext);
@@ -135,6 +136,7 @@ function SignInUpForm() {
         <When condition={!loginData.logged}>
           <div className="form-container sign-up-container">
             <form className="signup-form" onSubmit={handleSignupSub}>
+            <div className="signup-form-cont">
               <h1 className="create-Account-h1">Create Account</h1>
               {/* <span className="signup-span">or use your email for registration</span> */}
               <div className="name-inputs">
@@ -218,6 +220,7 @@ function SignInUpForm() {
                   Sign Up
                 </button>
               </div>
+              </div>
             </form>
           </div>
         </When>
@@ -226,7 +229,7 @@ function SignInUpForm() {
           <When condition={!loginData.logged}>
             <form className="login-form" action="#" onSubmit={handleLogin}>
               <h1 className="create-Account-h1">Sign in</h1>
-              <span className="signin-span">or use your account</span>
+              <span className="signin-span"></span>
 
               <div className="login-form-group">
              

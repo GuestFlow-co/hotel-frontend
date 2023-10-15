@@ -3,18 +3,18 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    // background-color: aliceblue;
-
+    color: white;
+    height: 100vh;
 
 .sidebar-btn{
     padding: 17px;
     width: 100%;
     // background-color: aquamarine;
     border-radius: 10px;
-    color: rgb(150,157,160);
+    color:white;
    font: 600 18px;    
 }
 .sidebar-btn:hover{
-    background-color:rgb(26,32,46);
+    background-color:#b37551;
 }
 }

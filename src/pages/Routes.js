@@ -2,9 +2,10 @@ import React from "react";
 import { Routes, Route,useLocation } from "react-router-dom";
 import RoomList from "./Rooms/List/RoomList";
 import { useSelector } from "react-redux/es";
-import RoomDetail from "./Rooms/RoomDetails/RoomDetails";
+import RoomDetail from "./Rooms/RoomDetails";
 import HomePage from "./HomePage/HomePage";
 import Tour from "./Tour";
+import { ChakraProvider } from '@chakra-ui/react'
 
 import LoginForm from "./Auth/LoginForm/LoginForm";
 import LoginProvider from "./Context/Context_Login";
@@ -58,7 +59,13 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+
+          <Route path="/Dashboard/*" element={
+          <ChakraProvider>
+          
+          <Dashboard />
+          </ChakraProvider>
+          } />
 
         </Routes>
 

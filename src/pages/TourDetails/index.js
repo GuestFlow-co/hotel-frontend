@@ -45,7 +45,7 @@ function TourDetalis() {
           </div>
         </div>
       ) : (
-        <p>Loading...</p> // You can replace this with your loader component or message
+        <div className='preloader'></div> // You can replace this with your loader component or message
       )}
     </div>
   );
