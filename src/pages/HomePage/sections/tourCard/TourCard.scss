@@ -1,80 +1,88 @@
 .main-card-tour-home {
-  justify-content: center;
-  font-style: normal;
-  font-weight: 300;
-  color: var(--heading-color);
-  font-family: "Prompt", sans-serif;
-  font-size: 16px;
-  line-height: 29.6px;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 300;
+    color: var(--heading-color);
+    font-family: "Prompt", sans-serif;
+    font-size: 16px;
+    line-height: 29.6px;
 
-  i {
-      color: var(--primary-color);
-  }
+    i {
+        color: var(--primary-color);
+    }
 
-  .cards-tour-section-home {
-      width: 95%;
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-  }
+    .cards-tour-section-home {
+        width: 95%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* This will create a space between each card */
+        gap: 15px;
+        /* Adds some spacing between cards */
+    }
 
-  .theTourCard-home {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 33%;
-      margin: 8px;
-      position: relative;
-      padding-left: 30px;
-      padding-right: 30px;
+    .theTourCard-home {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 30%;
+        margin: 8px;
+        position: relative;
+        padding-left: 30px;
+        padding-right: 30px;
 
 
-      .tour-card-image-home {
-          width: 360px;
-          height: 250px;
-          border-radius: 15px;
-          object-fit: cover;
-          object-position: center;
-          transition: transform 0.3s; /* Add hover transition for zoom effect */
-      }
+        .tour-card-image-home {
+            width: 360px;
+            height: 250px;
+            border-radius: 15px;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s;
+            /* Add hover transition for zoom effect */
+        }
 
-      .info-tour-card-home {
-          position: relative;
-          bottom: 65px;
-          border-radius: 15px;
-          background-color: white;
-          display: flex;
-          flex-direction: column;
-          width: 85%;
-          padding: 15px 25px;
-          box-shadow: 0 0 20px rgba(8, 8, 8, 0.15);
-          height: 100%;
-          padding: 30px;
-          .lower-card-tour-section-home {
-              display: flex;
-              gap: 15%;
-              align-items: end;
-              justify-content: center;
-              padding: 20px;
-          }
-      }
+        .info-tour-card-home {
+            position: relative;
+            bottom: 65px;
+            border-radius: 15px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            padding: 15px 25px;
+            box-shadow: 0 0 20px rgba(8, 8, 8, 0.15);
+            height: 100%;
+            padding: 30px;
+            transition: transform 0.3s;
 
-      &:hover {
-          color: var(--primary-color);
-          .tour-card-image-home {
-              transform: scale(1.05); 
-              box-shadow: 0 0 20px rgba(247, 146, 30, 0.5); 
 
-          }
-          .info-tour-card-home {
-              transform: translateY(-10px); 
-            
-              box-shadow: 0 0 20px rgba(247, 146, 30, 0.5);
+            .lower-card-tour-section-home {
+                display: flex;
+                gap: 15%;
+                align-items: end;
+                justify-content: center;
+                padding: 20px;
+            }
+        }
+
+        &:hover {
+            color: var(--primary-color);
+
+            .tour-card-image-home {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(247, 146, 30, 0.5);
+                filter: brightness(1.2);
+                transition: transform 0.3s, filter 0.3s;
             }
 
-      }
-  }
+            .info-tour-card-home {
+                transform: translateY(-10px);
+                box-shadow: 0 0 20px rgba(247, 146, 30, 0.5);
+                transition: transform 0.3s, background-color 0.3s;
+            }
+
+        }
+    }
 }

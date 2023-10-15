@@ -50,8 +50,8 @@ function LoginProvider(props) {
       }
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        setErrorMessage("wrong password or username  ");
-        setTimeout(() => setErrorMessage(""), 2000);
+        setErrorMessage("Wrong password or username");
+        setTimeout(() => setErrorMessage(""), 4000);
       }
     }
   }

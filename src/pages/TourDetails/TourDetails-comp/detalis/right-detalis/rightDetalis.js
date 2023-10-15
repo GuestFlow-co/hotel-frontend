@@ -258,7 +258,7 @@ function RightDetails({ tour }) {
         <></>
       )}
       <section className="form-section-tour">
-        <h4 className="BookingTour"> Booking Tour</h4>
+        <h4 className="BookingTour "> Booking Tour</h4>
         <hr
           style={{
             width: "100%",
@@ -339,13 +339,7 @@ function RightDetails({ tour }) {
               </NumberInput>
             </div>
           </div>
-          <hr
-            style={{
-              width: "100%",
-              borderWidth: "2px",
-              color: "black",
-            }}
-          />
+   
           <Button type="submit" className="btn-Booking-Now">
             Booking Now{" "}
             <div>

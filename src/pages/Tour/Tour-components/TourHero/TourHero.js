@@ -14,7 +14,7 @@ import {
 
 export default function TourHero() {
   return (
-    <Container className="tourHero" maxW={"100%"}>
+    <Container className="tourHero -z-10" maxW={"100%"}>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
@@ -27,11 +27,10 @@ export default function TourHero() {
         <Text as={"p"}>Explore Tour Place</Text>
 
 
-        <p style={{fontSize:"28px"}}>Explore Tour Place</p>
         </div>
       </Stack>
       <div className="bg-lines">
-        <span className="z-40"></span><span></span>
+        <span></span><span></span>
         <span></span><span></span>
         <span></span><span></span>
         <span></span><span></span>
