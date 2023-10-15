@@ -7,7 +7,7 @@ import cookie from 'react-cookies';
 function Tour() {
 
   return (
-    <div>
+    <div className='overflow-hidden'>
         <div style={{ position: 'relative' }}>
 
       <TourHero />

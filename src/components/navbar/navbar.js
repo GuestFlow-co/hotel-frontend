@@ -1,16 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 // import Toplogo from "../../assets/images/logoSVG.svg";
 import "./navbar.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, } from "react";
 import Logo from "../../assets/images/logos/logoW.png";
+import { LoginContext } from "../../pages/Context/Context_Login";
 
 
 
 const NavBar = () => {
-
-
+  const { login, logout, loginData, errorMessage } = useContext(LoginContext);
+  const isSignedIn = loginData.logged;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isProfileRoute = location.pathname === "/profile";
+  
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+
+  const handleLogOut = () => {
+    logout();
+    navigate("/login");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,51 +79,31 @@ const NavBar = () => {
                   <ul className="navigation clearfix">
                     <li className="dropdown">
                       <Link to="/" className="link">
+                        <i className="fa-solid fa-building-columns p-5"></i>
                         Home
                       </Link>
-                      <ul>
-                        <li>
-                          <a href="index.html">Home One</a>
-                        </li>
-                      </ul>
+
                     </li>
                     <li className="dropdown">
                       <Link to="/rooms" className="link">
+                        <i className="fa-solid fa-house p-5"></i>
                         Rooms
                       </Link>
                     </li>
                     <li className="dropdown">
                       <Link to="/tour" className="link">
+                        <i class="fa-solid fa-tree p-5"></i>
                         Tours
                       </Link>
-                      <ul>
-                        <li>
-                          <a href="about.html">About us</a>
-                        </li>
-                        <li>
-                          <a href="">Tours</a>
-                        </li>
-                        <li>
-                          <a href="gallery.html">Gallery</a>
-                        </li>
-                        <li>
-                          <a href="faqs.html">FAQs & Help</a>
-                        </li>
-                      </ul>
                     </li>
                     <li className="dropdown">
-                    <Link to="./FAQ">FAQs</Link>
-                      <ul>
-                        <li>
-                          <Link to="./FAQ">FAQs</Link>
-                        </li>
-                        <li>
-                          <a href="product-details.html">Product Details</a>
-                        </li>
-                      </ul>
+
+                      <Link to="./FAQ"><i class="fa-solid fa-question"></i> FAQs </Link>
+
                     </li>
                     <li>
                       <Link to="/contact" className="link">
+                        <i class="fa-solid fa-address-book p-5"></i>
                         Contact
                       </Link>
                     </li>
@@ -124,9 +114,22 @@ const NavBar = () => {
             </div>
 
             <div className="menu-btns">
-              <Link to="/login" className="theme-btn">
-                Start Now <i className="fa-solid fa-angle-right"></i>
-              </Link>
+              {isSignedIn ? (
+                <>
+                  {!isProfileRoute && (
+                    <Link to="/profile" className="theme-btn">
+                      Profile <i className="fa-solid fa-user"></i>
+                    </Link>
+                  )}
+                  <button onClick={handleLogOut} className="theme-btn">
+                    Log Out <i className="fa-solid fa-sign-out"></i>
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="theme-btn">
+                  Start Now <i className="fa-solid fa-angle-right"></i>
+                </Link>
+              )}
             </div>
           </div>
         </div>

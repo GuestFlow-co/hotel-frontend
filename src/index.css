@@ -39,6 +39,9 @@ body {
   --black-color: #0c0b0b;
   --border-color: #d9dfe7;
   scroll-behavior: smooth;
+  --font-main: "Roboto", sans-serif;
+  --font-sec:"Cormorant Garamond", serif;
+  --font-thr:"flaticon_merina";
 }
 
 a {
@@ -125,9 +128,7 @@ footer:after {
 }
 
 /*======= Input Styles =======*/
-input,
-select,
-textarea,
+
 .nice-select,
 .form-control {
   width: 100%;
@@ -1081,8 +1082,8 @@ a.theme-btn.style-three {
 /******************* ## Repeat Style ******************/
 /*******************************************************/
 .heading,
-input,
-select,
+
+
 textarea,
 .nice-select,
 .form-control,
