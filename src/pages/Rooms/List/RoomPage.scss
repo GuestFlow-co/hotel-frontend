@@ -1,0 +1,137 @@
+/*******************************************************/
+/****************** ## Search Filter *******************/
+/*******************************************************/
+.search-filter-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    padding: 50px 80px 20px;
+    background: var(--black-color);
+    -webkit-transform: translateY(-80px);
+    -ms-transform: translateY(-80px);
+    transform: translateY(-80px);
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1399px) {
+    .search-filter-inner {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.search-filter-inner .section-title {
+    width: 100%;
+}
+
+.search-filter-inner .section-title .sub-title {
+    color: white;
+    font-weight: 400;
+}
+
+.search-filter-inner .section-title h3 {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.search-filter-inner .theme-btn,
+.search-filter-inner .filter-item {
+    margin-bottom: 30px;
+    width: calc(20% - 22px);
+}
+
+@media only screen and (max-width: 1199px) {
+
+    .search-filter-inner .theme-btn,
+    .search-filter-inner .filter-item {
+        width: calc(50% - 22px);
+    }
+}
+
+@media only screen and (max-width: 575px) {
+
+    .search-filter-inner .theme-btn,
+    .search-filter-inner .filter-item {
+        width: 100%;
+    }
+}
+
+.search-filter-inner .filter-item input,
+.search-filter-inner .filter-item .nice-select {
+    line-height: 1.6;
+    padding: 0 0 15px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.search-filter-inner .filter-item input::-webkit-input-placeholder,
+.search-filter-inner .filter-item .nice-select::-webkit-input-placeholder {
+    color: white;
+}
+
+.search-filter-inner .filter-item input:-ms-input-placeholder,
+.search-filter-inner .filter-item .nice-select:-ms-input-placeholder {
+    color: white;
+}
+
+.search-filter-inner .filter-item input::-ms-input-placeholder,
+.search-filter-inner .filter-item .nice-select::-ms-input-placeholder {
+    color: white;
+}
+
+.search-filter-inner .filter-item input::placeholder,
+.search-filter-inner .filter-item .nice-select::placeholder {
+    color: white;
+}
+
+.search-filter-inner .filter-item input:focus,
+.search-filter-inner .filter-item .nice-select:focus {
+    border-color: white;
+}
+
+.search-filter-inner .filter-item input {
+    color: white;
+}
+
+.search-filter-inner .filter-item input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(../../../assets/images/icons/calendar.png) no-repeat center;
+    width: 16px;
+    height: 15px;
+}
+
+.search-filter-inner .filter-item .nice-select:after {
+    right: 3px;
+    margin-top: -10px;
+    border-color: white;
+}
+
+.search-filter-inner .filter-item .nice-select .current {
+    color: white;
+}
+
+.search-filter-inner .theme-btn.style-two {
+    color: white;
+    border-color: white;
+}
+
+.search-filter-inner .theme-btn.style-two:hover {
+    border-color: var(--primary-color);
+}
+
+
+.no-rooms-message{
+    font-size: 50px;
+    font-weight: 700;
+    font-family: var(--font-thr);
+    color: var(--black-color);
+}

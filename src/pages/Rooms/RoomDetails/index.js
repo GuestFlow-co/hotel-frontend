@@ -22,6 +22,9 @@ import Review from "./Review";
 import BookingForm from "../../Booking/Form";
 import RoomItem from "../Items/RoomItems";
 import SContainer from "./Slider";
+import "./style.scss";
+
+
 
 export default function RoomDetails() { // Named your component
   const { room_number } = useParams();
@@ -33,7 +36,7 @@ export default function RoomDetails() { // Named your component
     return <p>Room not found</p>;
   }
 
-  const RoomItems = rooms.map((room) => ( 
+  const RoomItems = rooms.map((room) => (
     <Box key={room.Room_id} p={7} lg={4} md={6} sm={12}>
       <Card>
         <Box>
@@ -45,11 +48,21 @@ export default function RoomDetails() { // Named your component
 
   return (
     <div>
-      <img
-        src={hero}
-        alt={`Room Image`}
-        style={{ width: "100%", height: "300px", objectFit: "cover" }}
-      />
+
+      <section className="page-banner-area pt-195 rpt-135 pb-190 rpb-125 rel z-1 bgs-cover bgc-black text-center" style={{backgroundImage: 'url(assets/images/background/banner-room.jpg)'}}>
+        <div className="container">
+          <div className="banner-inner text-white rpb-25">
+            <h2 className="page-title wow fadeInUp delay-0-2s">{room.roomType}</h2>
+          </div>
+        </div>
+        <div className="bg-lines">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+        </div>
+      </section>
 
       <Container w={"58%"} justifyContent={"center"} alignItems={"center"} ml={"3%"}>
         <RoomDetail />
@@ -70,8 +83,8 @@ export default function RoomDetails() { // Named your component
         </Text>
         <Container>
           {/* {RoomItems} */}
-          <SContainer/>
-          </Container>
+          <SContainer />
+        </Container>
       </Container>
       <Review />
     </div>

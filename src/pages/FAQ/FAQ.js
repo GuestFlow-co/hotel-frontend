@@ -5,144 +5,171 @@ import { Link } from 'react-router-dom';
 
 export default function FAQ() {
   return (
-    <>
-    {/* Page header */}
-    <section className="page-header bg--cover" style={{ backgroundImage: "url(	https://labartisan.net/demo/tavern/assets/images/header/bg.jpg)" }}>
-      <div className="container">
-        <div className="page-header__content text-center">
-          <h2>FAQ</h2>
-          <nav style={{ '--bs-breadcrumb-divider': '/' }} aria-label="breadcrumb">
-    
-          </nav>
+    <div>
+      {/* Page Banner Start */}
+      <section className="page-banner-area pt-170 rpt-110 pb-190 rpb-125 rel z-1 bgs-cover bgc-black text-center" style={{ backgroundImage: "url(https://webtend.site/html/qomfort/assets/images/background/banner-shop.jpg)" }}>
+        <div className="container">
+          <div className="banner-inner text-white">
+            <h1 className="page-title wow fadeInUp delay-0-2s">FAQs</h1>
+            <nav aria-label="breadcrumb">
+            </nav>
+          </div>
         </div>
-      </div>
-    </section>
+        <div className="bg-lines">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+        </div>
+      </section>
+      {/* Page Banner End */}
 
-    {/* FAQ Section */}
-    <section className="faq padding-top padding-bottom">
-      <div className="container">
-        <div className="section-header">
-          <div className="section-header__content">
-            <p className="subtitle">Popular Questions</p>
-            <h2>Frequently Asked Questions</h2>
-          </div>
-        </div>
-        <div className="faq__wrapper">
-          <div className="row g-4">
+      {/* FAQ Area start */}
+      <section className="faq-area py-130 rpy-100 rel">
+        <div className="container">
+          <div className="row align-items-center pb-130 rpb-100">
             <div className="col-lg-6">
-              {/* Accordion 1 */}
-              <div className="accordion" id="faqAccordion1">
-                <div className="row g-4">
-                  {/* FAQ Item 1 */}
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-right" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1" aria-expanded="false" aria-controls="faqBody1">
-                          What's special about your Hotel?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1" className="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion1">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-right" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1" aria-expanded="false" aria-controls="faqBody1">
-                          What's special about your Hotel?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1" className="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion1">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-right" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1" aria-expanded="false" aria-controls="faqBody1">
-                          What's special about your Hotel?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1" className="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion1">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Add more FAQ items here */}
-                </div>
+              <div className="faq-image-part rmb-55 rel wow fadeInRight delay-0-2s">
+                <img src="https://webtend.site/html/qomfort/assets/images/faq/faq-page1.jpg" alt="FAQs" />
+             
               </div>
             </div>
-            <div className="col-lg-6">
-              {/* Accordion 2 */}
-              <div className="accordion" id="faqAccordion2">
-                <div className="row g-4">
-                  {/* FAQ Item 1a */}
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-left" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1a">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1a" aria-expanded="false" aria-controls="faqBody1a">
-                          How can I book a room from this website?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1a" className="accordion-collapse collapse" aria-labelledby="faq1a" data-bs-parent="#faqAccordion2">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-left" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1a">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1a" aria-expanded="false" aria-controls="faqBody1a">
-                          How can I book a room from this website?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1a" className="accordion-collapse collapse" aria-labelledby="faq1a" data-bs-parent="#faqAccordion2">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
+            <div className="col-xl-5 col-lg-6 ms-lg-auto">
+              <div className="faq-content-part wow fadeInLeft delay-0-2s">
+                <div className="section-title mb-30">
+                  <span className="sub-title mb-15">FAQs</span>
+                  <h2>Learn Something About Our Services And More</h2>
+                </div>
+                <div className="accordion" id="faq-accordion">
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        01. What Services Do We Provides?
+                      </button>
+                    </h5>
+                    <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-12">
-                    <div className="accordion__item accordion__item--style2" data-aos="fade-up-left" data-aos-duration="1000">
-                      <div className="accordion__header" id="faq1a">
-                        <button className="accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqBody1a" aria-expanded="false" aria-controls="faqBody1a">
-                          How can I book a room from this website?
-                          <span className="plus-icon"></span>
-                        </button>
-                      </div>
-                      <div id="faqBody1a" className="accordion-collapse collapse" aria-labelledby="faq1a" data-bs-parent="#faqAccordion2">
-                        <div className="accordion__body">
-                          Don’t get shirty with me owt to do with me arse down have it car boot happy days no biggie bevriy only aquid goods flat the little rotter cheeky. Lorem ipsum dolor siterx amet Lorem ipsum dolor sit amet.
-                        </div>
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        02. How Must Cost Our Rooms?
+                      </button>
+                    </h5>
+                    <div id="collapseTwo" className="accordion-collapse collapse show" data-bs-parent="#faq-accordion">
+                      <div className="accordion-body">
+                        <p>We denounce with righteous indignation and dislike men beguiledey and demoralized by the charms of pleasure of the moment</p>
                       </div>
                     </div>
                   </div>
-                  {/* Add more FAQ items here */}
-                  
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                        03. Experience Team Member?
+                      </button>
+                    </h5>
+                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                        04. Are You Awards Winning Company?
+                      </button>
+                    </h5>
+                    <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="row align-items-center">
+            <div className="col-xl-5 col-lg-6 me-lg-auto">
+              <div className="faq-content-part rmb-55 wow fadeInLeft delay-0-2s">
+                <div className="section-title mb-30">
+                  <span className="sub-title mb-15">FAQs</span>
+                  <h2>Learn Something About Our Services And More</h2>
+                </div>
+                <div className="accordion" id="faq-accordion-two">
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne">
+                        01. What Services Do We Provides?
+                      </button>
+                    </h5>
+                    <div id="collapseTwoOne" className="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwoTwo">
+                        02. How Must Cost Our Rooms?
+                      </button>
+                    </h5>
+                    <div id="collapseTwoTwo" className="accordion-collapse collapse show" data-bs-parent="#faq-accordion-two">
+                      <div className="accordion-body">
+                        <p>We denounce with righteous indignation and dislike men beguiledey and demoralized by the charms of pleasure of the moment</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoThree">
+                        03. Experience Team Member?
+                      </button>
+                    </h5>
+                    <div id="collapseTwoThree" className="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h5 className="accordion-header">
+                      <button className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFour">
+                        04. Are You Awards Winning Company?
+                      </button>
+                    </h5>
+                    <div id="collapseTwoFour" className="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                      <div className="accordion-body">
+                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="faq-image-part rel wow fadeInRight delay-0-2s">
+                <img src="https://webtend.site/html/qomfort/assets/images/faq/faq-page2.jpg" alt="FAQs" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  </>
-);
+        <div className="bg-lines for-bg-white">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+        </div>
+      </section>
+      {/* FAQ Area end */}
+    </div>
+  );
 }
- 
