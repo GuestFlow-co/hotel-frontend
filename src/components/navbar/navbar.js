@@ -14,7 +14,8 @@ const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isProfileRoute = location.pathname === "/profile";
-  
+  const isAdmin = loginData.user.role === "admin";
+
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
   const handleLogOut = () => {
@@ -98,7 +99,7 @@ const NavBar = () => {
                     </li>
                     <li className="dropdown">
 
-                      <Link to="./FAQ"><i class="fa-solid fa-question"></i> FAQs </Link>
+                      <Link to="./FAQ"><i class="fa-solid fa-question"></i> FAQ </Link>
 
                     </li>
                     <li>
@@ -116,7 +117,11 @@ const NavBar = () => {
             <div className="menu-btns">
               {isSignedIn ? (
                 <>
-                  {!isProfileRoute && (
+                  {isAdmin ? (
+                    <Link to="/dashboard" className="theme-btn">
+                      Dashboard <i className="fa-solid fa-tachometer"></i>
+                    </Link>
+                  ) : !isProfileRoute && (
                     <Link to="/profile" className="theme-btn">
                       Profile <i className="fa-solid fa-user"></i>
                     </Link>

@@ -207,6 +207,7 @@
     .room__item-thumb img,
     .custom-btn--fluid {
         width: 100%;
+        max-height: 446px;
     }
 
     .room__video-wrapper img,
@@ -222,7 +223,7 @@
     h5,
     h6 {
         font-family: "Gilda Display", serif;
-        color: #1f3347;
+        color: var(--heading-color);
         line-height: 1.25;
         font-weight: 700;
     }
@@ -261,7 +262,7 @@
         border-radius: 0.25rem;
         background-color: var(--primary-color);
         color: #ffffff;
-        padding-inline: 2rem;
+        padding-inline: 1rem;
         line-height: 52px;
     }
 
@@ -281,20 +282,20 @@
     .custom-btn:before {
         right: calc(-60px - 5px);
         border-right: calc(60px + 5px) solid transparent;
-        border-bottom: calc(60px + 5px) solid #13172b;
+        border-bottom: calc(60px + 5px) solid var(--heading-color);
         transform: translateX(-100%);
     }
 
     .custom-btn:after {
         left: calc(-60px - 5px);
         border-left: calc(60px + 5px) solid transparent;
-        border-top: calc(60px + 5px) solid #13172b;
+        border-top: calc(60px + 5px) solid var(--heading-color);
         transform: translateX(100%);
     }
 
     .custom-btn:hover {
         color: #fff;
-        border-color: #13172b;
+        border-color: var(--heading-color);
     }
 
     .custom-btn:hover:before {
@@ -312,11 +313,11 @@
 
     .custom-btn--bordered {
         background-color: transparent;
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .custom-btn--bordered:hover {
-        color: #1f3347;
+        color: var(--heading-color);
         border-color: var(--primary-color);
     }
 
@@ -477,7 +478,7 @@
 
     .room__item--style1:hover .room__item-header h3,
     .room__item--style1.active .room__item-header h3 {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style1:hover .room__item-header p,
@@ -525,7 +526,7 @@
 
     .room__item--style2:hover .room__item-header .custom-btn--bordered,
     .room__item--style2.active .room__item-header .custom-btn--bordered {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style2:hover .room__item-header .custom-btn--bordered::before,
@@ -566,7 +567,7 @@
     }
 
     .room__item--style3 .room__item-header h3 {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style3 .room__item-header p {
@@ -589,7 +590,7 @@
 
     .room__item--style3:hover .room__item-header .custom-btn--bordered,
     .room__item--style3.active .room__item-header .custom-btn--bordered {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style3:hover .room__item-header .custom-btn--bordered::before,
@@ -683,7 +684,7 @@
     }
 
     .room__item--style4 .room__item-header h3 {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style4 .room__item-header p {
@@ -706,7 +707,7 @@
 
     .room__item--style4:hover .room__item-header .custom-btn--bordered,
     .room__item--style4.active .room__item-header .custom-btn--bordered {
-        color: #1f3347;
+        color: var(--heading-color);
     }
 
     .room__item--style4:hover .room__item-header .custom-btn--bordered::before,

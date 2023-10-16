@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import RoomItem from "../Items/RoomItems";
-import hero from "../../../assets/Rooms/5655441.jpg";
 import RoomFilter from "../Filter";
+
 import {
   Container,
   Box,
@@ -13,12 +13,17 @@ import {
   Flex,
   Grid,
 } from "@chakra-ui/react";
+import DatePicker from "react-datepicker";
+import './RoomPage.scss'
 
 const RoomList = () => {
+
   const loading = useSelector((state) => state.rooms.loading);
   const rooms = useSelector((state) => state.rooms.rooms);
   const [filteredRooms, setFilteredRooms] = useState(rooms);
   const [query, setQuery] = useState("");
+
+
 
   const handleFilter = (filteredData) => {
     setFilteredRooms(filteredData);
@@ -43,59 +48,85 @@ const RoomList = () => {
   };
 
   const RoomItems = filteredRooms.map((room) => (
-    <Box key={room.Room_id} p={7} lg={4} md={6} sm={12}>
-      <Card>
-        <Box>
-          <RoomItem room={room} />
-        </Box>
-      </Card>
-    </Box>
+
+    <div className="col-xl-4 col-md-6" key={room.Room_id}>
+      <RoomItem room={room} />
+    </div>
+
   ));
 
+  const noRoomsFoundMessage = filteredRooms.length === 0 ? (
+    <div className="no-rooms-message text-center">No Rooms Found</div>
+  ) : null;
+
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="space-between"
-      minHeight="100vh"
-      pl={"-1%"}
-    >
-      <img
-        src={hero}
-        alt={`Room Image`}
-        style={{ width: "100%", height: "300px", objectFit: "cover" }}
-      />
-      <Input
-        placeholder="Search for a room"
-        onChange={handleSearch}
-        value={query}
-        size="md"
-        borderColor="BROWN"
-        backgroundColor="white"
-        _placeholder={{ color: "gray.500" }}
-        borderRadius="5%"
-        width="25%"
-        height={1}
-        paddingLeft={3}
-        position="absolute"
-        top="8%"
-        left="30%"
-        transform="translateX(-50%)"
-      />
-      <Grid mb={3}>
-        <Flex>
-          <RoomFilter rooms={rooms} onFilter={handleFilter} />
-        </Flex>
-      </Grid>
-      <SimpleGrid columns={3} spacing={3}>
-        {RoomItems}
-      </SimpleGrid>
-      {loading && (
-        <Flex justifyContent="center" mt={4}>
-          <Spinner size="md" color="teal.500" emptyColor="gray.200" />
-        </Flex>
+
+    <div>
+      {loading ? (
+        <div className='preloader'></div>
+      ) : (
+        <div>
+          {/* Hero section */}
+
+          <section className="page-banner-area pt-140 rpt-80 pb-240 rpb-150 rel z-1 bgs-cover bgc-black text-center" style={{ backgroundImage: 'url(https://webtend.site/html/qomfort/assets/images/background/banner.jpg)' }}>
+            <div className="container">
+              <div className="banner-inner text-white rpb-25">
+                <h1 className="page-title wow fadeInUp delay-0-2s">Explore Our Rooms</h1>
+                <nav aria-label="breadcrumb">
+
+                </nav>
+              </div>
+            </div>
+            <div className="bg-lines">
+              <span></span><span></span>
+              <span></span><span></span>
+              <span></span><span></span>
+              <span></span><span></span>
+              <span></span><span></span>
+            </div>
+            {/* Hero section End */}
+
+
+          </section>
+
+
+          <RoomFilter
+            rooms={rooms}
+            onFilter={handleFilter}
+            handleSearch={handleSearch}
+            query={query}
+          />
+
+
+          <section className='card-section-room room padding-top padding-bottom ' style={{ paddingBottom: '100px' }}>
+            <div className='container'>
+              <div className='room__wrapper'>
+                <div className='row g-4'>
+                  {noRoomsFoundMessage}
+
+                  {RoomItems}
+
+                </div>
+              </div>
+            </div>
+          </section>
+          <div className="bg-lines for-bg-white">
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+          </div>
+
+          {/* {loading && (
+          <Flex justifyContent="center" mt={4}>
+            <Spinner size="md" color="teal.500" emptyColor="gray.200" />
+          </Flex>
+        )} */}
+
+        </div>
       )}
-    </Flex>
+    </div>
   );
 };
 

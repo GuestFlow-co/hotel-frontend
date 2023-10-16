@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 import './room.scss'
 import { useState, useEffect } from 'react';
 import RoomImg from '../../../../assets/images/1.png'
+import { FaStar } from "react-icons/fa";
+import person from "../../../../assets/Rooms/person.png"
+
+
 
 export default function RoomCard() {
   const [rooms, setRooms] = useState([]);
@@ -11,11 +15,16 @@ export default function RoomCard() {
   const fetchRooms = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/rooms`)
-      setRooms(response.data);
+      setRooms(response.data.slice(0, 3));
       console.log(response.data);
     } catch (error) {
       console.error('Error fetching room data:', error);
     }
+  };
+
+  const colors = {
+    orange: "#e8a41d",
+    grey: "#a9a9a9",
   };
 
   useEffect(() => {
@@ -46,8 +55,8 @@ export default function RoomCard() {
             <div className='row g-4'>
               {rooms.map(room => (
                 <div className="col-xl-4 col-md-6" key={room.Room_id}>
-                  <div className="room__item room__item--style1">
-                    <div className="room__item-inner">
+                  <div className="room__item room__item--style1" >
+                    <div className="room__item-inner " style={{ maxHeight: '446px' }}>
                       <div className="room__item-thumb">
                         <img src={room.coverPhoto} alt="room image" />
                       </div>
@@ -55,11 +64,17 @@ export default function RoomCard() {
                         <div className="room__item-header">
                           <div className="room__item-name">
                             <ul className="rating">
-                              <li className="rating__star"><i className="fa-solid fa-star"></i></li>
-                              <li className="rating__star"><i className="fa-solid fa-star"></i></li>
-                              <li className="rating__star"><i className="fa-solid fa-star"></i></li>
-                              <li className="rating__star"><i className="fa-solid fa-star"></i></li>
-                              <li className="rating__star"><i className="fa-solid fa-star"></i></li>
+                              {Array(5).fill(parseInt(room.theRoomRate)).map((_, index) => (
+                                <FaStar
+                                  key={index}
+                                  size={25}
+                                  color={room.theRoomRate > index ? colors.orange : colors.grey}
+                                  style={{
+                                    marginRight: 10,
+                                    cursor: "pointer",
+                                  }}
+                                />
+                              ))}
                             </ul>
                             {/* Room name and availability */}
                             <h3>{room.roomType} Room</h3>
@@ -76,6 +91,11 @@ export default function RoomCard() {
                           {/* Room description */}
                           <p>{room.description}</p>
 
+
+                          <div style={{ display: "flex" ,padding:'10px' }}>
+                            <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
+                            <p style={{ color: "black",paddingLeft:'10px' }}>{room.room_capacity} person</p>
+                          </div>  
                           {/* Room features */}
                           <ul className="room__feature">
                             {room.features.map((feature, index) => (
@@ -187,13 +207,13 @@ export default function RoomCard() {
         </div>
       </section>
 
-      <div className="bg-lines ">
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-      </div>
+     <div className="bg-lines for-bg-white">
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+          <span></span><span></span>
+        </div>
       <div className="wave-shapes"></div>
       <div className="wave-shapes-two"></div>
     </section>

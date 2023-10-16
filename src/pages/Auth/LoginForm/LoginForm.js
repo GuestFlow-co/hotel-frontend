@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../../Context/Context_Login";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./LoginForm.scss";
 import cookie from 'react-cookies';
@@ -10,10 +10,10 @@ import cookie from 'react-cookies';
 
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
-  const { login, logout, loginData,errorMessage } = useContext(LoginContext);
+  const { login, logout, loginData, errorMessage } = useContext(LoginContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();   
+  const navigate = useNavigate();
   const [loginn, setlogin] = useState(false);
 
   const initialFormData = {
@@ -26,15 +26,15 @@ function SignInUpForm() {
     // role: "",
   };
   const [formData, setFormData] = useState(initialFormData);
-  
+
   const handleSignUpClick = () => {
     setIsSignUp(true);
   };
-  
+
   const handleSignInClick = () => {
     setIsSignUp(false);
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -46,27 +46,27 @@ function SignInUpForm() {
   // const handleSignupSub = async (e) => {
   //   e.preventDefault();
   //   try {
-    //     const res = await axios.post("http://localhost:3005/signup", formData);
+  //     const res = await axios.post("http://localhost:3005/signup", formData);
   //     console.log(res);
   //     alert(`You have Signed up Successfully ${formData.username}`);
   //   } catch (err) {
-    //     console.log("login ", err);
-    //   }
-    //   setFormData({
-      //     username: "",
-      //     password: "",
-      //     firstName: "",
-      //     lastName: "",
-      //     email: "",
-      //     phoneNumber: "",
-      //     role: "",
-      //   });
-      // };
-      
-      const handleSignupSub = async (e) => {
-        e.preventDefault();
-        try {
-          //deployed link:            https://guestflow.onrender.com/
+  //     console.log("login ", err);
+  //   }
+  //   setFormData({
+  //     username: "",
+  //     password: "",
+  //     firstName: "",
+  //     lastName: "",
+  //     email: "",
+  //     phoneNumber: "",
+  //     role: "",
+  //   });
+  // };
+
+  const handleSignupSub = async (e) => {
+    e.preventDefault();
+    try {
+      //deployed link:            https://guestflow.onrender.com/
       const res = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/signup`,
         formData
@@ -83,7 +83,7 @@ function SignInUpForm() {
       console.log("login ", err);
 
     }
-    
+
     setFormData({
       username: "",
       password: "",
@@ -94,12 +94,12 @@ function SignInUpForm() {
       // role: "",
     });
   };
-  
-  
+
+
   function handleLogin(e) {
     e.preventDefault();
     login(username, password)
-    console.log(loginData,"loginDataloginData");
+    console.log(loginData, "loginDataloginData");
     // setlogin(true)
     // const user = cookie.load("user")
     // setTimeout(()=>{
@@ -120,6 +120,15 @@ function SignInUpForm() {
     setPassword(e.target.value);
   }
 
+
+  useEffect(() => {
+    // Check if the user is already logged in and has accessed the login page
+    if (loginData.logged) {
+      // Redirect to the home page
+      navigate('/');
+    }
+  }, [loginData.logged, navigate]);
+
   return (
     <div className="signup-main-container">
       <div
@@ -127,99 +136,98 @@ function SignInUpForm() {
       >
         <When condition={loginData.logged}>
           <div>
-            <Button color="cyan" onClick={logout} className="logout-button">
-              Log Out
-            </Button>
+            <p>You are already logged in. Redirecting to the home page...</p>
+
           </div>
         </When>
-       
+
         <When condition={!loginData.logged}>
           <div className="form-container sign-up-container">
             <form className="signup-form" onSubmit={handleSignupSub}>
-            <div className="signup-form-cont">
-              <h1 className="create-Account-h1">Create Account</h1>
-              {/* <span className="signup-span">or use your email for registration</span> */}
-              <div className="name-inputs">
-                <div className="names-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="firstName"
-                    placeholder=""
-                    required
-                    value={formData.firstName}
+              <div className="signup-form-cont">
+                <h1 className="create-Account-h1">Create Account</h1>
+                {/* <span className="signup-span">or use your email for registration</span> */}
+                <div className="name-inputs">
+                  <div className="names-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="firstName"
+                      placeholder=""
+                      required
+                      value={formData.firstName}
                     // className="sign-up-input"
-                  />
-                  <label htmlFor="Lirst Name">First Name</label>
-                </div>
-                <div className="names-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="lastName"
-                    placeholder=""
-                    required
-                    value={formData.lastName}
+                    />
+                    <label htmlFor="Lirst Name">First Name</label>
+                  </div>
+                  <div className="names-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="lastName"
+                      placeholder=""
+                      required
+                      value={formData.lastName}
                     // className="sign-up-input"
-                  />
-                  <label htmlFor="Last Name">Last Name</label>
-                </div>
-              </div>
-
-              <div className="other-inputs-form">
-                <div className="other-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="username"
-                    placeholder=""
-                    required
-                    value={formData.username}
-                    // className="sign-up-input"
-                  />
-                  <label htmlFor="User Name">User Name</label>
+                    />
+                    <label htmlFor="Last Name">Last Name</label>
+                  </div>
                 </div>
 
-                <div className="other-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="password"
-                    placeholder=""
-                    required
-                    type="password"
-                    value={formData.password}
+                <div className="other-inputs-form">
+                  <div className="other-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="username"
+                      placeholder=""
+                      required
+                      value={formData.username}
                     // className="sign-up-input"
-                  />
-                  <label htmlFor="Password">Password</label>
-                </div>
-                <div className="other-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="email"
-                    placeholder=""
-                    required
-                    type="email"
-                    value={formData.email}
-                    // className="sign-up-input"
-                  />
-                  <label htmlFor="Email">Email</label>
-                </div>
+                    />
+                    <label htmlFor="User Name">User Name</label>
+                  </div>
 
-                <div className="other-form-group">
-                  <input
-                    onChange={handleInputChange}
-                    name="phoneNumber"
-                    placeholder=""
-                    required
-                    type="tel"
-                    value={formData.phoneNumber}
+                  <div className="other-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="password"
+                      placeholder=""
+                      required
+                      type="password"
+                      value={formData.password}
                     // className="sign-up-input"
-                  />
-                  <label htmlFor="Phone Number">Phone Number</label>
+                    />
+                    <label htmlFor="Password">Password</label>
+                  </div>
+                  <div className="other-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="email"
+                      placeholder=""
+                      required
+                      type="email"
+                      value={formData.email}
+                    // className="sign-up-input"
+                    />
+                    <label htmlFor="Email">Email</label>
+                  </div>
+
+                  <div className="other-form-group">
+                    <input
+                      onChange={handleInputChange}
+                      name="phoneNumber"
+                      placeholder=""
+                      required
+                      type="tel"
+                      value={formData.phoneNumber}
+                    // className="sign-up-input"
+                    />
+                    <label htmlFor="Phone Number">Phone Number</label>
+                  </div>
                 </div>
-              </div>
-              <div className="devv">
-                <button className="sign-up-button" type="submit">
-                  Sign Up
-                </button>
-              </div>
+                <div className="devv">
+                  <button className="sign-up-button" type="submit">
+                    Sign Up
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -232,7 +240,7 @@ function SignInUpForm() {
               <span className="signin-span"></span>
 
               <div className="login-form-group">
-             
+
 
                 <input
                   onChange={handleUsernameChange}
@@ -260,18 +268,17 @@ function SignInUpForm() {
               <button className="sign-up-button" type="submit">
                 Sign In
               </button>
-               
-            {errorMessage && <p  className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
+
+              {errorMessage && <p className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
             </form>
           </When>
-          
+
         </div>
         <div className="overlay-container">
           <div className="overlay">
             <div
-              className={`overlay-panel overlay-left ${
-                isSignUp ? "overlay-left-active" : ""
-              }`}
+              className={`overlay-panel overlay-left ${isSignUp ? "overlay-left-active" : ""
+                }`}
             >
               <h1 className="create-Account-h3">Welcome Back!</h1>
               <p className="signup-p">
@@ -284,9 +291,8 @@ function SignInUpForm() {
               </div>
             </div>
             <div
-              className={`overlay-panel overlay-right ${
-                isSignUp ? "overlay-right-active" : ""
-              }`}
+              className={`overlay-panel overlay-right ${isSignUp ? "overlay-right-active" : ""
+                }`}
             >
               <h1 className="create-Account-h2">Hello Friend!</h1>
               <p className="signup-p">
@@ -300,6 +306,13 @@ function SignInUpForm() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="bg-lines for-bg-white">
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
       </div>
     </div>
   );

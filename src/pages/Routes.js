@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route,useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import RoomList from "./Rooms/List/RoomList";
 import { useSelector } from "react-redux/es";
 import RoomDetail from "./Rooms/RoomDetails";
@@ -24,22 +24,30 @@ import Dashboard from "./dashboard/Dashboard";
 import Resturant from "./Resturant/Resturant";
 import Profile from "./Profile/Profile";
 
+import ScrollToTopButton from '../components/buttons/topButton';
 
 export default function Routers() {
-  const location =useLocation().pathname;
+  const location = useLocation().pathname;
   const isDashboardPage = location.startsWith("/dashboard");
   const isSignInPage = location === "/login";
   const rooms = useSelector((state) => state.rooms.rooms);
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
   return (
     <div>
+      <ScrollToTopButton/>
       <LoginProvider>
 
-     
-        
 
 
-      {!isDashboardPage && !isSignInPage && <Header />}
+
+
+        {!isDashboardPage && !isSignInPage && <Header />}
 
 
 
@@ -61,10 +69,10 @@ export default function Routers() {
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
 
           <Route path="/Dashboard/*" element={
-          <ChakraProvider>
-          
-          <Dashboard />
-          </ChakraProvider>
+            <ChakraProvider>
+
+              <Dashboard />
+            </ChakraProvider>
           } />
 
         </Routes>
@@ -73,7 +81,7 @@ export default function Routers() {
 
       </LoginProvider>
 
-     { !isDashboardPage && !isSignInPage && <Footer />}
+      {!isDashboardPage && !isSignInPage && <Footer />}
 
     </div>
   );
