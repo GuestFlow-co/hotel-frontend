@@ -15,6 +15,7 @@ import TourDetalis from "./TourDetails";
 import Header from "../layout/Header/Header";
 import Footer from "../layout/Footer/Footer";
 
+import AboutUs from "./AboutUs/AboutUs";
 
 import FAQ from "./FAQ/FAQ";
 
@@ -67,6 +68,7 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
 
           <Route path="/Dashboard/*" element={
             <ChakraProvider>

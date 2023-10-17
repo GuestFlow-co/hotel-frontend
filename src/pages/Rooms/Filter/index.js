@@ -112,6 +112,7 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
               Search Now <i className="fa fa-angle-right"></i>
             </button>
           </div>
+          
         </div>
         <div className="bg-lines for-bg-white">
           <span></span><span></span>
