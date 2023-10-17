@@ -10,7 +10,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
 } from "mdb-react-ui-kit";
 import UserTableInfo from "../UserTableInfo/UserTableInfo";
 import UserCardInfo from "../UserCardInfo/UserCardInfo";
@@ -62,7 +61,7 @@ function UserBookingInfo() {
 
         <MDBRow>
           <MDBCol lg="4">
-            <MDBCard className="mb-4" style={{ width: "100%", height: "78%" }}>
+            <MDBCard className="mb-4" style={{ width: "100%", height: "95%" }}>
               <MDBCardBody className="text-center">
                 <MDBCardImage
                   src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
@@ -101,14 +100,14 @@ function UserBookingInfo() {
                   }}
                 >
                   <div className="d-flex justify-content-center mb-2">
-                    <MDBBtn
+                    <Button
                       outline
                       className="btn-brown-2"
                       onClick={() => navigate("/forgotPassword")}
                       style={{ marginLeft: "112%" }}
                     >
                       Change Password
-                    </MDBBtn>
+                    </Button>
                   </div>
                   <div className="d-flex justify-content-center mb-2">
                     <Button
@@ -141,12 +140,17 @@ function UserBookingInfo() {
         </MDBRow>
       </MDBContainer>
       <div className="bg-lines for-bg-white">
-            <span></span><span></span>
-            <span></span><span></span>
-            <span></span><span></span>
-            <span></span><span></span>
-            <span></span><span></span>
-          </div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </section>
   );
 }
