@@ -358,7 +358,7 @@ function MainDashboard({ bookings, tours, rooms, users }) {
               }}
             />
           </div>
-          <div style={{ width: "45%", padding: "20px" }}>
+          <div style={{ width: "45%", padding: "20px 0px",marginLeft:"30px" }}>
             <Chart
               options={donutData.options}
               series={donutData.series}

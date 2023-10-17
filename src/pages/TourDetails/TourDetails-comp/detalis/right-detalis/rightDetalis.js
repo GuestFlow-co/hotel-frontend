@@ -20,8 +20,12 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function RightDetails({ tour }) {
+function RightDetails({ tour, setupdated }) {
+  const toast = useToast();
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const containerStyle = {
     width: "100%",
@@ -119,7 +123,7 @@ function RightDetails({ tour }) {
   const getSet = (e) => {
     e.preventDefault();
     const user = cookie.load("user");
-    console.log(user)
+    console.log(user);
     const obj = {
       tourId: parseInt(id),
       number_of_seats_inTour: parseInt(value),
@@ -143,9 +147,13 @@ function RightDetails({ tour }) {
               )
               .then((updateResponse) => {
                 setbookingisUpdated(true);
-                setBookingMessage(
-                  "Booking Successful: You have successfully booked a seat."
-                );
+                toast({
+                  title: "Booking Successful",
+                  description: " You have successfully booked a seat",
+                  status: "success",
+                  duration: 9000,
+                  isClosable: true,
+                });
                 setTimeout(() => setBookingMessage(""), 2000);
               })
               .catch((updateError) => {
@@ -157,9 +165,13 @@ function RightDetails({ tour }) {
                 setTimeout(() => setBookingMessage(""), 2000);
               });
           } else {
-            setBookingMessage(
-              "Booking Failed: You need to make a booking first."
-            );
+            toast({
+              title: "Comment Not created.",
+              description: "You need to make a booking first.",
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
             setTimeout(() => setBookingMessage(""), 2000);
           }
         })
@@ -170,6 +182,16 @@ function RightDetails({ tour }) {
           );
           setTimeout(() => setBookingMessage(""), 2000);
         });
+    }else{
+      
+      toast({
+        title: "Sigin IN.",
+        description: "You need to sigin in first.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      navigate("/login");
     }
   };
 
@@ -215,24 +237,32 @@ function RightDetails({ tour }) {
         Rating: newRate,
         theTour_id: id,
       };
+      setupdated(true);
+
       console.log(obj, "from review");
       axios
         .post(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`, obj)
         .then((res) => {
           console.log(res.data);
-          setIsUpdated(true);
-          setTimeout(() => {
-            setIsUpdated(false);
-          }, 2000);
-          setposReview("thank You For You Review");
-          setTimeout(() => setposReview(""), 2000);
+          toast({
+            title: "Comment created.",
+            description: "Thank You For Your Comment.",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
         })
         .catch((err) => console.log(err));
     } else {
       setIsUpdated(true);
       setposReview("you must have a booking first");
-      setTimeout(() => setposReview(""), 2000);
-    }
+      toast({
+        title: "booking first.",
+        description: "you must have a booking first.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });    }
   };
   return (
     <div className="RightDetalis-container">
@@ -339,13 +369,13 @@ function RightDetails({ tour }) {
               </NumberInput>
             </div>
           </div>
-   
-          <Button type="submit" className="btn-Booking-Now">
+
+          <button type="submit" className="btn-Booking-Now">
             Booking Now{" "}
             <div>
               <i className="far fa-paper-plane"></i>
             </div>
-          </Button>
+          </button>
           {bookingisUpdated ? (
             <div className="theToast ">
               {bookingMessage && (
@@ -362,7 +392,7 @@ function RightDetails({ tour }) {
           <p id="review">Add Review</p>
           <label> Your Name</label>
           <input required id="Name" type="text"></input>
-          <label> Email</label> 
+          <label> Email</label>
           <input required id="Email" type="email"></input>
           <label> Your Comment</label>
           <textarea
@@ -379,19 +409,12 @@ function RightDetails({ tour }) {
               activeColor="#ffd700"
             />
           </div>
-          <Button type="submit" className="btn-Booking-Now">
+          <button type="submit" className="btn-Booking-Now">
             Submit{" "}
             <div>
               <i className="fa-regular fa-star"></i>
             </div>
-          </Button>
-          {isUpdated ? (
-            <div className="theToast ">
-              {postReview && <p className="top-error-bar">{postReview}</p>}
-            </div>
-          ) : (
-            <></>
-          )}
+          </button>
         </form>
       </section>
     </div>

@@ -16,6 +16,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchRooms } from "../../store/actions/RoomActions";
 import { fetchTours } from "../../store/actions/Tours/Touraction";
 import { fetchUsers } from "../../store/actions/Auth/AuthActions";
+import RoomsDash from "./pages/RoomsDash/RoomsDash";
+import TourDash from "./pages/Tourash/TourDash";
 
 function Dashborad() {
   const bookings = useSelector((state) => state.bookings.bookings);
@@ -44,7 +46,11 @@ function Dashborad() {
         </div>
         <div className="all-content-dev">
           <Routes>
-            <Route path="/home" element={<MainDashboard users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
+            <Route path="/" element={<MainDashboard users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
+            <Route path="/allrooms" element={<RoomsDash users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
+            <Route path="/alltour" element={<TourDash  tours={tours} />} />
+            {/* <Route path="/alltour" element={<TourDash  tours={tours} />} /> */}
+
             <Route path="/allbooking" element={<BookingDash bookings={bookings} users={users} />} />
           </Routes>
         </div>

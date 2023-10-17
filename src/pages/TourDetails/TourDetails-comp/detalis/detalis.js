@@ -15,34 +15,33 @@ import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function Detalis({ tour }) {
+function Detalis({ tour ,isupdated}) {
   const { id } = useParams();
 
-  const [selected, setSelected] = useState("");
-  const [newRate, setNewRate] = useState()
-  const [allcomment, setAllcomment] = useState([])
+  const [selected, setSelected] = useState("Day 1");
+  const [newRate, setNewRate] = useState();
+
+  const [allcomment, setAllcomment] = useState([]);
   // const [updated, setupdated] = useState(false)
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    setNewRate(newRating)
-
+    setNewRate(newRating);
   };
 
   useEffect(() => {
-
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/theTourCommnet`)
       .then((res) => {
-        //  const thetourcomment= 
-        setAllcomment(res.data.filter(comment => comment.theTour_id === parseInt(id)));
-
-
+         const thetourcomment=res.data
+        setAllcomment(
+          thetourcomment.filter((comment) => comment.theTour_id === parseInt(id))
+        );
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [isupdated]);
 
   return (
     <div className="tour-description">
@@ -64,24 +63,17 @@ function Detalis({ tour }) {
               </Button>
             ))}
           </ButtonGroup>
-          <Stack>
+          <div>
             {tour.TourPlan.days
               .filter((exp) => exp.day.includes(selected))
               .map((exp) => (
-                <div>
-                  <Card key={exp.day}>
-                    <CardBody>
-                      <Box px={4} textAlign={"left"}>
-                        <Text >{exp.content}</Text>
-                      </Box>
-                    </CardBody>
-                    <CardFooter>
-                      <VStack spacing={2}></VStack>
-                    </CardFooter>
-                  </Card>
-                </div>
+                <div className="card5" key={exp.day}>
+                  
+                    <div className="text">{exp.content}</div>
+                  
+                  </div>
               ))}
-          </Stack>
+          </div>
         </div>
       </section>
       <section className="review-section">
@@ -92,9 +84,7 @@ function Detalis({ tour }) {
               {allcomment.map((review) => {
                 console.log(review);
                 return (
-
-                  <div class="card-body py-4 mt-2"
-                    className="inside-card">
+                  <div class="card-body py-4 mt-2" className="inside-card">
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
@@ -106,12 +96,12 @@ function Detalis({ tour }) {
                     <p class="font-weight-bold">{review.commentName}</p>
                     <p class="font-weight-bold ">{review.Email}</p>
 
-
                     <p class="mb-2">
-                      <i class="fas fa-quote-left pe-2"></i>{review.comment}
+                      <i class="fas fa-quote-left pe-2"></i>
+                      {review.comment}
                     </p>
                   </div>
-                )
+                );
               })}
             </div>
           </div>
