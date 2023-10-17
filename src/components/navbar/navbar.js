@@ -108,6 +108,12 @@ const NavBar = () => {
                         Contact
                       </Link>
                     </li>
+                     <li>
+                      <Link to="/AboutUs" className="link">
+                        <i class="fa-solid fa fa-info-circle p-5"></i>
+                        About Us
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </nav>
