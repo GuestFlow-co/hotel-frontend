@@ -8,8 +8,8 @@ export default function UserTableInfo({getAllbooking}) {
         <tr>
           <th>Room Number</th>
           <th>Number of Seats in Tour</th>
-          <th>Title</th>
-          <th>Amount</th>
+          <th>Tour Title</th>
+          <th>Amount Price</th>
           <th>Check-in Date</th>
           <th>Check-out Date</th>
         </tr>
@@ -20,7 +20,7 @@ export default function UserTableInfo({getAllbooking}) {
             <td>{booking.Room?.room_number}</td>
             <td>{booking.number_of_seats_inTour}</td>
             <td>{booking.Tour?.Title}</td>
-            <td>{booking.bookingCost}</td>
+            <td>{booking.payment.amount} $💸</td>
             <td>{booking.check_in_date}</td>
             <td>{booking.check_out_date}</td>
           </tr>
