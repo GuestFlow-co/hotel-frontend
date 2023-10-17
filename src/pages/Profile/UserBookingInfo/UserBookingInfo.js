@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
 import axios from "axios";
-import './UserBookingInfo.scss'
+import "./UserBookingInfo.scss";
+
 import {
   MDBCol,
   MDBContainer,
@@ -9,25 +10,23 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
-  
 } from "mdb-react-ui-kit";
 import UserTableInfo from "../UserTableInfo/UserTableInfo";
 import UserCardInfo from "../UserCardInfo/UserCardInfo";
 import { LoginContext } from "../../Context/Context_Login";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 // import UserNavInfo from "../UserNavInfo/UserNavInfo";
 function UserBookingInfo() {
-    const [getAllbooking, setgetAllbooking] = useState([]);
-    const { logout } = useContext(LoginContext);
-    
-    const navigate = useNavigate();
+  const [getAllbooking, setgetAllbooking] = useState([]);
+  const { logout } = useContext(LoginContext);
 
-    const handleLogOut = () => {
-        logout();
-        navigate("/login");
-      };
+  const navigate = useNavigate();
 
+  const handleLogOut = () => {
+    logout();
+    navigate("/login");
+  };
 
   useEffect(() => {
     const user = cookie.load("user");
@@ -53,15 +52,17 @@ function UserBookingInfo() {
   }, []);
 
   return (
-    <section style={{ backgroundColor: "#eee", paddingTop:"10%",}}>
+    <section
+      className="profile-main-container"
+      style={{ paddingTop: "10%", paddingBottom: "10%" }}
+    >
       <MDBContainer className="py-5">
-       {/* <UserNavInfo/> */}
+        {/* <UserNavInfo/> */}
 
         <MDBRow>
           <MDBCol lg="4">
-            <MDBCard className="mb-4" style={{ width:"100%",height:"78%",}}>
+            <MDBCard className="mb-4" style={{ width: "100%", height: "95%" }}>
               <MDBCardBody className="text-center">
-               
                 <MDBCardImage
                   src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
                   alt="avatar"
@@ -69,31 +70,68 @@ function UserBookingInfo() {
                   style={{ width: "180px" }}
                   fluid
                 />
-                <p className="text-muted mb-1"><div id='full name'> {cookie.load('user')?.firstName}  {cookie.load('user')?.lastName}</div></p>
-                <p className='text-muted mb-1'> {cookie.load('user')?.email} </p>
-                <p className='text-muted mb-1'> {cookie.load('user')?.phoneNumber} </p>
-                <div className="btn-profile-container">
-                <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn className="btn-brown ms-1" outline onClick={handleLogOut} >Logout <i className="fa-solid fa-sign-out"></i></MDBBtn>
+                <p
+                  style={{ paddingTop: "10px", fontSize: "20px" }}
+                  className="text-muted mb-1"
+                >
+                  <div id="full name">
+                    {" "}
+                    {cookie.load("user")?.firstName} -{" "}
+                    {cookie.load("user")?.lastName}
+                  </div>
+                </p>
 
-                </div>
+                <br></br>
+                <p className="text-muted mb-1">
+                  {" "}
+                  {cookie.load("user")?.email}{" "}
+                </p>
+                <p className="text-muted mb-1">
+                  {" "}
+                  {cookie.load("user")?.phoneNumber}{" "}
+                </p>
 
+                <div
+                  className="btn-profile-container"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginLeft: "-8.5%",
+                  }}
+                >
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      outline
+                      className="btn-brown-2"
+                      onClick={() => navigate("/forgotPassword")}
+                      style={{ marginLeft: "112%" }}
+                    >
+                      Change Password
+                    </Button>
+                  </div>
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      className="btn-brown"
+                      onClick={handleLogOut}
+                      style={{ marginRight: "100%" }}
+                    >
+                      Logout <i className="fa-solid fa-sign-out"></i>
+                    </Button>
+                  </div>
                 </div>
               </MDBCardBody>
             </MDBCard>
-
           </MDBCol>
           <MDBCol lg="8">
             <MDBCard className="mb-4">
-
-             <UserCardInfo/>
-
+              <UserCardInfo />
             </MDBCard>
             <MDBRow>
               <MDBCol md="20">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>                 
-                 <UserTableInfo getAllbooking={getAllbooking}/>
+                <MDBCard className="mb-3 mb-md-2">
+                  {" "}
+                  <MDBCardBody>
+                    <UserTableInfo getAllbooking={getAllbooking} />
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -101,6 +139,18 @@ function UserBookingInfo() {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+      <div className="bg-lines for-bg-white">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </section>
   );
 }

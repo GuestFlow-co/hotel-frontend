@@ -23,7 +23,7 @@ function ForgotPassword() {
 
       if (response.ok) {
         // Successful email submission
-        setSuccessMessage("Password reset email sent successfully.");
+        setSuccessMessage("Password reset email sent successfully,Check your Email");
       } else {
         const data = await response.json();
         setError(data.error || "Error: Something went wrong.");
@@ -35,12 +35,12 @@ function ForgotPassword() {
 
   return (
     <div className="password-main-container">
-      <div className="password-forget-form">
-        <h1 className="forget-h1">Forgot Password</h1>
         {error && <div className="forget-error">{error}</div>}
         {successMessage && (
           <div className="forget-success">{successMessage}</div>
         )}
+      <div className="password-forget-form">
+        <h1 className="forget-h1">Forgot Password</h1>
         <form className="forget-form" onSubmit={handleSubmit}>
           <div className="forget-form-group">
             <div className="forget-input">
@@ -64,6 +64,13 @@ function ForgotPassword() {
           </div>
         </form>
       </div>
+         <div className="bg-lines for-bg-white">
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+          </div>
     </div>
   );
 }

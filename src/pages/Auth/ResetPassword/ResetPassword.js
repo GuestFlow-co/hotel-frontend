@@ -48,12 +48,19 @@ function ResetPassword() {
 
   return (
     <div className="reset-main-contaier">
-      <div className="reset-password-container">
-        <h1 className="reset-h1">Reset Password</h1>
+
+        <div className="message-container">
         {error && <div className="reset-error">{error}</div>}
         {successMessage && (
           <div className="reset-success">{successMessage}</div>
         )}
+      </div>
+      <div className="reset-password-container">
+        {/* {error && <div className="reset-error">{error}</div>}
+        {successMessage && (
+          <div className="reset-success">{successMessage}</div>
+        )} */}
+        <h1 className="reset-h1">Reset Password</h1>
         <form className="reset-form" onSubmit={handleSubmit}>
           {/* <div className="reset-form-group"> */}
           <div className="reset-form-group">
@@ -64,7 +71,7 @@ function ResetPassword() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label htmlFor="email">email</label>
+            <label htmlFor="email">Email</label>
           </div>
 
           <div className="reset-form-group">
@@ -75,7 +82,7 @@ function ResetPassword() {
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
-            <label htmlFor="password">password</label>
+            <label htmlFor="password">New Password</label>
           </div>
 
           <div className="reset-form-group">
@@ -86,7 +93,7 @@ function ResetPassword() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <label htmlFor="new password">new password</label>
+            <label htmlFor="new password">Confirm password</label>
           </div>
 
           {/* </div> */}
@@ -97,6 +104,13 @@ function ResetPassword() {
           </div>
         </form>
       </div>
+      <div className="bg-lines for-bg-white">
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+            <span></span><span></span>
+          </div>
     </div>
   );
 }
