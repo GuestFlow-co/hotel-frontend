@@ -55,11 +55,13 @@ function Content({children}) {
                     <Link to="/dashboard/allbooking">
                       <button className="sidebar-btn">All Booking</button>
                     </Link>
-                    <Link to="dashboard/addbooking">
+
+                    <Link to="/dashboard/addbooking">
                       <button className="sidebar-btn">Add Booking</button>
                     </Link>
-                    <Link to="dashboard/editbooking">
-                      <button className="sidebar-btn">Edit Booking</button>
+                    <Link to="/dashboard/editbooking">
+
+         <button className="sidebar-btn">Edit Booking</button>
                     </Link>
                   </div>
                 )}

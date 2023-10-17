@@ -16,6 +16,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchRooms } from "../../store/actions/RoomActions";
 import { fetchTours } from "../../store/actions/Tours/Touraction";
 import { fetchUsers } from "../../store/actions/Auth/AuthActions";
+import Popup from "../pop";
+import HotelReservation from "../Booking/FormDashboard";
+
 import RoomsDash from "./pages/RoomsDash/RoomsDash";
 import TourDash from "./pages/Tourash/TourDash";
 
@@ -52,6 +55,9 @@ function Dashborad() {
             {/* <Route path="/alltour" element={<TourDash  tours={tours} />} /> */}
 
             <Route path="/allbooking" element={<BookingDash bookings={bookings} users={users} />} />
+            <Route path="/addbooking" element={<HotelReservation/>} />
+            <Route path="/addrooms" element={<Popup />} />
+            
           </Routes>
         </div>
       </div>

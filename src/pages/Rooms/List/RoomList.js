@@ -20,6 +20,7 @@ const RoomList = () => {
 
   const loading = useSelector((state) => state.rooms.loading);
   const rooms = useSelector((state) => state.rooms.rooms);
+  console.log(rooms)
   const [filteredRooms, setFilteredRooms] = useState(rooms);
   const [query, setQuery] = useState("");
 
