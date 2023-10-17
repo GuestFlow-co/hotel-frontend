@@ -27,7 +27,7 @@ export const DetailWrapper = styled.div`
 `;
 
 export const BackButton = styled.button`
-  background-color: ${(props) => (props.color ? props.color : "#007bff")};
+  background-color: ${(props) => (props.color ? props.color : "#ab6034")};
   color: white;
   padding: 10px 20px;
   border: none;
@@ -36,7 +36,7 @@ export const BackButton = styled.button`
   font-size: 16px;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #ab6034;
   }
 `;
 export const Amenities = styled.div`
@@ -48,7 +48,7 @@ export const Amenities = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    border-color: #007bff; /* You can change this color to your desired hover color */
+    border-color: #ab6034; /* You can change this color to your desired hover color */
   }
 `;
 

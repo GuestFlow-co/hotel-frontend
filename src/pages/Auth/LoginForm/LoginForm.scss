@@ -8,7 +8,7 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-
+  z-index: -3;
 
   .top-error-bar {
     position: fixed;

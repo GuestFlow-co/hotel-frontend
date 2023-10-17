@@ -803,7 +803,8 @@
 }
 
 .main-header.header-white.fixed-header .header-upper {
-    background: #17171a;
+    background: #17171ae6;
+    backdrop-filter: blur(15px);
 }
 
 /*******************************************************/

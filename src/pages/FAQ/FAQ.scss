@@ -1,0 +1,57 @@
+/*******************************************************/
+/******************** ## FAQs Area *********************/
+/*******************************************************/
+.faq-image-part img {
+  width: 100%; }
+
+.faq-counter-part {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+  max-width: calc(100% - 60px); }
+  .faq-counter-part .counter-item {
+    margin-bottom: 15px; }
+    @media only screen and (min-width: 480px) {
+      .faq-counter-part .counter-item {
+        min-width: 175px; } }
+    @media only screen and (max-width: 479px) {
+      .faq-counter-part .counter-item .count-text {
+        font-size: 40px; }
+      .faq-counter-part .counter-item .counter-title {
+        font-size: 14px; } }
+
+.accordion-item {
+  border: none;
+  background: transparent; }
+  .accordion-item .accordion-button {
+    font-size: 24px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 15px 0 22px;
+    background: transparent;
+    border-bottom: 1px solid var(--border-color); }
+    @media only screen and (max-width: 375px) {
+      .accordion-item .accordion-button {
+        font-size: 18px; } }
+    .accordion-item .accordion-button:focus {
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .accordion-item .accordion-button:after {
+      font-size: 18px;
+      color: var(--primary-color) !important;
+    //   background: none;
+    //   content: "\f067";
+    //   font-weight: 400;
+    //   text-align: right;
+    //   font-family: "Font Awesome 5 Pro";
+     }
+    // .accordion-item .accordion-button:not(.collapsed):after {
+    //   content: "\f068";
+    //   color: var(--primary-color);
+    //   -webkit-transform: rotate(0deg);
+    //   -ms-transform: rotate(0deg);
+    //   transform: rotate(0deg); }
+  .accordion-item .accordion-body {
+    padding: 15px 0 0; }
+    .accordion-item .accordion-body p:last-child {
+      margin-bottom: 0; }

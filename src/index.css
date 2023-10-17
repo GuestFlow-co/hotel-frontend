@@ -40,8 +40,8 @@ body {
   --border-color: #d9dfe7;
   scroll-behavior: smooth;
   --font-main: "Roboto", sans-serif;
-  --font-sec:"Cormorant Garamond", serif;
-  --font-thr:"flaticon_merina";
+  --font-sec: "Cormorant Garamond", serif;
+  --font-thr: "flaticon_merina";
 }
 
 a {
@@ -780,51 +780,51 @@ a.theme-btn.style-three {
 
 /*** Slick Dots ***/
 /* .slick-dots {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
-  .slick-dots li {
-    position: relative;
-    cursor: pointer;
-    margin: 8px;
-    width: 6px;
-    height: 6px;
-    opacity: 0.3;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
-    transition: 0.5s;
-    border-radius: 50%;
-    background: #1D1B1A; }
-    .slick-dots li button {
-      opacity: 0;
-      height: 0; }
-    .slick-dots li:before {
-      content: '';
-      width: 0;
-      height: 0;
-      left: 50%;
-      top: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .slick-dots li {
+      position: relative;
+      cursor: pointer;
+      margin: 8px;
+      width: 6px;
+      height: 6px;
+      opacity: 0.3;
       -webkit-transition: 0.5s;
       -o-transition: 0.5s;
       transition: 0.5s;
       border-radius: 50%;
-      position: absolute;
-      border: 1px solid var(--primary-color);
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
-    .slick-dots li.slick-active {
-      background: var(--primary-color);
-      opacity: 1; }
-      .slick-dots li.slick-active:before {
-        width: 21px;
-        height: 21px; } */
+      background: #1D1B1A; }
+      .slick-dots li button {
+        opacity: 0;
+        height: 0; }
+      .slick-dots li:before {
+        content: '';
+        width: 0;
+        height: 0;
+        left: 50%;
+        top: 50%;
+        -webkit-transition: 0.5s;
+        -o-transition: 0.5s;
+        transition: 0.5s;
+        border-radius: 50%;
+        position: absolute;
+        border: 1px solid var(--primary-color);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+      .slick-dots li.slick-active {
+        background: var(--primary-color);
+        opacity: 1; }
+        .slick-dots li.slick-active:before {
+          width: 21px;
+          height: 21px; } */
 
 /*** Scroll Top style ***/
 .scroll-top {
@@ -1082,8 +1082,6 @@ a.theme-btn.style-three {
 /******************* ## Repeat Style ******************/
 /*******************************************************/
 .heading,
-
-
 textarea,
 .nice-select,
 .form-control,
@@ -3905,4 +3903,104 @@ h6,
     width: 100%;
     height: 100%;
   }
+}
+
+
+@font-face {
+  font-family: flaticon_merina;
+  src: url("../src/assets/fonts/flaticon_merina.ttf?f27ca9c5c4a70c40b6e10f4963b93d7d")
+      format("truetype"),
+    url("../src/assets/fonts/flaticon_merina.woff?f27ca9c5c4a70c40b6e10f4963b93d7d")
+      format("woff"),
+    url("../src/assets/fonts/flaticon_merina.woff2?f27ca9c5c4a70c40b6e10f4963b93d7d")
+      format("woff2"),
+    url("../src/assets/fonts/flaticon_merina.eot?f27ca9c5c4a70c40b6e10f4963b93d7d#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/fonts/flaticon_merina.svg?f27ca9c5c4a70c40b6e10f4963b93d7d#flaticon_merina")
+      format("svg");
+}
+i[class*=" flaticon-"]:before,
+i[class^="flaticon-"]:before {
+  font-family: flaticon_merina !important;
+  font-style: normal;
+  font-weight: 400 !important;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.flaticon-location:before {
+  content: "\f101";
+}
+.flaticon-check-mark:before {
+  content: "\f102";
+}
+.flaticon-stationary-bike:before {
+  content: "\f103";
+}
+.flaticon-jacuzzi:before {
+  content: "\f104";
+}
+.flaticon-swim:before {
+  content: "\f105";
+}
+.flaticon-relax:before {
+  content: "\f106";
+}
+.flaticon-restaurant:before {
+  content: "\f107";
+}
+.flaticon-transportation:before {
+  content: "\f108";
+}
+.flaticon-transportation-1:before {
+  content: "\f109";
+}
+.flaticon-spa:before {
+  content: "\f10a";
+}
+.flaticon-wifi-router:before {
+  content: "\f10b";
+}
+.flaticon-drink:before {
+  content: "\f10c";
+}
+.flaticon-bathtub:before {
+  content: "\f10d";
+}
+.flaticon-swimming-pool:before {
+  content: "\f10e";
+}
+.flaticon-mop:before {
+  content: "\f10f";
+}
+.flaticon-food-delivery:before {
+  content: "\f110";
+}
+.flaticon-treadmill:before {
+  content: "\f111";
+}
+.flaticon-facial:before {
+  content: "\f112";
+}
+.flaticon-mission:before {
+  content: "\f113";
+}
+.flaticon-hotel:before {
+  content: "\f114";
+}
+.flaticon-champagne:before {
+  content: "\f115";
+}
+.flaticon-laundry-machine:before {
+  content: "\f116";
+}
+.flaticon-location-1:before {
+  content: "\f117";
+}
+.flaticon-email-marketing:before {
+  content: "\f118";
+}
+.flaticon-call:before {
+  content: "\f119";
 }

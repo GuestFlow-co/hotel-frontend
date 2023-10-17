@@ -9,15 +9,17 @@ function Content({children}) {
   // Initialize disclosure objects for each menu
   const firstMenuDisclosure = useDisclosure();
   const secondMenuDisclosure = useDisclosure();
+  const tharidMenuDisclosure = useDisclosure();
+
   const [homeIsOpen, setHomeIsOpen] = useState(false);
 
   return (
-    <Box w="100%"   bg="blue.500" style={{ backgroundColor: " rgb(72 19 19)" }} boxShadow="md">
-      <section className="main-section-sidebar" >
+    <Box w="100%"    bg="blue.500" style={{backgroundColor: " rgb(72 19 19)", maxHeight:"100vh" , overflowY:"auto"}} boxShadow="md">
+      <section className="main-section-sidebar" > 
         <div style={{ width: "90%" }}>
         <Menu>
       {() => (
-        <Link to="/dashboard/home">
+        <Link to="/dashboard/">
           <MenuButton
             className="sidebar-btn"
             as={Button}
@@ -53,11 +55,13 @@ function Content({children}) {
                     <Link to="/dashboard/allbooking">
                       <button className="sidebar-btn">All Booking</button>
                     </Link>
+
                     <Link to="/dashboard/addbooking">
                       <button className="sidebar-btn">Add Booking</button>
                     </Link>
                     <Link to="/dashboard/editbooking">
-                      <button className="sidebar-btn">Edit Booking</button>
+
+         <button className="sidebar-btn">Edit Booking</button>
                     </Link>
                   </div>
                 )}
@@ -89,6 +93,39 @@ function Content({children}) {
                     </Link>
                     <Link to="/dashboard/editrooms">
                       <button className="sidebar-btn">Edit Rooms</button>
+                    </Link>
+                  </div>
+                )}
+              </>
+            )}
+          </Menu>
+
+          {/* =====================//===================== */}
+          <Menu>
+            {() => (
+              <>
+                <MenuButton
+                  className="sidebar-btn"
+                  isActive={tharidMenuDisclosure.isOpen}
+                  as={Button}
+                  rightIcon={tharidMenuDisclosure.isOpen ? <MinusIcon /> : <AddIcon />}
+                  onClick={tharidMenuDisclosure.onToggle}
+                  style={{
+                    backgroundColor: tharidMenuDisclosure.isOpen ? "#89644E" : "initial",
+                  }}
+                >
+                  <i class="fa-solid fa-person-shelter"></i> Tour
+                </MenuButton>
+                {tharidMenuDisclosure.isOpen && (
+                  <div>
+                    <Link to="/dashboard/alltour">
+                      <button className="sidebar-btn">All Tour</button>
+                    </Link>
+                    <Link to="/dashboard/addtour">
+                      <button className="sidebar-btn">Add Tour</button>
+                    </Link>
+                    <Link to="/dashboard/edittour">
+                      <button className="sidebar-btn">Edit Tour</button>
                     </Link>
                   </div>
                 )}

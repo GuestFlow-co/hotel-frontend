@@ -1,10 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import "./UserBookingInfo.scss";
 
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+} from "mdb-react-ui-kit";
+import UserTableInfo from "../UserTableInfo/UserTableInfo";
+import UserCardInfo from "../UserCardInfo/UserCardInfo";
+import { LoginContext } from "../../Context/Context_Login";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+// import UserNavInfo from "../UserNavInfo/UserNavInfo";
 function UserBookingInfo() {
   const [getAllbooking, setgetAllbooking] = useState([]);
+  const { logout } = useContext(LoginContext);
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logout();
+    navigate("/login");
+  };
 
   useEffect(() => {
     const user = cookie.load("user");
@@ -30,51 +52,106 @@ function UserBookingInfo() {
   }, []);
 
   return (
-    // <div className="user-booking-info">
-    //   {getAllbooking.map((booking, index) => (
-    //     <div key={index} className="booking-item">
-    //       <div className="user-room-info">
-    //         <h3>Room Number: {booking.Room.room_number}</h3>
-    //       </div>
-    //       <div className="user-tour-info">
-    //         <p>Number of Seats in Tour: {booking.number_of_seats_inTour}</p>
-    //         <p>Title: {booking.Tour?.Title}</p>
-    //       </div>
-    //       <div className="user-payment-info">
-    //         <p>Amount: {booking.bookingCost}</p>
-    //       </div>
+    <section
+      className="profile-main-container"
+      style={{ paddingTop: "10%", paddingBottom: "10%" }}
+    >
+      <MDBContainer className="py-5">
+        {/* <UserNavInfo/> */}
 
-    //       <p>Check-in Date: {booking.check_in_date}</p>
-    //       <p>Check-out Date: {booking.check_out_date}</p>
-    //     </div>
-    //   ))}
-    // </div>
-    <div className="user-booking-info">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Room Number</th>
-            <th>Number of Seats in Tour</th>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Check-in Date</th>
-            <th>Check-out Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {getAllbooking.map((booking, index) => (
-            <tr key={index}>
-              <td>{booking.Room.room_number}</td>
-              <td>{booking.number_of_seats_inTour}</td>
-              <td>{booking.Tour?.Title}</td>
-              <td>{booking.bookingCost}</td>
-              <td>{booking.check_in_date}</td>
-              <td>{booking.check_out_date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        <MDBRow>
+          <MDBCol lg="4">
+            <MDBCard className="mb-4" style={{ width: "100%", height: "95%" }}>
+              <MDBCardBody className="text-center">
+                <MDBCardImage
+                  src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                  alt="avatar"
+                  className="rounded-circle"
+                  style={{ width: "180px" }}
+                  fluid
+                />
+                <p
+                  style={{ paddingTop: "10px", fontSize: "20px" }}
+                  className="text-muted mb-1"
+                >
+                  <div id="full name">
+                    {" "}
+                    {cookie.load("user")?.firstName} -{" "}
+                    {cookie.load("user")?.lastName}
+                  </div>
+                </p>
+
+                <br></br>
+                <p className="text-muted mb-1">
+                  {" "}
+                  {cookie.load("user")?.email}{" "}
+                </p>
+                <p className="text-muted mb-1">
+                  {" "}
+                  {cookie.load("user")?.phoneNumber}{" "}
+                </p>
+
+                <div
+                  className="btn-profile-container"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginLeft: "-8.5%",
+                  }}
+                >
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      outline
+                      className="btn-brown-2"
+                      onClick={() => navigate("/forgotPassword")}
+                      style={{ marginLeft: "112%" }}
+                    >
+                      Change Password
+                    </Button>
+                  </div>
+                  <div className="d-flex justify-content-center mb-2">
+                    <Button
+                      className="btn-brown"
+                      onClick={handleLogOut}
+                      style={{ marginRight: "100%" }}
+                    >
+                      Logout <i className="fa-solid fa-sign-out"></i>
+                    </Button>
+                  </div>
+                </div>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol lg="8">
+            <MDBCard className="mb-4">
+              <UserCardInfo />
+            </MDBCard>
+            <MDBRow>
+              <MDBCol md="20">
+                <MDBCard className="mb-3 mb-md-2">
+                  {" "}
+                  <MDBCardBody>
+                    <UserTableInfo getAllbooking={getAllbooking} />
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+            </MDBRow>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+      <div className="bg-lines for-bg-white">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
   );
 }
 

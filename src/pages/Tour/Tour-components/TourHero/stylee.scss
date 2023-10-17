@@ -16,6 +16,8 @@
   background-size: cover;
   z-index: -10;
   position: relative;
+  font-family: var(--font-thr);
+  font-weight: 500;
 }
 
 .tourHero::before {

@@ -1,4 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@chakra-ui/react";
+import axios from "axios";
 import "./bookingtable.scss";
 
 function BookingTable({ bookings }) {
@@ -13,7 +25,26 @@ function BookingTable({ bookings }) {
     "Payment",
     "Actions", // Added a new column for actions
   ];
+  const [bookingdata, setBooking] = useState(bookings); // Initialize the local state with props data
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedId, setSelectedId] = useState(null); // State variable to store the selected booking ID
 
+  function handelDelete(id) {
+    axios
+      .delete(`${process.env.REACT_APP_BASE_URL}/bookings/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setBooking((prevRoomData) =>
+          prevRoomData.filter((room) => room.booking_id !== id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+  useEffect(() => {
+    setBooking(bookings);
+  }, [bookings]);
   return (
     <div className="table-container">
       <div
@@ -40,7 +71,7 @@ function BookingTable({ bookings }) {
         </thead>
         <tbody>
           {bookings && bookings.length > 0 ? (
-            bookings.map((booking, rowIndex) => (
+            bookingdata.map((booking, rowIndex) => (
               <tr
                 key={booking.booking_id}
                 className={rowIndex % 2 === 0 ? "even" : "odd"}
@@ -58,24 +89,33 @@ function BookingTable({ bookings }) {
                   <p
                     style={{
                       background: booking.payment.amount
-                        ?  "#ffaaaa"
+                        ? "#ffaaaa"
                         : "#19875426",
                       padding: "8px",
                       borderRadius: "15px",
-                      fontSize:"16px",
-                      color: booking.payment.amount ? "rgb(241,21,65)" :  "#198754",
+                      fontSize: "16px",
+                      color: booking.payment.amount
+                        ? "rgb(241,21,65)"
+                        : "#198754",
                     }}
                   >
-                    {booking.payment.amount ? "Unpaid" :  "Paid"}
+                    {booking.payment.amount ? "Unpaid" : "Paid"}
                   </p>
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
                     <i className="fas fa-edit"></i>
                   </button>
-                  <button className="delete-button" title="Delete">
+                  <Button
+                    onClick={() => {
+                      setSelectedId(booking.booking_id); // Set the selected ID in the state
+                      onOpen(); // Open the modal
+                    }}
+                    className="delete-button"
+                    title="Delete"
+                  >
                     <i className="fas fa-trash"></i>
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))
@@ -86,6 +126,33 @@ function BookingTable({ bookings }) {
           )}
         </tbody>
       </table>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Confirmation</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>Are You Sure?</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="red"
+              mr={3}
+              onClick={() => {
+                if (selectedId) {
+                  handelDelete(selectedId); // Call handelDelete with the selected ID
+                }
+                onClose();
+              }}
+            >
+              Yes
+            </Button>
+            <Button variant="ghost" onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

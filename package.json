@@ -25,6 +25,7 @@
     "jwt-decode": "^3.1.2",
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
+    "mdb-react-ui-kit": "^6.3.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-awesome-reveal": "^4.2.5",

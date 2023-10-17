@@ -1,31 +1,32 @@
-.user-booking-info {
-    padding: 20px;
+
+.btn-brown {
+    margin-top: 20px;
+    background-color: #874f26;
+    color: #fff;
+    border-color: #794622;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .btn-profile-container{
+    padding-top:1%;
+  }
+  .btn-brown:hover {
+    background-color: #6c4712!important;
+    border-color: #6c3e1c;
+
+  }
   
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-  
-      thead {
-        background-color: #6e460d;
-        color: #fff;
-  
-        th {
-          padding: 12px 15px;
-          text-align: left;
-        }
-      }
-  
-      tbody {
-        tr {
-          &:nth-of-type(even) {
-            background-color: #86602a;
-          }
-  
-          td {
-            padding: 12px 15px;
-          }
-        }
-      }
-    }
+  .btn-brown-2 {
+    margin-top: 20px;
+    background-color: #ebddce;
+    color: #000000;
+    border-color: #6c3e1c;
+    border-style:dashed;
+    border-width: 0.5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .btn-brown-2:hover {
+    background-color: #9d8d75!important;
+    border-color: #6c3e1c;
+
   }
   
