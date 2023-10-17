@@ -19,10 +19,11 @@ export const fetchBookings = () => {
 };
 
 export const addBooking = (booking) => {
+  console.log(booking)
   return async (dispatch) => {
     try {
       const res = await instance.post('/bookings', booking);
-      if (res.status === 201) {
+      if (res.status === res.data) {
         dispatch({
           type: types.ADD_BOOKING,
           payload: { booking: res.data },

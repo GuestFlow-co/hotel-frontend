@@ -11,6 +11,7 @@ export const PopupWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100
 `;
 
 export const PopupContent = styled.div`
@@ -24,9 +25,9 @@ export const PopupContent = styled.div`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 50px;
-  right: 50px;
-  background: none;
+  top: 50%;
+  right: 50%;
+  background: brown;
   border: none;
   cursor: pointer;
 `;

@@ -15,6 +15,9 @@ const colors = {
 const RoomDetail = () => {
   const { room_number } = useParams();
  const rooms = useSelector((state) => state.rooms.rooms);
+ const users = useSelector((state) => state.users.users );
+ console.log(users,"------------------")
+ 
 
   const room = rooms.find((room) => room.room_number === room_number);
 

@@ -53,10 +53,10 @@ function Content({children}) {
                     <Link to="/dashboard/allbooking">
                       <button className="sidebar-btn">All Booking</button>
                     </Link>
-                    <Link to="/addbooking">
+                    <Link to="/dashboard/addbooking">
                       <button className="sidebar-btn">Add Booking</button>
                     </Link>
-                    <Link to="/editbooking">
+                    <Link to="/dashboard/editbooking">
                       <button className="sidebar-btn">Edit Booking</button>
                     </Link>
                   </div>
@@ -81,13 +81,13 @@ function Content({children}) {
                 </MenuButton>
                 {secondMenuDisclosure.isOpen && (
                   <div>
-                    <Link to="/allrooms">
+                    <Link to="/dashboard/allrooms">
                       <button className="sidebar-btn">All Rooms</button>
                     </Link>
-                    <Link to="/addrooms">
+                    <Link to="/dashboard/addrooms">
                       <button className="sidebar-btn">Add Rooms</button>
                     </Link>
-                    <Link to="/editrooms">
+                    <Link to="/dashboard/editrooms">
                       <button className="sidebar-btn">Edit Rooms</button>
                     </Link>
                   </div>

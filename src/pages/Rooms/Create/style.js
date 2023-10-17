@@ -7,6 +7,7 @@ export const Container = styled.div`
   margin-top: 20px;
   max-height: 400px;
   overflow-y: auto;
+  z-index: 10
 `;
 
 export const Form = styled.form`

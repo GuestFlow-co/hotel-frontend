@@ -23,6 +23,8 @@ import ContactUs from "./ContactUs/ContactUs";
 import Dashboard from "./dashboard/Dashboard";
 import Resturant from "./Resturant/Resturant";
 import Profile from "./Profile/Profile";
+import FeatureChecklist from "./Rooms/Create/Feature";
+import AminityPopup from "./popAminity";
 
 
 export default function Routers() {
@@ -47,7 +49,8 @@ export default function Routers() {
         <Routes>
           <Route path="/rooms/:room_number" element={<RoomDetail />} />
           <Route path="/rooms" element={<RoomList rooms={rooms} />} />
-          <Route path='/' element={<HomePage />} />
+          
+          <Route path='/feature' element={<AminityPopup/>} />
           <Route path='/tour' element={<Tour />} />
           <Route path="TourDetalis/:id" element={<TourDetalis />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -59,6 +62,7 @@ export default function Routers() {
           {/* <Route path="/signup" element={<SignupForm />} />  */}
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route path='/' element={<HomePage />} />
 
           <Route path="/Dashboard/*" element={
           <ChakraProvider>
