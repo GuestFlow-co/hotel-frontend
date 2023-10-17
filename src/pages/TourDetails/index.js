@@ -12,6 +12,7 @@ function TourDetalis() {
   const [details, setDetails] = useState([]);
   const [tour, setTour] = useState({});
   const [loader, setloader] = useState(false);
+  const [isupdated, setupdated] = useState(false);
 
   useEffect(() => {
      function fetchData() {
@@ -30,7 +31,7 @@ function TourDetalis() {
     }
     
     fetchData();
-  }, []);
+  }, [isupdated]);
   return (
     <div>
       {loader ? (
@@ -39,8 +40,8 @@ function TourDetalis() {
           <div className='tourDetalis-index'>
             <TopSection tour={tour} />
             <section className='description-container'>
-              <Detalis tour={tour} />
-              <RightDetalis tour={tour} />
+              <Detalis tour={tour} isupdated={isupdated}/>
+              <RightDetalis tour={tour} setupdated={setupdated} />
             </section>
           </div>
         </div>
