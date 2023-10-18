@@ -27,6 +27,8 @@ const RoomCreate = ({ setClose, onRoomCreate, setActiveComponent, setClosing }) 
     Room_space: 0,
     Room_view: '',
     image: [],
+    verificationToken:true,
+    emailVerified: true,
   };
 
   const [roomCreated, setRoomCreated] = useState(false);

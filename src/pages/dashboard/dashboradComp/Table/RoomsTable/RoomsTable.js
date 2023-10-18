@@ -14,6 +14,7 @@ import "./RoomsTable.scss";
 import axios from "axios"
 import RoomCreate from "../../../../Rooms/Create/RoomCreate";
 import Popup from "../../../../pop";
+import UpdatePopup from "../../../../Updatepop";
 function RoomsTable({ rooms }) {
   const columns = [
     "coverPhoto",
@@ -101,7 +102,7 @@ function RoomsTable({ rooms }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
-                    <i className="fas fa-edit"></i>
+                    {/* <UpdatePopup/> */}
                   </button>
                   <Button
                     onClick={() => {

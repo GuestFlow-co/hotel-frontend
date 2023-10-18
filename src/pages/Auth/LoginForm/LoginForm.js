@@ -2,11 +2,11 @@ import React, { useContext, useState, useEffect } from "react";
 import { Button } from "@mantine/core";
 import { When } from "react-if";
 import { LoginContext } from "../../Context/Context_Login";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginForm.scss";
-import cookie from 'react-cookies';
-
+import cookie from "react-cookies";
+import { useToast } from "@chakra-ui/react";
 
 function SignInUpForm() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -15,6 +15,8 @@ function SignInUpForm() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [loginn, setlogin] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{4,}$/;
 
   const initialFormData = {
     username: "",
@@ -23,6 +25,7 @@ function SignInUpForm() {
     lastName: "",
     email: "",
     phoneNumber: "",
+    // image: "",
     // role: "",
   };
   const [formData, setFormData] = useState(initialFormData);
@@ -41,8 +44,24 @@ function SignInUpForm() {
       ...formData,
       [name]: value,
     });
+
+    if (name === "password") {
+      if (passwordRegex.test(value)) {
+        setPasswordStrength("Strong");
+      } else {
+        setPasswordStrength("Weak-Password must contain at least 4 char");
+      }
+    }
   };
 
+  // const handleImage = (event) => {
+  //   const { name, files } = event.target;
+  //   if (name === 'image') {
+  //     setFormData({ ...formData, image: Array.from(files) });
+  //   }
+  // };
+  // const handleImage = (event) =>
+  // setFormData({ ...formData, image: event.target.files[0] });
   // const handleSignupSub = async (e) => {
   //   e.preventDefault();
   //   try {
@@ -65,6 +84,10 @@ function SignInUpForm() {
 
     const handleSignupSub = async (e) => {
     e.preventDefault();
+    if (passwordStrength !== "Strong") {
+      alert("Password must meet the minimum requirements for strength.");
+      return;
+    }
     try {
       //deployed link:            https://guestflow.onrender.com/
       const res = await axios.post(
@@ -81,7 +104,6 @@ function SignInUpForm() {
       formContainer.appendChild(alertElement);
     } catch (err) {
       console.log("login ", err);
-
     }
 
     setFormData({
@@ -91,27 +113,16 @@ function SignInUpForm() {
       lastName: "",
       email: "",
       phoneNumber: "",
+      // image: "",
       // role: "",
     });
   };
 
-  // module.exports=handleSignupSub
 
   function handleLogin(e) {
     e.preventDefault();
-    login(username, password)
+    login(username, password);
     console.log(loginData, "loginDataloginData");
-    // setlogin(true)
-    // const user = cookie.load("user")
-    // setTimeout(()=>{
-    //   if(user){
-    //     navigate('/')
-    //   }else{
-
-    //     navigate('/rooms')
-    //   }
-    // },2000)
-    // if (loginData.logged) window.location.href = '/'; 
   }
 
   function handleUsernameChange(e) {
@@ -121,12 +132,11 @@ function SignInUpForm() {
     setPassword(e.target.value);
   }
 
-
   useEffect(() => {
-    // Check if the user is already logged in and has accessed the login page
+    //Check if the user is already logged in and has accessed the login page
     if (loginData.logged) {
-      // Redirect to the home page
-      navigate('/');
+      //Redirect to the home page
+      navigate("/");
     }
   }, [loginData.logged, navigate]);
 
@@ -138,7 +148,6 @@ function SignInUpForm() {
         <When condition={loginData.logged}>
           <div>
             <p>You are already logged in. Redirecting to the home page...</p>
-
           </div>
         </When>
 
@@ -156,7 +165,7 @@ function SignInUpForm() {
                       placeholder=""
                       required
                       value={formData.firstName}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
                     <label htmlFor="Lirst Name">First Name</label>
                   </div>
@@ -167,7 +176,7 @@ function SignInUpForm() {
                       placeholder=""
                       required
                       value={formData.lastName}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
                     <label htmlFor="Last Name">Last Name</label>
                   </div>
@@ -181,11 +190,18 @@ function SignInUpForm() {
                       placeholder=""
                       required
                       value={formData.username}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
                     <label htmlFor="User Name">User Name</label>
                   </div>
-
+                  {/* <label>Cover Photo</label>
+          <input
+            type="file"
+            name="image"
+            className="form-control"
+            onChange={handleImage}
+            multiple
+          /> */}
                   <div className="other-form-group">
                     <input
                       onChange={handleInputChange}
@@ -194,8 +210,13 @@ function SignInUpForm() {
                       required
                       type="password"
                       value={formData.password}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
+                    {passwordStrength !== "Strong" && (
+                      <p className="password-strength-indicator">
+                        {passwordStrength}
+                      </p>
+                    )}
                     <label htmlFor="Password">Password</label>
                   </div>
                   <div className="other-form-group">
@@ -206,7 +227,7 @@ function SignInUpForm() {
                       required
                       type="email"
                       value={formData.email}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
                     <label htmlFor="Email">Email</label>
                   </div>
@@ -219,7 +240,7 @@ function SignInUpForm() {
                       required
                       type="tel"
                       value={formData.phoneNumber}
-                    // className="sign-up-input"
+                      // className="sign-up-input"
                     />
                     <label htmlFor="Phone Number">Phone Number</label>
                   </div>
@@ -239,10 +260,7 @@ function SignInUpForm() {
             <form className="login-form" action="#" onSubmit={handleLogin}>
               <h1 className="create-Account-h1">Sign in</h1>
               <span className="signin-span"></span>
-
               <div className="login-form-group">
-
-
                 <input
                   onChange={handleUsernameChange}
                   placeholder=""
@@ -252,7 +270,6 @@ function SignInUpForm() {
                 />
                 <label htmlFor="User Name">User Name</label>
               </div>
-
               <div className="login-form-group">
                 <input
                   onChange={handlePasswordChange}
@@ -269,17 +286,19 @@ function SignInUpForm() {
               <button className="sign-up-button" type="submit">
                 Sign In
               </button>
-
-              {errorMessage && <p className="top-error-bar" > {errorMessage} </p>} {/* Display error message */}
+              {errorMessage && (
+                <p className="top-error-bar"> {errorMessage} </p>
+              )}{" "}
+              {/* Display error message */}
             </form>
           </When>
-
         </div>
         <div className="overlay-container">
           <div className="overlay">
             <div
-              className={`overlay-panel overlay-left ${isSignUp ? "overlay-left-active" : ""
-                }`}
+              className={`overlay-panel overlay-left ${
+                isSignUp ? "overlay-left-active" : ""
+              }`}
             >
               <h1 className="create-Account-h3">Welcome Back!</h1>
               <p className="signup-p">
@@ -292,8 +311,9 @@ function SignInUpForm() {
               </div>
             </div>
             <div
-              className={`overlay-panel overlay-right ${isSignUp ? "overlay-right-active" : ""
-                }`}
+              className={`overlay-panel overlay-right ${
+                isSignUp ? "overlay-right-active" : ""
+              }`}
             >
               <h1 className="create-Account-h2">Hello Friend!</h1>
               <p className="signup-p">
@@ -309,11 +329,16 @@ function SignInUpForm() {
         </div>
       </div>
       <div className="bg-lines for-bg-white">
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   );

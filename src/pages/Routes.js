@@ -27,6 +27,7 @@ import Profile from "./Profile/Profile";
 import FeatureChecklist from "./Rooms/Create/Feature";
 
 import ScrollToTopButton from '../components/buttons/topButton';
+import EditUserInfo from "./Profile/EditUserInfo/EditUserInfo";
 
 export default function Routers() {
   const location = useLocation().pathname;
@@ -66,7 +67,8 @@ export default function Routers() {
           <Route path="/FAQ" element={<FAQ />} />
 
           <Route path="/Resturants" element={<Resturant />} />
-          
+
+          <Route path="/editProfile" element={<EditUserInfo />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<LoginForm />} />

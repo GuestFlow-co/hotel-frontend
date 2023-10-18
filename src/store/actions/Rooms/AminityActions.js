@@ -65,7 +65,7 @@ export const addAminity = (aminities) => {
     return async (dispatch) => {
       try {
         // Make the PUT request to update the aminity data
-        const res = await axios.put(`${process.env.REACT_APP_BASE_URL}/features/${Aminity_id}`, updatedAminity);
+        const res = await axios.put(`${process.env.REACT_APP_BASE_URL}/RoomsFeatures`, updatedAminity);
   console.log(res)
         // Dispatch the action to update the aminity
         dispatch({

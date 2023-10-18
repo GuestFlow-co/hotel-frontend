@@ -13,6 +13,8 @@ import {
 import axios from "axios";
 import "./bookingtable.scss";
 import HeaderCreate from "../../../Booking/Header";
+import Popup from "../../../Updatepop";
+import UpdatePopup from "../../../Updatepop";
 
 function BookingTable({ bookings }) {
   const columns = [
@@ -106,7 +108,7 @@ function BookingTable({ bookings }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
-                    <i className="fas fa-edit"></i>
+                  <i className="fas fa-edit"></i>
                   </button>
                   <Button
                     onClick={() => {
