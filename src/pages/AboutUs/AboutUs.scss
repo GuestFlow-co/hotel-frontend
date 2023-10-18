@@ -516,7 +516,12 @@
       position: relative;
       margin-bottom: 30px; }
       .team-member .image img {
-        width: 100%; }
+        width: 100%; 
+        max-width: 400px;
+        max-height:400px ;
+        min-width: 300px;
+        min-height: 300px;
+    }
       .team-member .image .social-links {
         opacity: 0;
         -webkit-transition: 0.5s;

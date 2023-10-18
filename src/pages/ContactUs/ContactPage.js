@@ -65,7 +65,7 @@ function ContactPage() {
                 <div className="tab-pane fade" id="Syria">
 
                   <ContactInfoItem
-                    icon="fa-solid fa-email"
+                    icon="flaticon-location-1"
                     title="Locations"
                     text="93 Main Street, 2nd block, Damascus, Syria"
                   />

@@ -27,7 +27,7 @@ const RoomDetail = () => {
   //     return <p>Room not found</p>;
   //   }
 
-  const { roomType, room_capacity, roomPrice, photoUrl, bed_nums, Room_space, Room_view, description, rate ,roomStatus} = room;
+  const { roomType, room_capacity, roomPrice, photoUrl, bed_nums, Room_space, Room_view, description, rate, roomStatus } = room;
   const images = photoUrl || [];
 
   const nextImage = () => {
@@ -131,7 +131,7 @@ const RoomDetail = () => {
                     <h2>Availability</h2>
                     {/* <h3>{roomStatus}</h3> */}
                   </div>
-                      
+
                   {/* <div className="room-calendar wow fadeInUp delay-0-2s" id="calendar"></div> */}
 
                   <div className="room-location mt-70 wow fadeInUp delay-0-2s">
@@ -163,12 +163,18 @@ const RoomDetail = () => {
               </div>
 
 
-              {/* form */}
               <div className="col-lg-5">
-                  <BookingForm />
-             
+                <BookingForm />
+
               </div>
             </div>
+
+            {/* form */}
+
+
+
+
+
 
             <Review />
           </div>

@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBooking } from "../../store/actions/Bookings/BookingActions";
 import { Link, useParams } from "react-router-dom";
 import cookie from "react-cookies";
 import {
-  Container,
-  Form,
-  Label,
-  Input,
-  Button,
   WelcomePopup,
 } from "./style";
 
@@ -43,17 +38,39 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (!bookingData.check_in_date || !bookingData.check_out_date) {
       alert("Please fill in both check-in and check-out dates.");
       return;
     }
-
+  
+    if (new Date(bookingData.check_out_date) <= new Date(bookingData.check_in_date)) {
+      alert("Check-out date cannot be before or on the same day as check-in date.");
+      return;
+    }
+  
+    const userHasBookingInRoom = bookings.some((booking) => {
+      return (
+        booking.theRoomID === roomId &&
+        booking.customer_id === user_id &&
+        (
+          (new Date(booking.check_in_date) >= new Date(bookingData.check_in_date) &&
+          new Date(booking.check_in_date) < new Date(bookingData.check_out_date)) ||
+          (new Date(booking.check_out_date) > new Date(bookingData.check_in_date) &&
+          new Date(booking.check_out_date) <= new Date(bookingData.check_out_date))
+        )
+      );
+    });
+  
+    if (userHasBookingInRoom) {
+      alert("You already have a booking for this room during the selected dates.");
+      return;
+    }
+  
     dispatch(addBooking(bookingData));
-
-    // Show the welcome popup
+  
     setShowWelcomePopup(true);
-
+  
     setBookingData({
       check_in_date: "",
       check_out_date: "",
@@ -61,7 +78,6 @@ const BookingForm = () => {
       customer_id: user_id,
     });
   };
-
   const isDateBooked = (date) => {
     return bookings.some((booking) => {
       const bookingStartDate = new Date(booking.check_in_date);
@@ -71,11 +87,26 @@ const BookingForm = () => {
       return currentDate >= bookingStartDate && currentDate <= bookingEndDate;
     });
   };
-  console.log(isDateBooked)
+
+  const hideWelcomePopup = () => {
+    setShowWelcomePopup(false);
+  };
+
+  useEffect(() => {
+    if (showWelcomePopup) {
+      const timeout = setTimeout(hideWelcomePopup, 5000);
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [showWelcomePopup]);
+
+  const currentDay = new Date();
+
   const isCheckInDateBooked = isDateBooked(bookingData.check_in_date);
   const isCheckOutDateBooked = isDateBooked(bookingData.check_out_date);
-  console.log(isCheckInDateBooked)
-  console.log(isCheckOutDateBooked)
+
 
   return (
     <div>
@@ -84,14 +115,14 @@ const BookingForm = () => {
         <form onSubmit={handleSubmit} className="widget-search-filter wow fadeInUp delay-0-4s" >
           <div className="form-group">
             <label htmlFor="checkin">Check In</label>
-            <div className="input-Checkin-out" >
+            <div className="input-Checkin-out text-black" >
               <DatePicker
-                name="check_out_date"
-                value={bookingData.check_out_date}
-                onChange={handleChange}
-                className={isCheckOutDateBooked ? "disabled-input" : ""}
-                disabled={isCheckOutDateBooked}
+                selected={bookingData.check_in_date}
+                onChange={date => setBookingData({ ...bookingData, check_in_date: date })}
+                className={isCheckInDateBooked ? "disabled-input" : ""}
+                disabled={isCheckInDateBooked}
                 placeholderText="Check In"
+                minDate={currentDay}
               />
               <i className="fa-regular fa-calendar-days text-black "></i>
             </div>
@@ -99,7 +130,14 @@ const BookingForm = () => {
           <div className="form-group">
             <label htmlFor="checkout">Check Out</label>
             <div className="input-Checkin-out" >
-              <input type="date" id="checkout" required />
+              <DatePicker
+                selected={bookingData.check_out_date}
+                onChange={date => setBookingData({ ...bookingData, check_out_date: date })}
+                className={isCheckOutDateBooked ? "disabled-input" : ""}
+                disabled={isCheckOutDateBooked}
+                placeholderText="Check Out"
+                minDate={currentDay}
+              />
               <i className="fa-regular fa-calendar-days text-black "></i>
 
             </div>
@@ -122,9 +160,10 @@ const BookingForm = () => {
 
           }
         </form>
+
         {showWelcomePopup && (
           <WelcomePopup className="welcome-popup">
-            <p>Welcome to our hotel! Your booking has been added.</p>
+            <p className="welcome-message">Welcome to our hotel! Your booking has been added.</p>
           </WelcomePopup>
         )}
       </div>
@@ -187,6 +226,14 @@ const BookingForm = () => {
               <option value="children3">3</option>
             </select>
           </div> */}
+
+
+
+      {/*           
+        <WelcomePopup className="welcome-popup">
+            <p className="welcome-message">Welcome to our hotel! Your booking has been added.</p>
+          </WelcomePopup> */}
+
     </div >
   );
 };
