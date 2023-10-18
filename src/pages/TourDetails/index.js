@@ -12,7 +12,9 @@ function TourDetalis() {
   const [details, setDetails] = useState([]);
   const [tour, setTour] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isupdated, setupdated] = useState(false);
 
+  
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
