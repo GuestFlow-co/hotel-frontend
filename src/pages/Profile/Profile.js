@@ -1,9 +1,9 @@
 
 import UserBookingInfo from './UserBookingInfo/UserBookingInfo';
-
+import './Profile.scss'
 function Profile() {
   return (
-    <div className='profile-main-container' style={{ height:"121vh",backgroundColor: "#eee",}}>
+    <div className='profile-main-container'>
         <UserBookingInfo/>
     </div>
   );

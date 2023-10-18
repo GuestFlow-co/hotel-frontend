@@ -13,8 +13,6 @@ function TourDetalis() {
   const [tour, setTour] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-
-
   useEffect(() => {
     const delay = setTimeout(() => {
       setIsLoading(false);
@@ -22,8 +20,6 @@ function TourDetalis() {
 
     return () => clearTimeout(delay);
   }, []);
-
-
 
   useEffect(() => {
     function fetchData() {
@@ -42,7 +38,7 @@ function TourDetalis() {
     }
 
     fetchData();
-  }, []);
+  }, [isupdated]);
   return (
     <div>
     {isLoading ? ( 
@@ -53,8 +49,8 @@ function TourDetalis() {
           <div className='tourDetalis-index'>
             <TopSection tour={tour} />
             <section className='description-container'>
-              <Detalis tour={tour} />
-              <RightDetalis tour={tour} />
+              <Detalis tour={tour} isupdated={isupdated}/>
+              <RightDetalis tour={tour} setupdated={setupdated} />
             </section>
           </div>
         </div>

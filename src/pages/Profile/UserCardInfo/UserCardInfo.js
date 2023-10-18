@@ -1,65 +1,185 @@
-import React from 'react'
-import {
-    MDBCol,
-    MDBRow,
-    MDBCardText,
-    MDBCardBody,
-    
-  } from "mdb-react-ui-kit";
-  import cookie from "react-cookies";
+import React, { useEffect, useState } from "react";
+import { MDBCol, MDBRow, MDBCardText, MDBCardBody } from "mdb-react-ui-kit";
+import cookie from "react-cookies";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export default function UserCardInfo() {
+  const navigate = useNavigate();
+  const handleEditProfile = () => {
+    navigate("/editProfile");
+  };
+
+  const [fulluser, setFulluser] = useState("");
+  console.log(fulluser, "444444");
+
+  useEffect(() => {
+    const newUser = cookie.load("user");
+    setFulluser(newUser);
+  }, []);
+
   return (
-    <MDBCardBody style={{ backgroundColor: "#fff",}}>
-    <MDBRow>
-      <MDBCol sm="3">
-        <MDBCardText>First Name</MDBCardText>
-      </MDBCol>
-      <MDBCol sm="9">
-        <MDBCardText className="text-muted">
-        <div id='First Name'> {cookie.load('user')?.firstName} </div>
-        </MDBCardText>
-      </MDBCol>
-    </MDBRow>
-    <hr/>
-    <MDBRow>
-    <MDBCol sm="3">
-        <MDBCardText>Last Name</MDBCardText>
-      </MDBCol>
-      <MDBCol sm="9">
-        <MDBCardText className="text-muted">
-        <div id='LastName'> {cookie.load('user')?.lastName} </div>
-        </MDBCardText>
-      </MDBCol>
+    <MDBCardBody style={{ backgroundColor: "#fff" }}>
+      <MDBRow>
+        <MDBCol sm="3">
+          <MDBCardText>First Name</MDBCardText>
+        </MDBCol>
+        <MDBCol sm="9">
+          <MDBCardText className="text-muted">
+            <div id="First Name"> {fulluser?.firstName} </div>
+          </MDBCardText>
+        </MDBCol>
       </MDBRow>
-    <hr />
-    <MDBRow>
-      <MDBCol sm="3">
-        <MDBCardText>Email</MDBCardText>
-      </MDBCol>
-      <MDBCol sm="9">
-        <MDBCardText className="text-muted">
-        <div id='email'> {cookie.load('user')?.email} </div>
-        </MDBCardText>
-      </MDBCol>
-    </MDBRow>
-    <hr />
-    <MDBRow>
-      <MDBCol sm="3">
-        <MDBCardText>Phone</MDBCardText>
-      </MDBCol>
-      <MDBCol sm="9">
-        <MDBCardText className="text-muted">
-        <div id='phoneNumber'> {cookie.load('user')?.phoneNumber} </div>
-        </MDBCardText>
-      </MDBCol>
-    </MDBRow>
-    <hr />
-    <MDBRow>
-    </MDBRow>
-    <hr />
-    <MDBRow>         
-    </MDBRow>
-  </MDBCardBody>
-  )
+      <hr />
+      <MDBRow>
+        <MDBCol sm="3">
+          <MDBCardText>Last Name</MDBCardText>
+        </MDBCol>
+        <MDBCol sm="9">
+          <MDBCardText className="text-muted">
+            <div id="LastName"> {fulluser?.lastName} </div>
+          </MDBCardText>
+        </MDBCol>
+      </MDBRow>
+      <hr />
+      <MDBRow>
+        <MDBCol sm="3">
+          <MDBCardText>Email</MDBCardText>
+        </MDBCol>
+        <MDBCol sm="9">
+          <MDBCardText className="text-muted">
+            <div id="email"> {fulluser?.email} </div>
+          </MDBCardText>
+        </MDBCol>
+      </MDBRow>
+      <hr />
+      <MDBRow>
+        <MDBCol sm="3">
+          <MDBCardText>Phone</MDBCardText>
+        </MDBCol>
+        <MDBCol sm="9">
+          <MDBCardText className="text-muted">
+            <div id="phoneNumber"> {fulluser?.phoneNumber} </div>
+          </MDBCardText>
+        </MDBCol>
+      </MDBRow>
+      <hr />
+      <MDBRow></MDBRow>
+      <hr />
+      <div className="btn-user-edit-info" style={{ paddingRight: "24%" }}>
+        <Button
+          outline
+          className="btn-brown-2"
+          onClick={handleEditProfile}
+          style={{ marginLeft: "112%" }}
+        >
+          Edit Profile
+        </Button>
+      </div>
+      <MDBRow></MDBRow>
+    </MDBCardBody>
+  );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { MDBCol, MDBRow, MDBCardText, MDBCardBody } from "mdb-react-ui-kit";
+// import cookie from "react-cookies";
+// import { useNavigate } from "react-router-dom";
+// import { Button } from "react-bootstrap";
+
+// export default function UserCardInfo() {
+
+//   const navigate = useNavigate();
+//   const handleEditProfile = () => {
+//     navigate("/editProfile");
+//   };
+
+//   // // users.user_id
+//   // const users = useSelector((state) => state.users.users);
+//   // const user_id = cookie.load("user")?.user_id;
+//   // const user = users.find((x) => x.user_id === user_id);
+//   // console.log("user", user);
+//   // const {fulluser} = useContext(LoginContext)
+//   // console.log(fulluser,"444444")
+
+//   const[fulluser,setFulluser]=useState('')
+//   // const {fulluser} = useContext(LoginContext)
+//   console.log(fulluser,"444444")
+
+// useEffect(()=>{
+// const newUser=cookie.load('user')
+// setFulluser(newUser)
+// },[])
+//   return (
+//     <MDBCardBody style={{ backgroundColor: "#fff" }}>
+//       <MDBRow>
+//         <MDBCol sm="3">
+//           <MDBCardText>First Name</MDBCardText>
+//         </MDBCol>
+//         <MDBCol sm="9">
+//           <MDBCardText className="text-muted">
+//             <div id="First Name"> {fulluser?.firstName} </div>
+//           </MDBCardText>
+//         </MDBCol>
+//       </MDBRow>
+//       <hr />
+//       <MDBRow>
+//         <MDBCol sm="3">
+//           <MDBCardText>Last Name</MDBCardText>
+//         </MDBCol>
+//         <MDBCol sm="9">
+//           <MDBCardText className="text-muted">
+//             <div id="LastName"> {fulluser?.lastName} </div>
+//           </MDBCardText>
+//         </MDBCol>
+//       </MDBRow>
+//       <hr />
+//       <MDBRow>
+//         <MDBCol sm="3">
+//           <MDBCardText>Email</MDBCardText>
+//         </MDBCol>
+//         <MDBCol sm="9">
+//           <MDBCardText className="text-muted">
+//             <div id="email"> {fulluser?.email} </div>
+//           </MDBCardText>
+//         </MDBCol>
+//       </MDBRow>
+//       <hr />
+//       <MDBRow>
+//         <MDBCol sm="3">
+//           <MDBCardText>Phone</MDBCardText>
+//         </MDBCol>
+//         <MDBCol sm="9">
+//           <MDBCardText className="text-muted">
+//             <div id="phoneNumber"> {fulluser?.phoneNumber} </div>
+//           </MDBCardText>
+//         </MDBCol>
+//       </MDBRow>
+//       <hr />
+//       <MDBRow></MDBRow>
+//       <hr />
+//       <div className="btn-user-edit-info" style={{ paddingRight: "24%" }}>
+//         <Button
+//           outline
+//           className="btn-brown-2"
+//           onClick={handleEditProfile}
+//           style={{ marginLeft: "112%" }}
+//         >
+//           Edit Profile
+//         </Button>
+//       </div>
+//       <MDBRow></MDBRow>
+//     </MDBCardBody>
+//   );
+// }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addRoom } from '../../../store/actions/RoomActions';
-import { useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import {
   Container,
   Form,
@@ -11,30 +11,62 @@ import {
   ButtonGroup,
   Button,
 } from './style';
+import FeatureChecklist from './Feature';
 
-const RoomCreate = () => {
+const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
   const dispatch = useDispatch();
-  const { Room_id } = useParams();
-
   const initialRoomState = {
     room_number: '',
     roomType: '',
     roomStatus: 'Available',
     roomPrice: 0,
     room_capacity: '',
+    description: '',
+    bed_nums: '',
+    Room_space: 0,
+    Room_view: '',
+    image: [],
   };
 
+  const [roomCreated, setRoomCreated] = useState(false);
   const [room, setRoom] = useState(initialRoomState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(addRoom(room));
-      setRoom(initialRoomState);
-      console.log("Room created successfully");
-      console.log(room);
+      const formData = new FormData();
+
+      for (const key in room) {
+        if (key === 'image') {
+          if (room.image) {
+            if (Array.isArray(room.image)) {
+              room.image.forEach((file) => {
+                formData.append('image', file);
+              });
+            } else {
+              formData.append('image', room.image);
+            }
+          }
+        } else {
+          formData.append(key, room[key]);
+        }
+      }
+
+      const response = await dispatch(addRoom(formData));
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Room created successfully:', data);
+        setRoom(initialRoomState);
+        setRoomCreated(true); // Switch to Feature Checklist
+        onRoomCreate(data.Room_id);
+      
+        Navigate('/feature')
+      } else {
+        console.error('Room creation failed');
+      }
     } catch (error) {
-      console.error("Room creation failed:", error);
+      console.error('Room creation failed:', error);
     }
   };
 
@@ -46,9 +78,30 @@ const RoomCreate = () => {
     });
   };
 
+  const handleImage = (event) => {
+    const { name, files } = event.target;
+    if (name === 'image') {
+      setRoom({ ...room, image: Array.from(files) });
+    }
+  };
+
   return (
     <Container>
+      {roomCreated ? (
+        <FeatureChecklist />
+      ) : (
       <Form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label>Cover Photo</Label>
+          <Input
+            type="file"
+            name="image"
+            className="form-control"
+            onChange={handleImage}
+            multiple
+          />
+        </FormGroup>
+
         <FormGroup>
           <Label>Room Number</Label>
           <Input
@@ -83,12 +136,45 @@ const RoomCreate = () => {
         </FormGroup>
 
         <FormGroup>
-          <Label>Room Status</Label>
+          <Label>Room description</Label>
           <Input
             type="text"
-            value={room.roomStatus}
+            value={room.description}
             onChange={handleChange}
-            name="roomStatus"
+            name="description"
+            className="form-control"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Bed #</Label>
+          <Input
+            type="number"
+            value={room.bed_nums}
+            onChange={handleChange}
+            name="bed_nums"
+            className="form-control"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Room Space sqm</Label>
+          <Input
+            type="number"
+            value={room.Room_space}
+            onChange={handleChange}
+            name="Room_space"
+            className="form-control"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Room View</Label>
+          <Input
+            type="text"
+            value={room.Room_view}
+            onChange={handleChange}
+            name="Room_view"
             className="form-control"
           />
         </FormGroup>
@@ -103,13 +189,16 @@ const RoomCreate = () => {
             className="form-control"
           />
         </FormGroup>
-          <ButtonGroup>
-        <Button type="submit" className="btn btn-success">
-          Create
-        </Button>
-      
+
+        <ButtonGroup>
+          <Button type="submit" className="btn btn-success">
+            Create
+          </Button>
+          <Button onClick={setClose}>Close</Button>
+
         </ButtonGroup>
       </Form>
+      )}
     </Container>
   );
 };

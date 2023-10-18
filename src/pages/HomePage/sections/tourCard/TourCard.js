@@ -50,7 +50,7 @@ export default function TourCard() {
 
         <section className="cards-tour-section-home container">
           {currentItems.map((item) => (
-            <Link className="theTourCard-home" to={`/TourDetalis/${item.Tour_id}`}>
+            <Link className="theTourCard-home" to={`/TourDetalis/${item.tour_id}`}>
 
               <div>
                 <img className="tour-card-image-home" src={item.coverPhoto} />
@@ -99,7 +99,7 @@ export default function TourCard() {
                     <i className="fa-regular fa-user"></i> {item.max_capacity}
                   </p>
                 </div>
-                <Link to={`/TourDetalis/${item.Tour_id}`}>
+                <Link to={`/TourDetalis/${item.tour_id}`}>
                   Details <i className="fa-solid fa-arrow-right"></i>
                 </Link>
               </div>

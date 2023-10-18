@@ -1,8 +1,13 @@
 
+import { useSelector } from "react-redux";
+import HotelReservation from "./pages/Booking/FormDashboard";
 import Routers from "./pages/Routes";
+import Popup from "./pages/pop";
 
 
 function App() {
+  const bookings = useSelector((state) => state.bookings.bookings);
+  console.log(bookings)
   return (
     // <Layout>
     //   <Routes>
@@ -15,9 +20,8 @@ function App() {
     //   </Routes>
     // </Layout>
     <div>
-
       <Routers />
-
+        {/* <HotelReservation/> */}
     </div>
 
   );

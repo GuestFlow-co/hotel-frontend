@@ -12,30 +12,30 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import "./bookingtable.scss";
-
-function BookingTable({ bookings }) {
+import TourPop from "../../pages/Tourash/Tourpost/TourPop";
+import TourEditPop from "../../pages/Tourash/TourEdit/TourEditPop"
+function TourTable({ tours }) {
   const columns = [
-    "Name",
-    "Mobile",
-    "Email",
-    "Check In Date",
-    "Check Out Date",
-    "Room Number",
-    "Amount",
-    "Payment",
-    "Actions", // Added a new column for actions
+    "Title",
+    "location",
+    "Start Date",
+    "End Date",
+    "Seat Price",
+    "Max Capacity",
+    "Available Seat",
+     "Actions", 
   ];
-  const [bookingdata, setBooking] = useState(bookings); // Initialize the local state with props data
+  const [tourData, setTour] = useState(tours); // Initialize the local state with props data
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedId, setSelectedId] = useState(null); // State variable to store the selected booking ID
 
   function handelDelete(id) {
     axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/bookings/${id}`)
+      .delete(`${process.env.REACT_APP_BASE_URL}/tour/${id}`)
       .then((res) => {
         console.log(res.data);
-        setBooking((prevRoomData) =>
-          prevRoomData.filter((room) => room.booking_id !== id)
+        setTour((prevRoomData) =>
+          prevRoomData.filter((room) => room.Tour_id !== id)
         );
       })
       .catch((error) => {
@@ -43,8 +43,8 @@ function BookingTable({ bookings }) {
       });
   }
   useEffect(() => {
-    setBooking(bookings);
-  }, [bookings]);
+    setTour(tours);
+  }, [tours]);
   return (
     <div className="table-container">
       <div
@@ -54,10 +54,12 @@ function BookingTable({ bookings }) {
           backgroundColor: "rgb(218,225,243)",
         }}
       >
-        <h3 className="table-title">Booking List</h3>
-        <button className="add-button" title="Add">
-          <i className="fas fa-plus"></i>
+        <h3 className="table-title">Tour List</h3>
+        
+        
+          <button className="add-button" title="Add"> <TourPop />
         </button>
+       
       </div>
       <table className="striped-table">
         <thead>
@@ -70,45 +72,46 @@ function BookingTable({ bookings }) {
           </tr>
         </thead>
         <tbody>
-          {bookings && bookings.length > 0 ? (
-            bookingdata.map((booking, rowIndex) => (
+          {tours && tours.length > 0 ? (
+            tourData.map((tour, rowIndex) => (
               <tr
-                key={booking.booking_id}
+                key={tour.tour_id}
                 className={rowIndex % 2 === 0 ? "even" : "odd"}
               >
                 <td style={{ paddingLeft: "25px" }}>
-                  {booking.user.firstName}
+                  {tour.Title}
                 </td>
-                <td>{booking.user.phoneNumber}</td>
-                <td>{booking.user.email}</td>
-                <td>{new Date(booking.check_in_date).toLocaleDateString()}</td>
-                <td>{new Date(booking.check_out_date).toLocaleDateString()}</td>
-                <td>{booking.Room.room_number}</td>
-                <td>{booking.payment.amount}</td>
+                <td>{tour.location}</td>
+                <td>{new Date(tour.start_date).toLocaleDateString()}</td>
+                <td>{new Date(tour.end_date).toLocaleDateString()}</td>
+                <td>{tour.Seat_price}</td>
+                <td>{tour.max_capacity}</td>
+
                 <td>
                   <p
                     style={{
-                      background: booking.payment.amount
+                      background: !tour.availableSeat
                         ? "#ffaaaa"
                         : "#19875426",
                       padding: "8px",
                       borderRadius: "15px",
                       fontSize: "16px",
-                      color: booking.payment.amount
+                      color: !tour.availableSeat
                         ? "rgb(241,21,65)"
                         : "#198754",
                     }}
                   >
-                    {booking.payment.amount ? "Unpaid" : "Paid"}
+                    {!tour.availableSeat ? 0 : tour.availableSeat }
                   </p>
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
+                    <TourEditPop tour={tour} />
                     <i className="fas fa-edit"></i>
                   </button>
                   <Button
                     onClick={() => {
-                      setSelectedId(booking.booking_id); // Set the selected ID in the state
+                      setSelectedId(tour.tour_id); // Set the selected ID in the state
                       onOpen(); // Open the modal
                     }}
                     className="delete-button"
@@ -121,7 +124,7 @@ function BookingTable({ bookings }) {
             ))
           ) : (
             <tr>
-              <td colSpan={columns.length}>No bookings available.</td>
+              <td colSpan={columns.length}>No tours available.</td>
             </tr>
           )}
         </tbody>
@@ -157,4 +160,4 @@ function BookingTable({ bookings }) {
   );
 }
 
-export default BookingTable;
+export default TourTable;

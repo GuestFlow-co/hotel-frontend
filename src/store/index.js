@@ -1,7 +1,7 @@
 import { createStore,compose,applyMiddleware } from 'redux'
 import thunk from "redux-thunk"
 import{ fetchComments, fetchRooms} from "./actions/Rooms/RoomActions"
-// import{ checkForToken} from "./actions/Auth/AuthActions"
+import{ checkForToken, fetchUsers} from "./actions/Auth/AuthActions"
 import rootReducer from"./reducers/Reducer"
 import { fetchResturants } from './actions/resturant/ResturantAction';
 import { fetchAminities, fetchRoomAminities } from './actions/Rooms/AminityActions';
@@ -19,7 +19,7 @@ store.dispatch(fetchResturants())
 store.dispatch(fetchComments())
 store.dispatch(fetchAminities())
 store.dispatch(fetchRoomAminities())
-// store.dispatch(checkForToken())
+store.dispatch(fetchUsers())
 
 
 export default store

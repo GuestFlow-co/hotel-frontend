@@ -21,7 +21,12 @@ export const fetchTours = () => {
 export const addTour = (tourData) => {
   return async (dispatch) => {
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/tour`, tourData);
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/tour`, tourData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Specify the content type
+        },
+      });
+
       if (res.status === 201) {
         dispatch({
           type: types.ADD_Tours,
@@ -35,3 +40,4 @@ export const addTour = (tourData) => {
     }
   };
 };
+
