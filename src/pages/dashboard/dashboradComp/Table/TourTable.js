@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import "./bookingtable.scss";
-import TourPop from "../../pages/Tourash/TourPop";
-
+import TourPop from "../../pages/Tourash/Tourpost/TourPop";
+import TourEditPop from "../../pages/Tourash/TourEdit/TourEditPop"
 function TourTable({ tours }) {
   const columns = [
     "Title",
@@ -75,7 +75,7 @@ function TourTable({ tours }) {
           {tours && tours.length > 0 ? (
             tourData.map((tour, rowIndex) => (
               <tr
-                key={tour.Tour_id}
+                key={tour.tour_id}
                 className={rowIndex % 2 === 0 ? "even" : "odd"}
               >
                 <td style={{ paddingLeft: "25px" }}>
@@ -106,11 +106,12 @@ function TourTable({ tours }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
+                    <TourEditPop tour={tour} />
                     <i className="fas fa-edit"></i>
                   </button>
                   <Button
                     onClick={() => {
-                      setSelectedId(tour.Tour_id); // Set the selected ID in the state
+                      setSelectedId(tour.tour_id); // Set the selected ID in the state
                       onOpen(); // Open the modal
                     }}
                     className="delete-button"

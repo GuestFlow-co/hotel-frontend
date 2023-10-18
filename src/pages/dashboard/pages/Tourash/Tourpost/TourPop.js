@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {PopupWrapper, PopupContent, CloseButton} from "../../../appStyle"
+import {PopupWrapper, PopupContent, CloseButton} from "../../../../appStyle"
 import TourPost from "./TourPost";
 function TourPop() {
     const [isPopupOpen, setPopupOpen] = useState(false);
@@ -19,7 +19,6 @@ function TourPop() {
       {/* Render the Popup components */}
       <PopupWrapper style={{ display: isPopupOpen ? 'flex' : 'none' }}>
         <PopupContent>
-          {/* <CloseButton onClick={closePopup} style={}>Close</CloseButton> */}
           <TourPost setPopupOpen={setPopupOpen}/>
         </PopupContent>
       </PopupWrapper>
