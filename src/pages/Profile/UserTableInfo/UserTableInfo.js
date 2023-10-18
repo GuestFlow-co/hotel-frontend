@@ -1,6 +1,12 @@
 import React from 'react'
 import "./UserTableInfo.scss";
 export default function UserTableInfo({getAllbooking}) {
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  };
+  
   return (
     <div className="user-booking-info" >
     <table className="user-info-table">
@@ -21,8 +27,8 @@ export default function UserTableInfo({getAllbooking}) {
             <td>{booking.number_of_seats_inTour}</td>
             <td>{booking.Tour?.Title}</td>
             <td>{booking.payment.amount} $💸</td>
-            <td>{booking.check_in_date}</td>
-            <td>{booking.check_out_date}</td>
+            <td>{formatDate(booking.check_in_date)}</td>
+            <td>{formatDate(booking.check_out_date)}</td>
           </tr>
         ))}
       </tbody>

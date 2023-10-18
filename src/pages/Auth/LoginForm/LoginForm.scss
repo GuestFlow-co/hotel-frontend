@@ -601,3 +601,35 @@
   /* Make the text bold */
   /* Add any other styles to make the error message stand out */
 }
+
+
+
+//for the password
+.password-strength-indicator {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Style the password input container */
+.other-form-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+/* Style the password input label */
+.other-form-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+/* Style the password input field */
+.other-form-group input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
