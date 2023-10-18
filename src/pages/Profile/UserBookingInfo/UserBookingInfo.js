@@ -17,6 +17,49 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 function UserBookingInfo() {
+  const handleImage = (event) => {
+    const { name, files } = event.target;
+    if (name === "image") {
+      setPhoto({ ...photo, image: Array.from(files) });
+    }
+  };
+
+  const initialPhotoState = {
+    image: [],
+  };
+  const [photo, setPhoto] = useState(initialPhotoState);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    for (const key in photo) {
+      if (key === "image") {
+        console.log(photo.image, "photo.imageee");
+        photo.image.forEach((file) => {
+          formData.append("image", file);
+        });
+      }
+    }
+    const obj = {
+      image: formData.get("image"),
+    };
+    console.log("0000", formData.get("image"));
+    console.log(obj, "objjjj");
+
+    try {
+      const res = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/user/${fulluser.user_id}`,
+        formData
+      );
+      console.log(res.data, "resresres");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    setPhoto(initialPhotoState);
+  };
+
   const [getAllbooking, setgetAllbooking] = useState([]);
   const { logout } = useContext(LoginContext);
   const [fulluser, setFulluser] = useState("");
@@ -74,6 +117,25 @@ function UserBookingInfo() {
                   style={{ width: "180px" }}
                   fluid
                 />
+
+                <div>
+                  <label>
+                    <i className="fa-solid fa-arrow-up-from-bracket"></i> Upload
+                    user Photos
+                    <input
+                      type="file"
+                      name="image"
+                      multiple
+                      onChange={handleImage}
+                    />
+                  </label>
+                </div>
+                <Button
+                  onClick={handleSubmit}
+                  style={{ backgroundColor: "#000", height: "70px" }}
+                >
+                  upload
+                </Button>
                 <p
                   style={{ paddingTop: "10px", fontSize: "20px" }}
                   className="text-muted mb-1"
@@ -152,15 +214,6 @@ function UserBookingInfo() {
 }
 
 export default UserBookingInfo;
-
-
-
-
-
-
-
-
-
 
 
 // import React, { useContext, useEffect, useState } from "react";

@@ -455,7 +455,7 @@
 }
 
 .menu-btns .theme-btn {
-    margin-left: 35px;
+    margin-left: 10px;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -762,7 +762,7 @@
 
 @media only screen and (min-width: 1200px) {
     .main-header.header-white .nav-outer {
-        margin-left: 110px;
+        margin-left: 20px;
     }
 }
 
@@ -996,3 +996,18 @@
     -webkit-animation: shapeAnimationTwo 30s infinite;
     animation: shapeAnimationTwo 30s infinite;
 }
+
+
+.chakra-menu__menu-list {
+    border-radius: 0px !important;
+    border-color: var(--primary-color) !important   ;
+
+    // button :hover{
+    //     // background: #000;
+    // }
+}
+
+
+// .css-1kfu8nn{
+
+// }

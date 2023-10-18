@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTour } from "../../../../store/actions/Tours/Touraction";
+import { addTour } from "../../../../../store/actions/Tours/Touraction";
 import { useParams } from "react-router-dom";
 import {
   Container,
@@ -10,7 +10,7 @@ import {
   Input,
   ButtonGroup,
   Button,
-} from "./TourPostStyles";
+} from "../TourPostStyles";
 
 const TourPost = ({ setPopupOpen }) => {
   const dispatch = useDispatch();

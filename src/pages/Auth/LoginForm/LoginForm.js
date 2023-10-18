@@ -118,7 +118,6 @@ function SignInUpForm() {
     });
   };
 
-
   function handleLogin(e) {
     e.preventDefault();
     login(username, password);

@@ -46,11 +46,11 @@ export default function TourCard() {
   return (
     <div>
       <div className="main-card-tour-home bgc-black-with-lighting rel z-1 p-50" >  
-      <h2 className="text font-semibold text-white text-center mb-4">Featured Tours</h2>
+      <h2 className=" text-white text-center mb-4 py-20" style={{fontFamily:'Noto Serif',fontWeight:'400',fontSize:'50px'}}>Featured Tours</h2>
 
         <section className="cards-tour-section-home container">
           {currentItems.map((item) => (
-            <Link className="theTourCard-home" to={`/TourDetalis/${item.Tour_id}`}>
+            <Link className="theTourCard-home" to={`/TourDetalis/${item.tour_id}`}>
 
               <div>
                 <img className="tour-card-image-home" src={item.coverPhoto} />
@@ -99,13 +99,17 @@ export default function TourCard() {
                     <i className="fa-regular fa-user"></i> {item.max_capacity}
                   </p>
                 </div>
-                <Link to={`/TourDetalis/${item.Tour_id}`}>
+                <Link to={`/TourDetalis/${item.tour_id}`}>
                   Details <i className="fa-solid fa-arrow-right"></i>
                 </Link>
               </div>
             </Link>
 
           ))}
+
+          <div className="flex ">
+            <Link className="theme-btn mb-40 wow fadeInRight delay-0-2s" to='./tour'>Explore Tours <i class="fa-solid fa-angle-right text-white"></i></Link>
+          </div>
 
 
         </section>

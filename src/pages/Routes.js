@@ -67,7 +67,7 @@ export default function Routers() {
           <Route path="/FAQ" element={<FAQ />} />
 
           <Route path="/Resturants" element={<Resturant />} />
-
+ 424668b2193481e6d80a4fbd0cd305f89a498a20
           <Route path="/editProfile" element={<EditUserInfo />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<ContactUs />} />
