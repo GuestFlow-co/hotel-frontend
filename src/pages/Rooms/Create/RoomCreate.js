@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addRoom } from '../../../store/actions/RoomActions';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import {
   Container,
   Form,
@@ -13,7 +13,8 @@ import {
 } from './style';
 import FeatureChecklist from './Feature';
 
-const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
+const RoomCreate = ({ setClose, onRoomCreate, setActiveComponent, setClosing }) => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const initialRoomState = {
     room_number: '',
@@ -22,7 +23,7 @@ const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
     roomPrice: 0,
     room_capacity: '',
     description: '',
-    bed_nums: '',
+    bed_nums: 1,
     Room_space: 0,
     Room_view: '',
     image: [],
@@ -43,6 +44,7 @@ const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
               room.image.forEach((file) => {
                 formData.append('image', file);
               });
+              
             } else {
               formData.append('image', room.image);
             }
@@ -54,14 +56,13 @@ const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
 
       const response = await dispatch(addRoom(formData));
 
+
       if (response.ok) {
         const data = await response.json();
         console.log('Room created successfully:', data);
         setRoom(initialRoomState);
-        setRoomCreated(true); // Switch to Feature Checklist
+        setActiveComponent("FeatureChecklist"); // Switch to FeatureChecklist
         onRoomCreate(data.Room_id);
-      
-        Navigate('/feature')
       } else {
         console.error('Room creation failed');
       }
@@ -191,10 +192,13 @@ const RoomCreate = ({ setClose, onRoomCreate, moveToAmenities }) => {
         </FormGroup>
 
         <ButtonGroup>
-          <Button type="submit" className="btn btn-success">
-            Create
+          <Button onClick={setClose} type="submit" className="btn btn-success">
+            Add the room features
           </Button>
-          <Button onClick={setClose}>Close</Button>
+        
+          <Button onClick={setClosing} type="submit" className="btn btn-success">
+            close
+          </Button>
 
         </ButtonGroup>
       </Form>

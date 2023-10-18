@@ -20,7 +20,7 @@ function App() {
     //   </Routes>
     // </Layout>
     <div>
-      <Popup/>
+      {/* <Popup/> */}
       <Routers />
         {/* <HotelReservation/> */}
     </div>

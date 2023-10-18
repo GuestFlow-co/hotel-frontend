@@ -63,7 +63,7 @@ function SignInUpForm() {
   //   });
   // };
 
-  const handleSignupSub = async (e) => {
+    const handleSignupSub = async (e) => {
     e.preventDefault();
     try {
       //deployed link:            https://guestflow.onrender.com/
@@ -95,6 +95,7 @@ function SignInUpForm() {
     });
   };
 
+  // module.exports=handleSignupSub
 
   function handleLogin(e) {
     e.preventDefault();
@@ -318,4 +319,4 @@ function SignInUpForm() {
   );
 }
 
-export default SignInUpForm;
+  export default {SignInUpForm};

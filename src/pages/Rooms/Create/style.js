@@ -26,8 +26,10 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 8px;
+  margin-right:5%;
   border: 1px solid #ccc;
   border-radius: 4px;
+  padding-right: 9%;
 `;
 
 export const ButtonGroup = styled.div`
@@ -51,4 +53,30 @@ export const Button = styled.button`
     background-color: #6c757d; /* Gray color for Back button */
     color: #fff;
   }
+`;
+export const RoomCreateContainer = styled.div`
+  transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
+  transition: transform 0.3s;
+`;
+export const FeatureChecklistContainer = styled.div`
+  transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
+  transition: transform 0.3s;
+`;
+
+export const ContainerCheck = styled.div`
+display: grid;
+grid-template-columns: repeat(3, 1fr); 
+gap: 10px;
+`;
+
+export const CheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  /* Add other styles for the checkbox label */
+`;
+
+export const CheckboxInput = styled.input`
+  /* Styles for the checkbox input */
+  margin-right: 5px; /* Add space between the checkbox and text */
 `;

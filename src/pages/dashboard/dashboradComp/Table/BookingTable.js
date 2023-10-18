@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import "./bookingtable.scss";
+import HeaderCreate from "../../../Booking/Header";
 
 function BookingTable({ bookings }) {
   const columns = [
@@ -46,6 +47,7 @@ function BookingTable({ bookings }) {
     setBooking(bookings);
   }, [bookings]);
   return (
+    
     <div className="table-container">
       <div
         style={{

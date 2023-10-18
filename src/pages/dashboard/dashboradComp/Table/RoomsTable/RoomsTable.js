@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import "./RoomsTable.scss";
 import axios from "axios"
+import RoomCreate from "../../../../Rooms/Create/RoomCreate";
+import Popup from "../../../../pop";
 function RoomsTable({ rooms }) {
   const columns = [
     "coverPhoto",
@@ -52,7 +54,7 @@ function RoomsTable({ rooms }) {
       >
         <h3 className="table-title">Rooms List</h3>
         <button className="add-button" title="Add">
-          <i className="fas fa-plus"></i>
+          <Popup/>
         </button>
       </div>
       <table className="striped-table">
