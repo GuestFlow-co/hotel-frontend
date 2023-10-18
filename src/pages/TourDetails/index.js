@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from './TourDetails-comp/Slider/Slider'
 import TopSection from './TourDetails-comp/topSection/TopSection';
 import axios from "axios";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './style.scss'
 import Detalis from './TourDetails-comp/detalis/detalis';
@@ -11,17 +11,24 @@ function TourDetalis() {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [tour, setTour] = useState({});
-  const [loader, setloader] = useState(false);
-  const [isupdated, setupdated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-     function fetchData() {
-      try {
-        const response =  axios.get(`${process.env.REACT_APP_BASE_URL}/tour/${id}`).then(response =>{
+    const delay = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
 
-          setDetails(response.data.photoUrl );
+    return () => clearTimeout(delay);
+  }, []);
+
+  useEffect(() => {
+    function fetchData() {
+      try {
+        const response = axios.get(`${process.env.REACT_APP_BASE_URL}/tour/${id}`).then(response => {
+
+          setDetails(response.data.photoUrl);
           setTour(response.data)
-          setloader(true)
+          setIsLoading(true)
           //  console.log(response.data.TourPlan);
         })
 
@@ -29,12 +36,14 @@ function TourDetalis() {
         console.error("Error fetching data:", error);
       }
     }
-    
+
     fetchData();
   }, [isupdated]);
   return (
     <div>
-      {loader ? (
+    {isLoading ? ( 
+        <div className='preloader'></div>
+      ) : (
         <div>
           <Slider photo={details} />
           <div className='tourDetalis-index'>
@@ -45,11 +54,9 @@ function TourDetalis() {
             </section>
           </div>
         </div>
-      ) : (
-        <div className='preloader'></div> // You can replace this with your loader component or message
       )}
     </div>
   );
-      }
+}
 
 export default TourDetalis

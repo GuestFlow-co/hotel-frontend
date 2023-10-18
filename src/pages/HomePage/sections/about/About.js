@@ -12,7 +12,7 @@ export default function About() {
               <div className="top-part ">
                 <img src="https://imgbucketfordestinate.s3.eu-north-1.amazonaws.com/about.png" alt="About" />
                 <div className="icon wow fadeInLeft delay-0-2s">
-                  <i className="flaticon-hotel"><img src="https://cdn-icons-png.flaticon.com/512/3009/3009710.png" alt="" /></i>
+                <div class="icon wow fadeInLeft delay-0-2s"><i class="flaticon-hotel"></i></div>
                 </div>
               </div>
               <div className="bottom-part">

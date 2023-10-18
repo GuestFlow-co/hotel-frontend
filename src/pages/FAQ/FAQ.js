@@ -10,7 +10,7 @@ export default function FAQ() {
       <section className="page-banner-area pt-170 rpt-110 pb-190 rpb-125 rel z-1 bgs-cover bgc-black text-center" style={{ backgroundImage: "url(https://webtend.site/html/qomfort/assets/images/background/banner-shop.jpg)" }}>
         <div className="container">
           <div className="banner-inner text-white">
-            <h1 className="page-title wow fadeInUp delay-0-2s">FAQs</h1>
+            <h1 className="page-title wow fadeInUp delay-0-2s" style={{fontFamily:'Noto Serif'}}>FAQs</h1>
             <nav aria-label="breadcrumb">
             </nav>
           </div>

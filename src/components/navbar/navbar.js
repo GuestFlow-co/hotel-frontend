@@ -8,6 +8,14 @@ import { LoginContext } from "../../pages/Context/Context_Login";
 
 
 
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react'
+
+
 const NavBar = () => {
   const { login, logout, loginData, errorMessage } = useContext(LoginContext);
   const isSignedIn = loginData.logged;
@@ -97,22 +105,30 @@ const NavBar = () => {
                         Tours
                       </Link>
                     </li>
-                    <li className="dropdown">
 
-                      <Link to="./FAQ"><i class="fa-solid fa-question"></i> FAQ </Link>
-
-                    </li>
                     <li>
                       <Link to="/contact" className="link">
                         <i class="fa-solid fa-address-book p-5"></i>
                         Contact
                       </Link>
                     </li>
-                     <li>
-                      <Link to="/AboutUs" className="link">
-                        <i class="fa-solid fa fa-info-circle p-5"></i>
-                        About Us
-                      </Link>
+
+                    <li>
+                     <a> <Menu isLazy>
+                        <MenuButton><i class="fa-solid fa-chevron-down"></i> About</MenuButton>
+                        <MenuList>
+                          <MenuItem>
+                            <Link to="/AboutUs" className="link">
+                              <i class="fa-solid fa fa-info-circle p-5"></i>
+                              About Us
+                            </Link>
+                          </MenuItem>
+                          <MenuItem>
+                            <Link to="./FAQ"><i class="fa-solid fa-question p-5"></i> FAQ </Link>
+                          </MenuItem>
+                        </MenuList>
+                      </Menu>
+                      </a>
                     </li>
                   </ul>
                 </div>

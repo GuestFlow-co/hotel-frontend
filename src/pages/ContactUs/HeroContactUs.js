@@ -9,12 +9,12 @@ export default function HeroContactUs() {
         style={ {backgroundImage: 'url(https://images.pexels.com/photos/1842332/pexels-photo-1842332.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)', backgroundAttachment:'fixed'}}>
     <div className="container">
       <div className="banner-inner text-white">
-        <h1 className="page-title wow fadeInUp delay-0-2s">GUESTFLOW</h1>
+        <h1 className="page-title wow fadeInUp delay-0-2s" style={{fontFamily:'Noto Serif'}}>GUESTFLOW</h1>
         <nav aria-label="breadcrumb">
-          <ol className="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
+          {/* <ol className="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
             <li className="breadcrumb-item"><Link to="/">home</Link></li>
             <li className="breadcrumb-item active">Contact</li>
-          </ol>
+          </ol> */}
         </nav>
       </div>
     </div>

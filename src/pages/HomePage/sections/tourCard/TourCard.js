@@ -46,7 +46,7 @@ export default function TourCard() {
   return (
     <div>
       <div className="main-card-tour-home bgc-black-with-lighting rel z-1 p-50" >  
-      <h2 className="text font-semibold text-white text-center mb-4">Featured Tours</h2>
+      <h2 className=" text-white text-center mb-4 py-20" style={{fontFamily:'Noto Serif',fontWeight:'400',fontSize:'50px'}}>Featured Tours</h2>
 
         <section className="cards-tour-section-home container">
           {currentItems.map((item) => (
@@ -106,6 +106,10 @@ export default function TourCard() {
             </Link>
 
           ))}
+
+          <div className="flex ">
+            <Link className="theme-btn mb-40 wow fadeInRight delay-0-2s" to='./tour'>Explore Tours <i class="fa-solid fa-angle-right text-white"></i></Link>
+          </div>
 
 
         </section>
