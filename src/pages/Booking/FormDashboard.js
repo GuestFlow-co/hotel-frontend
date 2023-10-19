@@ -236,8 +236,7 @@ function HotelReservation() {
               name="check_in_date"
               value={bookingData.check_in_date}
               onChange={handleInputChange}
-              className={isCheckInDateBooked ? "disabled-input" : ""}
-              disabled={isCheckInDateBooked}
+              className={isCheckInDateBooked}
             />
           </FlexItem>
           <FlexItem>
@@ -247,8 +246,7 @@ function HotelReservation() {
               name="check_out_date"
               value={bookingData.check_out_date}
               onChange={handleInputChange}
-              className={isCheckOutDateBooked ? "disabled-input" : ""}
-              disabled={isCheckOutDateBooked}
+              className={isCheckOutDateBooked}
             />
           </FlexItem>
           <FlexItem>

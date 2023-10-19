@@ -1,7 +1,7 @@
 import { useState } from "react";
-import {PopupWrapper, PopupContent, CloseButton} from "../TourPostStyles"
-import TourEdit from "./TourEdit";
-function TourEditPop({tour}) {
+import {PopupWrapper, PopupContent, CloseButton} from "../Tourash/TourPostStyles"
+import BookingEdit from "./BookingEdit";
+function BookingEditPop({booking}) {
     const [isPopupOpen, setPopupOpen] = useState(false);
 
     const openPopup = () => {
@@ -19,11 +19,11 @@ function TourEditPop({tour}) {
       {/* Render the Popup components */}
       <PopupWrapper style={{ display: isPopupOpen ? 'flex' : 'none' }}>
         <PopupContent>
-          <TourEdit setPopupOpen={setPopupOpen} tour1={tour}/>
+          <BookingEdit setPopupOpen={setPopupOpen} booking={booking}/>
         </PopupContent>
       </PopupWrapper>
       {/* Render other components */}
       </>
     );
   }
-  export default TourEditPop
+  export default BookingEditPop

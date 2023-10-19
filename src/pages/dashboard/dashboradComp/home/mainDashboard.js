@@ -5,7 +5,7 @@ import Chart from "react-apexcharts";
 import { Progress } from "@chakra-ui/react";
 import BookingTable from "../Table/BookingTable";
 import { useSelector } from "react-redux";
-function MainDashboard({ bookings, tours, rooms }) {
+function MainDashboard({ bookings, tours, rooms ,users}) {
   const [revenue, setRevenue] = useState(0);
   let roomTypes = {}; // Declare roomTypes
   const labels = []; // Declare labels
@@ -13,7 +13,7 @@ function MainDashboard({ bookings, tours, rooms }) {
   const handleButtonClick = (granularity) => {
     setSelectedTimeGranularity(granularity);
   };
-  const users=useSelector(state=>state.users.users)
+  // const users=useSelector(state=>state.users.users)
   useEffect(() => {
     const sumOfPreviousPayments = bookings.reduce((total, booking) => {
       const payment = booking.payment;

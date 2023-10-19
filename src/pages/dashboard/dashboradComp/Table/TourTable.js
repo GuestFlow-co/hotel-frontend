@@ -107,7 +107,7 @@ function TourTable({ tours }) {
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
                     <TourEditPop tour={tour} />
-                    <i className="fas fa-edit"></i>
+                   
                   </button>
                   <Button
                     onClick={() => {
