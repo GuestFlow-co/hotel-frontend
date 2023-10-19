@@ -53,6 +53,7 @@ export default function Routers() {
         {!isDashboardPage && !isSignInPage && <Header />}
 
 
+        <ChakraProvider>
 
 
         <Routes>
@@ -60,14 +61,14 @@ export default function Routers() {
           <Route path="/rooms" element={<RoomList rooms={rooms} />} />
 
           <Route path='/tour' element={<Tour />} />
-          <Route path="TourDetalis/:id" element={<TourDetalis />} />
+          <Route path="/TourDetalis/:id" element={<TourDetalis />} />
 
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/FAQ" element={<FAQ />} />
 
           <Route path="/Resturants" element={<Resturant />} />
- 424668b2193481e6d80a4fbd0cd305f89a498a20
+
           <Route path="/editProfile" element={<EditUserInfo />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<ContactUs />} />
@@ -77,16 +78,15 @@ export default function Routers() {
           <Route path="/resetPassword/:token" element={<ResetPassword />} />
           
           <Route path="/Dashboard/*" element={
-            <ChakraProvider>
 
               <Dashboard />
-            </ChakraProvider>
           } />
 
           <Route path='/' element={<HomePage />} />
 
         </Routes>
 
+        </ChakraProvider>
 
 
       </LoginProvider>

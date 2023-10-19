@@ -13,8 +13,8 @@ import {
 import axios from "axios";
 import "./bookingtable.scss";
 import HeaderCreate from "../../../Booking/Header";
-import Popup from "../../../Updatepop";
-import UpdatePopup from "../../../Updatepop";
+// import Popup from "../../../Updatepop";
+// import UpdatePopup from "../../../Updatepop";
 
 function BookingTable({ bookings }) {
   const columns = [

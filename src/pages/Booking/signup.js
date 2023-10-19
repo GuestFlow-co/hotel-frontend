@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { signup } from "../../store/actions/Auth/AuthActions";
 import HeaderCreate from "./Header";
 import { CreateButtonStyled } from "./newStyle";
+
 import {
     FormContainer,
     FormHeader,
@@ -13,12 +14,13 @@ import {
     FlexItem,
 } from './dashStyle';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
 
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -27,7 +29,10 @@ const Signup = () => {
     lastName: "",
     email: "",
     phoneNumber: "",
+    verificationToken: true,
+    emailVerified: true,
   });
+
 
   const [scrollY, setScrollY] = useState(0);
 
@@ -47,24 +52,31 @@ const Signup = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+  
   const handleSignupSub = async (e) => {
     e.preventDefault();
+    
     try {
       const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/signup`, formData);
-      console.log(res);
+      console.log("ressssssssss",res.data);
+      const { token } = res.data;
+
       alert(`You have Signed up Successfully ${formData.username}`);
     } catch (err) {
       console.log("login ", err);
+
     }
     setFormData({
       username: "",
       password: "",
       firstName: "",
-      lastName: "",
+      lastName:"",
       email: "",
       phoneNumber: "",
+      verificationToken: true,
+      emailVerified: true,
     });
+    navigate('/dashboard/addbooking')
   };
 
   return (
@@ -132,11 +144,11 @@ const Signup = () => {
               />
             </FlexItem>
           </FlexContainer>
-          <Link to={'/dashboard/addbooking'}>
+          {/* <Link to={'/dashboard/addbooking'}> */}
           <Button className="sign-up-button" type="submit">
             Create User
           </Button>
-          </Link>
+          {/* </Link> */}
         </form>
       </FormContainer>
     </>

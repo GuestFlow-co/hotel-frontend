@@ -86,8 +86,8 @@ function HotelReservation() {
       }
     }
   }, [searchPhoneNumber, users]);
-  console.log(searchPhoneNumber,"------------")
-  console.log("------------",userS)
+  // console.log(searchPhoneNumber,"------------")
+  // console.log("------------",userS)
 
   useEffect(() => {
     // Filter rooms based on selected room capacity

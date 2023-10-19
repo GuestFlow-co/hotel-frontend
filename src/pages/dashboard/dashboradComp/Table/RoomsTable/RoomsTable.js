@@ -14,7 +14,7 @@ import "./RoomsTable.scss";
 import axios from "axios"
 import RoomCreate from "../../../../Rooms/Create/RoomCreate";
 import Popup from "../../../../pop";
-import UpdatePopup from "../../../../Updatepop";
+// import UpdatePopup from "../../../../Updatepop";
 function RoomsTable({ rooms }) {
   const columns = [
     "coverPhoto",

@@ -58,17 +58,20 @@ function Popup() {
 
   const openFeatureChecklist = () => {
     setFeatureChecklistOpen(true);
-    setRoomCreateOpen(false);
+    // setRoomCreateOpen(false);
     setActiveComponent("FeatureChecklist");
   };
 
   const closeRoomCreate = () => {
     setRoomCreateOpen(false);
-    openFeatureChecklist(); // Show FeatureChecklist when RoomCreate is closed
+     // Show FeatureChecklist when RoomCreate is closed
   };
 
   const closeFeatureChecklist = () => {
     setPopupOpen(false);
+    // openFeatureChecklist(true);
+    // setActiveComponent("FeatureChecklist");
+
   };
 
 
@@ -89,11 +92,12 @@ function Popup() {
   const [roomCreated, setRoomCreated] = useState(false);
   const [room, setRoom] = useState(initialRoomState);
 
+ 
   const handleRoomSubmit = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
-
+  
       for (const key in room) {
         if (key === 'image') {
           if (room.image) {
@@ -101,7 +105,6 @@ function Popup() {
               room.image.forEach((file) => {
                 formData.append('image', file);
               });
-              
             } else {
               formData.append('image', room.image);
             }
@@ -110,25 +113,23 @@ function Popup() {
           formData.append(key, room[key]);
         }
       }
-
+  
       const response = await dispatch(addRoom(formData));
-
-        //
-
+  
       if (response.ok) {
-        const data = await response.json();
-        console.log('Room created successfully:', data);
-        setRoom(initialRoomState);
-        setActiveComponent("FeatureChecklist"); 
-        openFeatureChecklist(data.Room_id);
-      } else {
-        console.error('Room creation failed');
-      }
-    } catch (error) {
-      console.error('Room creation failed:', error);
-    }
-  };
-
+              const data = await response.json();
+              console.log('Room created successfully:', data);
+              setRoom(initialRoomState);
+              setActiveComponent("FeatureChecklist"); 
+              openFeatureChecklist(data.Room_id);
+            } else {
+              console.error('Room creation failed');
+            }
+          } catch (error) {
+            console.error('Room creation failed:', error);
+          }
+        };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRoom({
@@ -170,27 +171,40 @@ function Popup() {
     }));
   };
 
-  const handleCheckSubmit = (e) => {
+  const handleCheckSubmit = async (e) => {
     e.preventDefault();
+  
+    try {
+      const selectedFeatures = Object.keys(features).filter((feature) => features[feature]);
+  
+      const featureIds = selectedFeatures.map((selectedFeature) => {
+        const feature = allFeatures.find((x) => x.feature_name === selectedFeature);
+        return feature ? feature.feature_id : null;
+      });
+  
+      const validFeatureIds = featureIds.filter((featureId) => featureId !== null);
+  
+      const amenityDataArray = validFeatureIds.map((featureId) => ({
+        rooms_id: lastRoomId,
+        feature_id: featureId,
+      }));
+  
+      for (let i = 0; i < amenityDataArray.length; i++) {
+        const response = await dispatch(addAminity(amenityDataArray[i]));
+        console.log(response.data,"dataaaa")
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Amenity added successfully:', data);
 
-    const selectedFeatures = Object.keys(features).filter((feature) => features[feature]);
-
-    const featureIds = selectedFeatures.map((selectedFeature) => {
-      const feature = allFeatures.find((x) => x.feature_name === selectedFeature);
-      return feature ? feature.feature_id : null;
-    });
-
-    const validFeatureIds = featureIds.filter((featureId) => featureId !== null);
-
-    const amenityDataArray = validFeatureIds.map((featureId) => ({
-      rooms_id: lastRoomId,
-      feature_id: featureId,
-    }));
-
-    amenityDataArray.forEach((amenityData) => {
-      dispatch(addAminity(amenityData));
-    });
+        } else {
+          console.error('Failed to add Amenity');
+        }
+      }
+    } catch (error) {
+      console.error('Error adding Amenity:', error);
+    }
   };
+  
 
 
 
@@ -313,11 +327,11 @@ function Popup() {
         </FormGroup>
 
         <ButtonGroup>
-          <Button onClick={closeRoomCreate} type="submit" className="btn btn-success">
-            Add room features
+          <Button onClick={openFeatureChecklist} type="submit" className="btn btn-success">
+            Add room features 
           </Button>
         
-          <Button onClick={closeFeatureChecklist} type="submit" className="btn btn-success">
+          <Button onClick={closeRoomCreate} type="submit" className="btn btn-success">
             close
           </Button>
 
