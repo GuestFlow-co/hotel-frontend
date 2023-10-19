@@ -41,7 +41,7 @@
 //   );
 // }
 
-// function UpdatePopup() {
+function UpdatePopup() {
 //   const [isPopupOpen, setPopupOpen] = useState(false);
 //   const [isRoomCreateOpen, setRoomCreateOpen] = useState(true); 
 //   const [isFeatureChecklistOpen, setFeatureChecklistOpen] = useState(false);
@@ -165,9 +165,9 @@
 
 
 
-//   return (
-//     <>
-//     <button onClick={openPopup}><i className="fas fa-edit"></i></button>
+  return (
+    <>
+{/* //     <button onClick={openPopup}><i className="fas fa-edit"></i></button>
 
 //     <PopupWrapper  style={{ display: isPopupOpen ? "flex" : "none" }}>
 //       <PopupContent>
@@ -298,9 +298,9 @@
 //             )}
 //           </FeatureChecklistContainer>
 //         </PopupContent>
-//       </PopupWrapper>
-//     </>
-//   );
-// }
+//       </PopupWrapper> */}
+    </>
+  );
+}
 
-// export default UpdatePopup;
+export default UpdatePopup;

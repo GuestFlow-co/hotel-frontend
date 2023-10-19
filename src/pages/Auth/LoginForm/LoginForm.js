@@ -343,4 +343,4 @@ function SignInUpForm() {
   );
 }
 
-  export default {SignInUpForm};
+  export default SignInUpForm;

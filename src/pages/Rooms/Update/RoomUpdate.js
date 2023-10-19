@@ -1,65 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateRoom } from '../../../store/actions/RoomActions';
-import { useNavigate } from 'react-router-dom';
-import {
-  Container,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  ButtonGroup,
-  Button,
-} from './style';
+// import React, { useState, useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { updateRoom } from '../../../store/actions/RoomActions';
+// import { useNavigate } from 'react-router-dom';
+// import {
+//   Container,
+//   Form,
+//   FormGroup,
+//   Label,
+//   Input,
+//   ButtonGroup,
+//   Button,
+// } from './style';
 
 const RoomUpdate = ({ setClose, setUpdateComplete }) => {
 
-  const initialRoomState = {
-    room_number: '',
-    roomType: '',
-    roomStatus: 'Available',
-    roomPrice: 0,
-    room_capacity: '',
-    description: '',
-    bed_nums: 1,
-    Room_space: 0,
-    Room_view: '',
-    image: [],
-  };
+  // const initialRoomState = {
+  //   room_number: '',
+  //   roomType: '',
+  //   roomStatus: 'Available',
+  //   roomPrice: 0,
+  //   room_capacity: '',
+  //   description: '',
+  //   bed_nums: 1,
+  //   Room_space: 0,
+  //   Room_view: '',
+  //   image: [],
+  // };
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
-  const [room, setRoom] = useState(initialRoomState);
+  // const [room, setRoom] = useState(initialRoomState);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await dispatch(updateRoom(room, room.Room_id));
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await dispatch(updateRoom(room, room.Room_id));
 
-      if (response.ok) {
-        const updatedData = await response.json();
-        console.log('Room updated successfully:', updatedData);
-        setUpdateComplete(true);
-      } else {
-        console.error('Room update failed');
-      }
-    } catch (error) {
-      console.error('Room update failed:', error);
-    }
-  };
+  //     if (response.ok) {
+  //       const updatedData = await response.json();
+  //       console.log('Room updated successfully:', updatedData);
+  //       setUpdateComplete(true);
+  //     } else {
+  //       console.error('Room update failed');
+  //     }
+  //   } catch (error) {
+  //     console.error('Room update failed:', error);
+  //   }
+  // };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRoom({
-      ...room,
-      [name]: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setRoom({
+  //     ...room,
+  //     [name]: value,
+  //   });
+  // };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
+    <>
+    </>
+    // <Container>
+      /* <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Label>Room Number</Label>
           <Input
@@ -156,8 +158,8 @@ const RoomUpdate = ({ setClose, setUpdateComplete }) => {
             Update Room
           </Button>
         </ButtonGroup>
-      </Form>
-    </Container>
+      </Form> */
+    /* </Container> */
   );
 };
 
