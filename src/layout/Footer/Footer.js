@@ -58,6 +58,15 @@ function Footer() {
           </div>
         </div>
       </div>
+      <div className="bg-lines">
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
+      <div className="wave-shapes"></div>
+      <div className="wave-shapes-two"></div>
       <div className="footer-bottom bgd-dark  pt-20 pb-5 rpt-25">
         <div className="container">
           <div className="row">
@@ -77,15 +86,6 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="bg-lines">
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-        <span></span><span></span>
-      </div>
-      <div className="wave-shapes"></div>
-      <div className="wave-shapes-two"></div>
     </footer>
   );
 };

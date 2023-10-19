@@ -30,3 +30,29 @@
 
   }
   
+
+  .theCard {
+    background-color: #ff893a20 !important;
+    border-radius: 10px;
+    border-color: #000000d2;
+    box-shadow: 0 20px 40px rgb(63, 27, 4);
+    animation: glowing 2s ease-in-out infinite;
+    backdrop-filter: blur(50px) !important;
+
+  }
+  
+  @keyframes glowing {
+    0% {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      border: 2px solid rgb(255, 255, 255);
+      box-shadow: 0 0 20px rgb(255, 255, 255);
+    }
+    100% {
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+  }
+  
