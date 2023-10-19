@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 function UserBookingInfo() {
+  
   const handleImage = (event) => {
     const { name, files } = event.target;
     if (name === "image") {
@@ -104,34 +105,23 @@ function UserBookingInfo() {
   }, []);
 
 
-  const deleteAllBooking = () => {
-    axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/bookings`)
-      .then((response) => {
-        console.log("All Bookings Deleted");
-      })
-      .catch((error) => {
-        console.error("Error deleting data: ", error);
-      });
-  }
-
+  console.log('cover photo', fulluser.password)
 
   return (
     <section
-      className="profile-main-container"
+      className="profile-main-container border-transparent"
       style={{ paddingTop: "10%", paddingBottom: "10%" }}
     >
       <MDBContainer className="py-5">
-        <MDBRow>
+        <MDBRow className="">
           <MDBCol lg="4">
-            <MDBCard className="mb-4" style={{ width: "100%", height: "95%" }}>
-              <MDBCardBody className="text-center">
+            <MDBCard className="mb-4 theCard" style={{ width: "100%", height: "95%" }}>
+              <MDBCardBody className="text-center ">
                 <MDBCardImage
-                  // src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-                  src = {fulluser?.coverPhoto}
+                  src={fulluser?.coverPhoto || "https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"}
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: "180px" }}
+                  style={{ width: "180px",height:'180px' }}
                   fluid
                 />
 
@@ -195,17 +185,18 @@ function UserBookingInfo() {
                   </div>
                 </div>
               </MDBCardBody>
+
             </MDBCard>
           </MDBCol>
-          <MDBCol lg="8">
-            <MDBCard className="mb-4">
+          <MDBCol lg="8" className="border-transparent">
+            <MDBCard className="mb-4 theCard">
               <UserCardInfo />
             </MDBCard>
             <MDBRow>
               <MDBCol md="20">
-                <MDBCard className="mb-3 mb-md-2">
+                <MDBCard className="mb-3 mb-md-2 theCard">
                   {" "}
-                  <MDBCardBody style={{minHeight:'50vh'}}>
+                  <MDBCardBody style={{ minHeight: '50vh' }}>
                     <UserTableInfo getAllbooking={getAllbooking} />
                   </MDBCardBody>
                 </MDBCard>

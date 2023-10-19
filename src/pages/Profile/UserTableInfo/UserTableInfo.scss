@@ -1,17 +1,23 @@
 .user-booking-info {
-  padding: 10px;
+  padding: 20px;
   // background-color: #c2bdb4;
+
+
   .user-info-table {
     width: 100%;
     border-collapse: collapse;
+    // border: 1px solid #75421e;
+    // border-radius: 15px;
+    
     thead {
       background-color: #75421e;
+      
       
       color: #fff;
       th {
         padding: 8px 10px;
         text-align: left;
-        font-size: 14px;
+        font-size: 16px;
       }
     }
     tbody {
@@ -20,8 +26,9 @@
           background-color: #866d47;
         }
         td {
-          padding: 8px 10px;
-          font-size: 13px;
+          // padding: 8px 10px;
+          font-size: 14px;
+          font-weight: 500;
         }
       }
     }

@@ -36,6 +36,9 @@ function LoginProvider(props) {
         } 
       ); 
       let auth = response.data
+
+      console.log("auth", auth);
+      
       if (auth) { 
         try { 
           cookie.save("auth", auth.token); 

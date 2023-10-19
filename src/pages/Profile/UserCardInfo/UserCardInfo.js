@@ -19,7 +19,7 @@ export default function UserCardInfo() {
   }, []);
 
   return (
-    <MDBCardBody style={{ backgroundColor: "#fff" }}>
+    <MDBCardBody style={{color:"white",fontSize:'18px',fontWeight:'500'}}>
       <MDBRow>
         <MDBCol sm="3">
           <MDBCardText>First Name</MDBCardText>
