@@ -10,7 +10,7 @@ const Hero = () => {
   const settings = {
     infinite: true,
     arrows: false,
-    dots: true,
+    dots: false,
     fade: true,
     autoplay: true,
     autoplaySpeed: 5000,

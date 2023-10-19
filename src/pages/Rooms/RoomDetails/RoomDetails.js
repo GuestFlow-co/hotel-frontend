@@ -8,6 +8,8 @@ import { FaStar } from "react-icons/fa";
 import BookingForm from "../../Booking/Form";
 import Features from "./features";
 import Review from "./Review";
+import RoomCard from "../../HomePage/sections/roomCard/roomCard";
+import RoomItem from "../Items/RoomItems";
 
 
 
@@ -19,10 +21,10 @@ const colors = {
 
 const RoomDetail = () => {
   const { room_number } = useParams();
- const rooms = useSelector((state) => state.rooms.rooms);
- const users = useSelector((state) => state.users.users );
- console.log(users,"------------------")
- 
+  const rooms = useSelector((state) => state.rooms.rooms);
+  const users = useSelector((state) => state.users.users);
+  console.log(users, "------------------")
+
 
 
   const room = rooms.find((room) => room.room_number === room_number);
@@ -78,46 +80,46 @@ const RoomDetail = () => {
                     </li>
                   </ul>
                   <div className="price mb-35">${roomPrice}  Per Night</div>
-                  <p>
+                  <p style={{ fontSize: "20px", padding: '10px' }}>
                     {description}
                   </p>
                   <div className="room-details-images mt-45 wow fadeInUp delay-0-2s">
-                    <Box position='relative' pt={5} >
-                      <Image
-                        src={images[currentIndex]}
-                        alt={`Image ${currentIndex}`}
-                        w="100%"
-                        h="400px"
-                        ml={'4%'}
-                      // paddingRight={'15%'}
+                    <div>
+                      <Box position='relative' pt={5} >
+                        <Image
+                          src={images[currentIndex]}
+                          alt={`Image ${currentIndex}`}
+                          w="100%"
+                          h="400px"
+                          ml={'4%'}
+                        // paddingRight={'15%'}
+                        />
 
-
-                      />
-
-                      <Flex
-                        justify="space-between"
-                        position="absolute"
-                        w="80%"
-                        bottom="1rem"
-                        p="1rem"
-                        ml={'15%'}
-                      >
-                        <Button onClick={prevImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
-                          <div className="fa fa-angle-left"></div>
-                        </Button>
-                        <Button onClick={nextImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
-                          <div className="fa fa-angle-right"></div>
-                        </Button>
-                      </Flex>
-                    </Box>
+                        <Flex
+                          justify="space-between"
+                          position="absolute"
+                          w="80%"
+                          bottom="1rem"
+                          p="1rem"
+                          ml={'15%'}
+                        >
+                          <Button onClick={prevImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
+                            <div className="fa fa-angle-left"></div>
+                          </Button>
+                          <Button onClick={nextImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
+                            <div className="fa fa-angle-right"></div>
+                          </Button>
+                        </Flex>
+                      </Box>
+                    </div>
                   </div>
                   <div className="section-title mt-35">
                     <h2>Room Facilities</h2>
                   </div>
-                  <p>
+                  <p style={{ fontSize: "20px", padding: '10px' }}>
                     {description}
                   </p>
-                  <ul className="list-style-two three-column pt-10 wow fadeInUp delay-0-2s">
+                  <ul className="list-style-two three-column pt-10 wow fadeInUp delay-0-2s" style={{ fontSize: '20px' }}>
                     <li>Breakfast Included</li>
                     <li>Flat Screen TV</li>
                     <li>Hairdryer</li>
@@ -150,12 +152,12 @@ const RoomDetail = () => {
                   <div className="section-title mt-45">
                     <h2>Rules & Regulations</h2>
                   </div>
-                  <p>
+                  <p style={{ fontSize: "20px", padding: '10px' }}>
                     To take a trivial example, which of us ever undertakes laborious
                     physical exercise, except to obtain some advantage avoids a pain
                     that produces no resultant pleasure
                   </p>
-                  <ul className="list-style-two pt-10 wow fadeInUp delay-0-2s">
+                  <ul className="list-style-two pt-10 wow fadeInUp delay-0-2s" style={{ fontSize: '18px' }}>
                     <li>Check-in: After 02:00pm</li>
                     <li>Checkout: Before 11:00am</li>
                     <li>Late Checkout: Additional charge 50% of the room rate.</li>
@@ -169,7 +171,6 @@ const RoomDetail = () => {
 
               <div className="col-lg-5">
                 <BookingForm />
-
               </div>
             </div>
 
@@ -177,7 +178,7 @@ const RoomDetail = () => {
 
 
 
-
+                            {/* <RoomItem/> */}
 
 
             <Review />
@@ -191,6 +192,9 @@ const RoomDetail = () => {
           </div>
         </section>
 
+
+
+<RoomCard/>
 
 
 
@@ -248,6 +252,16 @@ const RoomDetail = () => {
 
           </Container>
         </DetailWrapper> */}
+
+
+
+
+
+
+
+
+
+
       </div>
     </>
   );
