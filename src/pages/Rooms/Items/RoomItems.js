@@ -82,7 +82,7 @@ const RoomItem = ({ room }) => {
                           {room.features.map((feature, index) => (
                             <li className="room__feature-item" key={index}>
                               <div className="room__feature-text">
-                                <p>{feature}</p>
+                                <p>{feature.feature_id}</p>
                               </div>
                             </li>
                           ))}
