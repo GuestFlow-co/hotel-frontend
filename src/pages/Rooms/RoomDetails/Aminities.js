@@ -58,7 +58,7 @@ const Amenities = () => {
   const rooms = useSelector((state) => state.rooms.rooms);
   const room = rooms.find((x) => x.room_number === room_number);
   const roomFeatures = room.features || [];
-
+   console.log(roomFeatures,"roooooooooooooooooooom")
   return (
     <div>
     <br/>
@@ -73,7 +73,7 @@ const Amenities = () => {
               <Flex mt={4} justify="space-between">
                 <Stack spacing={2} direction="row">
                   <Flex align="center">
-                    {amenity.image}
+                    <div>{amenity.image}</div>
                     <Text>{amenity.feature}</Text>
                   </Flex>
                 </Stack>
