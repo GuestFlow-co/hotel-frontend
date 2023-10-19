@@ -82,7 +82,7 @@ function SignInUpForm() {
   //   });
   // };
 
-  const handleSignupSub = async (e) => {
+    const handleSignupSub = async (e) => {
     e.preventDefault();
     if (passwordStrength !== "Strong") {
       alert("Password must meet the minimum requirements for strength.");
@@ -343,4 +343,4 @@ function SignInUpForm() {
   );
 }
 
-export default SignInUpForm;
+  export default {SignInUpForm};

@@ -13,6 +13,13 @@ import {
   FlexItem,
   Select,
 } from './dashStyle';
+import {
+  Box,
+  Flex,
+  Container,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 
 function HotelReservation() {
   const { room_number } = useParams();
@@ -30,8 +37,8 @@ function HotelReservation() {
   const [bookingData, setBookingData] = useState({
     check_in_date: '',
     check_out_date: '',
-    theRoomID: '', // Changed to Room_id
-    customer_id: '', // Changed to customer_id
+    theRoomID: '', 
+    customer_id: '', 
   });
 
   const [userS, setUser] = useState({
@@ -260,17 +267,19 @@ function HotelReservation() {
               {/* Add more options as needed */}
             </Select>
           </FlexItem>
-          <FlexItem>
+          <FlexItem >
             <Label>Room #:</Label>
+            <Flex>
             <Input
               type="number"
               name="room_number"
               value={searchRoom}
               onChange={(e) => setSearchRoom(e.target.value)}
             />
-            <Button type="button" onClick={chooseRoomNumber}>
+            <Button type="button" onClick={chooseRoomNumber} style={{fontSize:'10px'}}>  
               Choose Room
             </Button>
+            </Flex>
           </FlexItem>
         </FlexContainer>
         <Button type="submit">Reserve Room</Button>

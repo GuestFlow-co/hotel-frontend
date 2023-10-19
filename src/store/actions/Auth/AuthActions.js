@@ -1,11 +1,9 @@
 // userActions.js
 
 import * as types from "../Type";
-import decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import instance from "../instance";
-import Cookies from "react-cookies";
-
-
+import cookie from "react-cookies";
 
 export const fetchUsers = () => {
   return async (dispatch) => {
@@ -13,30 +11,16 @@ export const fetchUsers = () => {
       const res = await instance.get("/user"); // Replace with your API endpoint for fetching users
       dispatch(setUsers(res.data));
     } catch (error) {
-      // Handle error
+      // Handle error (e.g., dispatch an error action)
+      console.error("Error fetching users:", error);
     }
   };
 };
 
 export const setUsers = (users) => {
   return {
-    type: types.SET_USERS,
+    type: types.SET_USER,
     payload: users,
   };
 };
-
-// export const signup = (newUser) => {
-//   return async (dispatch) => {
-//     try {
-//       const res = await instance.post("/signup", newUser);
-//       const token = res.data.token;
-
-//       Cookies.save("token", token);
-
-//       dispatch(setUser(token));
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-// };
 

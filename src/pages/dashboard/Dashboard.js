@@ -21,6 +21,8 @@ import HotelReservation from "../Booking/FormDashboard";
 
 import RoomsDash from "./pages/RoomsDash/RoomsDash";
 import TourDash from "./pages/Tourash/TourDash";
+import Booking from "../Booking/Booking";
+import Signup from "../Booking/signup";
 
 function Dashborad() {
   const bookings = useSelector((state) => state.bookings.bookings);
@@ -55,7 +57,8 @@ function Dashborad() {
             {/* <Route path="/alltour" element={<TourDash  tours={tours} />} /> */}
 
             <Route path="/allbooking" element={<BookingDash bookings={bookings} users={users} />} />
-            <Route path="/addbooking" element={<HotelReservation/>} />
+            <Route path="/addbooking" element={<Booking/>} />
+            <Route path="/user-booking" element={<Signup/>}/>
             <Route path="/addrooms" element={<Popup />} />
             
           </Routes>

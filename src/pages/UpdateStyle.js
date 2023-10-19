@@ -1,5 +1,54 @@
 import styled from 'styled-components';
 
+export const PopupWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+`;
+
+export const PopupContent = styled.div`
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 40%;
+  height: 70%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  
+`;
+
+export const RoomCreateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: ${(props) => (props.isActive ? '1' : '-1')};
+  transition: z-index 0.3s;
+`;
+
+export const FeatureChecklistContainer = styled.div`
+  display: flex;
+ 
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  z-index: ${(props) => (props.isActive ? '1' : '-1')};
+  transition: z-index 0.3s;
+`;
+//---------------------------------------------------------------------
+
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,14 +103,14 @@ export const Button = styled.button`
     color: #fff;
   }
 `;
-export const RoomCreateContainer = styled.div`
-  transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
-  transition: transform 0.3s;
-`;
-export const FeatureChecklistContainer = styled.div`
-  transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
-  transition: transform 0.3s;
-`;
+// export const RoomCreateContainer = styled.div`
+//   transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
+//   transition: transform 0.3s;
+// `;
+// export const FeatureChecklistContainer = styled.div`
+//   transform: translateX(${(props) => (props.isActive ? '0' : '100%')});
+//   transition: transform 0.3s;
+// `;
 
 export const ContainerCheck = styled.div`
 display: grid;
