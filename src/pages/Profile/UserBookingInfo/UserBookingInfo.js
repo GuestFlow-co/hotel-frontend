@@ -53,12 +53,15 @@ function UserBookingInfo() {
         `${process.env.REACT_APP_BASE_URL}/user/${fulluser.user_id}`,
         formData
       );
-      console.log(res.data, "resresres");
+      console.log(res.data, "aftere uploading photo");
+      setFulluser(res.data);
+      cookie.save("user", res.data);
     } catch (error) {
       console.error("Error:", error);
     }
     setPhoto(initialPhotoState);
   };
+
 
   const [getAllbooking, setgetAllbooking] = useState([]);
   const { logout } = useContext(LoginContext);
@@ -100,6 +103,19 @@ function UserBookingInfo() {
     }
   }, []);
 
+
+  const deleteAllBooking = () => {
+    axios
+      .delete(`${process.env.REACT_APP_BASE_URL}/bookings`)
+      .then((response) => {
+        console.log("All Bookings Deleted");
+      })
+      .catch((error) => {
+        console.error("Error deleting data: ", error);
+      });
+  }
+
+
   return (
     <section
       className="profile-main-container"
@@ -111,7 +127,8 @@ function UserBookingInfo() {
             <MDBCard className="mb-4" style={{ width: "100%", height: "95%" }}>
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                  // src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                  src = {fulluser?.coverPhoto}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: "180px" }}
@@ -132,7 +149,7 @@ function UserBookingInfo() {
                 </div>
                 <Button
                   onClick={handleSubmit}
-                  style={{ backgroundColor: "#000", height: "70px" }}
+                  style={{ backgroundColor: "#000", height: "50px" }}
                 >
                   upload
                 </Button>
@@ -188,7 +205,7 @@ function UserBookingInfo() {
               <MDBCol md="20">
                 <MDBCard className="mb-3 mb-md-2">
                   {" "}
-                  <MDBCardBody>
+                  <MDBCardBody style={{minHeight:'50vh'}}>
                     <UserTableInfo getAllbooking={getAllbooking} />
                   </MDBCardBody>
                 </MDBCard>
