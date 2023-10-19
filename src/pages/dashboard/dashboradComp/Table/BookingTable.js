@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import "./bookingtable.scss";
 import HeaderCreate from "../../../Booking/Header";
+import BookingEditPop from "../../pages/BookingEdit/BookingEditPop";
 // import Popup from "../../../Updatepop";
 // import UpdatePopup from "../../../Updatepop";
 
@@ -108,7 +109,7 @@ function BookingTable({ bookings }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
-                  <i className="fas fa-edit"></i>
+                    <BookingEditPop  booking={booking}/>
                   </button>
                   <Button
                     onClick={() => {

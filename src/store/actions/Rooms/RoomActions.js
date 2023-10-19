@@ -53,7 +53,7 @@ export const addRoom = (rooms) => {
       try {
         // Make the PUT request to update the room data
         const res = await axios.put(`${process.env.REACT_APP_BASE_URL}/rooms/${Room_id}`, updatedRoom);
-  console.log(res)
+      console.log(res.data,"resres")
         // Dispatch the action to update the room
         dispatch({
           type: types.UPDATE_ROOM,

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PopupWrapper = styled.div`
   display: flex;
@@ -14,14 +14,13 @@ export const PopupWrapper = styled.div`
 `;
 
 export const PopupContent = styled.div`
-position: absolute;
+  position: absolute;
   background-color: white;
   padding: 20px;
   border-radius: 20px;
   width: 40%;
   height: 70%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  
 `;
 
 export const RoomCreateContainer = styled.div`
@@ -33,7 +32,7 @@ export const RoomCreateContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${(props) => (props.isActive ? '1' : '-1')};
+  z-index: ${(props) => (props.isActive ? "1" : "-1")};
   transition: z-index 0.3s;
 `;
 
@@ -46,11 +45,10 @@ export const FeatureChecklistContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${(props) => (props.isActive ? '1' : '-1')};
+  z-index: ${(props) => (props.isActive ? "1" : "-1")};
   transition: z-index 0.3s;
 `;
 //---------------------------------------------------------------------
-
 
 export const Container = styled.div`
   display: flex;
@@ -59,7 +57,7 @@ export const Container = styled.div`
   margin-top: 20px;
   max-height: 400px;
   overflow-y: auto;
-  z-index: 10
+  z-index: 10;
 `;
 
 export const Form = styled.form`
@@ -78,7 +76,7 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 8px;
-  margin-right:5%;
+  margin-right: 5%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding-right: 9%;
@@ -116,9 +114,9 @@ export const Button = styled.button`
 // `;
 
 export const ContainerCheck = styled.div`
-display: grid;
-grid-template-columns: repeat(3, 1fr); 
-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 `;
 
 export const CheckboxLabel = styled.label`
