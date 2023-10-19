@@ -65,7 +65,10 @@ const obj={
   max_capacity: formData.get("max_capacity"),
   Seat_price: formData.get("Seat_price"),
   TourPlan:JSON.stringify(tourPlan),
-  image:formData.get("image")
+  image:formData.get("image"),
+    description: "",
+    start_date: new Date(),
+    end_date: new Date(),
 }
 // const x =formData.get("TourPlan")
 // console.log(JSON.stringify(x));
