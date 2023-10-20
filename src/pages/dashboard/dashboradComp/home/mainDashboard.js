@@ -281,7 +281,7 @@ function MainDashboard({ bookings, tours, rooms ,users}) {
           <div className="card-content-home">
             <div>
               <p> Total customers</p>
-              <p style={{ marginRight: "75px" }}> {users.length}</p>
+              <p style={{ marginRight: "75px" }}> {users ? users.length : 0}</p>
             </div>
           </div>
         </div>

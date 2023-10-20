@@ -14,11 +14,13 @@ export const PopupWrapper = styled.div`
 `;
 
 export const PopupContent = styled.div`
-  position: absolute;
+position: absolute;
+justify-content: center;
+align-items: center;
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  width: 40%;
+  width: 60%;
   height: 70%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
