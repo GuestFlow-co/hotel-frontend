@@ -60,9 +60,7 @@ function BookingTable({ bookings }) {
         }}
       >
         <h3 className="table-title">Booking List</h3>
-        <button className="add-button" title="Add">
-          <i className="fas fa-plus"></i>
-        </button>
+       
       </div>
       <table className="striped-table">
         <thead>
