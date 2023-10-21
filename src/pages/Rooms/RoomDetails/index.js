@@ -24,6 +24,7 @@ import RoomItem from "../Items/RoomItems";
 import SContainer from "./Slider";
 import "./style.scss";
 
+import { Fade } from "react-awesome-reveal";
 
 
 export default function RoomDetails() { // Named your component
@@ -96,14 +97,14 @@ export default function RoomDetails() { // Named your component
             </div>
           </section>
 
-
-          <div className="overflow-hidden">
-            <RoomDetail />
-          </div>
-          <Container>
-            {/* <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} /> */}
-          </Container>
-          {/* <Features />
+          <Fade triggerOnce>
+            <div className="overflow-hidden">
+              <RoomDetail />
+            </div>
+            <Container>
+              {/* <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} /> */}
+            </Container>
+            {/* <Features />
 
           <Amenities />
 
@@ -113,20 +114,20 @@ export default function RoomDetails() { // Named your component
         </Container>
       </Container> */}
 
-          {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"50%"} w={"30%"}>
+            {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"50%"} w={"30%"}>
         <Text pt={5} pl={7} paddingBottom={'-50'} fontWeight={"bold"}>
           More Rooms
         </Text>
         <Container>
           <SContainer />
           {/* </Container> */}
-          {/* </Container> */}
-          {/* <Review /> */}
-          
-          {/* {RoomItems} */}
+            {/* </Container> */}
+            {/* <Review /> */}
 
+            {/* {RoomItems} */}
 
-          
+          </Fade>
+
         </div>
       )}
     </>

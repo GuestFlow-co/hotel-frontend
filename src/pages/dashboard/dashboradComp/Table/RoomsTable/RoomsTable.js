@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Button,
   Modal,
@@ -18,7 +18,21 @@ import RoomEdit from "../../../pages/RoomsDash/roomsEdit/RoomEdit";
 import { fetchRooms } from "../../../../../store/actions/RoomActions";
 import { useSelector, useDispatch } from "react-redux";
 
-function RoomsTable({ rooms ,isupdated,updated}) {
+
+// import UpdatePopup from "../../../../Updatepop";
+import { useDownloadExcel } from 'react-export-table-to-excel';
+
+
+function RoomsTable({ rooms ,isupdated,updated }) {
+
+  const tableRef = useRef(null);
+
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: 'Rooms table',
+    sheet: 'Users'
+  })
+  
   const rooms2 = useSelector((state) => state.rooms.rooms);
   const dispatch = useDispatch();
 
@@ -37,14 +51,14 @@ function RoomsTable({ rooms ,isupdated,updated}) {
 
   function handelDelete(id) {
     axios.delete(`${process.env.REACT_APP_BASE_URL}/rooms/${id}`)
-    .then((res) => {
-      console.log(res.data);
-      setRoomData((prevRoomData) => prevRoomData.filter((room) => room.Room_id !== id));
+      .then((res) => {
+        console.log(res.data);
+        setRoomData((prevRoomData) => prevRoomData.filter((room) => room.Room_id !== id));
 
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });    
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }
   useEffect(() => {
     dispatch(fetchRooms());
@@ -62,11 +76,16 @@ function RoomsTable({ rooms ,isupdated,updated}) {
         }}
       >
         <h3 className="table-title">Rooms List</h3>
-        <button className="add-button" title="Add">
-          <Popup />
-        </button>
+        <div>
+          <button style={{ color: "green", paddingRight: "30px", fontSize: "24px" }} onClick={onDownload}>
+            <i className="fas fa-file-excel"></i>
+          </button>
+          <button className="add-button" title="Add">
+            <Popup />
+          </button>
+        </div>  
       </div>
-      <table className="striped-table">
+      <table className="striped-table" ref={tableRef}>
         <thead>
           <tr>
             {columns.map((column, index) => (
@@ -111,7 +130,7 @@ function RoomsTable({ rooms ,isupdated,updated}) {
                 <td style={{ paddingRight: "25px" }}>
                 <button className="update-button" title="Update">
                     <RoomEdit Room={Rooms} isupdated={isupdated}/>
-                   
+               
                   </button>
                   <Button
                     onClick={() => {

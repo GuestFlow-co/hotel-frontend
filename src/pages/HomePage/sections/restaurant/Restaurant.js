@@ -61,7 +61,8 @@ export default function Restaurant() {
               <div className="section-title mb-40 wow fadeInUp delay-0-2s">
                 <span className="sub-title mb-15">Food & Drink</span>
                 <h2>Quality Food & Drink Your Trip Are Enjoyable</h2>
-                <p>Sed ut perspiciatis unde omniste natus voluptatem accusantiume doloremque laudantium, totam rem aperiam inventore</p>
+                <p>Elevate Your Journey with Exceptional Dining
+                  At our establishment, we pride ourselves on providing a dining experience like no other, driven by a passion for excellence and customer satisfaction.</p>
               </div>
               <div className="feature-list">
                 <div className="feature-item wow fadeInUp delay-0-2s">
@@ -70,7 +71,7 @@ export default function Restaurant() {
                   </div>
                   <div className="content">
                     <h5 className=''>Free breakfast, tea & coffee</h5>
-                    <p>To take a trivial example, which undertakes laborious ways</p>
+                    <p>To enhance your stay, we offer a delightful complimentary breakfast.</p>
                   </div>
                 </div>
                 <div className="feature-item wow fadeInUp delay-0-3s">
@@ -79,7 +80,7 @@ export default function Restaurant() {
                   </div>
                   <div className="content ">
                     <h5>Quality Foods & kitchen</h5>
-                    <p>Sed ut perspiciatis omniste natus voluptatem accusan</p>
+                    <p>Our commitment to delivering exquisite cuisine and culinary excellence remains unwavering.</p>
                   </div>
                 </div>
               </div>
@@ -105,7 +106,7 @@ export default function Restaurant() {
           </div>
         </div>
       </div>
-     
+
     </section>
   );
 }
