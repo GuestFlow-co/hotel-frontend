@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .signup-main-container {
-  background-image: url(../../../assets/images/authbg.png);
-  background-size: cover;
+  background-image: url(https://w0.peakpx.com/wallpaper/269/6/HD-wallpaper-petra-jordan-wonder-ancient-candles-jordan.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
@@ -341,7 +342,7 @@
   .overlay-panel {
     // opacity: 0.5;
     // filter: blur(5px);
-    background: linear-gradient(360deg, #bb8953, #bb7453, #439291, #48a5ff);
+    background: linear-gradient(360deg, #bb8953, #bb7453, #190d03, #171204);
     background-size: 240% 240%;
     animation: gradient-animation 20s ease infinite;
 
