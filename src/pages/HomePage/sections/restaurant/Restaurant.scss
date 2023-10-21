@@ -1,0 +1,13 @@
+.food-drink-image img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 2.5s ease-in-out;
+  }
+  
+  .food-drink-image img.active {
+    opacity: 1;
+  }
+  
+  .food-drink-image img.inactive {
+    opacity: 0;
+  }

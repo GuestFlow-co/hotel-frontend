@@ -103,9 +103,9 @@ export default function RoomDetails() { // Named your component
           <Container>
             {/* <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} /> */}
           </Container>
-          {/* <Features /> */}
+          {/* <Features />
 
-          {/* <Amenities /> */}
+          <Amenities /> */}
           {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"24.5%"} w={"30%"}>
         <Container w={"100%"} pl={"10%"} pr={"10%"} pb={"7%"} pt={"7%"}>
           <BookingForm />

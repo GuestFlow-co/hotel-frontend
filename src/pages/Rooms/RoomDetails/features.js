@@ -23,10 +23,9 @@ const Features = () => {
 
   return (
     <div>
-      <h6>Features</h6>
       <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} />
 
-      <Flex justify="space-between" pl={'15%'} pb={'5%'} pr={'15%'}>
+      <Flex justify="space-between"  pb={'5%'} pr={'15%'}>
         {room_capacity !== null && (
           <div style={{ display: "flex" }}>
             <Lottie style={{ width: '50px', paddingRight: "2%" }} animationData={person} />
@@ -48,7 +47,7 @@ const Features = () => {
         )}
       </Flex>
 
-      <Flex justify="space-between" pl={'15%'} pr={'15%'}>
+      <Flex justify="space-between"  pr={'15%'}>
         {Room_space !== null && (
           <div style={{ display: "flex" }}>
             <Lottie style={{ width: '50px', paddingRight: "5%" }} animationData={area} />
@@ -70,9 +69,6 @@ const Features = () => {
         )}
       </Flex>
 
-      <Box pt={'3%'}>
-        <p>{description}</p>
-      </Box>
     </div>
   )
 }

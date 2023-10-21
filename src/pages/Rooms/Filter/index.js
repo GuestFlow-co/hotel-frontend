@@ -87,16 +87,6 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
               <i className="fa-regular fa-calendar-days text-white  "></i>
 
             </div>
-
-            <div className="filter-item wow fadeInUp delay-0-4s">
-              <input
-                placeholder="Search for a room"
-                onChange={handleSearch}
-                value={query}
-              />
-              <i class="fa-solid fa-magnifying-glass text-white"></i>
-            </div>
-
             <div className="filter-item wow fadeInUp delay-0-4s">
               <input
                 placeholder="Capacity"
@@ -107,12 +97,22 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
               <i class="fa-solid fa-users text-white"></i>
             </div>
 
-
             <button className="theme-btn style-two wow fadeInUp delay-0-7s" onClick={handleFilter}>
               Search Now <i className="fa fa-angle-right"></i>
             </button>
+
+            <div className="filter-item wow fadeInUp delay-0-4s">
+              <input
+                placeholder="Search for a room"
+                onChange={handleSearch}
+                value={query}
+              />
+              <i class="fa-solid fa-magnifying-glass text-white"></i>
+            </div>
+
+
           </div>
-          
+
         </div>
         <div className="bg-lines for-bg-white">
           <span></span><span></span>
