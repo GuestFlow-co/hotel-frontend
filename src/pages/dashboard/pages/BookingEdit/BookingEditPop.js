@@ -19,7 +19,7 @@ function BookingEditPop({booking}) {
       {/* Render the Popup components */}
       <PopupWrapper style={{ display: isPopupOpen ? 'flex' : 'none' }}>
         <PopupContent>
-          <BookingEdit setPopupOpen={setPopupOpen} booking={booking}/>
+          <BookingEdit setPopupOpen={setPopupOpen} booking={booking} closePopup={closePopup}/>
         </PopupContent>
       </PopupWrapper>
       {/* Render other components */}

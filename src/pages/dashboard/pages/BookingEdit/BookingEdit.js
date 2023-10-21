@@ -8,7 +8,7 @@ import { WelcomePopup } from "../../../Booking/style";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 
-const BookingEdit = ({ booking }) => {
+const BookingEdit = ({ booking, closePopup }) => {
   const { room_number } = useParams();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -16,11 +16,11 @@ const BookingEdit = ({ booking }) => {
 
   const room = rooms.find((room) => room.room_number === room_number);
   const roomId = room ? room.Room_id : "";
-console.log(booking);
+  console.log(booking);
   const [bookingData, setBookingData] = useState({
     check_in_date: new Date(booking.check_in_date),
-  check_out_date: new Date(booking.check_out_date),
-  number_of_seats_inTour: booking.number_of_seats_inTour
+    check_out_date: new Date(booking.check_out_date),
+    number_of_seats_inTour: booking.number_of_seats_inTour,
   });
 
   const [showWelcomePopup, setShowWelcomePopup] = useState(false);
@@ -70,21 +70,21 @@ console.log(booking);
     }
 
     try {
-        const res =  axios.put(
-          `${process.env.REACT_APP_BASE_URL}/bookings/${booking.booking_id}`, bookingData,
-         
-        );
-        console.log(res.data, "resresres");
-      } catch (error) {
-        console.error("Error:", error);
-      }
-     
+      const res = axios.put(
+        `${process.env.REACT_APP_BASE_URL}/bookings/${booking.booking_id}`,
+        bookingData
+      );
+      console.log(res.data, "resresres");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
     setShowWelcomePopup(true);
 
     setBookingData({
       check_in_date: "",
       check_out_date: "",
-      theRoomID: roomId,
+      number_of_seats_inTour: 0,
     });
   };
   const isDateBooked = (date) => {
@@ -131,8 +131,6 @@ console.log(booking);
                 onChange={(date) =>
                   setBookingData({ ...bookingData, check_in_date: date })
                 }
-                className={isCheckInDateBooked ? "disabled-input" : ""}
-                disabled={isCheckInDateBooked}
                 placeholderText="Check In"
                 minDate={currentDay}
               />
@@ -147,35 +145,50 @@ console.log(booking);
                 onChange={(date) =>
                   setBookingData({ ...bookingData, check_out_date: date })
                 }
-                className={isCheckOutDateBooked ? "disabled-input" : ""}
-                disabled={isCheckOutDateBooked}
                 placeholderText="Check Out"
                 minDate={currentDay}
               />
               <i className="fa-regular fa-calendar-days text-black "></i>
             </div>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="checkout">number of seats inTour</label>
-            <div className="input-Checkin-out">
-              <input
-                value={bookingData.number_of_seats_inTour}
-                onChange={(event) =>
-                  setBookingData({
-                    ...bookingData,
-                    number_of_seats_inTour: event.target.value,
-                  })
-                }
-              />
-              <i className="fa-regular fa-calendar-days text-black "></i>
+          {bookingData.number_of_seats_inTour ? (
+            <div className="form-group">
+              <label>number of seats inTour</label>
+              <div className="input-Checkin-out">
+                <input
+                  value={bookingData.number_of_seats_inTour || 0}
+                  onChange={(event) =>
+                    setBookingData({
+                      ...bookingData,
+                      number_of_seats_inTour: event.target.value,
+                    })
+                  }
+                />
+              </div>
             </div>
-          </div>
-          <button className="theme-btn w-100" type="submit">
+          ) : (
+            <></>
+          )}
+          <button
+            className="theme-btn w-100"
+            type="submit"
+            onClick={closePopup}
+          >
             Add Booking <i className="fa fa-angle-right"></i>
           </button>
         </form>
-
+        <button
+          type="button"
+          style={{
+            backgroundColor: "gray",
+            color: "white",
+            padding: "10px",
+            borderRadius: "5px",
+          }}
+          onClick={closePopup}
+        >
+          Cancel
+        </button>
         {showWelcomePopup && (
           <WelcomePopup className="welcome-popup">
             <p className="welcome-message">
