@@ -16,6 +16,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import DatePicker from "react-datepicker";
+import { Fade } from "react-awesome-reveal";
 
 
 
@@ -59,8 +60,9 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
 
   return (
     <div>
-
+     
       <div className="search-and-features-area rpb-20 rel z-1">
+      <Fade triggerOnce>
         <div className="container container-1550">
           <div className="search-filter-inner rel z-2">
             <div className="section-title text-white mb-20 wow fadeInUp delay-0-2s">
@@ -114,6 +116,7 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
           </div>
 
         </div>
+        </Fade>
         <div className="bg-lines for-bg-white">
           <span></span><span></span>
           <span></span><span></span>
@@ -121,6 +124,7 @@ const RoomFilter = ({ rooms, onFilter, handleSearch, query }) => {
           <span></span><span></span>
           <span></span><span></span>
         </div>
+        
       </div>
 
       {/* <Box className="room-filter">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Button,
   Modal,
@@ -14,7 +14,21 @@ import axios from "axios";
 import "./bookingtable.scss";
 import TourPop from "../../pages/Tourash/Tourpost/TourPop";
 import TourEditPop from "../../pages/Tourash/TourEdit/TourEditPop"
+import { useDownloadExcel } from 'react-export-table-to-excel';
+
+
+
+
 function TourTable({ tours }) {
+
+  const tableRef = useRef(null);
+
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: 'Tour table',
+    sheet: 'Users'
+  })
+
   const columns = [
     "Title",
     "location",
@@ -23,7 +37,7 @@ function TourTable({ tours }) {
     "Seat Price",
     "Max Capacity",
     "Available Seat",
-     "Actions", 
+    "Actions",
   ];
   const [tourData, setTour] = useState(tours); // Initialize the local state with props data
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -55,13 +69,17 @@ function TourTable({ tours }) {
         }}
       >
         <h3 className="table-title">Tour List</h3>
-        
-        
+
+        <div>
+          <button style={{ color: "green", paddingRight: "30px", fontSize: "24px" }} onClick={onDownload}>
+            <i className="fas fa-file-excel"></i>
+          </button>
+
           <button className="add-button" title="Add"> <TourPop />
-        </button>
-       
+          </button>
+        </div>
       </div>
-      <table className="striped-table">
+      <table className="striped-table" ref={tableRef}>
         <thead>
           <tr>
             {columns.map((column, index) => (
@@ -101,13 +119,13 @@ function TourTable({ tours }) {
                         : "#198754",
                     }}
                   >
-                    {!tour.availableSeat ? 0 : tour.availableSeat }
+                    {!tour.availableSeat ? 0 : tour.availableSeat}
                   </p>
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
                     <TourEditPop tour={tour} />
-                   
+
                   </button>
                   <Button
                     onClick={() => {
