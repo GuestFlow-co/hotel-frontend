@@ -9,7 +9,7 @@ export default function UserTableInfo() {
 
   // const [getAllbooking, setgetAllbooking] = useState([]);
 
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState([])
   // const [bookingdata, setBooking] = useState(bookings); // Initialize the local state with props data
 
 
@@ -20,14 +20,13 @@ export default function UserTableInfo() {
 
 
 
-  function handelDelete(id) {
+  function handelDelete(id){
     axios
       .delete(`${process.env.REACT_APP_BASE_URL}/bookings/${id}`)
       .then((res) => {
         console.log(res.data);
         setBookings((prevRoomData) =>
           prevRoomData.filter((room) => room.booking_id !== id)
-
         );
         // const newBookings = getAllbooking.filter((booking) => booking.booking_id !== id)
         // console.log('after delete', newBookings);
@@ -83,7 +82,7 @@ export default function UserTableInfo() {
               <td style={{paddingLeft:'20px'}}>{booking.Room?.room_number}</td>
               <td>{booking.number_of_seats_inTour}</td>
               <td>{booking.Tour?.Title}</td>
-              <td>{booking.payment.amount} $💸</td>
+              <td style={{paddingLeft:'20px'}}>{booking.payment.amount} $💸</td>
               <td>{formatDate(booking.check_in_date)}</td>
               <td>{formatDate(booking.check_out_date)}</td>
               <td style={{display: 'flex' ,alignItems:"center"}}>
@@ -92,7 +91,7 @@ export default function UserTableInfo() {
                     outline
                     className="btn-brown-2"
                     onClick={() => handelDelete(booking.booking_id)}
-                  // style={{ marginLeft: "112%" }}
+                    style={{ color:"#D80032"}}
                   >
                     <i className="fa-solid fa-trash"></i>
                   </Button>

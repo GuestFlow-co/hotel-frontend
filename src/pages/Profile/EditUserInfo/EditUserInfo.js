@@ -3,11 +3,12 @@ import axios from "axios";
 import cookie from "react-cookies";
 import "./EditUserInfo.scss";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const EditUserInfo = () => {
   const [fulluser, setFulluser] = useState('');
   console.log(fulluser, "444444ffffulll");
-
+  const navigate = useNavigate();
   useEffect(() => {
     const newUser = cookie.load("user");
     setFulluser(newUser);
@@ -35,10 +36,12 @@ const EditUserInfo = () => {
       .then((response) => {
         cookie.save("user", fulluser);
         console.log("ressssssssss", response);
+        navigate('/profile');
       })
       .catch((error) => {
         console.log("error", error);
       });
+      
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import "./UserBookingInfo.scss";
+import { AiFillCamera } from "react-icons/ai";
 import {
   MDBCol,
   MDBContainer,
@@ -17,11 +18,18 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 function UserBookingInfo() {
-  
+  const [previewImage, setPreviewImage] = useState(null);
   const handleImage = (event) => {
     const { name, files } = event.target;
     if (name === "image") {
       setPhoto({ ...photo, image: Array.from(files) });
+
+      // Image preview logic
+      const selectedImage = files[0];
+      if (selectedImage) {
+        const objectUrl = URL.createObjectURL(selectedImage);
+        setPreviewImage(objectUrl); 
+      }
     }
   };
 
@@ -63,7 +71,6 @@ function UserBookingInfo() {
     setPhoto(initialPhotoState);
   };
 
-
   const [getAllbooking, setgetAllbooking] = useState([]);
   const { logout } = useContext(LoginContext);
   const [fulluser, setFulluser] = useState("");
@@ -104,8 +111,7 @@ function UserBookingInfo() {
     }
   }, []);
 
-
-  console.log('cover photo', fulluser.password)
+  console.log("cover photo", fulluser.password);
 
   return (
     <section
@@ -114,48 +120,97 @@ function UserBookingInfo() {
     >
       <MDBContainer className="py-5">
         <MDBRow className="">
-          <MDBCol lg="4">
-            <MDBCard className="mb-4 theCard" style={{ width: "100%", height: "95%" }}>
+          <MDBCol lg="4" >
+            <MDBCard
+              className="mb-4 theCard"
+              style={{ width: "100%", height: "95%" }}
+            >
               <MDBCardBody className="text-center ">
+        
                 <MDBCardImage
-                  src={fulluser?.coverPhoto || "https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"}
+                  src={
+                    previewImage ||
+                    fulluser?.coverPhoto ||
+                    "https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                  }
                   alt="avatar"
                   className="rounded-circle"
-                  style={{ width: "180px",height:'180px' }}
+                  style={{ width: "180px", height: "180px" }}
                   fluid
                 />
 
-                <div>
-                  <label>
-                    <i className="fa-solid fa-arrow-up-from-bracket"></i> Upload
-                    user Photos
-                    <input
-                      type="file"
-                      name="image"
-                      multiple
-                      onChange={handleImage}
-                    />
-                  </label>
-                </div>
-                <Button
-                  onClick={handleSubmit}
-                  style={{ backgroundColor: "#000", height: "50px" }}
-                >
-                  upload
-                </Button>
+                <br></br>
+
+                <label>
+                  <AiFillCamera
+                    type="button"
+                    style={{
+                      color: "#000",
+                      width: "60px",
+                      height: "60px",
+                      marginTop: "-55%",
+                    }}
+                  />
+                  <input
+                    type="file"
+                    name="image"
+                    // multiple
+                    onChange={handleImage}
+                    style={{
+                      color: "#000",
+                      padding: "10px",
+                      fontSize: "16px",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      opacity: 0,
+                      // width: "80px",
+                      // height: "80px",
+                      cursor: "pointer",
+                    }}
+                  />
+                </label>
+
                 <p
                   style={{ paddingTop: "10px", fontSize: "20px" }}
                   className="text-muted mb-1"
                 >
-                  <div id="full name">
+                  <div
+                    id="full name"
+                    style={{
+                      color: "#000",
+                      fontSize: "20px",
+                      fontWeight: "20px",
+                    }}
+                  >
                     {" "}
                     {fulluser?.firstName} -{fulluser?.lastName}
                   </div>
                 </p>
 
                 <br></br>
-                <p className="text-muted mb-1"> {fulluser?.email} </p>
-                <p className="text-muted mb-1"> {fulluser?.phoneNumber} </p>
+                <p
+                  className="text-mute mb-1"
+                  style={{
+                    color: "#000",
+                    fontSize: "20px",
+                    fontWeight: "20px",
+                  }}
+                >
+                  {" "}
+                  {fulluser?.email}{" "}
+                </p>
+                <p
+                  className="text-mute mb-1"
+                  style={{
+                    color: "#000",
+                    fontSize: "20px",
+                    fontWeight: "20px",
+                  }}
+                >
+                  {" "}
+                  {fulluser?.phoneNumber}{" "}
+                </p>
                 <div
                   className="btn-profile-container"
                   style={{
@@ -184,8 +239,18 @@ function UserBookingInfo() {
                     </Button>
                   </div>
                 </div>
+                <Button
+                  className="btn-brown"
+                  onClick={handleSubmit}
+                  style={{
+                    marginTop: "15%",
+                    marginLeft: "65%",
+                    fontSize: "12px",
+                  }}
+                >
+                  <p>Save changes</p>
+                </Button>
               </MDBCardBody>
-
             </MDBCard>
           </MDBCol>
           <MDBCol lg="8" className="border-transparent">
@@ -196,7 +261,7 @@ function UserBookingInfo() {
               <MDBCol md="20">
                 <MDBCard className="mb-3 mb-md-2 theCard">
                   {" "}
-                  <MDBCardBody style={{ minHeight: '50vh' }}>
+                  <MDBCardBody style={{ minHeight: "50vh" }}>
                     <UserTableInfo getAllbooking={getAllbooking} />
                   </MDBCardBody>
                 </MDBCard>
@@ -222,7 +287,6 @@ function UserBookingInfo() {
 }
 
 export default UserBookingInfo;
-
 
 // import React, { useContext, useEffect, useState } from "react";
 // import cookie from "react-cookies";
