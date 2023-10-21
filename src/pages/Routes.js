@@ -29,6 +29,8 @@ import FeatureChecklist from "./Rooms/Create/Feature";
 import ScrollToTopButton from '../components/buttons/topButton';
 import EditUserInfo from "./Profile/EditUserInfo/EditUserInfo";
 
+import PageNotFound from '../components/404/404'
+
 export default function Routers() {
   const location = useLocation().pathname;
   const isDashboardPage = location.startsWith("/dashboard");
@@ -83,6 +85,7 @@ export default function Routers() {
           } />
 
           <Route path='/' element={<HomePage />} />
+          <Route path='*' element={<PageNotFound />} />
 
         </Routes>
 

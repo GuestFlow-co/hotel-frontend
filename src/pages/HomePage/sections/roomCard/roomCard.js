@@ -15,7 +15,7 @@ export default function RoomCard() {
   const fetchRooms = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/rooms`)
-      setRooms(response.data.slice(0, 3));
+      setRooms(response.data.slice(0, 6));
       console.log(response.data);
     } catch (error) {
       console.error('Error fetching room data:', error);
@@ -58,7 +58,7 @@ export default function RoomCard() {
                   <div className="room__item room__item--style1" >
                     <div className="room__item-inner " style={{ maxHeight: '446px' }}>
                       <div className="room__item-thumb">
-                        <img src={room.coverPhoto} alt="room image" />
+                        <img src={room.coverPhoto} alt="room image" style={{ maxHeight: '446px',minHeight:'446px' }} />
                       </div>
                       <div className="room__item-content">
                         <div className="room__item-header">
@@ -114,7 +114,7 @@ export default function RoomCard() {
                   </div>
                 </div>
               ))}
-              <div className="col-xl-4 col-md-6">
+              {/* <div className="col-xl-4 col-md-6">
                 <div className="room__item room__item--style1">
                   <div className="room__item-inner">
                     <div className="room__item-thumb">
@@ -201,7 +201,7 @@ export default function RoomCard() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

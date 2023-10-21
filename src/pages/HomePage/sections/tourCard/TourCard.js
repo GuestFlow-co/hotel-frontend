@@ -25,7 +25,7 @@ export default function TourCard() {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/tour`)
       .then((res) => {
-        setData(res.data);
+        setData(res.data.slice(0, 6));
         console.log(res.data);
       })
       .catch((error) => {
@@ -45,8 +45,8 @@ export default function TourCard() {
 
   return (
     <div>
-      <div className="main-card-tour-home bgc-black-with-lighting rel z-1 p-50" >  
-      <h2 className=" text-white text-center mb-4 py-20" style={{fontFamily:'Noto Serif',fontWeight:'400',fontSize:'50px'}}>Featured Tours</h2>
+      <div className="main-card-tour-home bgc-black-with-lighting rel z-1 p-50" >
+        <h2 className=" text-white text-center mb-4 py-20" style={{ fontFamily: 'Noto Serif', fontWeight: '400', fontSize: '50px' }}>Featured Tours</h2>
 
         <section className="cards-tour-section-home container">
           {currentItems.map((item) => (

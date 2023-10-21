@@ -8,7 +8,7 @@ export default function AboutUs() {
     return (
         <>
             {/* Page Banner Start */}
-            <section className="page-banner-area pt-170 rpt-110 pb-190 rpb-125 rel z-1 bgs-cover bgc-black text-center" style={{ backgroundImage: "url(https://imgbucketfordestinate.s3.eu-north-1.amazonaws.com/Untitled+design+(23).png" }}>
+            <section className="page-banner-area pt-170 rpt-110 pb-190 rpb-125 rel z-1 bgs-cover bgc-black text-center" style={{ backgroundImage: "url(https://images.pexels.com/photos/594077/pexels-photo-594077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",backgroundAttachment:"fixed" }}>
                 <div className="container">
                     <div className="banner-inner text-white rpb-25">
                         <h1 className="page-title wow fadeInUp delay-0-2s" style={{fontFamily:'Noto Serif'}}>About GUESTFLOW</h1>
