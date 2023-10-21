@@ -117,7 +117,7 @@ function Review() {
 
       <div className="container">
         <div className="row">
-          <div className="comments col-lg-7 my-60">
+          <div className="comments col-lg-7 my-60" style={{minHeight:'477px'}}>
             <h3 className="comment-title">Reviews</h3>
             {comment.map((comment, index) => (
               <div className="comment-body wow fadeInUp delay-0-2s" key={index}>
@@ -174,11 +174,10 @@ function Review() {
                     />
                     <h4 className="py-10">How was your experience?</h4>
 
-                    <div className="stars">
-                    </div>
+                 
                     {!user ? (
                       <>
-                        <FaStar style={styles.starIcon} />
+                        {/* <FaStar style={styles.starIcon} /> */}
                         <div className="col-md-12 p-20">
                           <div className="">
                             <Link to="/login">

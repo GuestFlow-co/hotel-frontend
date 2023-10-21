@@ -12,7 +12,7 @@ export default function About() {
               <div className="top-part ">
                 <img src="https://imgbucketfordestinate.s3.eu-north-1.amazonaws.com/about.png" alt="About" />
                 <div className="icon wow fadeInLeft delay-0-2s">
-                <div class="icon wow fadeInLeft delay-0-2s"><i class="flaticon-hotel"></i></div>
+                  <div class="icon wow fadeInLeft delay-0-2s"><i class="flaticon-hotel"></i></div>
                 </div>
               </div>
               <div className="bottom-part">
@@ -65,11 +65,12 @@ export default function About() {
                   </div>
                 </div>
               </div>
-    
+
             </div>
           </div>
         </div>
       </div>
+ 
       <div className="bg-lines for-bg-white">
         <span></span>
         <span></span>
@@ -85,4 +86,3 @@ export default function About() {
     </section>
   );
 };
-  

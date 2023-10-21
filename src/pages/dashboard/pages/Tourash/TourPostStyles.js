@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PopupWrapper = styled.div`
   display: flex;
@@ -14,9 +14,9 @@ export const PopupWrapper = styled.div`
 `;
 
 export const PopupContent = styled.div`
-position: absolute;
-justify-content: center;
-align-items: center;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
 
   background-color: white;
   padding: 20px;
@@ -24,7 +24,6 @@ align-items: center;
   width: 60%;
   height: 70%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  
 `;
 export const Container = styled.div`
   display: flex;
@@ -33,7 +32,7 @@ export const Container = styled.div`
   margin-top: 20px;
   max-height: 400px;
   overflow-y: auto;
-  width:900px;
+  width: 900px;
   background-color: white;
 `;
 
@@ -81,5 +80,4 @@ export const Button = styled.button`
     background-color: #6c757d; /* Gray color for Cancel button */
     color: #fff;
   }
- 
 `;

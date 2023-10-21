@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { Card, Box, Image, Flex, Button, Container, Stack, Heading, Text, Icon, Grid } from '@chakra-ui/react';
-import { DetailWrapper, BackButton } from "./style";
-// import { Container } from "react-bootstrap";
+import { Box, Image, Modal, ModalOverlay, ModalContent, ModalBody, ModalCloseButton, Button,Flex } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
 import BookingForm from "../../Booking/Form";
 import Features from "./features";
 import Review from "./Review";
 import RoomCard from "../../HomePage/sections/roomCard/roomCard";
 import RoomItem from "../Items/RoomItems";
-
-
-
+import ImageModal from "./ImageModal";
+import Aminities from './Aminities'
+import MoreTours from './MoreTours'
 
 const colors = {
   orange: "#e8a41d",
@@ -25,6 +23,8 @@ const RoomDetail = () => {
   const users = useSelector((state) => state.users.users);
   console.log(users, "------------------")
 
+  const [isImageModalOpen, setImageModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState(null);
 
 
   const room = rooms.find((room) => room.room_number === room_number);
@@ -48,12 +48,21 @@ const RoomDetail = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const openImageModal = (imageUrl) => {
+    setModalImageUrl(imageUrl);
+    setImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setImageModalOpen(false);
+    setModalImageUrl(null);
+  };
 
   return (
     <>
       <div>
 
-        <section className="room-details-area py-130 rpy-100 rel z-2">
+        <section className="room-details-area pt-130 rpy-100 rel z-2">
           <div className="container">
             <div className="row">
               <div className="col-lg-7">
@@ -83,26 +92,20 @@ const RoomDetail = () => {
                   <p style={{ fontSize: "20px", padding: '10px' }}>
                     {description}
                   </p>
-                  <div className="room-details-images mt-45 wow fadeInUp delay-0-2s">
-                    <div>
-                      <Box position='relative' pt={5} >
-                        <Image
-                          src={images[currentIndex]}
-                          alt={`Image ${currentIndex}`}
-                          w="100%"
-                          h="400px"
-                          ml={'4%'}
-                        // paddingRight={'15%'}
-                        />
+                  <div id="frame" className="room-details-images mt-45 wow fadeInUp delay-0-2s">
+                    <div id="border">
+                      <Box position="relative">
+                        <div className="image-frame" onClick={() => openImageModal(images[currentIndex])}>
+                          <Image
+                            src={images[currentIndex]}
+                            alt={`Image ${currentIndex}`}
+                            w="100%"
+                            h="400px"
+                            cursor="pointer"
+                          />
+                        </div>
 
-                        <Flex
-                          justify="space-between"
-                          position="absolute"
-                          w="80%"
-                          bottom="1rem"
-                          p="1rem"
-                          ml={'15%'}
-                        >
+                        <Flex justify="space-between" position="absolute" w="100%" bottom="1rem" p="1rem">
                           <Button onClick={prevImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
                             <div className="fa fa-angle-left"></div>
                           </Button>
@@ -113,12 +116,24 @@ const RoomDetail = () => {
                       </Box>
                     </div>
                   </div>
+
+                  <ImageModal isOpen={isImageModalOpen} onClose={closeImageModal} imageUrl={modalImageUrl} />
+
+
                   <div className="section-title mt-35">
                     <h2>Room Facilities</h2>
                   </div>
                   <p style={{ fontSize: "20px", padding: '10px' }}>
                     {description}
                   </p>
+                  <div className="section-title my-40">
+                    <h2>Room Features</h2>
+                    {/* <h3>{roomStatus}</h3> */}
+
+                    <Features />
+                    <Aminities />
+                  </div>
+{/* 
                   <ul className="list-style-two three-column pt-10 wow fadeInUp delay-0-2s" style={{ fontSize: '20px' }}>
                     <li>Breakfast Included</li>
                     <li>Flat Screen TV</li>
@@ -132,23 +147,9 @@ const RoomDetail = () => {
                     <li>Telephone</li>
                     <li>Saving Safe</li>
                     <li>Transportations</li>
-                  </ul>
-                  <div className="section-title my-40">
-                    <h2>Availability</h2>
-                    {/* <h3>{roomStatus}</h3> */}
-                  </div>
+                  </ul> */}
 
-                  {/* <div className="room-calendar wow fadeInUp delay-0-2s" id="calendar"></div> */}
 
-                  <div className="room-location mt-70 wow fadeInUp delay-0-2s">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m12!1m10!1m3!1d142190.2862584524!2d-74.01298319978558!3d40.721725351435126!2m1!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1663473911885!5m2!1sen!2sbd"
-                      style={{ border: 0, width: '100%' }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
                   <div className="section-title mt-45">
                     <h2>Rules & Regulations</h2>
                   </div>
@@ -171,14 +172,9 @@ const RoomDetail = () => {
 
               <div className="col-lg-5">
                 <BookingForm />
+                <MoreTours/>
               </div>
             </div>
-
-            {/* form */}
-
-
-
-                            {/* <RoomItem/> */}
 
 
             <Review />
@@ -194,72 +190,7 @@ const RoomDetail = () => {
 
 
 
-<RoomCard/>
-
-
-
-        {/* <DetailWrapper style={{ width: "100%" }}>
-          <Box position='relative' pt={5} >
-            <Image
-              src={images[currentIndex]}
-              alt={`Image ${currentIndex}`}
-              w="100%"
-              h="400px"
-              ml={'4%'}
-            // paddingRight={'15%'}
-
-
-            />
-
-            <Flex
-              justify="space-between"
-              position="absolute"
-              w="80%"
-              bottom="1rem"
-              p="1rem"
-              ml={'15%'}
-            >
-              <Button onClick={prevImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
-                Previous
-              </Button>
-              <Button onClick={nextImage} colorScheme="teal" variant="outline" fontWeight={1000} color={"white"}>
-                Next
-              </Button>
-            </Flex>
-          </Box>
-          <Container style={{ paddingTop: "10%" }} ml={'5%'} >
-            <Flex ml={30}>
-              {Array(5).fill(parseInt(room.theRoomRate)).map((_, index) => (
-                <FaStar
-                  key={index}
-                  size={20}
-                  color={room.theRoomRate > index ? colors.orange : colors.grey}
-                  style={{
-                    marginRight: 10,
-                    cursor: "pointer",
-
-                  }}
-                />
-              ))}
-            </Flex>
-            <br />
-            <Box display={'flex'} justifyContent={"space-between"} >
-              <h3>{roomType}</h3>
-              <h3 className="m-0 room-price"> From {roomPrice} JD/Night</h3>
-
-            </Box >
-            <br />
-
-          </Container>
-        </DetailWrapper> */}
-
-
-
-
-
-
-
-
+        <RoomCard />
 
 
       </div>

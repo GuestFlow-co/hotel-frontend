@@ -38,39 +38,39 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (!bookingData.check_in_date || !bookingData.check_out_date) {
       alert("Please fill in both check-in and check-out dates.");
       return;
     }
-  
+
     if (new Date(bookingData.check_out_date) <= new Date(bookingData.check_in_date)) {
       alert("Check-out date cannot be before or on the same day as check-in date.");
       return;
     }
-  
+
     const userHasBookingInRoom = bookings.some((booking) => {
       return (
         booking.theRoomID === roomId &&
         booking.customer_id === user_id &&
         (
           (new Date(booking.check_in_date) >= new Date(bookingData.check_in_date) &&
-          new Date(booking.check_in_date) < new Date(bookingData.check_out_date)) ||
+            new Date(booking.check_in_date) < new Date(bookingData.check_out_date)) ||
           (new Date(booking.check_out_date) > new Date(bookingData.check_in_date) &&
-          new Date(booking.check_out_date) <= new Date(bookingData.check_out_date))
+            new Date(booking.check_out_date) <= new Date(bookingData.check_out_date))
         )
       );
     });
-  
+
     if (userHasBookingInRoom) {
       alert("You already have a booking for this room during the selected dates.");
       return;
     }
-  
+
     dispatch(addBooking(bookingData));
-  
+
     setShowWelcomePopup(true);
-  
+
     setBookingData({
       check_in_date: "",
       check_out_date: "",
@@ -111,7 +111,7 @@ const BookingForm = () => {
   return (
     <div>
 
-      <div className="room-details-sidebar bgc-lighter p-50 rp-40 pos">
+      <div className="room-details-sidebar bgc-lighter p-50 rp-40 pos sticky-sidebar">
         <form onSubmit={handleSubmit} className="widget-search-filter wow fadeInUp delay-0-4s" >
           <div className="form-group">
             <label htmlFor="checkin">Check In</label>
@@ -167,72 +167,6 @@ const BookingForm = () => {
           </WelcomePopup>
         )}
       </div>
-
-      {/* <Container w={'100'}>
-        <h2>Add Booking</h2>
-        <Form onSubmit={handleSubmit}>
-          <div>
-            <Label>Check-in Date:</Label>
-            <Input
-              type="date"
-              name="check_in_date"
-              value={bookingData.check_in_date}
-              onChange={handleChange}
-              className={isCheckInDateBooked ? "disabled-input" : ""}
-              disabled={isCheckInDateBooked}
-            />
-          </div>
-          <div>
-            <Label>Check-out Date:</Label>
-            <Input
-              type="date"
-              name="check_out_date"
-              value={bookingData.check_out_date}
-              onChange={handleChange}
-              className={isCheckOutDateBooked ? "disabled-input" : ""}
-              disabled={isCheckOutDateBooked}
-            />
-          </div>
-          {!user ? (
-            <Link to="/login">
-              <Button style={{ background: '#ab6034' }}>Add Booking</Button>
-            </Link>
-          ) : (
-            <Button style={{ background: '#ab6034' }} type="submit">Add Booking</Button>
-          )}
-        </Form>
-
-        {showWelcomePopup && (
-          <WelcomePopup className="welcome-popup">
-            <p>Welcome to our hotel! Your booking has been added.</p>
-          </WelcomePopup>
-        )}
-      </Container> */}
-
-      {/* <div className="form-group">
-            <label htmlFor="adults">Adults</label>
-            <select name="adults" id="adults">
-              <option value="adults1">1</option>
-              <option value="adults2">2</option>
-              <option value="adults3" selected>3</option>
-              <option value="adults4">4</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="children">Children</label>
-            <select name="children" id="children">
-              <option value="children1">1</option>
-              <option value="children2" selected>2</option>
-              <option value="children3">3</option>
-            </select>
-          </div> */}
-
-
-
-      {/*           
-        <WelcomePopup className="welcome-popup">
-            <p className="welcome-message">Welcome to our hotel! Your booking has been added.</p>
-          </WelcomePopup> */}
 
     </div >
   );

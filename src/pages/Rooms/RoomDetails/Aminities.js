@@ -62,18 +62,18 @@ const Amenities = () => {
   return (
     <div>
     <br/>
-      <h6>Room Amenities</h6>
+      <h3 style={{paddingBottom:"25px"}}>Room Amenities</h3>
       <Grid templateColumns="repeat(3, 1fr)" gap={4}>
         {amenitiess
           .filter((amenity) =>
             roomFeatures.some((roomFeature) => roomFeature.feature_name === amenity.feature)
           )
           .map((amenity, index) => (
-            <Box key={index} overflow="hidden" p={4} boxShadow="md" maxW="300px">
+            <Box key={index} overflow="hidden" p={4} boxShadow="md" maxW="300px" style={{background:'#fff',display:"flex"}}>
               <Flex mt={4} justify="space-between">
                 <Stack spacing={2} direction="row">
                   <Flex align="center">
-                    <div>{amenity.image}</div>
+                    <div style={{padding:"10px"}}>{amenity.image}</div>
                     <Text>{amenity.feature}</Text>
                   </Flex>
                 </Stack>

@@ -597,3 +597,34 @@
   width: 400px;
   height: 400px;
 }
+
+
+.marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  height: 100px;
+  overflow: hidden;
+  font-size: 120px;
+  font-weight: bold;
+  margin-top: -60px;
+}
+.marquee .track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 140s linear infinite;
+}
+.marquee .content {
+  opacity: 0.2;
+  line-height: 1.2;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-30%);
+  }
+}

@@ -5,16 +5,30 @@
     width: 100%;
     color: white;
     height: 100vh;
-
-.sidebar-btn{
-    padding: 17px;
+    .navbar-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .sidebar-btn{
+        padding: 17px;
+        width: 100%;
+        // background-color: aquamarine;
+        border-radius: 10px;
+        color:white;
+        font: 600 18px;    
+    }
+.sidebar-btn:hover{
+    background-color:#b37551;
+}
+}
+.menu-sidebar-btn{
+height: 500px !important;
     width: 100%;
     // background-color: aquamarine;
     border-radius: 10px;
     color:white;
-   font: 600 18px;    
-}
-.sidebar-btn:hover{
-    background-color:#b37551;
-}
+    font: 600 18px;   
 }
