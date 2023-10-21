@@ -21,7 +21,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 
-function HotelReservation() {
+function HotelReservation({ispostbookingupdate}) {
   const { room_number } = useParams();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -161,7 +161,7 @@ function HotelReservation() {
     }
 
     dispatch(addBooking(bookingData));
-
+    ispostbookingupdate(true)
     // Show the welcome popup
     setShowWelcomePopup(true);
 
