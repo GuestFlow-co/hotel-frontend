@@ -58,6 +58,7 @@ export const Container = styled.div`
   align-items: center;
   margin-top: 20px;
   max-height: 400px;
+  width:500px;
   overflow-y: auto;
   z-index: 10;
 `;

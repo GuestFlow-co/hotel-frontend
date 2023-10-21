@@ -15,11 +15,15 @@ import axios from "axios"
 import RoomCreate from "../../../../Rooms/Create/RoomCreate";
 import Popup from "../../../../pop";
 import RoomEdit from "../../../pages/RoomsDash/roomsEdit/RoomEdit";
+import { fetchRooms } from "../../../../../store/actions/RoomActions";
+import { useSelector, useDispatch } from "react-redux";
+
+
 // import UpdatePopup from "../../../../Updatepop";
 import { useDownloadExcel } from 'react-export-table-to-excel';
 
 
-function RoomsTable({ rooms }) {
+function RoomsTable({ rooms ,isupdated,updated }) {
 
   const tableRef = useRef(null);
 
@@ -28,7 +32,9 @@ function RoomsTable({ rooms }) {
     filename: 'Rooms table',
     sheet: 'Users'
   })
-
+  
+  const rooms2 = useSelector((state) => state.rooms.rooms);
+  const dispatch = useDispatch();
 
   const columns = [
     "coverPhoto",
@@ -55,8 +61,10 @@ function RoomsTable({ rooms }) {
       });
   }
   useEffect(() => {
-    setRoomData(rooms)
-  }, [rooms]);
+    dispatch(fetchRooms());
+
+    setRoomData(rooms2)
+  }, [rooms,updated]);
 
   return (
     <div className="table-container">
@@ -120,9 +128,9 @@ function RoomsTable({ rooms }) {
                   </p>
                 </td>
                 <td style={{ paddingRight: "25px" }}>
-                  <button className="update-button" title="Update">
-                    <RoomEdit Room={Rooms} />
-
+                <button className="update-button" title="Update">
+                    <RoomEdit Room={Rooms} isupdated={isupdated}/>
+               
                   </button>
                   <Button
                     onClick={() => {

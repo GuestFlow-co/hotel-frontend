@@ -19,6 +19,10 @@ import { useDownloadExcel } from 'react-export-table-to-excel';
 
 
 
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTours } from "../../../../store/actions/Tours/Touraction";
+
+
 function TourTable({ tours }) {
 
   const tableRef = useRef(null);
@@ -42,7 +46,11 @@ function TourTable({ tours }) {
   const [tourData, setTour] = useState(tours); // Initialize the local state with props data
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedId, setSelectedId] = useState(null); // State variable to store the selected booking ID
+  const [istourupdated, tourupdated] = useState(false); // State variable to store the selected booking ID
+  const tours2 = useSelector((state) => state.tours.tours);
+  const dispatch = useDispatch();
 
+  
   function handelDelete(id) {
     axios
       .delete(`${process.env.REACT_APP_BASE_URL}/tour/${id}`)
@@ -57,8 +65,10 @@ function TourTable({ tours }) {
       });
   }
   useEffect(() => {
-    setTour(tours);
-  }, [tours]);
+    dispatch(fetchTours());
+
+    setTour(tours2);
+  }, [tours,istourupdated]);
   return (
     <div className="table-container">
       <div
@@ -124,8 +134,9 @@ function TourTable({ tours }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
-                    <TourEditPop tour={tour} />
 
+                    <TourEditPop tour={tour} tourupdated={tourupdated} />
+                  
                   </button>
                   <Button
                     onClick={() => {

@@ -27,10 +27,10 @@ function TourDetalis() {
     function fetchData() {
       try {
         const response = axios.get(`${process.env.REACT_APP_BASE_URL}/tour/${id}`).then(response => {
-
+          
+          setupdated(false)
           setDetails(response.data.photoUrl);
           setTour(response.data)
-          setIsLoading(true)
           //  console.log(response.data.TourPlan);
         })
 
@@ -52,7 +52,7 @@ function TourDetalis() {
             <TopSection tour={tour} />
             <section className='description-container'>
               <Detalis tour={tour} isupdated={isupdated}/>
-              <RightDetalis tour={tour} setupdated={setupdated} />
+              <RightDetalis tour={tour} setupdated={setupdated} isupdated={isupdated}/>
             </section>
           </div>
         </div>

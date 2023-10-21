@@ -29,7 +29,7 @@ function Dashborad() {
   const rooms = useSelector((state) => state.rooms.rooms);
   const tours = useSelector((state) => state.tours.tours);
   const users = useSelector((state) => state.users.users);
-
+const [updated,isupdated]=useState(true)
   const dispatch = useDispatch();
   const [loader, setloader] = useState(false);
 
@@ -41,7 +41,7 @@ function Dashborad() {
     dispatch(fetchUsers());
 
     setloader(true)
-  }, [dispatch]);
+  }, [dispatch,updated]);
   return (
     <div className="A" style={{width:"100%"}}>
     {loader ? (
@@ -52,7 +52,7 @@ function Dashborad() {
         <div className="all-content-dev">
           <Routes>
             <Route path="/" element={<MainDashboard users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
-            <Route path="/allrooms" element={<RoomsDash users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
+            <Route path="/allrooms" element={<RoomsDash isupdated ={isupdated}  updated={updated} users={users} bookings={bookings} rooms={rooms} tours={tours} />} />
             <Route path="/alltour" element={<TourDash  tours={tours} />} />
             {/* <Route path="/alltour" element={<TourDash  tours={tours} />} /> */}
 

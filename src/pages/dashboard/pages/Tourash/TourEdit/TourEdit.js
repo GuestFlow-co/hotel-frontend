@@ -12,7 +12,7 @@ import {
 } from "../TourPostStyles";
 import axios from "axios";
 
-const TourEdit = ({ setPopupOpen, tour1 }) => {
+const TourEdit = ({ setPopupOpen, tour1,tourupdated }) => {
   const dispatch = useDispatch();
 
   const initialTourState = {
@@ -66,9 +66,9 @@ const obj={
   Seat_price: formData.get("Seat_price"),
   TourPlan:JSON.stringify(tourPlan),
   image:formData.get("image"),
-    description: "",
-    start_date: new Date(),
-    end_date: new Date(),
+    description:formData.get("description"),
+    start_date: formData.get("start_date"),
+    end_date: formData.get("end_date"),
 }
 // const x =formData.get("TourPlan")
 // console.log(JSON.stringify(x));
@@ -78,6 +78,7 @@ const obj={
        
       );
       console.log(res.data, "resresres");
+      tourupdated(true)
     } catch (error) {
       console.error("Error:", error);
     }
@@ -286,7 +287,7 @@ const obj={
               onClick={() => setPopupOpen(false)}
               className="btn btn-success"
             >
-              Create
+              Edit 
             </Button>
 
             <Button

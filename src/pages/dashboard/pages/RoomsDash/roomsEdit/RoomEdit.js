@@ -17,7 +17,7 @@ import {
 import axios from "axios";
 import { key } from "fontawesome";
 
-const RoomEdit = ({ Room }) => {
+const RoomEdit = ({ Room, isupdated }) => {
   const dispatch = useDispatch();
   const [isPopupOpen, setPopupOpen] = useState(false);
   const openPopup = () => {
@@ -68,9 +68,9 @@ const RoomEdit = ({ Room }) => {
       const obj = {
         room_number: formData.get("room_number"),
         roomType: formData.get("roomType"),
-        roomPrice:formData.get("roomPrice"),
-        room_capacity:formData.get("room_capacity"),
-        description:formData.get("description"),
+        roomPrice: formData.get("roomPrice"),
+        room_capacity: formData.get("room_capacity"),
+        description: formData.get("description"),
         bed_nums: formData.get("bed_nums"),
         Room_space: formData.get("Room_space"),
         Room_view: formData.get("Room_view"),
@@ -86,7 +86,6 @@ const RoomEdit = ({ Room }) => {
           },
         }
       );
-
       console.log(res.data, "resres");
 
       // }     dispatch(updateRoom(formData, room.Room_id));
@@ -95,6 +94,7 @@ const RoomEdit = ({ Room }) => {
     } catch (error) {
       console.error("Room creation failed:", error);
     }
+    isupdated(true);
   };
 
   const handleChange = (e) => {
@@ -293,19 +293,22 @@ const RoomEdit = ({ Room }) => {
               </FormGroup>
 
               <ButtonGroup>
-                <Button type="submit" className="btn btn-success">
-                  Edit the Room
-                </Button>
-
-              </ButtonGroup>
-            </Form>
                 <Button
-                  onClick={closeFeatureChecklist}
                   type="submit"
                   className="btn btn-success"
+                  onClick={closeFeatureChecklist}
                 >
-                  close
+                  Edit the Room
                 </Button>
+              </ButtonGroup>
+            </Form>
+            <Button
+              onClick={closeFeatureChecklist}
+              type="submit"
+              className="btn btn-success"
+            >
+              close
+            </Button>
           </Container>
         </PopupContent>
       </PopupWrapper>
