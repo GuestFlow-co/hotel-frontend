@@ -158,7 +158,7 @@ export default function AboutUs() {
                                             </div>
                                         </div>
                                         <div className="content">
-                                            <h4>Ayah</h4>
+                                            <h4>Ayah Abdalqader</h4>
                                             <span className="designation">Full-Stack Developer</span>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@ export default function AboutUs() {
                                             </div>
                                         </div>
                                         <div className="content">
-                                            <h4>Mohammed</h4>
+                                            <h4>Mohammad ALJadaan</h4>
                                             <span className="designation">Full-Stack Developer</span>
                                         </div>
                                     </div>
