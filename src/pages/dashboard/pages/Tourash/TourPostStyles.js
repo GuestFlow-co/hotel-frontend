@@ -22,7 +22,7 @@ export const PopupContent = styled.div`
   padding: 20px;
   border-radius: 20px;
   width: 60%;
-  height: 70%;
+  height: 90%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 export const Container = styled.div`
@@ -32,7 +32,7 @@ export const Container = styled.div`
   margin-top: 20px;
   max-height: 400px;
   overflow-y: auto;
-  width: 900px;
+  width: 700px;
   background-color: white;
 `;
 

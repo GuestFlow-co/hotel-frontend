@@ -223,6 +223,7 @@ function RightDetails({ tour, setupdated }) {
           setgetallbooking(theuserBooking);
         });
     }
+    
   }, [isUpdated]);
 
   const Addcomment = (e) => {
@@ -254,7 +255,6 @@ function RightDetails({ tour, setupdated }) {
         })
         .catch((err) => console.log(err));
     } else {
-      setIsUpdated(true);
       setposReview("you must have a booking first");
       toast({
         title: "booking first.",

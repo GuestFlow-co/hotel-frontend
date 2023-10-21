@@ -15,8 +15,13 @@ import axios from "axios"
 import RoomCreate from "../../../../Rooms/Create/RoomCreate";
 import Popup from "../../../../pop";
 import RoomEdit from "../../../pages/RoomsDash/roomsEdit/RoomEdit";
-// import UpdatePopup from "../../../../Updatepop";
-function RoomsTable({ rooms }) {
+import { fetchRooms } from "../../../../../store/actions/RoomActions";
+import { useSelector, useDispatch } from "react-redux";
+
+function RoomsTable({ rooms ,isupdated,updated}) {
+  const rooms2 = useSelector((state) => state.rooms.rooms);
+  const dispatch = useDispatch();
+
   const columns = [
     "coverPhoto",
     "Room Number",
@@ -42,8 +47,10 @@ function RoomsTable({ rooms }) {
     });    
   }
   useEffect(() => {
-    setRoomData(rooms)
-  }, [rooms]);
+    dispatch(fetchRooms());
+
+    setRoomData(rooms2)
+  }, [rooms,updated]);
 
   return (
     <div className="table-container">
@@ -56,7 +63,7 @@ function RoomsTable({ rooms }) {
       >
         <h3 className="table-title">Rooms List</h3>
         <button className="add-button" title="Add">
-          <Popup/>
+          <Popup />
         </button>
       </div>
       <table className="striped-table">
@@ -103,7 +110,7 @@ function RoomsTable({ rooms }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                 <button className="update-button" title="Update">
-                    <RoomEdit Room={Rooms} />
+                    <RoomEdit Room={Rooms} isupdated={isupdated}/>
                    
                   </button>
                   <Button
