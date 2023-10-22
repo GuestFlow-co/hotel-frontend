@@ -169,15 +169,21 @@ const BookingEdit = ({ booking, closePopup }) => {
           ) : (
             <></>
           )}
+          
           <button
-            className="theme-btn w-100"
+            className="theme-btn"
             type="submit"
             onClick={closePopup}
+            style={{
+              color: "white",
+              padding: "10px",
+              borderRadius: "5px",
+            }}
           >
             Add Booking <i className="fa fa-angle-right"></i>
           </button>
         </form>
-        <button
+        {/* <button
           type="button"
           style={{
             backgroundColor: "gray",
@@ -188,7 +194,7 @@ const BookingEdit = ({ booking, closePopup }) => {
           onClick={closePopup}
         >
           Cancel
-        </button>
+        </button> */}
         {showWelcomePopup && (
           <WelcomePopup className="welcome-popup">
             <p className="welcome-message">
