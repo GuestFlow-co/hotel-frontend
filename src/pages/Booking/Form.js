@@ -119,8 +119,9 @@ const BookingForm = () => {
               <DatePicker
                 selected={bookingData.check_in_date}
                 onChange={date => setBookingData({ ...bookingData, check_in_date: date })}
-                className={isCheckInDateBooked ? "disabled-input" : ""}
-                disabled={isCheckInDateBooked}
+                // className={isDateBooked ? "disabled-input" : ""}
+                // disabled={isDateBooked}
+                date
                 placeholderText="Check In"
                 minDate={currentDay}
               />
@@ -133,8 +134,8 @@ const BookingForm = () => {
               <DatePicker
                 selected={bookingData.check_out_date}
                 onChange={date => setBookingData({ ...bookingData, check_out_date: date })}
-                className={isCheckOutDateBooked ? "disabled-input" : ""}
-                disabled={isCheckOutDateBooked}
+                // className={isDateBooked ? "disabled-input" : ""}
+                // disabled={isDateBooked}
                 placeholderText="Check Out"
                 minDate={currentDay}
               />
