@@ -1,44 +1,53 @@
-.main-section-sidebar{
+.main-section-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: white;
+  height: 100vh;
+
+  .navbar-header {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+  }
+
+  .sidebar-btn {
+    // padding: 17px;
     width: 100%;
-    color: white;
-    height: 100vh;
-    .navbar-header{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-  
-    .sidebar-btn{
-        // padding: 17px;
-        width: 100%;
-height: 50px;
-        border-radius: 10px;
-        color:white;
-        font-size: 17px;
-        font-family: initial;
-        font-weight: 600;    }
-.sidebar-btn:hover{
-    background-color:#b37551;
-}
-}
-.menu-sidebar-btn{
-height: 500px !important;
-    width: 100%;
-    // background-color: aquamarine;
+    height: 50px;
     border-radius: 10px;
-    color:white;
-    font-size: 18px;
+    color: white;
+    font-size: 17px;
     font-family: initial;
-    font-weight: 500;
+    font-weight: 600;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .sidebar-btn:hover {
+    background-color: #b37551;
+  }
 }
-.user-profile{
-    text-align: center;
+
+.menu-sidebar-btn {
+  height: 500px !important;
+  width: 100%;
+  // background-color: aquamarine;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  font-family: initial;
+  font-weight: 500;
+}
+
+.user-profile {
+  text-align: center;
 
 }
+
 .theme-btn1,
 a.theme-btn1 {
   z-index: 1;
@@ -50,7 +59,7 @@ a.theme-btn1 {
   transition: 0.5s;
   font-weight: 500;
   text-align: center;
-  padding: 24px;
+  padding: 15px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -62,21 +71,25 @@ a.theme-btn1 {
   -ms-flex-pack: center;
   justify-content: center;
   text-transform: capitalize;
-  background: var(--primary-color);}
+  background: var(--primary-color);
+}
 
-  .theme-btn1 i,
+.theme-btn1 i,
 a.theme-btn1 i {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
   margin-left: 10px;
 }
+
 .theme-btn1:hover i,
 a.theme-btn1:hover i {
   margin-left: 13px;
   margin-right: -3px;
 }
+
 @media only screen and (max-width: 575px) {
+
   .theme-btn1,
   a.theme-btn1 {
     padding: 8px 25px;

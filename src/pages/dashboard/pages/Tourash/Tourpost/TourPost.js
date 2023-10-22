@@ -95,12 +95,12 @@ const TourPost = ({ setPopupOpen }) => {
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
-    marginTop:"15px"
+    marginTop: "15px"
   };
-  
-const inputStyle = {
-  display: 'none',
-};
+
+  const inputStyle = {
+    display: 'none',
+  };
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
@@ -145,16 +145,6 @@ const inputStyle = {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Ending Date</Label>
-          <Input
-            type="date"
-            value={tour.end_date}
-            onChange={handleChange}
-            name="end_date"
-            className="form-control"
-          />
-        </FormGroup>
-        <FormGroup>
           <Label>starting Date</Label>
           <Input
             type="date"
@@ -164,6 +154,17 @@ const inputStyle = {
             className="form-control"
           />
         </FormGroup>
+        <FormGroup>
+          <Label>Ending Date</Label>
+          <Input
+            type="date"
+            value={tour.end_date}
+            onChange={handleChange}
+            name="end_date"
+            className="form-control"
+          />
+        </FormGroup>
+
         <FormGroup>
           <Label> Tour Description</Label>
           <Input
@@ -225,18 +226,18 @@ const inputStyle = {
             justifyContent: "space-around",
           }}
         >
-         <div>
-      <label style={buttonStyle}>
-      <i class="fa-solid fa-arrow-up-from-bracket"></i>  Upload Tour Photos
-        <input
-          type="file"
-          name="image"
-          style={inputStyle}
-          onChange={handleImage}
-          multiple
-        />
-      </label>
-    </div>
+          <div>
+            <label style={buttonStyle}>
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>  Upload Tour Photos
+              <input
+                type="file"
+                name="image"
+                style={inputStyle}
+                onChange={handleImage}
+                multiple
+              />
+            </label>
+          </div>
           <div
             style={{
               display: "flex",

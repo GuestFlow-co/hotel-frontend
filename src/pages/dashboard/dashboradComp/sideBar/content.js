@@ -77,6 +77,7 @@ function Content({ children }) {
             flexDirection: "column",
             justifyContent: "space-between",
             height: "100%",
+            alignItems: "center",
           }}
         >
           <div
@@ -121,134 +122,140 @@ function Content({ children }) {
                 }}
                 fluid
               />
-              <p className="username">
+              <p className="username" style={{fontWeight:'600'}}>
                 {
                   fulluser
                     ? capitalizeFirstLetter(fulluser.firstName) +
-                      "  " +
-                      capitalizeFirstLetter(fulluser.lastName)
+                    "  " +
+                    capitalizeFirstLetter(fulluser.lastName)
                     : "Guest" // Provide a default value or message when fulluser is null or undefined
                 }
               </p>
             </div>
-            <Menu>
-              {() => (
-                <Link
-                  style={{
-                    backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                  }}
-                  className="sidebar-btn"
-                  to="/dashboard/"
-                >
-                  <MenuButton
-                    className="sidebar-btn"
-                    as={Button}
-                    isActive={homeIsOpen}
-                    style={{
-                      backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                    }}
-                    // onClick={() => setHomeIsOpen(!homeIsOpen)} // Toggle the open state
-                  >
-                    <i
-                      style={{ marginRight: "45px" }}
-                      className="fa-solid fa-house"
-                    ></i>{" "}
-                    Home
-                  </MenuButton>
-                </Link>
-              )}
-            </Menu>
-            <Menu className="menu-sidebar-btn">
-              {() => (
-                <>
-                  <div style={{ width: "100%" }}>
-                    <Link
-                      style={{
-                        backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                      }}
-                      className="sidebar-btn"
-                      to="/dashboard/allbooking"
-                    >
-                      <button className="sidebar-btn">
-                        <i
-                          style={{ marginRight: "15px" }}
-                          class="fa-solid fa-hotel"
-                        ></i>{" "}
-                        ALL Booking
-                      </button>
-                    </Link>
 
-                    <Link
-                      style={{
-                        backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                      }}
-                      className="sidebar-btn"
-                      to="/dashboard/addbooking"
-                    >
-                      <button className="sidebar-btn">
-                        <i
-                          style={{ marginRight: "15px" }}
-                          class="fa-solid fa-circle-plus"
-                        ></i>{" "}
-                        ADD Booking
-                      </button>
-                    </Link>
-                  </div>
-                  {/* )} */}
-                </>
-              )}
-            </Menu>
 
-            <Menu className="menu-sidebar-btn">
-              {() => (
-                <>
-                  <div style={{ width: "100%" }}>
-                    <Link
-                      style={{
-                        backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                      }}
-                      className="sidebar-btn"
-                      to="/dashboard/allrooms"
-                    >
-                      <button className="sidebar-btn">
-                        {" "}
-                        <i
-                          style={{ marginRight: "22px" }}
-                          class="fa-solid fa-people-roof"
-                        ></i>{" "}
-                        ALL Rooms
-                      </button>
-                    </Link>
-                  </div>
-                </>
-              )}
-            </Menu>
+            <div style={{display:"flex",flexDirection:"column"}}>
+              <Menu className="menu-sidebar-btn">
+                {() => (
+                  <>
+                    <div style={{ width: "100%" }}>
+                      <Link
+                        style={{
+                          backgroundColor: homeIsOpen ? "#89644E" : "initial",
+                        }}
+                        className="sidebar-btn"
+                        to="/dashboard/"
+                      >
+                        <button className="sidebar-btn">
+                          <i
+                            style={{ marginRight: "15px" }}
+                            class="fa-solid fa-house"
+                          ></i>{" "}
+                          Home Page
+                        </button>
+                      </Link>
 
-            {/* =====================//===================== */}
-            <Menu className="menu-sidebar-btn">
-              {() => (
-                <>
-                  <div style={{ width: "100%" }}>
-                    <Link
-                      style={{
-                        backgroundColor: homeIsOpen ? "#89644E" : "initial",
-                      }}
-                      className="sidebar-btn"
-                      to="/dashboard/alltour"
-                    >
-                      <button className="sidebar-btn">
-                        {" "}
-                        <i
-                          style={{ marginRight: "25px" }}
-                          class="fa-solid fa-map-location-dot"
-                        ></i>
-                        ALL Tours
-                      </button>
-                    </Link>
-                  </div>
-                </>
-              )}
-            </Menu>
+
+                    </div>
+                    {/* )} */}
+                  </>
+                )}
+              </Menu>
+
+
+
+              <Menu className="menu-sidebar-btn">
+                {() => (
+                  <>
+                    <div style={{ width: "100%" }}>
+                      <Link
+                        style={{
+                          backgroundColor: homeIsOpen ? "#89644E" : "initial",
+                        }}
+                        className="sidebar-btn"
+                        to="/dashboard/allbooking"
+                      >
+                        <button className="sidebar-btn">
+                          <i
+                            style={{ marginRight: "15px" }}
+                            class="fa-solid fa-hotel"
+                          ></i>{" "}
+                          ALL Booking
+                        </button>
+                      </Link>
+
+                      <Link
+                        style={{
+                          backgroundColor: homeIsOpen ? "#89644E" : "initial",
+                        }}
+                        className="sidebar-btn"
+                        to="/dashboard/addbooking"
+                      >
+                        <button className="sidebar-btn">
+                          <i
+                            style={{ marginRight: "15px" }}
+                            class="fa-solid fa-circle-plus"
+                          ></i>{" "}
+                          ADD Booking
+                        </button>
+                      </Link>
+                    </div>
+                    {/* )} */}
+                  </>
+                )}
+              </Menu>
+
+              <Menu className="menu-sidebar-btn">
+                {() => (
+                  <>
+                    <div style={{ width: "100%" }}>
+                      <Link
+                        style={{
+                          backgroundColor: homeIsOpen ? "#89644E" : "initial",
+                        }}
+                        className="sidebar-btn"
+                        to="/dashboard/allrooms"
+                      >
+                        <button className="sidebar-btn">
+                          {" "}
+                          <i
+                            style={{ marginRight: "15px" }}
+                            class="fa-solid fa-people-roof"
+                          ></i>{" "}
+                          ALL Rooms
+                        </button>
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </Menu>
+
+              {/* =====================//===================== */}
+              <Menu className="menu-sidebar-btn">
+                {() => (
+                  <>
+                    <div style={{ width: "100%" }}>
+                      <Link
+                        style={{
+                          backgroundColor: homeIsOpen ? "#89644E" : "initial",
+                        }}
+                        className="sidebar-btn"
+                        to="/dashboard/alltour"
+                      >
+                        <button className="sidebar-btn">
+                          {" "}
+                          <i
+                            style={{ marginRight: "15px" }}
+                            class="fa-solid fa-map-location-dot"
+                          ></i>
+                          ALL Tours
+                        </button>
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </Menu>
+            </div>
           </div>
           <button
             style={{ marginBottom: "50px", marginTop: "30px" }}

@@ -54,7 +54,6 @@ export default function RoomCard() {
         <div className='container'>
           <div className='room__wrapper'>
             <div className='row g-4'>
-              <Slide triggerOnce>
                 {rooms.map(room => (
                   <div className="col-xl-4 col-md-6" key={room.Room_id}>
                     <div className="room__item room__item--style1" >
@@ -79,7 +78,7 @@ export default function RoomCard() {
                                 ))}
                               </ul>
                               {/* Room name and availability */}
-                              <h3>{room.roomType} Room</h3>
+                              <h3>{room.roomType}</h3>
                               <p>{room.roomStatus}</p>
                             </div>
 
@@ -94,10 +93,10 @@ export default function RoomCard() {
                             <p>{room.description}</p>
 
 
-                            <div style={{ display: "flex", padding: '10px' }}>
+                            {/* <div style={{ display: "flex", padding: '10px' }}>
                               <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
                               <p style={{ color: "black", paddingLeft: '10px' }}>{room.room_capacity} person</p>
-                            </div>
+                            </div> */}
                             {/* Room features */}
                             <ul className="room__feature">
                               {room.features.map((feature, index) => (
@@ -108,7 +107,28 @@ export default function RoomCard() {
                                 </li>
                               ))}
                             </ul>
+                            <ul className="room__feature">
+                          <li className="room__feature-item">
+                            <div className="room__feature-icon">
+                              <img src={person} alt="feature icon" />
+                            </div>
+                            <div className="room__feature-text">
+                              <p>{room.room_capacity} person</p>
+                            </div>
+                          </li>
 
+                          <li className="room__feature-item">
+                            <div className="room__feature-icon">
+                              <img src="https://labartisan.net/demo/tavern/assets/images/room/icon/6.png" alt="feature icon" />
+                            </div>
+                            <div className="room__feature-text">
+                              <p>King bed</p>
+                            </div>
+                          </li>
+
+                
+                        
+                        </ul>
                             <Link to={`/rooms/${room.room_number}`} className="custom-btn"><span>Booking Now</span></Link>
                           </div>
                         </div>
@@ -116,7 +136,6 @@ export default function RoomCard() {
                     </div>
                   </div>
                 ))}
-                </Slide>
               {/* <div className="col-xl-4 col-md-6">
                 <div className="room__item room__item--style1">
                   <div className="room__item-inner">

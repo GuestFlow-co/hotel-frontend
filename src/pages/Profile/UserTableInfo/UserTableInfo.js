@@ -3,11 +3,18 @@ import './UserTableInfo.scss';
 import { Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import cookie from 'react-cookies';
+import { Alert, AlertIcon } from '@chakra-ui/react';
+import { useNavigate, Link } from "react-router-dom";
+
+
 
 export default function UserTableInfo() {
   const [bookings, setBookings] = useState([]);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [paymentConfirmation, setPaymentConfirmation] = useState(false);
+  const navigate = useNavigate();
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -55,12 +62,35 @@ export default function UserTableInfo() {
       });
   }, []);
 
-  const handlePaymentConfirmation = () => {
-    // Make an API call to update the payment status to 'paid'
-    // You can use axios for this
-    // After successful payment, update the local state and close the modal
-    // Then, you can refresh the data if needed
+  const handlePaymentConfirmation = (booking) => {
+    const bookingData = { current_payment: booking.payment.amount };
+
+    axios
+      .put(`${process.env.REACT_APP_BASE_URL}/payments/${booking.paymentID}`, bookingData)
+      .then((res) => {
+        console.log(res.data, "resresres");
+        setPaymentConfirmation(true);
+
+        // Update the data in the state without a page refresh
+        setBookings((prevBookings) =>
+          prevBookings.map((prevBooking) =>
+            prevBooking.booking_id === booking.booking_id
+              ? { ...prevBooking, payment: { amount: booking.payment.amount } }
+              : prevBooking
+          )
+        );
+
+        setTimeout(() => {
+          setPaymentConfirmation(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+
     setShowPaymentModal(false);
+    navigate("/profile");
   };
 
   return (
@@ -92,7 +122,12 @@ export default function UserTableInfo() {
                   <Button
                     outline
                     className="btn-brown-2"
-                    onClick={() => handlePayClick(booking)}
+                    onClick={() => handlePayClick(booking)
+
+
+                    }
+
+
                     style={{ color: 'green' }}
                   >
                     <i className="fa-solid fa-money-bill"></i>
@@ -116,21 +151,55 @@ export default function UserTableInfo() {
         </tbody>
       </table>
       {showPaymentModal && (
-        <Modal show={showPaymentModal} onHide={() => setShowPaymentModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Confirm Payment</Modal.Title>
+        <Modal show={showPaymentModal} onHide={() => setShowPaymentModal(false)} style={{ maxWidth: '400px', margin: '0 auto' }}>
+          <Modal.Header closeButton style={{ backgroundColor: '#f0f0f0' }}>
+            <Modal.Title style={{ fontSize: '1.5rem' }}>Confirm Payment</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure you want to proceed with the payment?</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" style={{color:'black'}} onClick={() => setShowPaymentModal(false)}>
+          <Modal.Body style={{ padding: '20px', background: '#fff' }}>
+            <p style={{ fontSize: '1rem', margin: '10px 0' }}>Booking Cost: {selectedBooking.bookingCost}</p>
+            <p style={{ fontSize: '1rem', margin: '10px 0' }}>Total Tour Price: {selectedBooking.total_tour_price}</p>
+            <p style={{ fontSize: '1rem', margin: '10px 0' }}>Total Price: {selectedBooking.payment.amount} $💸</p>
+          </Modal.Body>
+          <Modal.Footer style={{ borderTop: '1px solid #ccc', padding: '10px', justifyContent: 'space-between' }}>
+            <Button style={{ backgroundColor: '#ccc', color: '#000', padding: '8px 20px', borderRadius: '5px', border: 'none' }} onClick={() => setShowPaymentModal(false)}>
               Cancel
             </Button>
-            <Button variant="success" style={{color:'black'}} onClick={handlePaymentConfirmation}>
-              Pay
-            </Button>
+            <Link to='./'>
+              <Button style={{ backgroundColor: '#28a745', color: '#fff', padding: '8px 20px', borderRadius: '5px', border: 'none' }}
+
+                onClick={() => {
+                  if (selectedBooking) {
+                    handlePaymentConfirmation(selectedBooking); // Call handelDelete with the selected ID
+                  }
+                }}>
+                Pay
+              </Button>
+            </Link>
           </Modal.Footer>
         </Modal>
       )}
+      {paymentConfirmation && (
+        <Alert
+          status="success"
+          variant="subtle"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          mb={4}
+          position="fixed"
+          top={"-70%"}
+          // left={"50%"}
+          right={"25%"}
+          width="100%"
+        >
+          <AlertIcon boxSize="4" />
+          Payment successful!
+        </Alert>
+      )}
+
+
+
     </div>
   );
 }
