@@ -81,7 +81,7 @@ function TourTable({ tours }) {
         <h3 className="table-title">Tour List</h3>
 
         <div>
-          <button style={{ color: "green", paddingRight: "30px", fontSize: "24px" }} onClick={onDownload}>
+          <button style={{ color: "green", paddingRight: "30px", fontSize: "30px" }} onClick={onDownload}>
             <i className="fas fa-file-excel"></i>
           </button>
 

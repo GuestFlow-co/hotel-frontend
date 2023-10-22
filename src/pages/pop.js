@@ -343,16 +343,16 @@ function Popup() {
                       >
                         Add room features
                       </Button>
+                      <Button
+                        onClick={closeFeatureChecklist}
+                        type="submit"
+                        className="btn btn-success"
+                      >
+                        close
+                      </Button>
                     </ButtonGroup>
                   </Form>
                 )}
-                <Button
-                  onClick={closeFeatureChecklist}
-                  type="submit"
-                  className="btn btn-success"
-                >
-                  close
-                </Button>
               </Container>
             )}
           </RoomCreateContainer>

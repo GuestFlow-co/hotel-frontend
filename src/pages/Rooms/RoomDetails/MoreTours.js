@@ -25,8 +25,8 @@ export default function MoreTours() {
                     {sidebarData.map((item) => (
                         <li key={item.tour_id} >
                             <Link to={`/TourDetalis/${item.tour_id}`} className="d-flex">
-                                <div className="image">
-                                    <img className="tour-card-image-home" src={item.coverPhoto}  />
+                                <div className="image" style={{marginRight:"10px",marginBottom:"10px",marginTop:"10px",overflow:"hidden",minWidth:"100px",maxWidth:"100px",minHeight:"100px",maxHeight:"100px",objectFit:"cover",boxShadow:"0px 0px 5px #ccc"}}>
+                                    <img style={{minHeight:'100px',maxHeight:"100px",minWidth:'100px'}} className="tour-card-image-home" src={item.coverPhoto}  />
                                 </div>
                                 <div className="content">
                                 <h5>

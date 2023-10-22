@@ -11,7 +11,7 @@ import rabbit from "../../../../assets/Lottie/rabbit- 1696493249475.json"
 import Lottie from "lottie-react";
 function TourCards() {
   const [res, setData] = useState([]);
-  const itemsPerPage = 3; // Number of items to display per page
+  const itemsPerPage = 6; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(1);
 
   function calculateDuration(startDate, endDate) {

@@ -78,6 +78,7 @@ function BookingTable({ bookings ,postbookingupdate}) {
           display: "flex",
           justifyContent: "space-between",
           backgroundColor: "rgb(218,225,243)",
+          alignItems:'center'
         }}
       >
         <h3 className="table-title">Booking List</h3>

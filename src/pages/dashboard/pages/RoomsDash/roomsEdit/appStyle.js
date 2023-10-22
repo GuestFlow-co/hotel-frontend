@@ -20,7 +20,7 @@ align-items: center;
   background-color: white;
   padding: 20px;
   border-radius: 20px;
-  width: 40%;
+  width: 30%;
   height: 70%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;

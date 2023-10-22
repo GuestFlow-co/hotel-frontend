@@ -6,15 +6,16 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
+        padding: 10px;
 
         i {
-            font-size: 40px;
+            font-size: 30px;
             color: var(--primary-color);
 
         }
 
         p {
-            font-size: 25px;
+            font-size: 20px;
             // font-weight: 600;
             // color:var(--primary-color); 
             margin-bottom: 0 !important;
@@ -46,6 +47,7 @@
             .tour-title {
                 font: 600 38px "Prompt", sans-serif;
                 margin-bottom: 15px;
+                padding-right: 30px;
 
             }
         }

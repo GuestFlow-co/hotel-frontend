@@ -13,7 +13,7 @@ import {
   Input,
   ButtonGroup,
   Button,
-} from "../../../../appStyle";
+} from "./appStyle";
 import axios from "axios";
 import { key } from "fontawesome";
 

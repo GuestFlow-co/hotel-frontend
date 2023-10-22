@@ -7,7 +7,6 @@ import fire from "../../../../assets/Lottie/fire- 1696441846158.json"
 import camp from "../../../../assets/Lottie/camp- 1696445853337.json"
 import rabbit from "../../../../assets/Lottie/rabbit- 1696493249475.json"
 
-import { Zoom } from "react-awesome-reveal";
 
 import Lottie from "lottie-react";
 export default function TourCard() {
@@ -50,16 +49,18 @@ export default function TourCard() {
       <div className="main-card-tour-home bgc-black-with-lighting rel z-1 p-50" >
         <h2 className=" text-white text-center mb-4 py-20" style={{ fontFamily: 'Noto Serif', fontWeight: '400', fontSize: '50px' }}>Featured Tours</h2>
 
-        <section className="cards-tour-section-home container">
-          <Zoom triggerOnce>
+        <div className="main-card-tour " >
+
+          <section className="cards-tour-section overflow-hidden">
+
             {currentItems.map((item) => (
-              <Link className="theTourCard-home" to={`/TourDetalis/${item.tour_id}`}>
+              <Link className="theTourCard" to={`/TourDetalis/${item.tour_id}`}>
 
                 <div>
-                  <img className="tour-card-image-home" src={item.coverPhoto} />
+                  <img className="tour-card-image" src={item.coverPhoto} />
                 </div>
 
-                <div className="info-tour-card-home">
+                <div className="info-tour-card">
                   <section style={{ display: "flex", alignItems: "center", }}>
                     <ReactStars
                       count={5}
@@ -69,9 +70,10 @@ export default function TourCard() {
                       edit={false}
                       isHalf={true}
                     />{"  "}
+                    <p style={{ fontSize: "20px", padding: "10px" }}> ({item.Rating})</p>
                   </section>
 
-                  <p style={{ fontSize: "20px", fontWeight: "700" }}>
+                  <p style={{ fontSize: "18px", fontWeight: "700" }}>
                     {" "}
                     {item.Title}
                   </p>
@@ -93,7 +95,7 @@ export default function TourCard() {
 
                   </div>
                   <hr style={{ marginLeft: "30px", marginRight: "30px" }}></hr>
-                  <div className="lower-card-tour-section-home">
+                  <div className="lower-card-tour-section">
                     <p>
                       <i className="fa-regular fa-clock"></i>{" "}
                       {calculateDuration(item.start_date, item.end_date)} Days
@@ -109,14 +111,13 @@ export default function TourCard() {
               </Link>
 
             ))}
-          </Zoom>
+
           <div className="flex ">
             <Link className="theme-btn mb-40 wow fadeInRight delay-0-2s" to='./tour'>Explore Tours <i class="fa-solid fa-angle-right text-white"></i></Link>
           </div>
+          </section>
 
-
-        </section>
-
+        </div>
         <div className="bg-lines ">
           <span></span><span></span>
           <span></span><span></span>
