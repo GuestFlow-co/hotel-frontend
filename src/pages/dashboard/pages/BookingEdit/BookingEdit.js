@@ -8,7 +8,7 @@ import { WelcomePopup } from "../../../Booking/style";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 
-const BookingEdit = ({ booking, closePopup }) => {
+const BookingEdit = ({ booking, closePopup ,isupdatedbooking}) => {
   const { room_number } = useParams();
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
@@ -16,7 +16,7 @@ const BookingEdit = ({ booking, closePopup }) => {
 
   const room = rooms.find((room) => room.room_number === room_number);
   const roomId = room ? room.Room_id : "";
-  console.log(booking);
+  // console.log(booking);
   const [bookingData, setBookingData] = useState({
     check_in_date: new Date(booking.check_in_date),
     check_out_date: new Date(booking.check_out_date),
@@ -75,6 +75,7 @@ const BookingEdit = ({ booking, closePopup }) => {
         bookingData
       );
       console.log(res.data, "resresres");
+      isupdatedbooking(true)
     } catch (error) {
       console.error("Error:", error);
     }

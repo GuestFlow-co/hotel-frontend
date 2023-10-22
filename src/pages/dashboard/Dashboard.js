@@ -32,6 +32,7 @@ function Dashborad() {
 const [updated,isupdated]=useState(true)
   const dispatch = useDispatch();
   const [loader, setloader] = useState(false);
+  const [postbookingupdate, ispostbookingupdate] = useState(false);
 
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const [updated,isupdated]=useState(true)
     dispatch(fetchRooms());
     dispatch(fetchTours());
     dispatch(fetchUsers());
-
+    isupdated(false)
     setloader(true)
   }, [dispatch,updated]);
   return (
@@ -56,8 +57,8 @@ const [updated,isupdated]=useState(true)
             <Route path="/alltour" element={<TourDash  tours={tours} />} />
             {/* <Route path="/alltour" element={<TourDash  tours={tours} />} /> */}
 
-            <Route path="/allbooking" element={<BookingDash bookings={bookings} users={users} />} />
-            <Route path="/addbooking" element={<Booking/>} />
+            <Route path="/allbooking" element={<BookingDash postbookingupdate={postbookingupdate} bookings={bookings} users={users} />} />
+            <Route path="/addbooking" element={<Booking ispostbookingupdate={ispostbookingupdate}/>} />
             <Route path="/user-booking" element={<Signup/>}/>
             <Route path="/addrooms" element={<Popup />} />
             

@@ -16,12 +16,13 @@ import HeaderCreate from "../../../Booking/Header";
 import BookingEditPop from "../../pages/BookingEdit/BookingEditPop";
 // import Popup from "../../../Updatepop";
 // import UpdatePopup from "../../../Updatepop";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBookings } from "../../../../store/actions/Bookings/BookingActions";
 import { useDownloadExcel } from 'react-export-table-to-excel';
 
 
 
-function BookingTable({ bookings }) {
+function BookingTable({ bookings ,postbookingupdate}) {
 
 
   const tableRef = useRef(null);
@@ -31,6 +32,7 @@ function BookingTable({ bookings }) {
     filename: 'Users table',
     sheet: 'Users'
   })
+
 
   const columns = [
     "Name",
@@ -46,6 +48,9 @@ function BookingTable({ bookings }) {
   const [bookingdata, setBooking] = useState(bookings); // Initialize the local state with props data
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedId, setSelectedId] = useState(null); // State variable to store the selected booking ID
+  const bookings2 = useSelector((state) => state.bookings.bookings);
+  const dispatch = useDispatch();
+  const [updatedbooking, isupdatedbooking] = useState(false); // State variable to store the selected booking ID
 
   function handelDelete(id) {
     axios
@@ -61,8 +66,10 @@ function BookingTable({ bookings }) {
       });
   }
   useEffect(() => {
-    setBooking(bookings);
-  }, [bookings]);
+    dispatch(fetchBookings());
+    isupdatedbooking(false)
+    setBooking(bookings2);
+  }, [bookings,updatedbooking]);
   return (
 
     <div className="table-container">
@@ -124,7 +131,9 @@ function BookingTable({ bookings }) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
-                    <BookingEditPop booking={booking} />
+
+                    <BookingEditPop isupdatedbooking={isupdatedbooking} booking={booking}/>
+
                   </button>
                   <Button
                     onClick={() => {

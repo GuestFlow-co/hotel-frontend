@@ -11,10 +11,10 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 import BookingTable from '../dashboradComp/Table/BookingTable'
-function BookingDash({bookings,users}) {
+function BookingDash({bookings,users,postbookingupdate}) {
   return (
     <div>
-         <BookingTable bookings={bookings} users={users} />
+         <BookingTable bookings={bookings} users={users} postbookingupdate={postbookingupdate}/>
 
     </div>
   )
