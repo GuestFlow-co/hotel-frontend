@@ -103,7 +103,7 @@ const RoomItem = ({ room }) => {
                     <img src="https://labartisan.net/demo/tavern/assets/images/room/icon/6.png" alt="feature icon" />
                   </div>
                   <div className="room__feature-text">
-                    <p>King bed</p>
+                    <p>Breake fast</p>
                   </div>
                 </li>
 

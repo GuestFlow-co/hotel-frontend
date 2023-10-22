@@ -11,6 +11,8 @@ import { useNavigate, Link } from "react-router-dom";
 export default function UserTableInfo() {
   const [bookings, setBookings] = useState([]);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [payments, ispayments] = useState(false);
+
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [paymentConfirmation, setPaymentConfirmation] = useState(false);
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ export default function UserTableInfo() {
           );
           console.log('User Bookings: ', UserBooking);
           setBookings(UserBooking);
+          ispayments(true)
         } else {
           console.error('Data received is not in an array format.');
         }
@@ -60,7 +63,7 @@ export default function UserTableInfo() {
       .catch((error) => {
         console.error('Error fetching data: ', error);
       });
-  }, []);
+  }, [bookings]);
 
   const handlePaymentConfirmation = (booking) => {
     const bookingData = { current_payment: booking.payment.amount };
