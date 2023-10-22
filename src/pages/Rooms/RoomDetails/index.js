@@ -24,6 +24,7 @@ import RoomItem from "../Items/RoomItems";
 import SContainer from "./Slider";
 import "./style.scss";
 
+import { Fade } from "react-awesome-reveal";
 
 
 export default function RoomDetails() { // Named your component
@@ -96,36 +97,37 @@ export default function RoomDetails() { // Named your component
             </div>
           </section>
 
+          <Fade triggerOnce>
+            <div className="overflow-hidden">
+              <RoomDetail />
+            </div>
+            <Container>
+              {/* <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} /> */}
+            </Container>
+            {/* <Features />
 
-          <div className="overflow-hidden">
-            <RoomDetail />
-          </div>
-          <Container>
-            {/* <hr style={{ borderColor: "brown", borderWidth: "1px", margin: "10px 0" }} /> */}
-          </Container>
-          {/* <Features />
+          <Amenities />
 
-          <Amenities /> */}
           {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"24.5%"} w={"30%"}>
         <Container w={"100%"} pl={"10%"} pr={"10%"} pb={"7%"} pt={"7%"}>
           <BookingForm />
         </Container>
       </Container> */}
 
-          {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"50%"} w={"30%"}>
+            {/* <Container className="position-absolute top-0 start-1 end-0" alignItems={"center"} mt={"50%"} w={"30%"}>
         <Text pt={5} pl={7} paddingBottom={'-50'} fontWeight={"bold"}>
           More Rooms
         </Text>
         <Container>
           <SContainer />
           {/* </Container> */}
-          {/* </Container> */}
-          {/* <Review /> */}
-          
-          {/* {RoomItems} */}
+            {/* </Container> */}
+            {/* <Review /> */}
 
+            {/* {RoomItems} */}
 
-          
+          </Fade>
+
         </div>
       )}
     </>

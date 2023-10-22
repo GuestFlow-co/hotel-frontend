@@ -22,44 +22,44 @@ export default function UserCardInfo() {
     <MDBCardBody style={{color:"white",fontSize:'18px',fontWeight:'500'}}>
       <MDBRow>
         <MDBCol sm="3">
-          <MDBCardText>First Name</MDBCardText>
+          <MDBCardText style={{color:"#000"}}>First Name</MDBCardText>
         </MDBCol>
         <MDBCol sm="9">
           <MDBCardText className="text-muted">
-            <div id="First Name"> {fulluser?.firstName} </div>
+            <div  id="First Name" style={{color:"#000"}}> {fulluser?.firstName} </div>
           </MDBCardText>
         </MDBCol>
       </MDBRow>
       <hr />
       <MDBRow>
         <MDBCol sm="3">
-          <MDBCardText>Last Name</MDBCardText>
+          <MDBCardText style={{color:"#000"}}>Last Name</MDBCardText>
         </MDBCol>
         <MDBCol sm="9">
           <MDBCardText className="text-muted">
-            <div id="LastName"> {fulluser?.lastName} </div>
+            <div id="LastName" style={{color:"#000"}}> {fulluser?.lastName} </div>
           </MDBCardText>
         </MDBCol>
       </MDBRow>
       <hr />
       <MDBRow>
         <MDBCol sm="3">
-          <MDBCardText>Email</MDBCardText>
+          <MDBCardText style={{color:"#000"}}>Email</MDBCardText>
         </MDBCol>
         <MDBCol sm="9">
           <MDBCardText className="text-muted">
-            <div id="email"> {fulluser?.email} </div>
+            <div id="email" style={{color:"#000"}}> {fulluser?.email} </div>
           </MDBCardText>
         </MDBCol>
       </MDBRow>
       <hr />
       <MDBRow>
         <MDBCol sm="3">
-          <MDBCardText>Phone</MDBCardText>
+          <MDBCardText style={{color:"#000"}}>Phone</MDBCardText>
         </MDBCol>
         <MDBCol sm="9">
           <MDBCardText className="text-muted">
-            <div id="phoneNumber"> {fulluser?.phoneNumber} </div>
+            <div id="phoneNumber" style={{color:"#000"}}> {fulluser?.phoneNumber} </div>
           </MDBCardText>
         </MDBCol>
       </MDBRow>

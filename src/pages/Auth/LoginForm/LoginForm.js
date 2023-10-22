@@ -95,9 +95,9 @@ function SignInUpForm() {
         formData
       );
       console.log(res);
-      alert(`You have Signed up Successfully ${formData.username}`);
+      alert(`You have Signed up Successfully ${formData.username} 😍. please varify your email`);
       const alertElement = document.createElement("div");
-      alertElement.textContent = `You have Signed up Successfully ${formData.username}`;
+      // alertElement.textContent = `You have Signed up Successfully ${formData.username} please varify your email`;
       alertElement.className = "alert-message";
 
       const formContainer = document.querySelector(".form-container");

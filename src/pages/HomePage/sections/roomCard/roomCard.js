@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import RoomImg from '../../../../assets/images/1.png'
 import { FaStar } from "react-icons/fa";
 import person from "../../../../assets/Rooms/person.png"
+import { Slide } from "react-awesome-reveal";
 
 
 
@@ -53,67 +54,88 @@ export default function RoomCard() {
         <div className='container'>
           <div className='room__wrapper'>
             <div className='row g-4'>
-              {rooms.map(room => (
-                <div className="col-xl-4 col-md-6" key={room.Room_id}>
-                  <div className="room__item room__item--style1" >
-                    <div className="room__item-inner " style={{ maxHeight: '446px' }}>
-                      <div className="room__item-thumb">
-                        <img src={room.coverPhoto} alt="room image" style={{ maxHeight: '446px',minHeight:'446px' }} />
-                      </div>
-                      <div className="room__item-content">
-                        <div className="room__item-header">
-                          <div className="room__item-name">
-                            <ul className="rating">
-                              {Array(5).fill(parseInt(room.theRoomRate)).map((_, index) => (
-                                <FaStar
-                                  key={index}
-                                  size={25}
-                                  color={room.theRoomRate > index ? colors.orange : colors.grey}
-                                  style={{
-                                    marginRight: 10,
-                                    cursor: "pointer",
-                                  }}
-                                />
+                {rooms.map(room => (
+                  <div className="col-xl-4 col-md-6" key={room.Room_id}>
+                    <div className="room__item room__item--style1" >
+                      <div className="room__item-inner " style={{ maxHeight: '446px' }}>
+                        <div className="room__item-thumb">
+                          <img src={room.coverPhoto} alt="room image" style={{ maxHeight: '446px', minHeight: '446px' }} />
+                        </div>
+                        <div className="room__item-content">
+                          <div className="room__item-header">
+                            <div className="room__item-name">
+                              <ul className="rating">
+                                {Array(5).fill(parseInt(room.theRoomRate)).map((_, index) => (
+                                  <FaStar
+                                    key={index}
+                                    size={25}
+                                    color={room.theRoomRate > index ? colors.orange : colors.grey}
+                                    style={{
+                                      marginRight: 10,
+                                      cursor: "pointer",
+                                    }}
+                                  />
+                                ))}
+                              </ul>
+                              {/* Room name and availability */}
+                              <h3>{room.roomType}</h3>
+                              <p>{room.roomStatus}</p>
+                            </div>
+
+                            <div className="room__item-price">
+                              {/* Room price */}
+                              <h3>${room.roomPrice}</h3>
+                              <p>Per Night</p>
+                            </div>
+                          </div>
+                          <div className="room__item-body">
+                            {/* Room description */}
+                            <p>{room.description}</p>
+
+
+                            {/* <div style={{ display: "flex", padding: '10px' }}>
+                              <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
+                              <p style={{ color: "black", paddingLeft: '10px' }}>{room.room_capacity} person</p>
+                            </div> */}
+                            {/* Room features */}
+                            <ul className="room__feature">
+                              {room.features.map((feature, index) => (
+                                <li className="room__feature-item" key={index}>
+                                  <div className="room__feature-text">
+                                    <p>{feature.feature_name}</p>
+                                  </div>
+                                </li>
                               ))}
                             </ul>
-                            {/* Room name and availability */}
-                            <h3>{room.roomType} Room</h3>
-                            <p>{room.roomStatus}</p>
+                            <ul className="room__feature">
+                          <li className="room__feature-item">
+                            <div className="room__feature-icon">
+                              <img src={person} alt="feature icon" />
+                            </div>
+                            <div className="room__feature-text">
+                              <p>{room.room_capacity} person</p>
+                            </div>
+                          </li>
+
+                          <li className="room__feature-item">
+                            <div className="room__feature-icon">
+                              <img src="https://labartisan.net/demo/tavern/assets/images/room/icon/6.png" alt="feature icon" />
+                            </div>
+                            <div className="room__feature-text">
+                              <p>King bed</p>
+                            </div>
+                          </li>
+
+                
+                        
+                        </ul>
+                            <Link to={`/rooms/${room.room_number}`} className="custom-btn"><span>Booking Now</span></Link>
                           </div>
-
-                          <div className="room__item-price">
-                            {/* Room price */}
-                            <h3>${room.roomPrice}</h3>
-                            <p>Per Night</p>
-                          </div>
-                        </div>
-                        <div className="room__item-body">
-                          {/* Room description */}
-                          <p>{room.description}</p>
-
-
-                          <div style={{ display: "flex" ,padding:'10px' }}>
-                            <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
-                            <p style={{ color: "black",paddingLeft:'10px' }}>{room.room_capacity} person</p>
-                          </div>  
-                          {/* Room features */}
-                          <ul className="room__feature">
-                            {room.features.map((feature, index) => (
-                              <li className="room__feature-item" key={index}>
-                                <div className="room__feature-text">
-                                  <p>{feature.feature_name}</p>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
-
-                          <Link to={`/rooms/${room.room_number}`} className="custom-btn"><span>Booking Now</span></Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
               {/* <div className="col-xl-4 col-md-6">
                 <div className="room__item room__item--style1">
                   <div className="room__item-inner">
@@ -207,13 +229,13 @@ export default function RoomCard() {
         </div>
       </section>
 
-     <div className="bg-lines for-bg-white">
-          <span></span><span></span>
-          <span></span><span></span>
-          <span></span><span></span>
-          <span></span><span></span>
-          <span></span><span></span>
-        </div>
+      <div className="bg-lines for-bg-white">
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
       <div className="wave-shapes"></div>
       <div className="wave-shapes-two"></div>
     </section>

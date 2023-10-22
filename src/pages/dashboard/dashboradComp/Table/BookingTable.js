@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Button,
   Modal,
@@ -18,8 +18,22 @@ import BookingEditPop from "../../pages/BookingEdit/BookingEditPop";
 // import UpdatePopup from "../../../Updatepop";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBookings } from "../../../../store/actions/Bookings/BookingActions";
+import { useDownloadExcel } from 'react-export-table-to-excel';
+
+
 
 function BookingTable({ bookings ,postbookingupdate}) {
+
+
+  const tableRef = useRef(null);
+
+  const { onDownload } = useDownloadExcel({
+    currentTableRef: tableRef.current,
+    filename: 'Users table',
+    sheet: 'Users'
+  })
+
+
   const columns = [
     "Name",
     "Mobile",
@@ -57,7 +71,7 @@ function BookingTable({ bookings ,postbookingupdate}) {
     setBooking(bookings2);
   }, [bookings,updatedbooking]);
   return (
-    
+
     <div className="table-container">
       <div
         style={{
@@ -67,9 +81,12 @@ function BookingTable({ bookings ,postbookingupdate}) {
         }}
       >
         <h3 className="table-title">Booking List</h3>
-       
+        <button style={{ color: "green", paddingRight: "30px", fontSize: "24px" }} onClick={onDownload}>
+          <i className="fas fa-file-excel"></i>
+        </button>
+
       </div>
-      <table className="striped-table">
+      <table className="striped-table" ref={tableRef}>
         <thead>
           <tr>
             {columns.map((column, index) => (
@@ -114,7 +131,9 @@ function BookingTable({ bookings ,postbookingupdate}) {
                 </td>
                 <td style={{ paddingRight: "25px" }}>
                   <button className="update-button" title="Update">
+
                     <BookingEditPop isupdatedbooking={isupdatedbooking} booking={booking}/>
+
                   </button>
                   <Button
                     onClick={() => {

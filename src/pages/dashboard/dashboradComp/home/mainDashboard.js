@@ -5,7 +5,7 @@ import Chart from "react-apexcharts";
 import { Progress } from "@chakra-ui/react";
 import BookingTable from "../Table/BookingTable";
 import { useSelector } from "react-redux";
-function MainDashboard({ bookings, tours, rooms ,users}) {
+function MainDashboard({ bookings, tours, rooms, users }) {
   const [revenue, setRevenue] = useState(0);
   let roomTypes = {}; // Declare roomTypes
   const labels = []; // Declare labels
@@ -17,14 +17,10 @@ function MainDashboard({ bookings, tours, rooms ,users}) {
   useEffect(() => {
     const sumOfPreviousPayments = bookings.reduce((total, booking) => {
       const payment = booking.payment;
+
       if (payment) {
-        return (
-          total +
-          payment.previous_payments.reduce(
-            (subTotal, entry) => subTotal + entry.previous_payment,
-            0
-          )
-        );
+        console.log("Payment:", payment);
+        return total + payment.current_payment;
       }
       return total;
     }, 0);
@@ -237,7 +233,7 @@ function MainDashboard({ bookings, tours, rooms ,users}) {
 
             </div>
           </div>
-              {/* <Progress colorScheme="green" size="sm" value={50} /> */}
+          {/* <Progress colorScheme="green" size="sm" value={50} /> */}
         </div>
         <div className="dash-card-home">
           <i
@@ -303,7 +299,7 @@ function MainDashboard({ bookings, tours, rooms ,users}) {
           ></i>{" "}
           <div className="card-content-home">
             <div>
-              <p> Total Revenew</p>
+              <p> Total Revenue</p>
               <p style={{ marginRight: "75px" }}> ${revenue}</p>
             </div>
           </div>
@@ -360,7 +356,7 @@ function MainDashboard({ bookings, tours, rooms ,users}) {
               }}
             />
           </div>
-          <div style={{ width: "45%", padding: "20px 0px",marginLeft:"30px" }}>
+          <div style={{ width: "45%", padding: "20px 0px", marginLeft: "30px" }}>
             <Chart
               options={donutData.options}
               series={donutData.series}

@@ -12,7 +12,7 @@ import {
 } from "../TourPostStyles";
 import axios from "axios";
 
-const TourEdit = ({ setPopupOpen, tour1,tourupdated }) => {
+const TourEdit = ({ setPopupOpen, tour1, tourupdated }) => {
   const dispatch = useDispatch();
 
   const initialTourState = {
@@ -39,15 +39,15 @@ const TourEdit = ({ setPopupOpen, tour1,tourupdated }) => {
 
   const [tour, setTour] = useState({ ...tour1 }); // Initialize with tour1 data
   const [tourPlan, setTourPlan] = useState(tour1.TourPlan);
-// console.log("tour1.TourPlan", typeof tour1.TourPlan);
+  // console.log("tour1.TourPlan", typeof tour1.TourPlan);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    console.log(tour,"tourtour");
+    console.log(tour, "tourtour");
     for (const key in tour) {
       if (key === "image") {
         tour.image.forEach((file) => {
-          console.log(file,"file");
+          console.log(file, "file");
           formData.append("image", file);
         });
       } else {
@@ -55,27 +55,27 @@ const TourEdit = ({ setPopupOpen, tour1,tourupdated }) => {
         formData.append(key, tour[key]);
       }
     }
-    
-    formData.append("TourPlan", JSON.stringify(tourPlan));
-    
 
-console.log(typeof tour.tour_id,"tour1.Tour_id");
-const obj={
-  tour_id:formData.get("tour_id"),
-  max_capacity: formData.get("max_capacity"),
-  Seat_price: formData.get("Seat_price"),
-  TourPlan:JSON.stringify(tourPlan),
-  image:formData.get("image"),
-    description:formData.get("description"),
-    start_date: formData.get("start_date"),
-    end_date: formData.get("end_date"),
-}
-// const x =formData.get("TourPlan")
-// console.log(JSON.stringify(x));
+    formData.append("TourPlan", JSON.stringify(tourPlan));
+
+
+    console.log(typeof tour.tour_id, "tour1.Tour_id");
+    const obj = {
+      tour_id: formData.get("tour_id"),
+      max_capacity: formData.get("max_capacity"),
+      Seat_price: formData.get("Seat_price"),
+      TourPlan: JSON.stringify(tourPlan),
+      image: formData.get("image"),
+      description: formData.get("description"),
+      start_date: formData.get("start_date"),
+      end_date: formData.get("end_date"),
+    }
+    // const x =formData.get("TourPlan")
+    // console.log(JSON.stringify(x));
     try {
       const res = await axios.put(
         `${process.env.REACT_APP_BASE_URL}/tour/${parseInt(obj.tour_id)}`, obj,
-       
+
       );
       console.log(res.data, "resresres");
       tourupdated(true)
@@ -104,11 +104,11 @@ const obj={
   };
 
   const handleTourPlanChange = (index, e) => {
-    console.log(tourPlan,"1");
+    console.log(tourPlan, "1");
     const { name, value } = e.target;
     if (name === 'description') {
       setTourPlan({ ...tourPlan, [name]: value });
-      console.log(tourPlan,"2");
+      console.log(tourPlan, "2");
 
     } else if (name === 'day' || name === 'content') {
       const updatedDays = [...tourPlan.days];
@@ -117,7 +117,7 @@ const obj={
         [name]: value,
       };
       setTourPlan({ ...tourPlan, days: updatedDays });
-      console.log(tourPlan,"3");
+      console.log(tourPlan, "3");
 
     }
   };
@@ -179,16 +179,7 @@ const obj={
             className="form-control"
           />
         </FormGroup>
-        <FormGroup>
-          <Label>Ending Date</Label>
-          <Input
-            type="date"
-            value={tour.end_date}
-            onChange={handleChange}
-            name="end_date"
-            className="form-control"
-          />
-        </FormGroup>
+
         <FormGroup>
           <Label>starting Date</Label>
           <Input
@@ -196,6 +187,16 @@ const obj={
             value={tour.start_date}
             onChange={handleChange}
             name="start_date"
+            className="form-control"
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Ending Date</Label>
+          <Input
+            type="date"
+            value={tour.end_date}
+            onChange={handleChange}
+            name="end_date"
             className="form-control"
           />
         </FormGroup>
@@ -222,7 +223,7 @@ const obj={
           />
         </FormGroup>
         <div style={{ alignItems: "center", width: "100%" }}>
-          {tourPlan.days&& tourPlan.days.map((day, index) => (
+          {tourPlan.days && tourPlan.days.map((day, index) => (
             <div
               key={index}
               style={{ display: "flex", alignItems: "center", width: "100%" }}
@@ -287,7 +288,7 @@ const obj={
               onClick={() => setPopupOpen(false)}
               className="btn btn-success"
             >
-              Edit 
+              Edit
             </Button>
 
             <Button

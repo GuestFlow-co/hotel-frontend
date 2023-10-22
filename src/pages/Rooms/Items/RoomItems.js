@@ -59,7 +59,7 @@ const RoomItem = ({ room }) => {
                   ))}
                 </ul>
                 {/* Room name and availability */}
-                <h3>{room.roomType} Room</h3>
+                <h3>{room.roomType}</h3>
                 <p>{room.roomStatus}</p>
               </div>
 
@@ -73,10 +73,11 @@ const RoomItem = ({ room }) => {
               {/* Room description */}
               <p>{room.description}</p>
 
-              <div style={{ display: "flex", padding: '10px' }}>
-                <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
-                <p style={{ color: "black", paddingLeft: '10px' }}>{room.room_capacity} person</p>
-              </div>
+
+              {/* <div style={{ display: "flex", padding: '10px' }}>
+                              <img src={person} alt="feature icon" style={{ height: "25px" }}></img>
+                              <p style={{ color: "black", paddingLeft: '10px' }}>{room.room_capacity} person</p>
+                            </div> */}
               {/* Room features */}
               <ul className="room__feature">
                 {room.features.map((feature, index) => (
@@ -87,7 +88,28 @@ const RoomItem = ({ room }) => {
                   </li>
                 ))}
               </ul>
+              <ul className="room__feature">
+                <li className="room__feature-item">
+                  <div className="room__feature-icon">
+                    <img src={person} alt="feature icon" />
+                  </div>
+                  <div className="room__feature-text">
+                    <p>{room.room_capacity} person</p>
+                  </div>
+                </li>
 
+                <li className="room__feature-item">
+                  <div className="room__feature-icon">
+                    <img src="https://labartisan.net/demo/tavern/assets/images/room/icon/6.png" alt="feature icon" />
+                  </div>
+                  <div className="room__feature-text">
+                    <p>King bed</p>
+                  </div>
+                </li>
+
+
+
+              </ul>
               <Link to={`/rooms/${room.room_number}`} className="custom-btn"><span>Booking Now</span></Link>
             </div>
           </div>

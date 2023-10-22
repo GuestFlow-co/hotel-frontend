@@ -14,7 +14,8 @@ function Footer() {
               <div className="footer-logo mb-25">
                 <Link to="./"><img src={Logo} alt="Logo" /></Link>
               </div>
-              <p>Nam libero tempore lol soluta nobis eseligendi optio cumque nihile impedit quo minus maxime placeat facere</p>
+              <p>Discover a World-Class Luxury Hotel & Restaurant Just Outside the City
+                At our establishment.</p>
               <div className="social-style-one pt-25">
                 <a href="#"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-twitter"></i></a>
@@ -27,11 +28,11 @@ function Footer() {
             <div className="footer-widget widget_nav_menu wow fadeInUp delay-0-4s">
               <h4 className="footer-title">Quick Links</h4>
               <ul className="list-style-one">
-                <li><a href="about.html">About company</a></li>
-                <li><a href="about.html">History</a></li>
-                <li><a href="about.html">Team Member</a></li>
-                <li><a href="blog.html">Latest News</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><Link to="./AboutUs">About company</Link></li>
+                <li><Link to="./AboutUs">History</Link></li>
+                <li><Link to="./AboutUs">Team Member</Link></li>
+                <li><Link to="blog.html">Latest News</Link></li>
+                <li><Link to="contact.html">Contact Us</Link></li>
               </ul>
             </div>
           </div>
@@ -39,11 +40,11 @@ function Footer() {
             <div className="footer-widget widget_nav_menu wow fadeInUp delay-0-4s">
               <h4 className="footer-title">Features</h4>
               <ul className="list-style-one">
-                <li><a href="room-details.html">Free Transportation</a></li>
-                <li><a href="room-details.html">GYM & Fitness Care</a></li>
-                <li><a href="room-details.html">SPA Treatment</a></li>
-                <li><a href="room-details.html">Food & Drinks</a></li>
-                <li><a href="room-details.html">Breakfast</a></li>
+                <li><Link to="./rooms">Free Transportation</Link></li>
+                <li><Link to="./rooms">GYM & Fitness Care</Link></li>
+                <li><Link to="./rooms">SPA Treatment</Link></li>
+                <li><Link to="./rooms">Food & Drinks</Link></li>
+                <li><Link to="./rooms">Breakfast</Link></li>
               </ul>
             </div>
           </div>
@@ -77,10 +78,10 @@ function Footer() {
             </div>
             <div className="col-lg-6 text-lg-end">
               <ul className="footer-bottom-nav rpb-10">
-                <li><a href="about.html">Terms</a></li>
-                <li><a href="about.html">Privacy Policy</a></li>
-                <li><a href="faqs.html">FAQs</a></li>
-                <li><a href="about.html">Cookie Policy</a></li>
+                <li><Link to="./AboutUs">Terms</Link></li>
+                <li><Link to="./AboutUs">Privacy Policy</Link></li>
+                <li><Link to="faqs.html">FAQs</Link></li>
+                <li><Link to="./AboutUs">Cookie Policy</Link></li>
               </ul>
             </div>
           </div>
