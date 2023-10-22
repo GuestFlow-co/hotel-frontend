@@ -182,14 +182,14 @@ const RoomEdit = ({ Room, isupdated }) => {
       </button>
 
       <PopupWrapper style={{ display: isPopupOpen ? "flex" : "none" }}>
-        <PopupContent>
+        <PopupContent >
           {/* // <RoomCreate
             //   setClose={closeRoomCreate}
             //   onRoomCreate={openFeatureChecklist}
             //   setClosing={closeFeatureChecklist}
             // /> */}
 
-          <Container>
+          <Container style={{ width:'100%',height:'100%'}}>
             {/* <FeatureChecklist /> */}
 
             <Form onSubmit={handleRoomSubmit}>
