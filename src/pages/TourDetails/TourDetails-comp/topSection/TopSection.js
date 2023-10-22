@@ -38,7 +38,7 @@ function TopSection({ tour }) {
           <section className="titel-icon">
             <i class="fa-solid fa-users"></i>
             <div>
-              <p> Max capacity </p>
+              <p>Capacity </p>
               <p className="under-icon">{tour.max_capacity}</p>
             </div>
           </section>

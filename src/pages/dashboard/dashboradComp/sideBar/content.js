@@ -72,7 +72,7 @@ function Content({ children }) {
       <section className="main-section-sidebar">
         <div
           style={{
-            width: "90%",
+            width: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -82,11 +82,11 @@ function Content({ children }) {
         >
           <div
             style={{
-              width: "90%",
+              width: "100%",
               display: "flex",
               flexDirection: "column",
               gap: "5px",
-              alignItems: "center",
+              // alignItems: "center",
             }}
           >
             <div className="navbar-header">

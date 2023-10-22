@@ -6,7 +6,7 @@
     font-family: "Prompt", sans-serif;
     font-size: 16px;
     line-height: 29.6px;
-
+    
     i {
         color: var(--primary-color);
     }
@@ -56,6 +56,9 @@
             height: 100%;
             padding: 30px;
             transition: transform 0.3s;
+            max-width: 306px;
+            min-height: 399px;
+            max-height: 399px;
 
 
             .lower-card-tour-section-home {

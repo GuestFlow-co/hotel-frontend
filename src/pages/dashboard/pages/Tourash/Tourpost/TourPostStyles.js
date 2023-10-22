@@ -30,7 +30,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  max-height: 80vh;
+  max-height: 400px;
   overflow-y: auto;
  
   background-color: white;

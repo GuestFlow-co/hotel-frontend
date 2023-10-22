@@ -10,7 +10,7 @@ import {
   Input,
   ButtonGroup,
   Button,
-} from "../TourPostStyles";
+} from "./TourPostStyles";
 
 const TourPost = ({ setPopupOpen }) => {
   const dispatch = useDispatch();
